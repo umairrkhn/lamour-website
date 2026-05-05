@@ -1,6 +1,11 @@
 {{ 'component-blog-item.css' | asset_url | stylesheet_tag }}
 
-<div class="container--large {% unless section.settings.remove_margin %} container--vertical-space {% endunless %} {% if section.settings.section_background_color != "rgba(0,0,0,0)" or section.settings.section_background_gradient != blank %} container--has-background {% endif %}">
+<div id="section-{{ section.id }}" class="container--large remove-empty-space
+  {% unless section.settings.remove_margin %} {% unless section.settings.descrease_margin %} container--vertical-space {% else %} container--vertical-space-grid {% endunless %} {% endunless %} 
+  {% if section.settings.section_background_color != "rgba(0,0,0,0)" or section.settings.section_background_gradient != blank %} container--has-background {% endif %}
+  {% if section.settings.section_visibility == "mobile" %} element--hide-on-desk {% endif %}
+  {% if section.settings.section_visibility == "desktop" %} element--hide-on-small {% endif %}
+">
 
   {%- if section.settings.title != blank -%}
     {%- render 'section-heading', heading: section.settings.title, subheading: section.settings.subheading, button: section.settings.show_view_all, button_label: 'blog.view_all_articles', link: blogs[section.settings.blog].url, heading_tag: section.settings.seo_h_tag, layout: section.settings.section_heading_layout -%}
@@ -224,7 +229,15 @@
       },
       {
         "type": "checkbox",
+        "id": "descrease_margin",
+        "visible_if": "{{ section.settings.remove_margin == false }}",
+        "label": "t:theme_blocks.descrease_top_margin",
+        "default": false
+      },
+      {
+        "type": "checkbox",
         "id": "remove_margin",
+        "visible_if": "{{ section.settings.descrease_margin == false }}",
         "label": "t:sections.local-extra-words.sections.rich-text.settings.remove_margin.label",
         "default": false
       },
@@ -260,11 +273,36 @@
           }
         ],
         "default": "h2"
+      },
+      {
+        "type": "header",
+        "content": "t:sections.refactor_words.announcement-bar.visibility.label"
+      },
+      {
+        "type": "select",
+        "id": "section_visibility",
+        "label": "t:sections-visibility.label",
+        "options": [
+          {
+            "value": "always",
+            "label": "t:sections-visibility.options.always"
+          },
+          {
+            "value": "mobile",
+            "label": "t:sections-visibility.options.mobile"
+          },
+          {
+            "value": "desktop",
+            "label": "t:sections-visibility.options.desktop"
+          }
+        ],
+        "default": "always"
       }
     ],    
     "presets": [
       {
         "name": "t:sections.blog-posts.presets.name",
+        "category": "t:sections-categories.content",
         "blocks": [
           {"type": "info"},
           {"type": "title"}

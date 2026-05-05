@@ -1,77 +1,78 @@
 {{ 'section-before-after.css' | asset_url | stylesheet_tag }}
 
-<div id="section-{{ section.id }}">
-  
-  <div class="container--large {% unless section.settings.remove_margin %} container--vertical-space {% endunless %} {% if section.settings.section_background_color != "rgba(0,0,0,0)" or section.settings.section_background_gradient != blank %} container--has-background {% endif %} remove-empty-space">
+<div id="section-{{ section.id }}" class="container--large remove-empty-space
+  {% unless section.settings.remove_margin %} {% unless section.settings.descrease_margin %} container--vertical-space {% else %} container--vertical-space-grid {% endunless %} {% endunless %} 
+  {% if section.settings.section_background_color != "rgba(0,0,0,0)" or section.settings.section_background_gradient != blank %} container--has-background {% endif %}
+  {% if section.settings.section_visibility == "mobile" %} element--hide-on-desk {% endif %}
+  {% if section.settings.section_visibility == "desktop" %} element--hide-on-small {% endif %}
+">
 
-    {%- render 'section-heading', heading: section.settings.heading, subheading: section.settings.subheading, button: section.settings.show_view_all, button_label: 'collections.view_all_collections', link: routes.collections_url, heading_tag: section.settings.seo_h_tag, layout: section.settings.section_heading_layout -%}
+  {%- render 'section-heading', heading: section.settings.heading, subheading: section.settings.subheading, button: section.settings.show_view_all, button_label: 'collections.view_all_collections', link: routes.collections_url, heading_tag: section.settings.seo_h_tag, layout: section.settings.section_heading_layout -%}
 
-    {%- liquid
-      if section.index == 1
-        assign preload = true
-      else
-        assign preload = false
-      endif
-    -%}
-  
-    <before-after data-layout="{{ section.settings.layout }}" class="{%- if section.settings.invert_layout -%}invert-layout{%- endif -%}">
+  {%- liquid
+    if section.index == 1
+      assign preload = true
+    else
+      assign preload = false
+    endif
+  -%}
 
-      {%- if section.blocks.size > 0 -%}
+  <before-after data-layout="{{ section.settings.layout }}" class="{%- if section.settings.invert_layout -%}invert-layout{%- endif -%}">
 
-        <div class="before-after {{ section.settings.desktop_height }} {{ section.settings.mobile_height }} before-after--color-style-{{ section.settings.color_style }}">
+    {%- if section.blocks.size > 0 -%}
 
-          {%- for block in section.blocks -%}
+      <div class="before-after {{ section.settings.desktop_height }} {{ section.settings.mobile_height }} before-after--color-style-{{ section.settings.color_style }}">
 
-            <div class="img {% if forloop.index == 2 %} foreground-img {% else %} background-img {% endif %}" id="{{ block.id }}" {{ block.shopify_attributes }}> 
+        {%- for block in section.blocks -%}
 
-              <div class="before-after__label-wrapper">
-                {% if block.settings.label != blank %}
-                <span class="before-after__label">
-                  {{ block.settings.label | escape }}
-                </span>
-                {% endif %}
-              
-              {% liquid
-              assign desktop_image_class = ""
+          <div class="img {% if forloop.index == 2 %} foreground-img {% else %} background-img {% endif %}" id="{{ block.id }}" {{ block.shopify_attributes }}> 
+
+            <div class="before-after__label-wrapper">
+              {% if block.settings.label != blank %}
+              <span class="before-after__label">
+                {{ block.settings.label | escape }}
+              </span>
+              {% endif %}
+            
+            {% liquid
+            assign desktop_image_class = ""
+            if block.settings.image_mobile != blank
+              assign desktop_image_class = "element--hide-on-mobile"
+            endif
+
+            unless block.settings.image == blank
+
+              render 'lazy-image', image: block.settings.image, type: 'background', image_alignment: true, id: block.id, class: desktop_image_class, sizes: 'sizes="100vw"', preload: preload
+
+            else
+              render 'lazy-svg', image: 'product-1', class: 'svg-placeholder svg-placeholder--background' 
+            endunless
+            %}
+
+            {%- liquid
               if block.settings.image_mobile != blank
-                assign desktop_image_class = "element--hide-on-mobile"
+                assign image_block = block.id | prepend: 'mobile-'
+                render 'lazy-image', image: block.settings.image_mobile, type: 'background', image_alignment: true, id: image_block, class: 'element--hide-on-desk', sizes: 'sizes="100vw"', preload: preload
               endif
+            -%}
 
-              unless block.settings.image == blank
-
-                render 'lazy-image', image: block.settings.image, type: 'background', image_alignment: true, id: block.id, class: desktop_image_class, sizes: 'sizes="100vw"', preload: preload
-
-              else
-                render 'lazy-svg', image: 'product-1', class: 'svg-placeholder svg-placeholder--background' 
-              endunless
-              %}
-
-              {%- liquid
-                if block.settings.image_mobile != blank
-                  assign image_block = block.id | prepend: 'mobile-'
-                  render 'lazy-image', image: block.settings.image_mobile, type: 'background', image_alignment: true, id: image_block, class: 'element--hide-on-desk', sizes: 'sizes="100vw"', preload: preload
-                endif
-              -%}
-
-              </div>
             </div>
-          {%- endfor -%}
+          </div>
+        {%- endfor -%}
 
-          <input type="range" min="0" max="100" value="50" class="before-after__slider" orient="{{ section.settings.layout }}">
-          <span class="before-after--handle">
-            <span class="before-after--handle-icon">
-              {%- render 'theme-symbols', icon: 'arrow-left-right' -%}
-            </span>
+        <input type="range" min="0" max="100" value="50" class="before-after__slider" orient="{{ section.settings.layout }}">
+        <span class="before-after--handle">
+          <span class="before-after--handle-icon">
+            {%- render 'theme-symbols', icon: 'arrow-left-right' -%}
           </span>
+        </span>
 
-        </div>
+      </div>
 
-      {%- endif -%}
+    {%- endif -%}
 
-    </before-after>
+  </before-after>
 
-  </div>
-  
 </div>
 
 {%- if section.settings.section_background_color != "rgba(0,0,0,0)" -%}
@@ -101,7 +102,6 @@
 {% schema %}
 {
   "name": "t:sections.refactor_words.before_after.name",
-  "class": "mount-video-background supports-absolute-header",
   "settings": [
     {
       "type": "header",
@@ -244,7 +244,15 @@
     },
     {
       "type": "checkbox",
+      "id": "descrease_margin",
+      "visible_if": "{{ section.settings.remove_margin == false }}",
+      "label": "t:theme_blocks.descrease_top_margin",
+      "default": false
+    },
+    {
+      "type": "checkbox",
       "id": "remove_margin",
+      "visible_if": "{{ section.settings.descrease_margin == false }}",
       "label": "t:sections.local-extra-words.sections.rich-text.settings.remove_margin.label",
       "default": false
     },
@@ -280,6 +288,30 @@
         }
       ],
       "default": "h2"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.refactor_words.announcement-bar.visibility.label"
+    },
+    {
+      "type": "select",
+      "id": "section_visibility",
+      "label": "t:sections-visibility.label",
+      "options": [
+        {
+          "value": "always",
+          "label": "t:sections-visibility.options.always"
+        },
+        {
+          "value": "mobile",
+          "label": "t:sections-visibility.options.mobile"
+        },
+        {
+          "value": "desktop",
+          "label": "t:sections-visibility.options.desktop"
+        }
+      ],
+      "default": "always"
     }
   ],
   "blocks": [
@@ -314,6 +346,7 @@
   "presets": [
     {
       "name": "t:sections.refactor_words.before_after.name",
+      "category": "t:sections-categories.storytelling",
       "blocks": [
         { "type": "image", "settings": {
           "label": "Before"

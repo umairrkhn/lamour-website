@@ -4,7 +4,7 @@
 {%- if section.settings.remove_margin -%}
   {% style %}
     .main-footer {
-      margin-top: calc(var(--container-vertical-space) * -1);
+      margin-top: 0;
     }
   {% endstyle %}
 {%- endif -%}
@@ -17,13 +17,20 @@
 
         <div class="footer-item" {{ block.shopify_attributes }}>
 
-          {%- if block.settings.title -%}
+          {%- if block.settings.title != blank -%}
             <{{ section.settings.seo_h_tag }} class="footer-item__title {% if block.settings.size %} {{ block.settings.size }} {% else %} h5 {% endif %}" style="display:block">{{ block.settings.title | escape }}</{{ section.settings.seo_h_tag }}>
           {%- endif -%}
 
           {%- case block.type -%}
 
             {%- when 'text' -%}
+              {%- if block.settings.image != blank -%}
+                <div class="footer-item__image" style="max-width: {{ block.settings.image_size }}px;margin-bottom: 1rem;">
+                  {%- assign sizes = block.settings.image_size | append: 'px"' | prepend: 'sizes="' %}
+                  {%- render 'lazy-image', image: block.settings.image, sizes: sizes -%}
+                </div>
+              {%- endif -%}
+
               <div class="footer-item__content rte">
                 {%- liquid
                   echo block.settings.content
@@ -47,27 +54,37 @@
 
 
             {%- when 'image' -%}
-              <div class="footer-item__image">
+              <div class="footer-item__image" 
+                {% if block.settings.constrain_image_width %} style="max-width: {{ block.settings.max_width }}px" {% endif %}
+              >
+                
                 {%- if block.settings.link -%}
                   <a href="{{ block.settings.link }}" {% unless block.settings.open_in_new_window == false %} target="_blank" {% endunless %}>
                 {%- endif -%}  
 
-                {%- liquid
-                  if block.settings.image
-                    if section.settings.layout contains 'grid-4'
-                      assign sizes = 'sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, (max-width: 1280px) calc((100vw - 100px / 4), 290px"'
-                    else 
-                      assign sizes = 'sizes="(max-width: 767px) 100vw, (max-width: 1280px) calc((100vw - 100px / 3), 390px"'
-                    endif
-                    render 'lazy-image', image: block.settings.image, sizes: sizes, class: 'lazy-image--no-transition'
-                  else
-                    echo 'image' | placeholder_svg_tag
-                  endif
-                -%}
+                {%- if block.settings.image -%}
+                  {%- unless block.settings.constrain_image_width -%}
+                    {%- if section.settings.layout contains 'grid-4' -%}
+                      {%- capture sizes -%}
+                        sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, (max-width: {{ settings.theme_max_width }}px) calc((100vw - 100px) / 4), {{ settings.theme_max_width | divided_by: 4 }}px"
+                      {%- endcapture -%}
+                    {%- else  -%}
+                      {%- capture sizes -%}
+                        sizes="(max-width: 767px) 100vw, (max-width: {{ settings.theme_max_width }}px) calc((100vw - 100px) / 3), {{ settings.theme_max_width | divided_by: 3 }}px"
+                      {%- endcapture -%}
+                    {%- endif -%}
+                  {%- else -%}
+                    {%- capture sizes -%} sizes="{{ block.settings.max_width }}px" {%- endcapture -%}
+                  {%- endunless -%}
+                  {%- render 'lazy-image', image: block.settings.image, sizes: sizes, class: 'lazy-image--no-transition' -%}
+                {%- else -%}
+                  {{ 'image' | placeholder_svg_tag }}
+                {%- endif -%}
 
                 {%- if block.settings.link -%}
-                </a>
+                  </a>
                 {%- endif -%}  
+
               </div>
 
               {%- when 'payment' -%}
@@ -154,11 +171,11 @@
                     {%- unless form.posted_successfully? -%}
                       <fieldset>
                         <input type="hidden" name="contact[tags]" value="newsletter">
-                        <div class="form-row" style="position:relative">
+                        <div class="form-row" style="position:relative;padding-top:0;">
                           <input type="email" class="newsletter__input" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter.email_label' | t }}" name="contact[email]" id="Email-{{ form_id }}" aria-label="{{ 'general.newsletter.email_label' | t }}" autocorrect="off" autocapitalize="off" required> 
                           <button type="submit" id="Subscribe-{{ form_id }}" aria-label="{{ 'general.newsletter.submit_label' | t }}">
                               <span class="visually-hidden">{{ 'general.newsletter.submit_label' | t }}</span>
-                              <span aria-hidden="true" role="img">{%- render 'theme-symbols': icon: 'send' -%}
+                              <span aria-hidden="true" role="img">{%- render 'theme-symbols', icon: 'send' -%}</span>
                           </button>
                         </div>
                       </fieldset>
@@ -209,12 +226,20 @@
         "info": "t:sections.local-extra-words.sections.columns.info",
         "options": [
           {
-            "value": "grid-3 grid-lap-1",
+            "value": "grid-3 grid-lap-2",
             "label": "t:sections.local-extra-words.sections.columns.option__2"
           },
           {
             "value": "grid-4 grid-portable-2 grid-lap-1",
             "label": "t:sections.local-extra-words.sections.columns.option__3"
+          },
+          {
+            "value": "grid-5 grid-portable-4 grid-lap-3 grid-palm-2 smel",
+            "label": "t:sections.local-extra-words.sections.columns.option__4"
+          },
+          {
+            "value": "grid-6 grid-portable-4 grid-lap-3 grid-palm-2 smel",
+            "label": "t:sections.local-extra-words.sections.columns.option__5"
           }
         ],
         "default": "grid-4 grid-portable-2 grid-lap-1"
@@ -313,6 +338,22 @@
             "default": "h4"
           },
           {
+            "type": "image_picker",
+            "id": "image",
+            "label": "t:sections.main-list-collections.blocks.collection.settings.image.label"
+          },
+          {
+            "type": "range",
+            "id": "image_size",
+            "visible_if": "{{ block.settings.image != blank }}",
+            "label": "t:sections.refactor_words.settings.scrolling_images.image_size",
+            "min": 50,
+            "max": 250,
+            "step": 2,
+            "default": 100,
+            "unit": "px"
+          },
+          {
             "type": "richtext",
             "id": "content",
             "label": "t:sections.footer.blocks.text.settings.content.label",
@@ -368,6 +409,7 @@
           {
             "type": "checkbox",
             "id": "open_in_new_window",
+            "visible_if": "{{ block.settings.link != blank }}",
             "label": "t:sections.local-extra-words.sections.announcement-bar.blocks.content.settings.target",
             "default": false
           }
@@ -389,6 +431,22 @@
             "label": "t:sections.footer.blocks.image.settings.image.label"
           },
           {
+            "type": "checkbox",
+            "id": "constrain_image_width",
+            "label": "t:local-260.labels.constrain_image_width",
+            "default": false
+          },
+          {
+            "type": "range",
+            "id": "max_width",
+            "label": "t:local-260.labels.maximum_width",
+            "min": 50,
+            "max": 300,
+            "step": 5,
+            "unit": "px",
+            "default": 300
+          },
+          {
             "type": "url",
             "id": "link",
             "label": "t:sections.local-extra-words.sections.announcement-bar.blocks.content.settings.link"
@@ -396,6 +454,7 @@
           {
             "type": "checkbox",
             "id": "open_in_new_window",
+            "visible_if": "{{ block.settings.link != blank }}",
             "label": "t:sections.local-extra-words.sections.announcement-bar.blocks.content.settings.target",
             "default": false
           }

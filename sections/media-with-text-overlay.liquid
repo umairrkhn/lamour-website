@@ -1,4 +1,9 @@
-<div id="section-{{ section.id }}" class="container--large {% unless section.settings.remove_margin %} container--vertical-space {% endunless %} {% if section.settings.section_background_color != "rgba(0,0,0,0)" or section.settings.section_background_gradient != blank %} container--has-background {% endif %} remove-empty-space">
+<div id="section-{{ section.id }}" class="container--large remove-empty-space
+  {% unless section.settings.remove_margin %} {% unless section.settings.descrease_margin %} container--vertical-space {% else %} container--vertical-space-grid {% endunless %} {% endunless %} 
+  {% if section.settings.section_background_color != "rgba(0,0,0,0)" or section.settings.section_background_gradient != blank %} container--has-background {% endif %}
+  {% if section.settings.section_visibility == "mobile" %} element--hide-on-desk {% endif %}
+  {% if section.settings.section_visibility == "desktop" %} element--hide-on-small {% endif %}
+">
 
   {%- render 'section-heading', heading: section.settings.heading, subheading: section.settings.subheading, heading_tag: section.settings.seo_h_tag, layout: section.settings.section_heading_layout -%}
 
@@ -48,7 +53,7 @@
             {%- endif -%}
           </div>
 
-          <div class="card__image card__image--background {% if block.settings.color_background_main != "rgba(0,0,0,0)" %} card__image--with-overlay {% endif %}" aria-hidden="true">
+          <div class="card__image card__image--background {% if block.settings.color_background_main != "rgba(0,0,0,0)" %} card__image--with-overlay {% endif %}">
 
             {%- liquid 
               assign video_url = block.settings.video_url
@@ -61,59 +66,43 @@
 
             {%- unless video_url != blank -%}
               
-              {%- liquid 
-                unless block.settings.image == blank
-                  if section.settings.layout contains 'grid-3'
-                    assign sizes = 'sizes="(max-width: 767px) calc(100vw - 20px), (max-width: 1360px) 33vw, 420px"'
-                  elsif section.settings.layout contains 'grid-2'
-                    assign sizes = 'sizes="(max-width: 767px) calc(100vw - 20px), (max-width: 1360px) 50vw, 640px"'
-                  else
-                    assign sizes = 'sizes="(max-width: 1360px) calc(100vw - 20px), 1280px"'
-                  endif
-                  if section.index == 1 and forloop.index <= 2
+              {%- unless block.settings.image == blank -%}
+
+                {%- if section.settings.layout contains 'grid-3' -%}
+                  {%- capture sizes -%}
+                    sizes="(max-width: 767px) calc(100vw - 20px), (max-width: {{ settings.theme_max_width }}px) 33vw, {{ settings.theme_max_width | divided_by: 3 }}px"
+                  {%- endcapture -%}
+                {%- elsif section.settings.layout contains 'grid-2' -%}
+                  {%- capture sizes -%}
+                    sizes="(max-width: 767px) calc(100vw - 20px), (max-width: {{ settings.theme_max_width }}px) 50vw, {{ settings.theme_max_width | divided_by: 2 }}px"
+                  {%- endcapture -%}
+                {%- else -%}
+                  {%- capture sizes -%}
+                    sizes="(max-width: {{ settings.theme_max_width }}px) calc(100vw - 20px), calc({{ settings.theme_max_width }} - 80px)"
+                  {%- endcapture -%}
+                {%- endif -%}
+
+                {%- liquid
+                if section.index == 1 and forloop.index <= 2
                     assign preload = true
                   else
                     assign preload = false
                   endif
-                  render 'lazy-image', image: block.settings.image, sizes: sizes, type: 'background', alt: block.settings.title, image_alignment: true, id: block.id, preload: preload
-                else
-                  echo 'image' | placeholder_svg_tag
-                endunless
-              -%}
+                -%}
+
+                {%- render 'lazy-image', image: block.settings.image, sizes: sizes, type: 'background', alt: block.settings.title, image_alignment: true, id: block.id, preload: preload -%}
+                
+              {%- else -%}
+                {{ 'image' | placeholder_svg_tag }}
+              {%- endunless -%}
 
             {%- else -%}
 
-              {{ 'component-video-background.css' | asset_url | stylesheet_tag }}
+              <script>
+                window.KrownAssetLoader.loadScript('{{ "component-video.js" | asset_url }}');
+              </script>
 
-              <div id="video-background-{{ section.id }}" class="video-background" style="display:block">
-
-                <div class="video-text__container">
-                  
-                  <video-background-element class="video-text__background" data-id="{{ block.id }}">
-                    <video autoplay muted loop playsinline>
-                      {%- for source in block.settings.video.sources -%}
-                        <source data-src="{{ source.url }}" type="{{ source.mime_type }}">
-                      {%- endfor -%}
-                    </video>
-                  </video-background-element>
-
-                  {%- unless block.settings.image == blank -%}
-                    <div data-video-background-fallback data-id="{{ block.id }}">
-                      <template>
-                        <span class="video-text__image" aria-hidden="true">
-                          {%- liquid
-                            assign sizes = 'sizes="(max-width: 1023px) calc(100vw - 60px), 84vw"'
-                            render 'lazy-image', image: block.settings.image, type: 'background', sizes: sizes, id: block.id 
-                          -%}
-                        </span>
-                      </template>
-                    </div>
-                  {%- endunless -%}
-
-                </div>
-              </div>
-
-              <script src="{{ 'component-video-background.js' | asset_url }}" defer></script>
+              {%- render 'video-component', video_file: block.settings.video, image: block.settings.image, is_background: true, autoplay_video: true, loop_video: true, id: block.id, title: block.settings.title -%}
 
             {%- endunless -%}
 
@@ -164,7 +153,6 @@
 {% schema %}
 {
   "name": "t:sections.local-extra-words.sections.media-with-text-overlay.name",
-  "class": "mount-video-background",
   "settings": [
     {
       "type": "header",
@@ -418,7 +406,15 @@
     },
     {
       "type": "checkbox",
+      "id": "descrease_margin",
+      "visible_if": "{{ section.settings.remove_margin == false }}",
+      "label": "t:theme_blocks.descrease_top_margin",
+      "default": false
+    },
+    {
+      "type": "checkbox",
       "id": "remove_margin",
+      "visible_if": "{{ section.settings.descrease_margin == false }}",
       "label": "t:sections.local-extra-words.sections.rich-text.settings.remove_margin.label",
       "default": false
     },
@@ -454,6 +450,30 @@
         }
       ],
       "default": "h2"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.refactor_words.announcement-bar.visibility.label"
+    },
+    {
+      "type": "select",
+      "id": "section_visibility",
+      "label": "t:sections-visibility.label",
+      "options": [
+        {
+          "value": "always",
+          "label": "t:sections-visibility.options.always"
+        },
+        {
+          "value": "mobile",
+          "label": "t:sections-visibility.options.mobile"
+        },
+        {
+          "value": "desktop",
+          "label": "t:sections-visibility.options.desktop"
+        }
+      ],
+      "default": "always"
     }
   ],
   "blocks": [
@@ -469,7 +489,7 @@
         {
           "type": "video",
           "id": "video",
-          "label": "t:sections.local-extra-words.sections.media-with-text-overlay.blocks.video.label",
+          "label": "t:video-extra-functions.video_upload.label",
           "info": "t:sections.local-extra-words.sections.media-with-text-overlay.blocks.video.info"
         },
         {
@@ -503,6 +523,7 @@
         {
           "type": "checkbox",
           "id": "open_in_new_window",
+          "visible_if": "{{ block.settings.link != blank }}",
           "label": "t:sections.local-extra-words.sections.announcement-bar.blocks.content.settings.target",
           "default": false
         },
@@ -577,8 +598,10 @@
     }
   ],
   "presets": [
+    
     {
       "name": "t:sections.local-extra-words.sections.media-with-text-overlay.name",
+      "category": "t:sections-categories.storytelling",
       "blocks": [
         { "type": "image" },
         { "type": "image" }

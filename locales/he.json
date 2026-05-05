@@ -19,7 +19,9 @@
       "title": "שתף",
       "facebook": "פייסבוק",
       "twitter": "טוויטר",
-      "pinterest": "פינטרסט"
+      "pinterest": "פינטרסט",
+      "copy_to_clipboard": "העתק ללוח",
+      "url_copied_to_clipboard": "ה-URL הועתק"
     },
     "newsletter": {
       "email_label": "הכניסו את כתובת הדואר האלקטרוני שלכם",
@@ -51,7 +53,8 @@
       "powered_by_shopify_html": "חנות זו תופעל באמצעות {{ shopify }}"
     },
     "prefixes": {
-      "by": "באמצעות"
+      "by": "באמצעות",
+      "or": "אוֹ"
     },
     "account_link": {
       "logged_in": "החשבון שלי",
@@ -66,7 +69,11 @@
       "cart": "עגלת קניות"
     },
     "date_format": {
-      "month_day_year": "%Y, %b %b"
+      "month_day_year": "%Y, %b %b",
+      "days": "ימים",
+      "hours": "שעה (ות",
+      "minutes": "דקות",
+      "seconds": "שניות"
     },
     "copyright": "זכויות יוצרים",
     "meta": {
@@ -95,6 +102,7 @@
       "country_dropdown_label": "מדינה/אזור",
       "quantity": "כמות",
       "price": {
+        "price": "מחיר",
         "regular": "מחיר רגיל",
         "sale": "מחיר מבצע",
         "unit": "מחיר יחידה"
@@ -108,7 +116,11 @@
       "rating_info": "דירוג: {{ rating_value }} מתוך {{ rating_max }}",
       "form_error": "שגיאה",
       "top": "חלק עליון",
-      "go_to_top": "חלק עליון"
+      "go_to_top": "חלק עליון",
+      "slide": "הצג שקופית {{ count }}",
+      "next_slide": "השקופית הבאה",
+      "previous_slide": "השקופית הקודמת",
+      "time_left": "נותר זמן"
     },
     "cookies_popup": {
       "title": "'עוגיות'",
@@ -200,7 +212,9 @@
       },
       "loading_reviews": "טוען ביקורות נוספות",
       "include_taxes": "המס כלול.",
+      "exclude_taxes": "המס לא כלול.",
       "shipping_policy_html": "<a href=\"{{ link }}\">משלוח</a> מחושב בקופה.",
+      "required_line_item": "שדה זה הוא חובה",
       "view_in_space": "צפו במרחב שלכם",
       "view_in_space_label": "צפו במרחב שלכם, הפריט ייטען בחלון מציאות רבודה",
       "sales_amount_html": "חסכת {{ amount }}",
@@ -240,6 +254,10 @@
       "one": "מוצר {{ count }} נוסף לעגלת הקניות שלך",
       "other": "מוצרים {{ count }} נוספו לעגלת הקניות שלך"
     },
+    "bundled_items_toggle": {
+      "show_items": "הצג {{ count }} פריטים",
+      "hide_items": "הסתר {{ count }} פריטים"
+    },
     "free_shipping_remaining_html": "אתם רחוקים ב-{{ remaining_amount }} ממשלוח בחינם.",
     "free_shipping_eligible": "אתם זכאים למשלוח בחינם!",
     "shipping_calculator": {
@@ -252,7 +270,10 @@
       "product": "מוצר",
       "quantity": "כמות",
       "total": "סך הכל"
-    }
+    },
+    "discount_codes_label": "קודי הנחה",
+    "discount_code_error": "לא ניתן להחיל את קוד ההנחה על העגלה שלך",
+    "remove_discount_code": "הסר קוד הנחה: {{ code }}"
   },
   "blog": {
     "grid": {
@@ -321,7 +342,8 @@
         "date": "תאריך",
         "payment_status": "סטטוס תשלום",
         "fulfillment_status": "סטטוס מילוי",
-        "total": "סך הכל"
+        "total": "סך הכל",
+        "view_order": "צפייה בהזמנה"
       },
       "no_orders_message": "עדיין לא ביצעת הזמנות.",
       "account_details_title": "פרטי חשבון",
@@ -438,7 +460,8 @@
       "email_label": "דואל של הנמען",
       "name_label": "שם הנמען (אופציונלי)",
       "message_label": "הודעה (אופציונלי)",
-      "max_characters": "תווים מקסימום {{ max_chars }}"
+      "max_characters": "תווים מקסימום {{ max_chars }}",
+      "send_on_label": "שלח שובר מתנה בתאריך אחר (אופציונלי)"
     }
   },
   "store_availability": {

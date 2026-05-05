@@ -8,7 +8,302 @@
  * ------------------------------------------------------------
  */
 {
-  "sticky_cart_actions": "Enable sticky drawer cart actions",
+  "new-account-component": {
+    "title": "Customer accounts",
+    "menu": "Customer account menu",
+    "info": "Only works with the new customer account component. [Learn more](https://help.shopify.com/en/manual/customers/customer-accounts/account-component)"
+  },
+  "video-compression": {
+    "compress_videos_with_m3u8": "Compress MP4 videos",
+    "compress_videos_with_m3u8_info": "Use Shopify's video compression for better performance. Might affect the quality, especially for short videos."
+  },
+  "sections-categories": {
+    "promotions": "Promotions",
+    "products": "Products",
+    "content": "Content",
+    "brand-trust": "Brand trust",
+    "media-galleries": "Media & galleries",
+    "storytelling": "Storytelling",
+    "custom": "Custom",
+    "forms": "Forms",
+    "layout": "Layout",
+    "collections": "Collections",
+    "presets": {
+      "media_collage": "Media collage",
+      "text_cards_collage": "Text cards collage",
+      "flex_promotion_cards": "Flex promotion cards",
+      "promotion_slider": "Promotion slider",
+      "search_bar": "Search bar",
+      "rich_text_with_image": "Rich text with image",
+      "fullwidth_text_banner": "Fullwidth text banner",
+      "heading_text": "Heading text",
+      "logo_list": "Logo list",
+      "logo": "Logo",
+      "fullwidth_media_with_text": "Fullwidth media with text",
+      "faq": "FAQ",
+      "events_calendar": "Events calendar"
+    }
+  },
+  "sections-visibility": {
+    "label": "Section visibility",
+    "options": {
+      "always": "Show always",
+      "mobile": "Show only on mobile",
+      "desktop": "Show only on desktop"
+    }
+  },
+  "flex-cards": {
+    "header": "Flex cards",
+    "settings": {
+      "height": {
+        "desktop": "Desktop media height",
+        "auto": "Preserve media height on mobile",
+        "mobile": "Mobile media height"
+      },
+      "image_visibility": "Don't show media",
+      "enhance_first_image": "Enhance first image",
+      "star-rating": {
+        "name": "Star rating",
+        "color": "Star color"
+      }
+    }
+  },
+  "notes-discounts": {
+    "header": "Notes and discounts",
+    "show_discount_code": {
+      "label": "Enable cart discounts",
+      "text": "Discount text",
+      "placeholder": "Discount code",
+      "collapsible": "Make notes & discount fields collapsible inside cart drawer"
+    }
+  },
+  "back-in-stock-alert": {
+    "header": "Back in stock alert",
+    "content": "Store owner will receive an email when a customer fills in this form. Store owner must manually notify the customer once the product is back in stock.",
+    "info": "This back in stock alert form will show up when the product is out of stock.",
+    "succcess_message": "Success message",
+    "email_message": "Email message"
+  },
+  "theme_blocks": {
+    "group": {
+      "name": "Content group"
+    },
+    "heading": {
+      "settings": {
+        "info": "Use [br] to insert a line break.",
+        "option_1": "Default"
+      }
+    },
+    "slide_image": {
+      "settings": {
+        "info": "If entire card has a link, the inner links will not work"
+      }
+    },
+    "caption": {
+      "settings": {
+        "option_1": "Extra small",
+        "content": "Content"
+      }
+    },
+    "button-caption": {
+      "name": "Separator label",
+      "settings": {
+        "separator": "Separator"
+      }
+    },
+    "empty-space": {
+      "name": "Empty space"
+    },
+    "grid-text": {
+      "name": "Text card",
+      "column_desktop": "Desktop columns",
+      "column_mobile": "Mobile columns",
+      "row_desktop": "Desktop rows",
+      "row_mobile": {
+        "label": "Mobile rows",
+        "option_1": "1 row",
+        "option_2": "2 rows"
+      },
+      "spacing": "Horizontal spacing between blocks"
+    },
+    "grid-media": {
+      "name": "Media card"
+    },
+    "product-add-to-cart-button": {
+      "name": "Quick buy button"
+    },
+    "divider": {
+      "divider_width": "Width",
+      "option_1": "Small",
+      "option_2": "Medium",
+      "option_3": "Large",
+      "option_4": "Maximum"
+    },
+    "sections": {
+      "flex-slideshow": {
+        "name": "Flex slideshow",
+        "desktop_height": "Desktop height",
+        "mobile_height": "Mobile height",
+        "legacy_name": "Slideshow (legacy)"
+      },
+      "flex-section": {
+        "name": "Flex grid",
+        "gutter_size": "Text padding",
+        "grid_design": "Grid design",
+        "remove_gap": "Remove gap between cards",
+        "height": {
+          "label_desktop": "Desktop card height (minimum)",
+          "label_mobile": "Mobile card height (minimum)",
+          "info": "Cards will automatically expand if content requires more space."
+        }
+      }
+    },
+    "descrease_top_margin": "Descrease top margin"
+  },
+  "cart-tos-update": {
+    "cart_terms_heading": "Terms and conditions",
+    "cart_terms_checkbox": "Enable terms and conditions requirement for checkout",
+    "cart_terms_text": "Checkbox label",
+    "drawer_actions": "Drawer cart actions"
+  },
+  "product-siblings": {
+    "name": "Product siblings",
+    "info": "To assign a different list to each product, use a product reference list metafield as a dynamic source. [Learn more](https://shopify-support.krownthemes.com/article/804-product-page#Product-siblings-IzGzR)."
+  },
+  "local-260": {
+    "labels": {
+      "disable_parallax_effect": "Disable parallax effect",
+      "default_image": "Fallback image",
+      "default_image_info": "Used when the product has no images.",
+      "value": "Value",
+      "default_value": "Default value",
+      "values": "Values",
+      "values_info": "Separate values by a comma.",
+      "dropdown_property_settings": "Dropdown property settings",
+      "appears_on_the_order_summary": "Appears on the order summary.",
+      "checkbox_property_settings": "Checkbox property settings",
+      "maximum_characters": "Maximum characters",
+      "allow_long_text": "Allow long text",
+      "text_property_settings": "Text property settings",
+      "hide_at_checkout": "Hide at checkout",
+      "hide_at_checkout_info": "If checked, the line item property will not be shown in the order summary.",
+      "required": "Required",
+      "required_info": "Customers must fill out this field to add the product to the cart.",
+      "type": "Type",
+      "custom_property": "Custom property",
+      "custom_property_info": "Line item properties allow you to gather customization details for a product added to the cart.",
+      "show_custom_link": "Show custom link",
+      "show_custom_link_info": "Uses native sharing options based on browser support.",
+      "show_pinterest": "Show Pinterest",
+      "show_x": "Show X",
+      "show_facebook": "Show Facebook",
+      "crop_videos_when_following_images_aspect_ratio": "Crop videos when following images aspect ratio",
+      "enable_add_to_cart_for_multiple_variants_label": "Enable add to cart for multiple variants",
+      "enable_add_to_cart_for_multiple_variants_info": "When enabled, the 'Add to cart' button will add the first available or selected variant directly to the cart. If disabled, it will display a 'Choose options' button instead.",
+      "button_width": {
+        "label": "Button width",
+        "option_1": "Fullwidth",
+        "option_2": "Contained"
+      },
+      "image": "Image",
+      "maximum_width": "Maximum width",
+      "constrain_image_width": "Constrain image width",
+      "letter_spacing": "Letter spacing",
+      "dark_background_foreground": "Dark background foreground",
+      "light_background_foreground": "Light background foreground",
+      "maximum_page_width": "Maximum page width",
+      "title_font_family": "Title font family",
+      "price_size": "Price size",
+      "align_button_info": "Works best if the quick buy is the last block in the product card.",
+      "out_of_stock_info": "Hide quick buy button when product is out of stock",
+      "modal_label": "Always open quick buy modal",
+      "modal_info": "By default, the quick buy modal opens only for products with multiple variant.",
+      "popup_cart": "Popup notification",
+      "desktop_logo_image": "Desktop logo image",
+      "desktop_logo_image_max_height": "Desktop logo image maximum height",
+      "mobile_logo_image": "Mobile logo image",
+      "mobile_logo_image_max_height": "Mobile logo image maximum height",
+      "mobile_logo_image_info": "If you don't upload a mobile logo, the desktop logo will be used instead.",
+      "caption_alignment": "Caption alignment",
+      "remove_space_between_images": "Remove space between images",
+      "text_horizontal_alignment": "Text horizontal alignment",
+      "text_vertical_alignment": "Text vertical alignment",
+      "text_vertical_alignment_info": "Only for desktop if the image is positioned on the left or right.",
+      "segments_height": "Segments height",
+      "remove_space_between_segments": "Remove space between segments",
+      "out_of_stock": "Out of stock",
+      "regular_stock": "Regular stock",
+      "low_inventory": "Low inventory",
+      "custom_inventory_notification_colors": "Custom inventory notification colors",
+      "block_heading": "Block Heading",
+      "block_style": "Block Style",
+      "block_content": "Block Content",
+      "tooltip_text": "Tooltip text",
+      "collapsible": "Collapsible",
+      "boxed": "Boxed",
+      "darken_the_header": "Darken the header",
+      "opened_by_default": "Opened by default",
+      "applies_to_boxed_version_only": "Applies to boxed version only",
+      "dynamic_segments_label": "Use dynamic sources to set the active item or segment with product metafields. [Learn more](https://shopify-support.krownthemes.com/article/804-product-page#Nutriscore--attribute-meters-OY3p4)",
+      "nutriscore": "Nutriscore",
+      "active_item": "Active item",
+      "active_item_metafield": "Active item metafield",
+      "item_1": "Item 1",
+      "item_2": "Item 2",
+      "item_3": "Item 3",
+      "item_4": "Item 4",
+      "item_5": "Item 5",
+      "item_6": "Item 6",
+      "item_7": "Item 7",
+      "item_8": "Item 8",
+      "label": "Label",
+      "attribute_meter": "Attribute meter",
+      "segments": "Segments",
+      "active_segment": "Active segments",
+      "active_segment_metafield": "Active segment metafield",
+      "active_segment_color": "Active segment color",
+      "fill_segments_up_to_active_segment": "Fill segments up to active segment",
+      "show_active_segments_value": "Show active segments value",
+      "start_label": "Start label",
+      "middle_label": "Middle label",
+      "end_label": "End label",
+      "text_banner": "Text banner",
+      "banner_link": "Banner link",
+      "videos_and_other_media_aspect_ratio": "Videos and other media aspect ratio"
+    },
+    "options": {
+      "text": "Text",
+      "checkbox": "Checkbox",
+      "dropdown": "Dropdown",
+      "scroll_one_column": "Scroll one column",
+      "scroll_two_columns": "Scroll two columns",
+      "keep_media_original_aspect_ratio": "Keep media original aspect ratio",
+      "follow_images_aspect_ratio": "Follow images aspect ratio",
+      "inline": "Inline",
+      "middle": "Middle"
+    }
+  },
+  "video-extra-functions": {
+    "autoplay": {
+      "label": "Enable video autoplay",
+      "info": "The video will be muted and without controls."
+    },
+    "video_upload": {
+      "label": "Video file",
+      "info": "Hosted by Shopify. Replaces video URL."
+    },
+    "poster": {
+      "info": "Used as a poster or a fallback image."
+    }
+  },
+  "variant_metafields": {
+    "name": "Variant metafield",
+    "label": "Variant metafield key",
+    "info": "This theme can show a variant metafield on the product page. [Learn more](https://shopify-support.krownthemes.com/article/884-using-variant-metafields-in-product-pages)."
+  },
+  "new_color_swatches": "The \"blocks\" variant selector type offers support for color swatches created with category metafields. [Learn more](https://help.shopify.com/en/manual/custom-data/metafields/category-metafields/using-category-metafields).",
+  "video_controls": "Show video controls",
+  "sticky_cart_actions": "Stick action buttons at the bottom of the cart drawer",
   "currency_codes": {
     "header": "Currency format",
     "label": "Show currency codes",
@@ -28,10 +323,11 @@
     "divider_style_double": "Double",
     "divider_color": "Color",
     "divider_image": "Divider Image",
+    "divider_height": "Height",
     "divider_image_info": "A horizontally repeating image. Replaces the previous style and color."
   },
   "cart_actions": {
-    "label": "Drawer cart actions",
+    "label": "Drawer cart action buttons",
     "option_1": "Show \"view cart\" button",
     "option_2": "Show \"checkout\" button",
     "option_3": "Show both"
@@ -358,6 +654,13 @@
       "content": "Follow on Shop",
       "info": "To allow customers to follow your store on the Shop app from your storefront, Shop Pay must be enabled. [Learn more](https://help.shopify.com/manual/online-store/themes/customizing-themes/follow-on-shop)",
       "label": "Enable Follow on Shop"
+    },
+    "labels": {
+      "hide_block_if_no_content_info": "Hide block if content is not defined",
+      "popup_page_info": "Replaces the text content if a page is selected",
+      "page": "Page",
+      "popup": "Popup",
+      "open_popup": "Open popup"
     }
   },
   "sections": {
@@ -806,7 +1109,7 @@
             },
             "video": {
               "name": "Video",
-              "label": "MP4 Video URL",
+              "label": "Video",
               "info": "The image above will show if this video cannot be played."
             }
           },
@@ -872,7 +1175,7 @@
               "info": "Image will crop to fill the entire height of the card on desktop. On mobile, the image will be always fully shown."
             },
             "remove_margin": {
-              "label": "Remove section top margin"
+              "label": "Remove top margin"
             }
           }
         },
@@ -978,7 +1281,7 @@
               },
               "settings": {
                 "icon": "Icon",
-                "icon_info": "96 x 96px",
+                "icon_info": "128 x 128px",
                 "label": "Label"
               }
             }
@@ -993,13 +1296,13 @@
             "show_tags": "Show tags",
             "enhance_product_links": {
               "label": "Enhance product links",
-              "info": "All the links to products will open the product quick buy modal window. [Learn more](https://shopify-support.krownthemes.com/article/810-local-blogs-article#Blog-posts-quick-buy-F2Q_-)"
+              "info": "All the links to products will open the product quick buy modal window."
             }
           }
         },
         "main-article-comments": {
           "name": "Article comments",
-          "info": "To enable comments go to your [blog settings].(/admin/blogs)"
+          "info": "To enable comments go to your [blog settings](/admin/blogs)."
         },
         "main-article-navigation": {
           "name": "Article navigation",
@@ -1049,7 +1352,10 @@
             "name": "Activate account page"
           },
           "login": {
-            "name": "Login page"
+            "name": "Login page",
+            "shop_login_button": {
+              "enable": "Enable Sign in with Shop"
+            }
           },
           "account": {
             "name": "Account page"
@@ -1341,11 +1647,11 @@
       "cart_upsell": {
         "name": "Individual product recommendation",
         "product": "Product",
-        "info": "Dynamic recommendations are based on the items in your cart. They change and improve with time. [Learn more](https://help.shopify.com/en/themes/development/recommended-products)"
+        "info": "Dynamic recommendations are based on the items in your cart. They change and improve with time. [Learn more](https://help.shopify.com/en/manual/online-store/storefront-search/search-and-discovery-recommendations)"
       },
       "gift_wrapping": {
         "name": "Gift wrapping",
-        "info": "Gift wrapping needs to be set up as a product. [Learn more](https://shopify-support.krownthemes.com/article/696-cart-features#gift-wrap)",
+        "info": "Gift wrapping needs to be set up as a product. [Learn more](https://shopify-support.krownthemes.com/article/779-borders-theme-settings-cart)",
         "settings": {
           "label": "Text",
           "button": "Button label"
@@ -1619,7 +1925,7 @@
               "info": "On mobile, images will always fit the device's viewport."
             },
             "color_swatches": {
-              "label": "Show color swatches (only for block style)",
+              "label": "Show color swatches",
               "info": "This theme can show custom images for color swatches. [Learn more](https://shopify-support.krownthemes.com/article/554-using-color-swatches)"
             }
           }
@@ -1805,7 +2111,7 @@
         },
         "country_selector": {
           "content": "Country/region selector",
-          "info": "To add a country/region, go to your [payment settings.](/admin/settings/payments)"
+          "info": "To add a country/region, go to your [markets settings.](/admin/markets)"
         },
         "country_selector_show": {
           "label": "Show country/region selector"
@@ -2047,6 +2353,9 @@
         },
         "products_number": {
           "label": "Maximum number of products shown"
+        },
+        "articles_number": {
+          "label": "Maximum number of articles shown"
         },
         "collection": {
           "label": "Collection"
@@ -2634,7 +2943,7 @@
         },
         "header__1": {
           "content": "Product recommendations",
-          "info": "Dynamic recommendations use order and product information to change and improve over time. [Learn more](https://help.shopify.com/en/themes/development/recommended-products)"
+          "info": "Dynamic recommendations use order and product information to change and improve over time. [Learn more](https://help.shopify.com/en/manual/online-store/storefront-search/search-and-discovery-recommendations)"
         }
       }
     },
@@ -2688,6 +2997,9 @@
     "popup": {
       "name": "Popup",
       "settings": {
+        "enable_scroll_based_trigger": "Enable scroll based trigger",
+        "enable_scroll_based_trigger_info": "Only show the popup if the page is scrolled at a particular position.",
+        "scroll_position": "Scroll position",
         "title": {
           "label": "Heading"
         },
@@ -2875,7 +3187,7 @@
           "name": "Share",
           "settings": {
             "featured_image_info": {
-              "content": "If you include a link in social media posts, the page’s featured image will be shown as the preview image. [Learn more](https://help.shopify.com/en/manual/online-store/images/showing-social-media-thumbnail-images)."
+              "content": "If you include a link in social media posts, the page's featured image will be shown as the preview image. [Learn more](https://help.shopify.com/en/manual/online-store/images/showing-social-media-thumbnail-images)."
             },
             "title_info": {
               "content": "A store title and description are included with the preview image. [Learn more](https://help.shopify.com/en/manual/promoting-marketing/seo/adding-keywords#set-a-title-and-description-for-your-online-store)."
@@ -2948,18 +3260,59 @@
       "label_3": "Image 3"
     }
   },
-  "local-230": {
-    "buy_button_labels": {
-      "label": "Button label for products with options",
-      "option_1": "Buy now",
-      "option_2": "Choose options"
+  "menu-images": {
+    "label": "Menu images",
+    "info": "You can add images to the top level menu items by creating JPG files with the same name as the menu handle. [Learn more](https://shopify-support.krownthemes.com/article/798-header-section#mega-menus).",
+    "show": "Show menu images",
+    "show_count": "Show product count"
+  },
+  "bundle-extra-words": {
+    "sections": {
+      "transparent_header": {
+        "header": "Transparent header design",
+        "settings": {
+          "homepage_enable": {
+            "label": "Enable on homepage",
+            "info": "Make sure that the first section on your homepage is either an image slider or a fullwidth image."
+          },
+          "collection_enable": {
+            "label": "Enable on collection pages",
+            "info": "Make sure that collection banner images are enabled and your collections have featured images."
+          },
+          "custom_enable": {
+            "label": "Enable on custom pages",
+            "info": "Write custom page handles, separated by commas."
+          },
+          "logo": {
+            "info": "Upload same size as the original logo."
+          }
+        }
+      }
+    }
+  },
+  "local-250": {
+    "labels": {
+      "show_filters_as": "Show filters as",
+      "expand_filters_by_default": "Expand sidebar filters by default",
+      "stick_filters_sidebar_to_top": "Stick filters sidebar to the top"
     },
+    "options": {
+      "sidebar": "Sidebar",
+      "list": "List"
+    }
+  },
+  "local-230": {
+    "background_gradient": "Background gradient",
     "variant_default": {
       "label": "Select the first available variant by default",
       "info": "If unchecked, the user will have to select an available variant before being able to purchase."
     },
     "slider_info": "The link will be applied to the button, or to the title (if there is no button), or to the entire block (if both the title and the button are blank).",
-    "background_gradient": "Background gradient",
+    "buy_button_labels": {
+      "label": "Button label for products with options",
+      "option_1": "Buy now",
+      "option_2": "Choose options"
+    },
     "hide_on_mobile": "Hide on mobile"
   },
   "local-223": {

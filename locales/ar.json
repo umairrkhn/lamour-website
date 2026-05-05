@@ -19,7 +19,9 @@
       "title": "مشاركة",
       "facebook": "فيسبوك",
       "twitter": "تويتر",
-      "pinterest": "بينترست"
+      "pinterest": "بينترست",
+      "copy_to_clipboard": "نسخ إلى الحافظة",
+      "url_copied_to_clipboard": "تم نسخ الرابط"
     },
     "newsletter": {
       "email_label": "أدخل بريدك الإلكتروني",
@@ -51,7 +53,8 @@
       "powered_by_shopify_html": "سيتم تشغيل هذا المتجر بواسطة  {{ shopify }}"
     },
     "prefixes": {
-      "by": "بواسطة"
+      "by": "بواسطة",
+      "or": "أو"
     },
     "account_link": {
       "logged_in": "حسابي",
@@ -66,7 +69,11 @@
       "cart": "عربة التسوق"
     },
     "date_format": {
-      "month_day_year": "%b %d, %Y"
+      "month_day_year": "%b %d, %Y",
+      "days": "أيام",
+      "hours": "ساعات",
+      "minutes": "الدقائق",
+      "seconds": "ثواني"
     },
     "copyright": "حقوق النشر",
     "meta": {
@@ -95,6 +102,7 @@
       "country_dropdown_label": "الدولة/الإقليم",
       "quantity": "الكمية",
       "price": {
+        "price": "السعر",
         "regular": "السعر العادي",
         "sale": "سعر البيع",
         "unit": "سعر الوحدة"
@@ -108,7 +116,11 @@
       "rating_info": "التقييم  {{ rating_value }} من {{ rating_max }}",
       "form_error": "خطأ",
       "top": "أعلى",
-      "go_to_top": "أعلى"
+      "go_to_top": "أعلى",
+      "slide": "عرض الشريحة {{ count }}",
+      "next_slide": "الشريحة التالية",
+      "previous_slide": "الشريحة السابقة",
+      "time_left": "الوقت المتبقي"
     },
     "cookies_popup": {
       "title": "ملفات تعريف الارتباط",
@@ -200,6 +212,8 @@
       },
       "loading_reviews": "تحميل المزيد من المراجعات",
       "include_taxes": "شامل الضريبة",
+      "exclude_taxes": "غير شامل الضريبة.",
+      "required_line_item": "هذا الحقل مطلوب",
       "shipping_policy_html": "يتم حساب <a href=\"{{ link }}\">Shipping</a> عند السداد.",
       "view_in_space": "عرض في مساحتك الخاصة",
       "view_in_space_label": "عرض في مساحتك، وتحميل العنصر في نافذة الواقع المعزز",
@@ -240,6 +254,10 @@
       "one": "{{ count }} تمت إضافة المنتج إلى عربة التسوق الخاصة بك",
       "other": "{{ count }} تمت إضافة المنتجات إلى عربة التسوق الخاصة بك"
     },
+    "bundled_items_toggle": {
+      "show_items": "عرض {{ count }} عنصر",
+      "hide_items": "إخفاء {{ count }} عنصر"
+    },
     "free_shipping_remaining_html": "أنت {{ remaining_amount }} بعيد عن الشحن المجاني.",
     "free_shipping_eligible": "أنت مؤهل للشحن المجاني!",
     "shipping_calculator": {
@@ -252,7 +270,10 @@
       "product": "المنتج",
       "quantity": "الكمية",
       "total": "الإجمالي"
-    }
+    },
+    "discount_codes_label": "رموز الخصم",
+    "discount_code_error": "لا يمكن تطبيق رمز الخصم على سلة التسوق الخاصة بك",
+    "remove_discount_code": "إزالة رمز الخصم: {{ code }}"
   },
   "blog": {
     "grid": {
@@ -321,7 +342,8 @@
         "date": "التاريخ",
         "payment_status": "حالة الدفع",
         "fulfillment_status": "حالة التنفيذ",
-        "total": "الإجمالي"
+        "total": "الإجمالي",
+        "view_order": "عرض الطلب"
       },
       "no_orders_message": "لم تصدر أي طلبات حتى الآن.",
       "account_details_title": "تفاصيل الحساب",
@@ -438,7 +460,8 @@
       "email_label": "البريد الإلكتروني للمستلم",
       "name_label": "اسم المستلم (اختياري)",
       "message_label": "رسالة (اختيارية)",
-      "max_characters": "حرف كحد أقصى {{ max_chars }}"
+      "max_characters": "حرف كحد أقصى {{ max_chars }}",
+      "send_on_label": "إرسال بطاقة الهدية في تاريخ مختلف (اختياري)"
     }
   },
   "store_availability": {

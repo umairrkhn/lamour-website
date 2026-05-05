@@ -1,6 +1,3 @@
-/*
- *  1.0. Mixins
-*/
 .progress-dots__wrapper,
 .progress-slider__wrapper {
   display: flex;
@@ -17,6 +14,7 @@
 }
 .progress-dots__caption {
   white-space: nowrap;
+  margin-bottom: 0;
 }
 .progress-dots__item {
   background-size: contain;

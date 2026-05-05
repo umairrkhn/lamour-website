@@ -1,12 +1,9 @@
-/*
- *  1.0. Mixins
-*/
-.search-results, .sidebars-has-scrollbars .sidebar {
+.sidebars-has-scrollbars .sidebar, .search-results {
   overflow: -moz-scrollbars-none;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-.search-results::-webkit-scrollbar, .sidebars-has-scrollbars .sidebar::-webkit-scrollbar {
+.sidebars-has-scrollbars .sidebar::-webkit-scrollbar, .search-results::-webkit-scrollbar {
   width: 0 !important;
   height: 0 !important;
 }
@@ -43,10 +40,40 @@ body:not(.sidebar-has-scrollbars) .sidebar::-webkit-scrollbar-thumb:hover {
   background: var(--color-text-main);
   opacity: 0.86;
 }
+.sidebar--top.sidebar {
+  --sidebar-gutter: 1.125rem;
+  height: auto !important;
+  transform: translateY(-100%) !important;
+  top: 0.625rem;
+}
+.sidebar--top.sidebar .sidebar__header {
+  padding-top: 0.875rem;
+  padding-bottom: 0.75rem;
+}
+.sidebar--top.sidebar .cart-item {
+  padding: var(--sidebar-gutter) !important;
+}
+.sidebar--top.sidebar .flex-buttons {
+  margin-top: -0.625rem !important;
+}
+.sidebar--top.sidebar.sidebar--opened {
+  transform: translateY(0) !important;
+}
+html[dir=rtl] .sidebar--top.sidebar {
+  left: 0.625rem;
+}
+html[dir=ltr] .sidebar--top.sidebar {
+  right: 0.625rem;
+}
+@media screen and (max-width: 474px) {
+  .sidebar--top.sidebar {
+    width: calc(100% - 1.25rem);
+  }
+}
 html[dir=rtl] .sidebar > * {
   direction: rtl;
 }
-.sidebar svg * {
+.sidebar:not(:has(.cart-discount__error)) svg * {
   fill: var(--color-text-main);
 }
 .sidebar .header-info-block__image svg * {
@@ -94,6 +121,12 @@ html[dir=ltr] .sidebar--left {
   background: var(--color-background-main);
   z-index: 99;
 }
+@media screen and (max-width: 474px) {
+  .sidebar__header {
+    padding-top: 0.875rem;
+    padding-bottom: 0.625rem;
+  }
+}
 .sidebar__close {
   width: 40px;
   height: 40px;
@@ -119,6 +152,18 @@ html[dir=ltr] .sidebar--left {
 }
 .sidebar__body > div ~ div {
   border-top: 1px solid var(--color-borders-main);
+}
+.sidebar__body--flex {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.sidebar__body--flex > div {
+  padding: 0 !important;
+}
+.sidebar__body-top {
+  padding: 0;
 }
 .sidebar cart-recommendations:not(:empty) {
   display: block;
@@ -387,5 +432,6 @@ html[dir=ltr] .search-item--blank .thumbnail:after, html[dir=ltr] .search-item--
 cart-recommendations .product-price--unit {
   font-size: 90%;
   display: block;
-  opacity: 0.76;
+  opacity: 0.62;
+  margin-top: -0.3125rem;
 }

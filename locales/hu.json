@@ -19,7 +19,9 @@
       "title": "Megosztás",
       "facebook": "Facebook",
       "twitter": "X (Twitter)",
-      "pinterest": "Pinterest"
+      "pinterest": "Pinterest",
+      "copy_to_clipboard": "Másolás a vágólapra",
+      "url_copied_to_clipboard": "URL másolva"
     },
     "newsletter": {
       "email_label": "Írja be az e-mail-címét",
@@ -51,7 +53,8 @@
       "powered_by_shopify_html": "Ezt az áruházat a(z) {{ shopify }} fogja üzemeltetni"
     },
     "prefixes": {
-      "by": "által"
+      "by": "által",
+      "or": "vagy"
     },
     "account_link": {
       "logged_in": "Fiókom",
@@ -66,7 +69,11 @@
       "cart": "Kosár"
     },
     "date_format": {
-      "month_day_year": "%b %d, %Y"
+      "month_day_year": "%b %d, %Y",
+      "days": "Napok",
+      "hours": "Órák",
+      "minutes": "Percek",
+      "seconds": "Másodpercek"
     },
     "copyright": "Szerzői jogok",
     "meta": {
@@ -95,6 +102,7 @@
       "country_dropdown_label": "Ország/terület",
       "quantity": "Mennyiség",
       "price": {
+        "price": "Ár",
         "regular": "Szokványos ár",
         "sale": "Akciós ár",
         "unit": "Egységár"
@@ -108,7 +116,11 @@
       "rating_info": "Minősítés: {{ rating_value }} / {{ rating_max }}",
       "form_error": "Hiba",
       "go_to_top": "Ugrás az elejére",
-      "top": "Eleje"
+      "top": "Eleje",
+      "slide": "Mutasd a(z) {{ count }}. diát",
+      "next_slide": "Következő dia",
+      "previous_slide": "Előző dia",
+      "time_left": "Hátralevő idő"
     },
     "cookies_popup": {
       "title": "Cookie-k",
@@ -200,7 +212,9 @@
       },
       "loading_reviews": "További beszámolók betöltése",
       "include_taxes": "Tartalmazza az adót.",
+      "exclude_taxes": "Az adó nincs benne.",
       "shipping_policy_html": "A <a href=\"{{ link }}\">szállítás</a> a pénztárnál lesz kiszámolva.",
+      "required_line_item": "Ez a mező kötelező",
       "view_in_space": "Megtekintés az ön helyén",
       "view_in_space_label": "Nézze meg az ön helyén, a cikk egy kiterjesztett valóság ablakban jelenik meg.",
       "sales_amount_html": "{{ amount }} a megtakarítás",
@@ -240,6 +254,10 @@
       "one": "{{ count }} termék került a kosarába",
       "other": "{{ count }} termék került a kosarába"
     },
+    "bundled_items_toggle": {
+      "show_items": "{{ count }} elem megjelenítése",
+      "hide_items": "{{ count }} elem elrejtése"
+    },
     "free_shipping_remaining_html": "Már csak {{ remaining_amount }} az ingyenes szállításig",
     "free_shipping_eligible": "Ingyenes szállításra jogosult!",
     "shipping_calculator": {
@@ -252,7 +270,10 @@
       "product": "Termék",
       "quantity": "Mennyiség",
       "total": "Összeg"
-    }
+    },
+    "discount_codes_label": "Kedvezménykódok",
+    "discount_code_error": "A kedvezménykód nem alkalmazható a kosaradra",
+    "remove_discount_code": "Kedvezménykód eltávolítása: {{ code }}"
   },
   "blog": {
     "grid": {
@@ -321,7 +342,8 @@
         "date": "Dátum",
         "payment_status": "Fizetés helyzete",
         "fulfillment_status": "Teljesítés helyzetet",
-        "total": "Összeg"
+        "total": "Összeg",
+        "view_order": "Rendelés megtekintése"
       },
       "no_orders_message": "Még nem adott le rendelést.",
       "account_details_title": "Fiók részletei",
@@ -438,7 +460,8 @@
       "email_label": "Címzett e-mail-címe",
       "name_label": "Címzett neve (opcionális)",
       "message_label": "Üzenet (opcionális)",
-      "max_characters": "{{ max_chars }} karakter max."
+      "max_characters": "{{ max_chars }} karakter max.",
+      "send_on_label": "Ajándékkártya küldése másik dátummal (opcionális)"
     }
   },
   "store_availability": {

@@ -19,7 +19,9 @@
       "title": "Поделиться",
       "facebook": "Facebook",
       "twitter": "\"Твиттер\"",
-      "pinterest": "Pinterest"
+      "pinterest": "Pinterest",
+      "copy_to_clipboard": "Скопировать в буфер обмена",
+      "url_copied_to_clipboard": "URL скопирован"
     },
     "newsletter": {
       "email_label": "Введите свой адрес электронной почты",
@@ -51,7 +53,8 @@
       "powered_by_shopify_html": "Этот магазин будет работать на {{ shopify }}"
     },
     "prefixes": {
-      "by": "от"
+      "by": "от",
+      "or": "или"
     },
     "account_link": {
       "logged_in": "Моя учетная запись",
@@ -66,7 +69,11 @@
       "cart": "Корзина"
     },
     "date_format": {
-      "month_day_year": "%b %d, %Y"
+      "month_day_year": "%b %d, %Y",
+      "days": "Дней",
+      "hours": "Часов",
+      "minutes": "Минут",
+      "seconds": "Секунд"
     },
     "copyright": "Авторское право",
     "meta": {
@@ -95,6 +102,7 @@
       "country_dropdown_label": "Страна/регион",
       "quantity": "Количество",
       "price": {
+        "price": "Цена",
         "regular": "Стандартная цена",
         "sale": "Сниженная цена",
         "unit": "Цена за единицу"
@@ -108,7 +116,11 @@
       "rating": "оценка",
       "rating_info": "Оценка: {{ rating_value }} из {{ rating_max }}",
       "top": "Вверх",
-      "go_to_top": "Вверх"
+      "go_to_top": "Вверх",
+      "slide": "Показать слайд {{ count }}",
+      "next_slide": "Следующий слайд",
+      "previous_slide": "Предыдущий слайд",
+      "time_left": "Время осталось"
     },
     "cookies_popup": {
       "title": "Файлы cookie",
@@ -200,7 +212,9 @@
       },
       "loading_reviews": "Загрузка дополнительных отзывов",
       "include_taxes": "Налоговый сбор включен.",
+      "exclude_taxes": "Налоговый сбор исключен.",
       "shipping_policy_html": "Стоимость <a href=\"{{ link }}\">доставки</a> подсчитывается при оформлении.",
+      "required_line_item": "Это поле обязательно для заполнения",
       "view_in_space": "Посмотреть в своем помещении",
       "view_in_space_label": "При выборе просмотра в своем помещении товар загружается в окне дополненной реальности",
       "sales_amount_html": "вы экономите {{ amount }}",
@@ -240,6 +254,10 @@
       "one": "{{ count }} товар был добавлен в вашу корзину",
       "other": "{{ count }} товаров были добавлены в вашу корзину"
     },
+    "bundled_items_toggle": {
+      "show_items": "Показать {{ count }} элементов",
+      "hide_items": "Скрыть {{ count }} элементов"
+    },
     "free_shipping_remaining_html": "Вы в {{ remaining_amount }} от бесплатной доставки.",
     "free_shipping_eligible": "Вы имеете право на бесплатную доставку!",
     "shipping_calculator": {
@@ -252,7 +270,10 @@
       "product": "Продукт",
       "quantity": "Количество",
       "total": "Итого"
-    }
+    },
+    "discount_codes_label": "Промокоды",
+    "discount_code_error": "Промокод не может быть применён к вашей корзине",
+    "remove_discount_code": "Удалить промокод: {{ code }}"
   },
   "blog": {
     "grid": {
@@ -321,7 +342,8 @@
         "date": "Дата",
         "payment_status": "Статус оплаты",
         "fulfillment_status": "Статус выполнения",
-        "total": "Всего"
+        "total": "Всего",
+        "view_order": "Просмотр заказа"
       },
       "no_orders_message": "Вы пока не оформили ни одного заказа.",
       "account_details_title": "Детали учетной записи",
@@ -438,7 +460,8 @@
       "email_label": "Электронный адрес получателя",
       "name_label": "Имя получателя (необязательно)",
       "message_label": "Сообщение (необязательно)",
-      "max_characters": "Не больше {{ max_chars }} симв."
+      "max_characters": "Не больше {{ max_chars }} симв.",
+      "send_on_label": "Отправить подарочную карту в другой день (необязательно)"
     }
   },
   "store_availability": {

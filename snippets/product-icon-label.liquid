@@ -1,3 +1,15 @@
+{%- comment -%}
+  Renders a product icon with a label.
+  
+  Accepts:
+  - icon: {Object} the image object.
+  - label: {String} label text.
+  - style: {String} icon style (tooltip, compact).
+  
+  Usage:
+  {% render 'product-icon-label', icon: product.icon, label: product.title, style: 'tooltip' %}
+{%- endcomment -%}
+
 {%- liquid
   
   if icon == blank
@@ -29,9 +41,10 @@
           srcset="
             {{ icon | image_url: width: 32, height: 32, crop: 'center' }} 32w,
             {{ icon | image_url: width: 64, height: 64, crop: 'center' }} 64w,
-            {{ icon | image_url: width: 96, height: 96, crop: 'center' }} 96w
+            {{ icon | image_url: width: 96, height: 96, crop: 'center' }} 96w,
+            {{ icon | image_url: width: 144, height: 144, crop: 'center' }} 144w
           "
-          sizes="32px" width="32" height="32"
+          sizes="{%- if labels_style == 'grid' -%} 48px {%- else -%} 32px {%- endif -%}" width="32" height="32"
           loading="lazy"
           alt="{{ icon.alt | escape }}"
         />

@@ -1,18 +1,35 @@
 {%- if section.blocks.size > 0 -%}
+  
+  {%- liquid
+    for block in section.blocks
+      if block.settings.video != blank or block.type == 'video'
+        assign video_script = true
+        break
+      endif
+    endfor
+  -%}
 
   {%- unless section.settings.is_auto_height -%}
+    {%- assign is_video_background = true -%}
     {% style %}
       #slider-{{ section.id }} .card {
         height: {{ section.settings.desktop_height }};
+        height: {{ section.settings.desktop_height | replace: 'vh', 'lvh' }};
         min-height: 450px;
       }
       @media all and (max-width: 1023px) {
         #slider-{{ section.id }} .card {
           height: {{ section.settings.mobile_height }};
+          height: {{ section.settings.mobile_height | replace: 'vh', 'lvh' }};
         }
       }
     {% endstyle %}
   {%- else -%}
+    {%- liquid 
+      if section.settings.is_auto_height
+        assign is_video_background = false
+      endif
+    -%}
     {% style %}
       #slider-{{ section.id }} .card {
         height: fit-content;
@@ -30,16 +47,28 @@
         height: 100%;
       }
       {% if section.settings.is_fullwidth %}
-        @media screen and (min-width: 1361px) {
+        @media screen and (min-width: {{ settings.theme_max_width | plus: 1 }}px) {
           #slider-{{ section.id }} .card__text-parent {
-            left: calc((100vw - 1360px) / 2);
+            left: calc((100vw - {{ settings.theme_max_width }}px) / 2);
           }
         }
       {% endif %}
     {% endstyle %}
   {%- endunless -%}
+  
+  {%- if video_script -%}
+    <script>
+      window.KrownAssetLoader.loadScript('{{ "component-video.js" | asset_url }}');
+    </script>
+  {%- endif -%}
 
-  <div id="slider-{{ section.id }}" class="{% if section.settings.is_fullwidth %} container--fullwidth {% else %} container--large {% endif %} {% unless section.settings.remove_margin %} container--vertical-space {% endunless %} {% if section.settings.section_background_color != "rgba(0,0,0,0)" or section.settings.section_background_gradient != blank %} container--has-background {% endif %} remove-empty-space">
+  <div id="slider-{{ section.id }}" class="remove-empty-space
+    {% if section.settings.is_fullwidth %} container--fullwidth {% else %} container--large {% endif %} 
+    {% unless section.settings.remove_margin %} {% unless section.settings.descrease_margin %} container--vertical-space {% else %} container--vertical-space-grid {% endunless %} {% endunless %} 
+    {% if section.settings.section_background_color != "rgba(0,0,0,0)" or section.settings.section_background_gradient != blank %} container--has-background {% endif %} 
+    {% if section.settings.section_visibility == "mobile" %} element--hide-on-desk {% endif %}
+    {% if section.settings.section_visibility == "desktop" %} element--hide-on-small {% endif %}
+  ">
 
     {%- if section.blocks.size > 1 -%}
       <css-slider data-options='{
@@ -80,54 +109,128 @@
 
         <div id="element-{{ block.id }}" class="card card--fullwidth {% if section.settings.is_fullwidth %} card--no-radius card--no-borders card--no-shadow {% endif %} js-slider-item" {{ block.shopify_attributes }}>
 
-          {%- if block.settings.link != blank and block.settings.button_label == blank and block.settings.title == blank -%}
-            <a href="{{ block.settings.link }}" class="card__whole-link" aria-hidden="true"
-              {% if block.settings.open_in_new_window %} target="_blank" {% endif %}
-            ></a>
-          {%- endif -%}
-
-          <div class="{% if section.settings.is_fullwidth %} container--large gutter-top--xlarge gutter-bottom--xlarge container--large-with-mobile-padding {% endif %} align-content align-content--{{ section.settings.alignment }} card__text-parent">
+          {%- case block.type -%}
               
-            <div class="card__text {% unless section.settings.is_fullwidth %} gutter--xlarge {% endunless %} spacing--xlarge remove-empty-space">
-              {%- unless block.settings.caption == blank -%}
-                <span class="text-size--{{ section.settings.text_size }} increased-spacing">{{ block.settings.caption | escape }}</span>
-              {%- endunless -%}
-
-              {%- unless block.settings.title == blank -%}
-                <{{ block.settings.seo_h_tag }} class="{{ section.settings.title_size }}">
-                  
-                  {%- if block.settings.button_label == blank and block.settings.link != blank -%}
-                    <a href="{{ block.settings.link }}"
-                      {% if block.settings.open_in_new_window %} target="_blank" {% endif %}
-                    >
-                  {%- endif -%}
-                  
-                    <span class="text-animation--underline underline-mobile">{{ block.settings.title | escape }}</span>
-                  
-                  {%- if block.settings.button_label == blank and block.settings.link != blank -%}
-                    </a>
-                  {%- endif -%}
-
-                </{{ block.settings.seo_h_tag }}>
-              {%- endunless -%}
-
-              {%- if block.settings.button_label != blank -%}
-                <div class="increased-spacing">
-                  <a href="{{ block.settings.link | escape }}" class="button button--{{ section.settings.button_size }} button--{{ section.settings.button_style }}" {% if block.settings.open_in_new_window %} target="_blank" {% endif %}>{{ block.settings.button_label | escape }}</a>
+            {%- when 'image' -%}
+                {%- if block.settings.link != blank and block.settings.button_label == blank and block.settings.title == blank -%}
+                  <a href="{{ block.settings.link }}" class="card__whole-link" aria-hidden="true"
+                    {% if block.settings.open_in_new_window %} target="_blank" {% endif %}
+                  ></a>
+                {%- endif -%}
+      
+                <div class="{% if section.settings.is_fullwidth %} container--large gutter-top--xlarge gutter-bottom--xlarge {% endif %} align-content align-content--{{ section.settings.alignment }} card__text-parent">
+                    
+                  <div class="card__text {% unless section.settings.is_fullwidth %} gutter--xlarge {% endunless %} element--width-{{ section.settings.width }} spacing--{{ section.settings.spacing }} remove-empty-space" 
+                  >
+                    {%- unless block.settings.caption == blank -%}
+                      <span class="text-size--{{ section.settings.text_size }} increased-spacing">{{ block.settings.caption | escape }}</span>
+                    {%- endunless -%}
+      
+                    {%- unless block.settings.title == blank -%}
+                      <{{ block.settings.seo_h_tag }} class="{{ section.settings.title_size }}">
+                        
+                        {%- if block.settings.button_label == blank and block.settings.link != blank -%}
+                          <a href="{{ block.settings.link }}"
+                            {% if block.settings.open_in_new_window %} target="_blank" {% endif %}
+                          >
+                        {%- endif -%}
+                        
+                          <span class="text-animation--underline underline-mobile">{{ block.settings.title | escape }}</span>
+                        
+                        {%- if block.settings.button_label == blank and block.settings.link != blank -%}
+                          </a>
+                        {%- endif -%}
+      
+                      </{{ block.settings.seo_h_tag }}>
+                    {%- endunless -%}
+      
+                    {%- if block.settings.button_label != blank -%}
+                      <div class="increased-spacing">
+                        <a href="{{ block.settings.link | escape }}" class="button button--{{ section.settings.button_size }} button--{{ section.settings.button_style }}" {% if block.settings.open_in_new_window %} target="_blank" {% endif %}>{{ block.settings.button_label | escape }}</a>
+                      </div>
+                    {%- endif -%}
+                  </div>
+      
                 </div>
-              {%- endif -%}
-            </div>
+      
+                <div class="card__image card__image--background {% if block.settings.color_background_main != "rgba(0,0,0,0)" %} card__image--with-overlay {% endif %} {% unless block.settings.video != blank %} js-slider-animation {% endunless %}"  data-focal-point="{{ block.settings.image.presentation.focal_point }}">
 
-          </div>
+                  {%- unless block.settings.video != blank -%}
 
-          <div class="card__image card__image--background {% if block.settings.color_background_main != "rgba(0,0,0,0)" %} card__image--with-overlay {% endif %}" aria-hidden="true" data-focal-point="{{ block.settings.image.presentation.focal_point }}">
-            {%- unless block.settings.image == blank -%}
+                    {%- unless block.settings.image == blank -%}
+        
+                      {%- unless section.settings.is_auto_height -%}
+                        {%- liquid
+                          assign image_type = 'background'
+                          assign image_alignment = true
+                        -%}
+                        {%- capture sizes -%}
+                          sizes="(max-width: 1023px) calc({{ section.settings.mobile_height }} * {{ block.settings.image.aspect_ratio }}),
+                            {%- if block.settings.image.aspect_ratio <= 1 -%}
+                                calc({{ section.settings.desktop_height }} * {{ block.settings.image.aspect_ratio }})
+                            {%- else -%}
+                              {%- if section.settings.is_fullwidth -%}
+                                100vw
+                              {%- else -%}
+                                (max-width: {{ settings.theme_max_width }}px) calc(100vw - 20px), {{ settings.theme_max_width }}px
+                              {%- endif -%}
+                            {%- endif -%}
+                          "
+                        {%- endcapture -%}
+                      {%- else -%}
+                        {%- if section.settings.is_fullwidth -%}
+                          {%- assign sizes = 'sizes="100vw"' -%}
+                        {%- else -%}
+                          {%- capture sizes -%}
+                            sizes="(max-width: {{ settings.theme_max_width }}px) calc(100vw - 20px), {{ settings.theme_max_width }}px"
+                          {%- endcapture -%}
+                        {%- endif -%}
+                      {%- endunless -%}
+        
+                      {%- liquid
+        
+                        if section.index == 1 and forloop.first
+                          assign preload = true
+                        else
+                          assign preload = false
+                        endif
+        
+                        if block.settings.mobile_image
+        
+                          render 'lazy-image', image: block.settings.mobile_image, type: image_type, alt: block.settings.title, image_alignment: image_alignment, sizes: sizes, class: 'element--hide-on-desk', preload: preload
+        
+                          assign image_class = 'element--hide-on-small'
+        
+                        endif
+                        
+                        render 'lazy-image', image: block.settings.image, type: image_type, alt: block.settings.title, image_alignment: image_alignment, sizes: sizes, class: image_class, preload: preload
+        
+                        assign image_class = ''
+        
+                      -%}
+        
+                    {%- else -%}
+                      {{ 'image' | placeholder_svg_tag }}
+                    {%- endunless -%}
+                  
+                  {%- else -%}
+
+                    {%- render 'video-component', video_file: block.settings.video, image: block.settings.image, autoplay_video: true, loop_video: true, is_background: is_video_background, id: block.id, title: block.settings.title, class: 'js-slider-animation' -%}
+      
+                  {%- endunless -%}
+                </div>
+            
+              {%- render 'custom-colors', id: block.id, text: block.settings.color_text_main, background: block.settings.color_background_main, hide_borders: section.settings.color_hide_borders, hide_shadow: section.settings.color_hide_shadow -%}
+
+            {%- when 'video' -%}
+
+              <style>
+                #video-{{ block.id }} {
+                  --color-text-main: {{ block.settings.color_text_main }};
+                }
+              </style>
 
               {%- unless section.settings.is_auto_height -%}
-                {%- liquid
-                  assign image_type = 'background'
-                  assign image_alignment = true
-                -%}
                 {%- capture sizes -%}
                   sizes="(max-width: 1023px) calc({{ section.settings.mobile_height }} * {{ block.settings.image.aspect_ratio }}),
                     {%- if block.settings.image.aspect_ratio <= 1 -%}
@@ -136,50 +239,27 @@
                       {%- if section.settings.is_fullwidth -%}
                         100vw
                       {%- else -%}
-                        (max-width: 1360px) calc(100vw - 20px), 1280px
+                        (max-width: {{ settings.theme_max_width }}px) calc(100vw - 20px), {{ settings.theme_max_width }}px
                       {%- endif -%}
                     {%- endif -%}
                   "
                 {%- endcapture -%}
               {%- else -%}
-                {%- liquid
-                  if section.settings.is_fullwidth
-                    assign sizes = 'sizes="100vw"'
-                  else 
-                    assign sizes = 'sizes="(max-width: 1360px) calc(100vw - 20px), 1280px"'
-                  endif
-                -%}
+                {%- if section.settings.is_fullwidth -%}
+                  {%- assign sizes = 'sizes="100vw"' -%}
+                {%- else -%}
+                  {%- capture sizes -%}
+                    sizes="(max-width: {{ settings.theme_max_width }}px) calc(100vw - 20px), {{ settings.theme_max_width }}px"
+                  {%- endcapture -%}
+                {%- endif -%}
               {%- endunless -%}
 
               {%- liquid
-
-                if section.index == 1 and forloop.first
-                  assign preload = true
-                else
-                  assign preload = false
-                endif
-
-                if block.settings.mobile_image
-
-                  render 'lazy-image', image: block.settings.mobile_image, type: image_type, alt: block.settings.title, image_alignment: image_alignment, sizes: sizes, class: 'element--hide-on-desk', preload: preload
-
-                  assign image_class = 'element--hide-on-small'
-
-                endif
-                
-                render 'lazy-image', image: block.settings.image, type: image_type, alt: block.settings.title, image_alignment: image_alignment, sizes: sizes, class: image_class, preload: preload
-
-                assign image_class = ''
-
+                render 'video-component', video_file: block.settings.video_file, video_url_id: block.settings.video.id, video_url_type: block.settings.video.type, autoplay_video: block.settings.autoplay, loop_video: block.settings.loop, is_background: is_video_background, class: 'video-component--fit-container js-slider-animation', image: block.settings.image, id: block.id, index: block.index, sizes: sizes
               -%}
-
-            {%- else -%}
-              {{ 'image' | placeholder_svg_tag }}
-            {%- endunless -%}
-          </div>
-        
-        {%- render 'custom-colors', id: block.id, text: block.settings.color_text_main, background: block.settings.color_background_main, hide_borders: section.settings.color_hide_borders, hide_shadow: section.settings.color_hide_shadow -%}
-
+              
+          {%- endcase -%}
+          
       </div>
 
       {%- endfor %}
@@ -200,6 +280,25 @@
       })
     </script>
   {%- endif -%}
+
+  {% unless section.blocks.size <= 1 or section.settings.disable_parallax %} 
+    <script type="text/javascript">
+      const horizontalSlider{{ section.index }} = document.getElementById('css-slider-{{ section.id }}');
+      horizontalSlider{{ section.index }}.addEventListener('ready', (e)=>{
+        const slides = horizontalSlider{{ section.index }}.querySelectorAll('.js-slider-item');
+        const figures = horizontalSlider{{ section.index }}.querySelectorAll('.js-slider-animation');
+        horizontalSlider{{ section.index }}.addEventListener('scroll', ()=>{
+          const scrollX = -horizontalSlider{{ section.index }}.element.scrollLeft;
+          slides.forEach((slide,i)=>{
+            const media = figures[i];
+            if ( media ) {
+              media.style.transform = `translateX(${( slide.offsetLeft + scrollX ) * -1/3}px)`;
+            }
+          });
+        });
+      });
+    </script>
+  {% endunless %}
 
   {%- if section.settings.section_background_color != "rgba(0,0,0,0)" -%}
     {% style %}
@@ -225,15 +324,22 @@
 
 {%- endif -%}
 
+{%- if video_script -%}
+  <script>
+    window.KrownAssetLoader.loadScript('{{ "component-video.js" | asset_url }}');
+  </script>
+{%- endif -%}
+
 {% schema %}
 {
-  "name": "t:sections.local-extra-words.sections.slideshow.name",
+  "name": "t:theme_blocks.sections.flex-slideshow.legacy_name",
   "class": "mount-css-slider mount-slideshow no-fullwidth-padding",
   "max_blocks": 6,
   "settings": [
     {
       "type": "select",
       "id": "desktop_height",
+      "visible_if": "{{ section.settings.is_auto_height == false }}",
       "label": "Desktop height",
       "options": [	
         {
@@ -262,6 +368,7 @@
     {
       "type": "select",
       "id": "mobile_height",
+      "visible_if": "{{ section.settings.is_auto_height == false }}",
       "label": "Mobile height",
       "options": [
         {
@@ -308,7 +415,7 @@
       "type": "range",
       "id": "autorotate_interval",
       "label": "t:local-220.autorotate.interval",
-      "step": 1,
+      "visible_if": "{{ section.settings.autorotate_enable == true }}",
       "min": 3,
       "max": 10,
       "step": 1,
@@ -362,6 +469,50 @@
         }
       ],
       "default": "horizontal-left align-content--vertical-bottom"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "t:sections.image-with-text.settings.text_width.label",
+      "options": [
+        {
+          "label": "t:sections.image-with-text.settings.text_width.options__1.label",
+          "value": "50"
+        },
+        {
+          "label": "t:sections.image-with-text.settings.text_width.options__2.label",
+          "value": "70"
+        },
+        {
+          "label": "t:sections.image-with-text.settings.text_width.options__3.label",
+          "value": "100"
+        }
+      ],
+      "default": "100"
+    },
+    {
+      "type": "select",
+      "id": "spacing",
+      "label": "t:local-march-update.labels.text_spacing",
+      "options": [
+        {
+          "label": "t:sections.slider.settings.desktop_height.options__1.label",
+          "value": "small"
+        },
+        {
+          "label": "t:sections.slider.settings.desktop_height.options__2.label",
+          "value": "large"
+        },
+        {
+          "label": "t:sections.image-with-text.settings.text_size.options__2.label",
+          "value": "xlarge"
+        },
+        {
+          "label": "t:sections.image-with-text.settings.text_size.options__3.label",
+          "value": "xxlarge"
+        }
+      ],
+      "default": "xlarge"
     },
     {
       "type": "select",
@@ -465,7 +616,15 @@
     },
     {
       "type": "checkbox",
+      "id": "descrease_margin",
+      "visible_if": "{{ section.settings.remove_margin == false }}",
+      "label": "t:theme_blocks.descrease_top_margin",
+      "default": false
+    },
+    {
+      "type": "checkbox",
       "id": "remove_margin",
+      "visible_if": "{{ section.settings.descrease_margin == false }}",
       "label": "t:sections.local-extra-words.sections.rich-text.settings.remove_margin.label",
       "default": false
     },
@@ -484,6 +643,40 @@
       "id": "color_hide_shadow",
       "label": "t:local-march-update.shadows.hide",
       "default": true
+    },
+    {
+      "type": "header",
+      "content": "t:a11.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "disable_parallax",
+      "label": "t:local-260.labels.disable_parallax_effect",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:sections.refactor_words.announcement-bar.visibility.label"
+    },
+    {
+      "type": "select",
+      "id": "section_visibility",
+      "label": "t:sections-visibility.label",
+      "options": [
+        {
+          "value": "always",
+          "label": "t:sections-visibility.options.always"
+        },
+        {
+          "value": "mobile",
+          "label": "t:sections-visibility.options.mobile"
+        },
+        {
+          "value": "desktop",
+          "label": "t:sections-visibility.options.desktop"
+        }
+      ],
+      "default": "always"
     }
   ],
   "blocks": [
@@ -500,6 +693,12 @@
           "id": "mobile_image",
           "type": "image_picker",
           "label": "t:sections.image.mobile_image"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "t:video-extra-functions.video_upload.label",
+          "info": "t:sections.local-extra-words.sections.media-with-text-overlay.blocks.video.info"
         },
         {
           "type": "header",
@@ -526,6 +725,7 @@
         {
           "type": "checkbox",
           "id": "open_in_new_window",
+          "visible_if": "{{ block.settings.link != blank }}",
           "label": "t:sections.local-extra-words.sections.announcement-bar.blocks.content.settings.target",
           "default": false
         },
@@ -585,15 +785,53 @@
           "default": "h3"
         }
       ]
-    }
-  ],
-  "presets": [
+    },
     {
-      "name": "t:sections.local-extra-words.sections.slideshow.name",
-      "blocks": [
-        { "type": "image" },
-        { "type": "image" },
-        { "type": "image" }
+      "type": "video",
+      "name": "t:sections.local-extra-words.sections.video.name",
+      "settings": [
+        {
+          "id": "video",
+          "type": "video_url",
+          "label": "t:sections.local-extra-words.sections.video.settings.video.label",
+          "accept": ["youtube", "vimeo"],
+          "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+        },
+        {
+          "type": "video",
+          "id": "video_file",
+          "label": "t:video-extra-functions.video_upload.label",
+          "info": "t:video-extra-functions.video_upload.info"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.local-extra-words.sections.video.settings.image.label",
+          "info": "t:video-extra-functions.poster.info"
+        },
+        {
+          "type": "checkbox",
+          "id": "autoplay",
+          "label": "t:video-extra-functions.autoplay.label",
+          "info": "t:video-extra-functions.autoplay.info",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "loop",
+          "label": "t:sections.main-product.settings.enable_video_looping.label",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "t:sections.local-extra-words.sections.headings.custom_colors"
+        },
+        {
+          "type": "color",
+          "id": "color_text_main",
+          "label": "t:sections.split-extra-words.settings_schema.colors.settings.text",
+          "default": "#000000"
+        }
       ]
     }
   ],

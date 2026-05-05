@@ -19,7 +19,9 @@
       "title": "Share",
       "facebook": "Facebook",
       "twitter": "X (Twitter)",
-      "pinterest": "Pinterest"
+      "pinterest": "Pinterest",
+      "copy_to_clipboard": "Copy to clipboard",
+      "url_copied_to_clipboard": "URL copied"
     },
     "newsletter": {
       "email_label": "Enter your email",
@@ -51,7 +53,8 @@
       "powered_by_shopify_html": "This shop will be powered by {{ shopify }}"
     },
     "prefixes": {
-      "by": "by"
+      "by": "by",
+      "or": "or"
     },
     "account_link": {
       "logged_in": "My Account",
@@ -66,7 +69,11 @@
       "cart": "Cart"
     },
     "date_format": {
-      "month_day_year": "%b %d, %Y"
+      "month_day_year": "%b %d, %Y",
+      "days": "Days",
+      "hours": "Hrs",
+      "minutes": "Min",
+      "seconds": "Sec"
     },
     "copyright": "Copyright",
     "meta": {
@@ -95,6 +102,7 @@
       "country_dropdown_label": "Country/region",
       "quantity": "Quantity",
       "price": {
+        "price": "Price",
         "regular": "Regular price",
         "sale": "Sale price",
         "unit": "Unit price"
@@ -108,7 +116,11 @@
       "rating_info": "Rating: {{ rating_value }} out of {{ rating_max }}",
       "form_error": "Error",
       "go_to_top": "Go to top",
-      "top": "Top"
+      "top": "Top",
+      "slide": "Show slide {{ count }}",
+      "next_slide": "Next slide",
+      "previous_slide": "Previous slide",
+      "time_left": "Time left"
     },
     "cookies_popup": {
       "title": "Cookies",
@@ -200,7 +212,9 @@
       },
       "loading_reviews": "Loading more reviews",
       "include_taxes": "Tax included.",
+      "exclude_taxes": "Tax excluded.",
       "shipping_policy_html": "<a href=\"{{ link }}\">Shipping</a> calculated at checkout.",
+      "required_line_item": "This field is required",
       "view_in_space": "View in your space",
       "view_in_space_label": "View in your space, loads item in augmented reality window",
       "sales_amount_html": "you save {{ amount }}",
@@ -217,7 +231,7 @@
     "subtotal": "Subtotal",
     "discount": "Discount",
     "discounts": "Discounts",
-    "checkout": "Check Out",
+    "checkout": "Checkout",
     "update": "Update cart",
     "note": "Order instructions",
     "policies": {
@@ -240,6 +254,10 @@
       "one": "{{ count }} product was added to your cart",
       "other": "{{ count }} products were added to your cart"
     },
+    "bundled_items_toggle": {
+      "show_items": "Show {{ count }} items",
+      "hide_items": "Hide {{ count }} items"
+    },
     "free_shipping_remaining_html": "You are {{ remaining_amount }} away from free shipping.",
     "free_shipping_eligible": "You are eligible for free shipping!",
     "shipping_calculator": {
@@ -252,7 +270,10 @@
       "product": "Product",
       "quantity": "Quantity",
       "total": "Total"
-    }
+    },
+    "discount_codes_label": "Discount codes",
+    "discount_code_error": "Discount code cannot be applied to your cart",
+    "remove_discount_code": "Remove discount code: {{ code }}"
   },
   "blog": {
     "grid": {
@@ -298,7 +319,7 @@
       "title": "Search results",
       "subtitle": "Use the search bar below to find products:",
       "no_results": "No results could be found for \"{{ terms }}\"",
-      "results": "{{ count }} results found for for \"{{ terms }}\"",
+      "results": "{{ count }} results found for \"{{ terms }}\"",
       "products_found": "Products ({{ count }})",
       "pages_and_articles_found": "Pages and articles for \"{{ terms }}\"",
       "results_count": {
@@ -321,7 +342,8 @@
         "date": "Date",
         "payment_status": "Payment Status",
         "fulfillment_status": "Fulfillment Status",
-        "total": "Total"
+        "total": "Total",
+        "view_order": "View order"
       },
       "no_orders_message": "You haven't placed any orders yet.",
       "account_details_title": "Account Details",
@@ -438,7 +460,8 @@
       "email_label": "Recipient email",
       "name_label": "Recipient name (optional)",
       "message_label": "Message (optional)",
-      "max_characters": "{{ max_chars }} characters max"
+      "max_characters": "{{ max_chars }} characters max",
+      "send_on_label": "Send gift card on a different date (optional)"
     }
   },
   "store_availability": {

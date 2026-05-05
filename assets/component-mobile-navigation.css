@@ -1,6 +1,3 @@
-/*
- *  1.0. Mixins
-*/
 mobile-navigation {
   display: block;
 }
@@ -75,9 +72,6 @@ mobile-navigation .site-nav .submenu-back .icon svg {
 mobile-navigation .site-nav .button__icon svg * {
   fill: none;
 }
-mobile-navigation .menu-link svg {
-  margin-inline-end: 0.75rem;
-}
 mobile-navigation .menu-link svg path {
   stroke: var(--color-text-main);
 }
@@ -127,6 +121,7 @@ mobile-navigation .header-actions .header-info-block__image svg, mobile-navigati
 }
 mobile-navigation .header-actions .header-info-block__title {
   font-size: calc(14px / 16 * var(--base-body-size) + 0px);
+  letter-spacing: var(--base-body-spacing);
   font-weight: var(--font-weight-body-bold);
 }
 mobile-navigation .header-actions .header-info-block__text .icon {

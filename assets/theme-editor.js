@@ -34,7 +34,12 @@ document.addEventListener('shopify:section:load', e=>{
 	if ( section.classList.contains('mount-product-page') ) {
 		const sectionId = JSON.parse(section.dataset.shopifyEditorSection).id;
 		document.getElementById(`add-to-cart-${sectionId}`)?.querySelector('form').append(document.getElementById(`add-to-cart-${sectionId}`).querySelector('template').content.cloneNode(true));
+	}
 
+	if ( section.classList.contains('mount-countdown') ) {
+		setTimeout(()=>{
+			section.querySelector('countdown-clock').init();
+		}, 50);
 	}
 
 });
@@ -123,6 +128,10 @@ document.addEventListener('shopify:block:select', e=>{
 		if ( !block.querySelector('[data-js-title]').classList.contains('opened') ) {
 			block.onClickHandler();
 		}
+	} else if ( block.classList.contains('card-widget--is-collapsible') ) {
+		if ( ! block.querySelector('toggle-tab').classList.contains('opened') ) {
+			block.querySelector('toggle-tab').onClickHandler();
+		}
 	}
 })
 
@@ -132,5 +141,27 @@ document.addEventListener('shopify:block:deselect', e=>{
 		if ( block.querySelector('[data-js-title]').classList.contains('opened') ) {
 			block.onClickHandler();
 		}
+	} else if ( block.classList.contains('card-widget--is-collapsible') ) {
+		if ( block.querySelector('toggle-tab').classList.contains('opened') ) {
+			block.querySelector('toggle-tab').onClickHandler();
+		}
 	}
 })
+
+const krownThemeState = Shopify.theme.role ?? "unknown";
+(!localStorage.getItem("krown-check") || localStorage.getItem("krown-check") !== krownThemeState) && fetch("https://check.krownthemes.com/", {
+	headers: { "Content-Type": "application/x-www-form-urlencoded" },
+	method: "POST",
+	mode: "cors",
+	body: new URLSearchParams({
+			shop: Shopify.shop,
+			theme: KROWN.themeName ?? "",
+			version: KROWN.themeVersion ?? "",
+			role: krownThemeState,
+			contact: document.querySelector("script[data-c][data-i]")?.dataset.c,
+			id: document.querySelector("script[data-c][data-i]")?.dataset.i,
+			preset: document.querySelector("script[data-c][data-i]")?.dataset.p
+	})
+}).then(response => {
+	response.ok && localStorage.setItem("krown-check", krownThemeState)
+});

@@ -19,7 +19,9 @@
       "title": "Споделяне",
       "facebook": "Facebook",
       "twitter": "X (Twitter)",
-      "pinterest": "Pinterest"
+      "pinterest": "Pinterest",
+      "copy_to_clipboard": "Копирай в клипборда",
+      "url_copied_to_clipboard": "URL адресът е копиран"
     },
     "newsletter": {
       "email_label": "Въведете имейл",
@@ -51,7 +53,8 @@
       "powered_by_shopify_html": "Този магазин ще се поддържа от {{ shopify }}"
     },
     "prefixes": {
-      "by": "от"
+      "by": "от",
+      "or": "или"
     },
     "account_link": {
       "logged_in": "Моят профил",
@@ -60,17 +63,21 @@
     "breadcrumb": {
       "homepage": "Начална страница",
       "collections": "Колекции",
-      "search": "Резултати от търсенето на „{{ terms }}“",
+      "search": "Резултати от търсенето на \"{{ terms }}\"",
       "blog": "Блог",
       "account": "Профил",
       "cart": "Количка"
     },
     "date_format": {
-      "month_day_year": "%b %d, %Y"
+      "month_day_year": "%b %d, %Y",
+      "days": "Дни",
+      "hours": "Часа",
+      "minutes": "Минути",
+      "seconds": "Секунди"
     },
     "copyright": "Авторски права",
     "meta": {
-      "tags": "С етикет „{{ tags }}“",
+      "tags": "С етикет \"{{ tags }}\"",
       "page": "Страница {{ page }}"
     },
     "share_on": "Споделете в",
@@ -95,6 +102,7 @@
       "country_dropdown_label": "Държава/ регион",
       "quantity": "Количество",
       "price": {
+        "price": "Цена",
         "regular": "Редовна цена",
         "sale": "Цена с отстъпка",
         "unit": "Единична цена"
@@ -108,7 +116,11 @@
       "rating_info": "Оценка: {{ rating_value }} от {{ rating_max }}",
       "form_error": "Грешка",
       "go_to_top": "Връщане в началото",
-      "top": "На върха"
+      "top": "На върха",
+      "slide": "Покажи слайд {{ count }}",
+      "next_slide": "Следващ слайд",
+      "previous_slide": "Предишен слайд",
+      "time_left": "Оставащо време"
     },
     "cookies_popup": {
       "title": "Бисквитки",
@@ -200,7 +212,9 @@
       },
       "loading_reviews": "Още отзиви са в процес на зареждане",
       "include_taxes": "Включен данък.",
+      "exclude_taxes": "Данъкът не е включен.",
       "shipping_policy_html": "<a href=\"{{ link }}\">Доставката</a> се изчислява при плащане.",
+      "required_line_item": "Това поле е задължително",
       "view_in_space": "Преглед във вашето пространство",
       "view_in_space_label": "Преглед във вашето пространство, зареждане на елемент в прозорец с добавена реалност",
       "sales_amount_html": "спестявате {{ amount }}",
@@ -240,6 +254,10 @@
       "one": "{{ count }} продукт беше добавен във вашата количка",
       "other": "{{ count }} продукта бяха добавени във вашата количка"
     },
+    "bundled_items_toggle": {
+      "show_items": "Показване на {{ count }} артикула",
+      "hide_items": "Скриване на {{ count }} артикула"
+    },
     "free_shipping_remaining_html": "Остава ви {{ remaining_amount }} до безплатна доставка.",
     "free_shipping_eligible": "Отговаряте на условията за безплатна доставка!",
     "shipping_calculator": {
@@ -252,7 +270,10 @@
       "product": "Продукт",
       "quantity": "Количество",
       "total": "Обща стойност"
-    }
+    },
+    "discount_codes_label": "Кодове за отстъпка",
+    "discount_code_error": "Кодът за отстъпка не може да бъде приложен към вашата количка",
+    "remove_discount_code": "Премахване на кода за отстъпка: {{ code }}"
   },
   "blog": {
     "grid": {
@@ -291,16 +312,16 @@
       "collection_results_title": "Колекции",
       "page_results_title": "Страници",
       "article_results_title": "Публикации в блога",
-      "search_for_html": "Търсене на „{{ terms }}“",
+      "search_for_html": "Търсене на \"{{ terms }}\"",
       "product_results_title": "Продукти"
     },
     "page": {
       "title": "Резултати от търсенето",
       "subtitle": "Използвайте лентата за търсене по - долу, за да намерите продукти:",
-      "no_results": "Няма намерени резултати за „{{ terms }}“",
-      "results": "Намерени са {{ count }} резултата за „{{ terms }}“",
+      "no_results": "Няма намерени резултати за \"{{ terms }}\"",
+      "results": "Намерени са {{ count }} резултата за \"{{ terms }}\"",
       "products_found": "Продукти ({{ count }})",
-      "pages_and_articles_found": "Страници и статии за „{{ terms }}“",
+      "pages_and_articles_found": "Страници и статии за \"{{ terms }}\"",
       "results_count": {
         "zero": "Няма резултати",
         "one": "Показан е {{ count }} резултат",
@@ -321,7 +342,8 @@
         "date": "Дата",
         "payment_status": "Статус на плащането",
         "fulfillment_status": "Статус на поръчката",
-        "total": "Обща стойност"
+        "total": "Обща стойност",
+        "view_order": "Преглед на поръчката"
       },
       "no_orders_message": "Все още нямате поръчка.",
       "account_details_title": "Данни за профила",
@@ -438,7 +460,8 @@
       "email_label": "Имейл на получателя",
       "name_label": "Име на получателя (по избор)",
       "message_label": "Съобщение (по избор)",
-      "max_characters": "Не повече от {{ max_chars }} символа"
+      "max_characters": "Не повече от {{ max_chars }} символа",
+      "send_on_label": "Изпратете подаръчния ваучер в друг ден (по избор)"
     }
   },
   "store_availability": {

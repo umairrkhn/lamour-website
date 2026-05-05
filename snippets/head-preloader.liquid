@@ -1,3 +1,12 @@
+{%- comment -%}
+	Preloads assets based on the current template and product data.
+	- Preloads the main theme stylesheet.
+	- Preloads the header section stylesheet.
+	- Preloads the main section stylesheet based on the current template.
+	- Preloads the product featured image.
+	- Preloads the collection product images.
+{%- endcomment -%}
+
 {%- liquid
 
   echo 'theme.css' | asset_url | preload_tag: as: 'style'
@@ -36,7 +45,9 @@
     {%- if image.width >= 3820 -%},{{ image | image_url: width: 3820 }} 3820w{%- endif -%}
   {%- endcapture -%}
 
-  <link rel="preload" as="image" href="{{ image | image_url: width: 480 }}" imagesrcset="{{ srcset }}" imagesizes="(max-width: 767px) calc(100vw - 20px), (max-width: 1360px) 50vw, 620px">
+  {% # theme-check-disable AssetPreload %}
+	<link rel="preload" as="image" href="{{ image | image_url: width: 480 }}" imagesrcset="{{ srcset }}" imagesizes="(max-width: 767px) calc(100vw - 20px), (max-width: {{ settings.theme_max_width }}px) 50vw, calc({{ settings.theme_max_width }}px / 2)">
+{% # theme-check-enable AssetPreload %}
 
 {%- elsif template contains 'collection' -%}
 
@@ -76,7 +87,7 @@
 				{%- if image.width >= 1080 and image.height >= height_1080 -%},{{ image | image_url: width: 1080, height: height_1080, crop: 'center' }} 1080w{%- endif -%}
 			{%- endcapture -%}
 		{%- endif -%}
-		<link rel="preload" as="image" href="{{ image | image_url: width: 480 }}" imagesrcset="{{ srcset }}" imagesizes="{{ media_sizes }}">
+		{% # theme-check-disable AssetPreload %}<link rel="preload" as="image" href="{{ image | image_url: width: 480 }}" imagesrcset="{{ srcset }}" imagesizes="{{ media_sizes }}">{% # theme-check-enable AssetPreload %}
  	{%- endfor -%}
 	
 {%- endif -%}

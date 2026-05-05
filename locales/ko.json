@@ -19,7 +19,9 @@
       "title": "공유",
       "facebook": "페이스북",
       "twitter": "트위터",
-      "pinterest": "핀터레스트"
+      "pinterest": "핀터레스트",
+      "copy_to_clipboard": "클립보드에 복사",
+      "url_copied_to_clipboard": "URL이 복사되었습니다"
     },
     "newsletter": {
       "email_label": "이메일을 입력하세요",
@@ -51,7 +53,8 @@
       "powered_by_shopify_html": "이 매장은 {{ shopify }} 에 의해 운영됩니다"
     },
     "prefixes": {
-      "by": "by"
+      "by": "by",
+      "or": "또는"
     },
     "account_link": {
       "logged_in": "내 계정",
@@ -66,7 +69,11 @@
       "cart": "카트"
     },
     "date_format": {
-      "month_day_year": "%b %d, %Y"
+      "month_day_year": "%b %d, %Y",
+      "days": "날",
+      "hours": "시간",
+      "minutes": "분",
+      "seconds": "초"
     },
     "copyright": "저작권",
     "meta": {
@@ -95,6 +102,7 @@
       "country_dropdown_label": "국가 및 지역",
       "quantity": "수량",
       "price": {
+        "price": "가격",
         "regular": "표준 가격",
         "sale": "세일 가격",
         "unit": "단위 가격"
@@ -108,7 +116,11 @@
       "rating_info": "평점: {{ rating_max }} 만점에 {{ rating_value }}",
       "form_error": "오류",
       "go_to_top": "맨 위로 이동",
-      "top": "맨 위로"
+      "top": "맨 위로",
+      "slide": "슬라이드 {{ count }} 보기",
+      "next_slide": "다음 슬라이드",
+      "previous_slide": "이전 슬라이드",
+      "time_left": "남은 시간"
     },
     "cookies_popup": {
       "title": "쿠키",
@@ -200,7 +212,9 @@
       },
       "loading_reviews": "더 많은 리뷰 불러오는 중",
       "include_taxes": "세금 포함.",
+      "exclude_taxes": "세금 제외.",
       "shipping_policy_html": "<a href=\"{{ link }}\">배송비</a>는 체크아웃시 계산됩니다.",
+      "required_line_item": "이 필드는 필수입니다",
       "view_in_space": "내 공간에서 보기",
       "view_in_space_label": "내 공간에서 보고, 증강 현실 창에서 제품을 불러옵니다",
       "sales_amount_html": "{{ amount }} 를 저장했습니다",
@@ -240,6 +254,10 @@
       "one": "{{ count }} 제품이 카트에 추가되었습니다",
       "other": "{{ count }} 제품이 카트에 추가되었습니다"
     },
+    "bundled_items_toggle": {
+      "show_items": "{{ count }}개 항목 보기",
+      "hide_items": "{{ count }}개 항목 숨기기"
+    },
     "free_shipping_remaining_html": "무료 배송까지 {{ remaining_amount }} 남았습니다.",
     "free_shipping_eligible": "무료 배송을 받을 수 있습니다!",
     "shipping_calculator": {
@@ -252,7 +270,10 @@
       "product": "제품",
       "quantity": "수량",
       "total": "총계"
-    }
+    },
+    "discount_codes_label": "할인 코드",
+    "discount_code_error": "할인 코드를 장바구니에 적용할 수 없습니다",
+    "remove_discount_code": "할인 코드 제거: {{ code }}"
   },
   "blog": {
     "grid": {
@@ -321,7 +342,8 @@
         "date": "날짜",
         "payment_status": "지불 상태",
         "fulfillment_status": "주문 처리 상태",
-        "total": "총계"
+        "total": "총계",
+        "view_order": "주문 보기"
       },
       "no_orders_message": "아직 주문한 내역이 없습니다.",
       "account_details_title": "계정 세부 사항",
@@ -438,7 +460,8 @@
       "email_label": "수신자 이메일",
       "name_label": "수신자 이름(선택 사항)",
       "message_label": "메시지(선택 사항)",
-      "max_characters": "최대 {{ max_chars }}자"
+      "max_characters": "최대 {{ max_chars }}자",
+      "send_on_label": "다른 날짜에 기프트 카드 보내기 (선택 사항)"
     }
   },
   "store_availability": {

@@ -1,24 +1,18 @@
 {%- if blog.comments_enabled? -%}
-
   {{ 'section-main-article-comments.css' | asset_url | stylesheet_tag }}
-  {%- assign date_format = 'general.date_format.month_day_year' | t -%}
 
   <div id="comments" class="article__comments">
-
     <h4 class="h4">{{ 'blog.article.comments_list_title' | t }} ({{ article.comments_count }})</h4>
 
     {%- paginate article.comments by 10 -%}
-
       {%- if article.comments_count > 0 -%}
-
         <ul id="comments" class="comments">
           {%- for comment in article.comments -%}
             <li id="{{ comment.id }}" class="comment">
-
               <div class="comment__content">{{ comment.content }}</div>
               <div class="comment__info">
                 <span class="comment__author text-size--regular">{{ comment.author | escape }}</span>
-                <span class="comment__date text-size--small">{{ comment.created_at | time_tag: date_format }}</span>
+                <span class="comment__date text-size--small">{{ comment.created_at | date: format: 'date' }}</span>
               </div>
             </li>
           {%- endfor -%}
@@ -31,21 +25,17 @@
         -%}
 
       {%- else -%}
-
         <p>{{ 'blog.article.no_comments_message' | t }}</p>
-
       {%- endif -%}
 
       <div id="comments-form" class="comments__form">
-
         {%- form 'new_comment', article, class: 'simple-form' -%}
-
           <h4 class="h4" id="add-comment">{{ 'blog.article.comments_form_title' | t }}</h4>
 
-          {%- liquid 
+          {%- liquid
             if form.posted_successfully?
               if blog.moderated?
-                assign message = 'blog.article.comment_under_moderation' | t 
+                assign message = 'blog.article.comment_under_moderation' | t
               else
                 assign message = 'blog.article.comment_posted' | t
               endif
@@ -56,26 +46,67 @@
           -%}
 
           <div class="form-field">
-            <label for="comment-author" class="visually-hidden">{{ 'blog.article.comments_form_name_label' | t }}</label>
-            <input {% if form.errors contains "author" %} class="error"{% endif %} type="text" name="comment[author]" placeholder="{{ 'blog.article.comments_form_name_label' | t }}" id="comment-author" value="{{ form.author }}" autocapitalize="words" required>
+            <label for="comment-author" class="visually-hidden">
+              {{- 'blog.article.comments_form_name_label' | t -}}
+            </label>
+            <input
+              {% if form.errors contains 'author' %}
+                class="error"
+              {% endif %}
+              type="text"
+              name="comment[author]"
+              placeholder="{{ 'blog.article.comments_form_name_label' | t }}"
+              id="comment-author"
+              value="{{ form.author }}"
+              autocapitalize="words"
+              required
+            >
           </div>
 
           <div class="form-field">
-            <label for="comment-email" class="visually-hidden">{{ 'blog.article.comments_form_email_label' | t }}</label>
-            <input {% if form.errors contains "email" %} class="error"{% endif %} type="email" name="comment[email]" placeholder="{{ 'blog.article.comments_form_email_label' | t }}" id="comment-email" value="{{ form.email }}" autocorrect="off" autocapitalize="off" required>
-          </div>
-          
-          <div class="form-field">
-            <label for="comment-body" class="visually-hidden">{{ 'blog.article.comments_form_message_label' | t }}</label>
-            <textarea {% if form.errors contains "body" %} class="error"{% endif %} name="comment[body]" id="comment-body" placeholder="{{ 'blog.article.comments_form_message_label' | t }}" required>{{ form.body }}</textarea>
+            <label for="comment-email" class="visually-hidden">
+              {{- 'blog.article.comments_form_email_label' | t -}}
+            </label>
+            <input
+              {% if form.errors contains 'email' %}
+                class="error"
+              {% endif %}
+              type="email"
+              name="comment[email]"
+              placeholder="{{ 'blog.article.comments_form_email_label' | t }}"
+              id="comment-email"
+              value="{{ form.email }}"
+              autocorrect="off"
+              autocapitalize="off"
+              required
+            >
           </div>
 
           <div class="form-field">
-            <button type="submit" class="button button--outline  button--regular" >{{ 'blog.article.comments_form_submit_label' | t }}</button>
-          </div>    
-        
+            <label for="comment-body" class="visually-hidden">
+              {{- 'blog.article.comments_form_message_label' | t -}}
+            </label>
+            <textarea
+              {% if form.errors contains 'body' %}
+                class="error"
+              {% endif %}
+              name="comment[body]"
+              id="comment-body"
+              placeholder="{{ 'blog.article.comments_form_message_label' | t }}"
+              required
+            >{{ form.body }}</textarea>
+          </div>
+
+          <div class="form-field">
+            <button type="submit" class="button button--outline  button--regular">
+              {{ 'blog.article.comments_form_submit_label' | t }}
+            </button>
+          </div>
+
           {%- if blog.moderated? -%}
-            <small><em>{{ 'blog.article.comments_notice' | t }}</em></small>
+            <small
+              ><em>{{ 'blog.article.comments_notice' | t }}</em></small
+            >
           {%- endif -%}
 
           {%- if form.errors -%}
@@ -89,15 +120,10 @@
               window.location.hash = '#comments';
             </script>
           {%- endif -%}
-
         {%- endform -%}
-
       </div>
-
     {%- endpaginate -%}
-
   </div>
-  
 {%- endif -%}
 
 {% schema %}

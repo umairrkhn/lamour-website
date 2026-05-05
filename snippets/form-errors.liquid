@@ -1,3 +1,13 @@
+{%- comment -%}
+  Renders form errors.
+
+  Accepts:
+  - form: {Object} the form object.
+
+  Usage:
+  {%- render 'form-errors', form: form -%}
+{%- endcomment -%}
+
 {%- if form.errors -%}
 	{%- for field in form.errors -%}
 		<span class="alert alert--error alert--icon">

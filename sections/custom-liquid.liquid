@@ -1,5 +1,18 @@
-<div class="container {% unless section.settings.remove_margin %} container--vertical-space {% endunless %} {% unless section.settings.full_width %} container--large {% else %} container--fullwidth {% endunless %}">
-  {%- render 'section-heading', heading: section.settings.heading, subheading: section.settings.subheading, heading_tag: section.settings.seo_h_tag, layout: section.settings.section_heading_layout -%}
+<div
+  class="
+    container
+    {% unless section.settings.remove_margin %} {% unless section.settings.descrease_margin %} container--vertical-space {% else %} container--vertical-space-grid {% endunless %} {% endunless %}
+     {% unless section.settings.full_width %} container--large {% else %} container--fullwidth {% endunless %}
+     {% if section.settings.section_visibility == "mobile" %} element--hide-on-desk {% endif %}
+     {% if section.settings.section_visibility == "desktop" %} element--hide-on-small {% endif %}
+  "
+>
+  {%- render 'section-heading',
+    heading: section.settings.heading,
+    subheading: section.settings.subheading,
+    heading_tag: section.settings.seo_h_tag,
+    layout: section.settings.section_heading_layout
+  -%}
   {{ section.settings.custom_liquid }}
 </div>
 
@@ -54,7 +67,15 @@
     },
     {
       "type": "checkbox",
+      "id": "descrease_margin",
+      "visible_if": "{{ section.settings.remove_margin == false }}",
+      "label": "t:theme_blocks.descrease_top_margin",
+      "default": false
+    },
+    {
+      "type": "checkbox",
       "id": "remove_margin",
+      "visible_if": "{{ section.settings.descrease_margin == false }}",
       "label": "t:sections.local-extra-words.sections.rich-text.settings.remove_margin.label",
       "default": false
     },
@@ -90,11 +111,36 @@
         }
       ],
       "default": "h2"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.refactor_words.announcement-bar.visibility.label"
+    },
+    {
+      "type": "select",
+      "id": "section_visibility",
+      "label": "t:sections-visibility.label",
+      "options": [
+        {
+          "value": "always",
+          "label": "t:sections-visibility.options.always"
+        },
+        {
+          "value": "mobile",
+          "label": "t:sections-visibility.options.mobile"
+        },
+        {
+          "value": "desktop",
+          "label": "t:sections-visibility.options.desktop"
+        }
+      ],
+      "default": "always"
     }
   ],
   "presets": [
     {
-      "name": "t:sections.refactor_words.custom_code.name"
+      "name": "t:sections.refactor_words.custom_code.name",
+      "category": "t:sections-categories.custom"
     }
   ]
 }

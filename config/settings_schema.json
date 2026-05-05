@@ -3,9 +3,9 @@
 		"name": "theme_info",
 		"theme_name": "Local",
 		"theme_author": "KrownThemes",
-		"theme_version": "2.4.0.1",
-		"theme_documentation_url": "https://shopify-support.krownthemes.com/",
-		"theme_support_url": "https://krownthemes.com/shopify-support-contact/"
+		"theme_version": "3.2.1",
+		"theme_documentation_url": "https://shopify-support.krownthemes.com/collection/632-local",
+		"theme_support_url": "https://contact.krownthemes.com/"
 	},
 	{
 		"name": "t:settings_schema.typography.name",
@@ -40,6 +40,15 @@
 				"default": 1.2
 			},
 			{
+				"type": "range",
+				"id": "headings_spacing",
+				"label": "t:local-260.labels.letter_spacing",
+				"min": -10,
+				"max": 20,
+				"step": 1,
+				"default": 0
+			},
+			{
 				"type": "header",
 				"content": "t:sections.split-extra-words.settings_schema.typography.headings.body"
 			},
@@ -67,6 +76,15 @@
 				"max": 2,
 				"step": 0.1,
 				"default": 1.5
+			},
+			{
+				"type": "range",
+				"id": "body_spacing",
+				"label": "t:local-260.labels.letter_spacing",
+				"min": -10,
+				"max": 20,
+				"step": 1,
+				"default": 0
 			},
 			{
 				"type": "select",
@@ -208,6 +226,18 @@
 				"default": "rgba(0,0,0,0)"
 			},
 			{
+				"type": "color",
+				"id": "color_foreground_dark",
+				"label": "t:local-260.labels.dark_background_foreground",
+				"default": "#ffffff"
+			},
+			{
+				"type": "color",
+				"id": "color_foreground_light",
+				"label": "t:local-260.labels.light_background_foreground",
+				"default": "#000000"
+			},
+			{
 				"type": "header",
 				"content": "t:sections.split-extra-words.settings_schema.colors.headings.footer"
 			},
@@ -234,6 +264,16 @@
 	{
 		"name": "t:sections.local-extra-words.settings_schema.layout.name",
 		"settings": [
+			{
+				"type": "range",
+				"id": "theme_max_width",
+				"label": "t:local-260.labels.maximum_page_width",
+				"min": 1360,
+				"max": 2260,
+				"step": 10,
+				"unit": "px",
+				"default": 1360
+			},
 			{
 				"type": "range",
 				"id": "container_vertical_space",
@@ -454,6 +494,7 @@
 			{
 				"type": "range",
 				"id": "proudct_card_aspect_ratio_padding",
+				"visible_if": "{{ settings.product_card_aspect_ratio_fit == true }}",
 				"label": "t:sections.refactor_words.product-card.thumbnails.padding.label",
 				"info": "t:sections.refactor_words.product-card.thumbnails.padding.info",
 				"min": 0,
@@ -466,6 +507,12 @@
 				"type": "checkbox",
 				"id": "product_card_show_secondary_image",
 				"label": "t:settings_schema.product-grid.settings.show_secondary_image.label"
+			},
+			{
+				"type": "image_picker",
+				"id": "product_card_fallback_image",
+				"label": "t:local-260.labels.default_image",
+				"info": "t:local-260.labels.default_image_info"
 			},
       {
         "type": "header",
@@ -493,6 +540,22 @@
 			},
 			{
 				"type": "select",
+				"id": "product_card_title_font",
+				"label": "t:local-260.labels.title_font_family",
+				"options": [
+					{
+						"value": "body",
+						"label": "t:settings_schema.typography.settings.body_font.label"
+					},
+					{
+						"value": "headings",
+						"label": "t:settings_schema.typography.settings.headings_font.label"
+					}
+				],
+				"default": "body"
+			},
+			{
+				"type": "select",
 				"id": "product_card_text_size",
 				"label": "t:sections.local-extra-words.settings_schema.product-card.title-size.name",
 				"options": [
@@ -506,6 +569,22 @@
 					}
 				],
 				"default": "xlarge"
+			},
+			{
+				"type": "select",
+				"id": "product_card_price_size",
+				"label": "t:local-260.labels.price_size",
+				"options": [
+					{
+						"value": "regular",
+						"label": "t:sections.local-extra-words.settings_schema.product-card.title-size.options__1"
+					},
+					{
+						"value": "large",
+						"label": "t:sections.local-extra-words.settings_schema.product-card.title-size.options__2"
+					}
+				],
+				"default": "regular"
 			},
 			{
 				"type": "header",
@@ -547,7 +626,21 @@
 				"type": "checkbox",
 				"id": "product_card_align_buy",
 				"label": "t:local-march-update.labels.align_button",
+				"info": "t:local-260.labels.align_button_info",
 				"default": true
+			},
+			{
+				"type": "checkbox",
+				"id": "product_card_show_out_of_stock",
+				"label": "t:local-260.labels.out_of_stock_info",
+				"default": true
+			},
+			{
+				"type": "checkbox",
+				"id": "product_card_quick_buy_always_show_modal",
+				"label": "t:local-260.labels.modal_label",
+				"info": "t:local-260.labels.modal_info",
+				"default": false
 			},
 			{
 				"type": "header",
@@ -626,6 +719,10 @@
 						"label": "Stamped"
 					},
 					{
+						"value": "klaviyo",
+						"label": "Klaviyo"
+					},
+					{
 						"value": "yotpo",
 						"label": "Yotpo"
 					},
@@ -642,7 +739,7 @@
 						"label": "Air Reviews"
 					}
 				],
-				"default": "okendo"
+				"default": "judgeme"
 			},
 			{
 				"type": "header",
@@ -928,25 +1025,18 @@
 					{
 						"value": "overlay",
 						"label": "t:settings_schema.cart-page.settings.cart_type.options__2.label"
+					},
+					{
+						"value": "popup",
+						"label": "t:local-260.labels.popup_cart"
 					}
 				],
 				"default": "overlay"
 			},
 			{
-				"type": "checkbox",
-				"id": "cart_notes_enable",
-				"label": "t:settings_schema.cart-page.settings.cart_notes.label",
-				"default": true
-			},
-			{
-				"type": "checkbox",
-				"id": "cart_additional_buttons",
-				"label": "t:settings_schema.cart-page.settings.cart_buttons.label",
-				"default": false
-			},
-			{
 				"type": "select",
 				"id": "cart_drawer_actions",
+				"visible_if": "{{ settings.cart_action == 'overlay' }}",
 				"label": "t:cart_actions.label",
 				"options": [
 					{
@@ -967,8 +1057,61 @@
 			{
 				"type": "checkbox",
 				"id": "sticky_cart_actions",
+				"visible_if": "{{ settings.cart_action == 'overlay' }}",
 				"label": "t:sticky_cart_actions",
 				"default": false
+			},
+			{
+				"type": "checkbox",
+				"id": "cart_additional_buttons",
+				"label": "t:settings_schema.cart-page.settings.cart_buttons.label",
+				"default": false
+			},
+			{
+				"type": "header",
+				"content": "t:notes-discounts.header"
+			},
+			{
+				"type": "checkbox",
+				"id": "cart_notes_enable",
+				"label": "t:settings_schema.cart-page.settings.cart_notes.label",
+				"default": true
+			},
+			{
+        "type": "checkbox",
+        "id": "show_discount_code",
+        "label": "t:notes-discounts.show_discount_code.label",
+        "default": true
+      },
+			{
+        "type": "text",
+        "id": "discount_text",
+        "label": "t:notes-discounts.show_discount_code.text",
+				"visible_if": "{{ settings.show_discount_code == true }}"
+      },
+			{
+        "type": "checkbox",
+        "id": "show_collapsible_notes_discount",
+        "label": "t:notes-discounts.show_discount_code.collapsible",
+				"visible_if": "{{ settings.cart_action == 'overlay' and settings.show_discount_code or settings.cart_notes_enable }}",
+        "default": true
+      },
+			{
+				"type": "header",
+				"content": "t:cart-tos-update.cart_terms_heading"
+			},
+			{
+				"type": "checkbox",
+				"id": "cart_terms_checkbox",
+				"label": "t:cart-tos-update.cart_terms_checkbox",
+				"default": false
+			},
+			{
+				"type": "inline_richtext",
+				"id": "cart_terms_text",
+				"visible_if": "{{ settings.cart_terms_checkbox == true }}",
+				"label": "t:cart-tos-update.cart_terms_text",
+				"default": "I agree to the terms and conditions"
 			},
 			{
         "type": "header",
@@ -1024,12 +1167,14 @@
       {
         "type": "text",
         "id": "cart_recommendations_heading",
+				"visible_if": "{{ settings.cart_recommendations }}",
         "label": "t:sections.product-recommendations.settings.heading.label",
         "default": "Often bought together"
       },
       {
         "type": "checkbox",
         "id": "enable_recommendations_quick_buy",
+				"visible_if": "{{ settings.cart_recommendations }}",
         "label": "t:sections.split-extra-words.settings_schema.product-grid.quick_buy.label",
         "default": false
       },
@@ -1047,9 +1192,29 @@
       {
         "type": "text",
         "id": "cart_free_shipping_amount",
+				"visible_if": "{{ settings.cart_free_shipping }}",
         "label": "t:sections.local-extra-words.settings_schema.cart.shipping.amount.label",
         "info": "t:sections.local-extra-words.settings_schema.cart.shipping.amount.info",
         "default": "50"
+      },
+      {
+        "type": "header",
+        "content": "t:sections.refactor_words.gift_wrapping.name"
+      },
+      {
+        "type": "paragraph",
+        "content": "t:sections.refactor_words.gift_wrapping.info"
+      },
+			{
+				"type": "product",
+				"label": "t:sections.refactor_words.cart_upsell.product",
+				"id": "gift_wrap_product"
+			},
+      {
+        "type": "text",
+        "id": "gift_wrap_heading",
+        "label": "t:sections.refactor_words.gift_wrapping.settings.label",
+        "default": "Please wrap the products in this order"
       }
 		]
 	},
@@ -1124,6 +1289,12 @@
         "label": "t:performance.label",
         "info": "t:performance.info",
         "default": true
+			},
+			{
+				"type": "text",
+				"id": "theme_preset",
+				"label": "Theme preset",
+				"visible_if": "{{ settings.cart_action == 'never' }}"
 			}
     ]
   },

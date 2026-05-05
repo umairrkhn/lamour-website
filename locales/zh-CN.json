@@ -19,7 +19,9 @@
       "title": "分享",
       "facebook": "脸书 (Facebook)",
       "twitter": "推特 (X)",
-      "pinterest": "拼趣 (Pinterest)"
+      "pinterest": "拼趣 (Pinterest)",
+      "copy_to_clipboard": "复制到剪贴板",
+      "url_copied_to_clipboard": "URL已复制"
     },
     "newsletter": {
       "email_label": "输入您的电子邮箱",
@@ -51,7 +53,8 @@
       "powered_by_shopify_html": "此商店将由 {{ shopify }} 提供支持"
     },
     "prefixes": {
-      "by": "作者："
+      "by": "作者：",
+      "or": "或"
     },
     "account_link": {
       "logged_in": "我的账户",
@@ -60,17 +63,21 @@
     "breadcrumb": {
       "homepage": "首页",
       "collections": "产品系列",
-      "search": "与“{{ terms }}”相关的搜索结果",
+      "search": "与\"{{ terms }}\"相关的搜索结果",
       "blog": "博客",
       "account": "账户",
       "cart": "购物车"
     },
     "date_format": {
-      "month_day_year": "%Y 年 %b %d 日"
+      "month_day_year": "%Y 年 %b %d 日",
+      "days": "天",
+      "hours": "小时",
+      "minutes": "分钟",
+      "seconds": "秒"
     },
     "copyright": "版权",
     "meta": {
-      "tags": "标记为“{{ tags }}”",
+      "tags": "标记为\"{{ tags }}\"",
       "page": "第 {{ page }} 页"
     },
     "share_on": "分享到",
@@ -95,6 +102,7 @@
       "country_dropdown_label": "国家/地区",
       "quantity": "数量",
       "price": {
+        "price": "价格",
         "regular": "常规价格",
         "sale": "售价",
         "unit": "单价"
@@ -108,7 +116,11 @@
       "rating": "评分",
       "rating_info": "评分：{{ rating_value }}，共 {{ rating_max }} 条",
       "top": "向上",
-      "go_to_top": "向上"
+      "go_to_top": "向上",
+      "slide": "显示幻灯片 {{ count }}",
+      "next_slide": "下一张幻灯片",
+      "previous_slide": "上一张幻灯片",
+      "time_left": "剩余时间"
     },
     "cookies_popup": {
       "title": "Cookies",
@@ -167,7 +179,7 @@
       "preorder_product": "预购",
       "no_products_text": "此产品系列中目前没有任何产品。",
       "save_amount_html": "节省 {{ amount }}",
-      "save_up_to_amount_html": "节省高达 {{ amount }} 美元",
+      "save_up_to_amount_html": "节省高达 {{ amount }}",
       "save_percent": "高达 {{ percent }}",
       "choose_variant_first": "选择选项",
       "select_variant": "选择 {{ variant }}",
@@ -200,7 +212,9 @@
       },
       "loading_reviews": "正在加载更多评论",
       "include_taxes": "含税。",
+      "exclude_taxes": "不含税。",
       "shipping_policy_html": "<a href=\"{{ link }}\">运费</a>在结算时计算。",
+      "required_line_item": "此字段为必填项",
       "view_in_space": "在您的空间中查看",
       "view_in_space_label": "在您的空间中查看，在增强现实窗口中加载商品",
       "sales_amount_html": "您节省了 {{ amount }}",
@@ -240,6 +254,10 @@
       "one": "{{ count }} 件产品已添加到您的购物车中",
       "other": "{{ count }} 件产品已添加到您的购物车中"
     },
+    "bundled_items_toggle": {
+      "show_items": "显示 {{ count }} 个项目",
+      "hide_items": "隐藏 {{ count }} 个项目"
+    },
     "free_shipping_remaining_html": "您还需购买 {{ remaining_amount }} 产品就能享受免费送货。",
     "free_shipping_eligible": "您能享受免费送货服务！",
     "shipping_calculator": {
@@ -252,7 +270,10 @@
       "product": "产品",
       "quantity": "数量",
       "total": "总计"
-    }
+    },
+    "discount_codes_label": "折扣码",
+    "discount_code_error": "折扣码无法应用到您的购物车",
+    "remove_discount_code": "移除折扣码：{{ code }}"
   },
   "blog": {
     "grid": {
@@ -291,16 +312,16 @@
       "collection_results_title": "产品系列",
       "page_results_title": "页面",
       "article_results_title": "博客文章",
-      "search_for_html": "搜索“{{ terms }}”",
+      "search_for_html": "搜索\"{{ terms }}\"",
       "product_results_title": "产品"
     },
     "page": {
       "title": "搜索结果",
       "subtitle": "使用下面的搜索栏查找产品：",
-      "no_results": "找不到与“{{ terms }}”相关的结果",
-      "results": " 搜索 “{{ terms }}” 找到 {{ count }} 条结果",
+      "no_results": "找不到与\"{{ terms }}\"相关的结果",
+      "results": " 搜索 \"{{ terms }}\" 找到 {{ count }} 条结果",
       "products_found": "产品 （{{ count }}）",
-      "pages_and_articles_found": "与“{{ terms }}”相关的页面和文章",
+      "pages_and_articles_found": "与\"{{ terms }}\"相关的页面和文章",
       "results_count": {
         "zero": "没有结果",
         "one": "显示 {{ count }} 条结果",
@@ -321,7 +342,8 @@
         "date": "日期",
         "payment_status": "付款状态",
         "fulfillment_status": "订单履行状态",
-        "total": "总计"
+        "total": "总计",
+        "view_order": "查看订单"
       },
       "no_orders_message": "您尚未订立任何订单。",
       "account_details_title": "账户详情",
@@ -438,7 +460,8 @@
       "email_label": "收件人邮箱",
       "name_label": "收件人姓名（可选）",
       "message_label": "消息（可选）",
-      "max_characters": "不超过 {{ max_chars }} 个字符"
+      "max_characters": "不超过 {{ max_chars }} 个字符",
+      "send_on_label": "在其他日期发送礼品卡（可选）"
     }
   },
   "store_availability": {

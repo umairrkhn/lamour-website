@@ -8,6 +8,301 @@
  * ------------------------------------------------------------
  */
 {
+  "new-account-component": {
+    "title": "Kundkonton",
+    "menu": "Kundkontomeny",
+    "info": "Fungerar bara med den nya kundkontokomponenten. [Läs mer](https://help.shopify.com/en/manual/customers/customer-accounts/account-component)"
+  },
+  "video-compression": {
+    "compress_videos_with_m3u8": "Komprimera MP4-videor",
+    "compress_videos_with_m3u8_info": "Använd Shopifys videokompression för bättre prestanda. Kan påverka kvaliteten, särskilt för korta videor."
+  },
+  "sections-categories": {
+    "promotions": "Kampanjer",
+    "products": "Produkter",
+    "content": "Innehåll",
+    "brand-trust": "Varumärkesförtroende",
+    "media-galleries": "Media & gallerier",
+    "storytelling": "Berättande",
+    "custom": "Anpassad",
+    "forms": "Formulär",
+    "layout": "Layout",
+    "collections": "Kollektioner",
+    "presets": {
+      "media_collage": "Mediakollage",
+      "text_cards_collage": "Textkortskollage",
+      "flex_promotion_cards": "Flexibla kampanjkort",
+      "promotion_slider": "Kampanjreglage",
+      "search_bar": "Sökfält",
+      "rich_text_with_image": "Formaterad text med bild",
+      "fullwidth_text_banner": "Textbanner i full bredd",
+      "heading_text": "Rubrik med text",
+      "logo_list": "Logolista",
+      "logo": "Logotyp",
+      "fullwidth_media_with_text": "Media i full bredd med text",
+      "faq": "Vanliga frågor",
+      "events_calendar": "Evenemangskalender"
+    }
+  },
+  "sections-visibility": {
+    "label": "Sektionens synlighet",
+    "options": {
+      "always": "Visa alltid",
+      "mobile": "Visa endast på mobil",
+      "desktop": "Visa endast på dator"
+    }
+  },
+  "flex-cards": {
+    "header": "Flexibla kort",
+    "settings": {
+      "height": {
+        "desktop": "Mediahöjd på skrivbord",
+        "auto": "Bevara mediahöjd på mobil",
+        "mobile": "Mediahöjd på mobil"
+      },
+      "image_visibility": "Visa inte media",
+      "enhance_first_image": "Förbättra första bilden",
+      "star-rating": {
+        "name": "Stjärnbetyg",
+        "color": "Stjärnfärg"
+      }
+    }
+  },
+  "notes-discounts": {
+    "header": "Anteckningar och rabatter",
+    "show_discount_code": {
+      "label": "Aktivera kundvagnsrabatter",
+      "text": "Rabatttext",
+      "placeholder": "Rabattkod",
+      "collapsible": "Gör antecknings- och rabattfält hopfällbara i kundvagnslådan"
+    }
+  },
+  "back-in-stock-alert": {
+    "header": "Tillbaka i lager-avisering",
+    "content": "Butiksägaren kommer att få ett e-postmeddelande när en kund fyller i detta formulär. Butiksägaren måste manuellt meddela kunden när produkten finns tillbaka i lager.",
+    "info": "Detta formulär för avisering när produkten är tillbaka i lager visas när produkten är slut i lager.",
+    "succcess_message": "Meddelande om framgång",
+    "email_message": "E-postmeddelande"
+  },
+  "theme_blocks": {
+    "group": {
+      "name": "Innehållsgrupp"
+    },
+    "heading": {
+      "settings": {
+        "info": "Använd [br] för att infoga radbrytning.",
+        "option_1": "Standard"
+      }
+    },
+    "slide_image": {
+      "settings": {
+        "info": "Om hela kortet har en länk fungerar inte de interna länkarna"
+      }
+    },
+    "caption": {
+      "settings": {
+        "option_1": "Extra liten",
+        "content": "Innehåll"
+      }
+    },
+    "button-caption": {
+      "name": "Separatoretikett",
+      "settings": {
+        "separator": "Separator"
+      }
+    },
+    "empty-space": {
+      "name": "Tomt utrymme"
+    },
+    "grid-text": {
+      "name": "Textkort",
+      "column_desktop": "Kolumner på desktop",
+      "column_mobile": "Kolumner på mobil",
+      "row_desktop": "Rader på desktop",
+      "row_mobile": {
+        "label": "Rader på mobil",
+        "option_1": "1 rad",
+        "option_2": "2 rader"
+      },
+      "spacing": "Horisontellt mellanrum mellan block"
+    },
+    "grid-media": {
+      "name": "Mediakort"
+    },
+    "product-add-to-cart-button": {
+      "name": "Snabbköpsknapp"
+    },
+    "divider": {
+      "divider_width": "Bredd",
+      "option_1": "Liten",
+      "option_2": "Mellan",
+      "option_3": "Stor",
+      "option_4": "Maximal"
+    },
+    "sections": {
+      "flex-slideshow": {
+        "name": "Flexibelt bildspel",
+        "desktop_height": "Höjd på desktop",
+        "mobile_height": "Höjd på mobil",
+        "legacy_name": "Bildspel (äldre)"
+      },
+      "flex-section": {
+        "name": "Flexibelt rutnät",
+        "gutter_size": "Textmarginal",
+        "grid_design": "Rutnätsdesign",
+        "remove_gap": "Ta bort mellanrum mellan kort",
+        "height": {
+          "label_desktop": "Minsta kort höjd på desktop",
+          "label_mobile": "Minsta kort höjd på mobil",
+          "info": "Kort expanderar automatiskt om innehållet kräver mer utrymme."
+        }
+      }
+    },
+    "descrease_top_margin": "Minska övre marginal"
+  },
+  "cart-tos-update": {
+    "cart_terms_heading": "Villkor och bestämmelser",
+    "cart_terms_checkbox": "Aktivera krav på villkor och bestämmelser för kassan",
+    "cart_terms_text": "Kryssruta etikett",
+    "drawer_actions": "Kundvagnsåtgärder"
+  },
+  "product-siblings": {
+    "name": "Relaterade produkter",
+    "info": "För att tilldela en annan lista till varje produkt, använd ett produktreferenslist-metafält som dynamisk källa. [Läs mer](https://shopify-support.krownthemes.com/article/804-product-page#Product-siblings-IzGzR)."
+  },
+  "local-260": {
+    "labels": {
+      "disable_parallax_effect": "Inaktivera parallaxeffekt",
+      "default_image": "Standardbild",
+      "default_image_info": "Används när produkten saknar bilder.",
+      "value": "Värde",
+      "default_value": "Standardvärde",
+      "values": "Värden",
+      "values_info": "Separera värden med komma.",
+      "dropdown_property_settings": "Inställningar för dropdown-egenskaper",
+      "appears_on_the_order_summary": "Förekommer i beställningssammanfattningen.",
+      "checkbox_property_settings": "Inställningar för kryssruteegenskaper",
+      "maximum_characters": "Maximalt antal tecken",
+      "allow_long_text": "Tillåt lång text",
+      "text_property_settings": "Textegenskapsinställningar",
+      "hide_at_checkout": "Dölj vid kassan",
+      "hide_at_checkout_info": "Om markerad visas inte artikelns egenskap i beställningssammanfattningen.",
+      "required": "Obligatoriskt",
+      "required_info": "Kunder måste fylla i detta fält för att lägga produkten i kundvagnen.",
+      "type": "Typ",
+      "custom_property": "Anpassad egendom",
+      "custom_property_info": "Artikelegenskaper gör det möjligt att samla anpassningsdetaljer för en produkt som läggs till i kundvagnen.",
+      "show_custom_link": "Visa anpassad länk",
+      "show_custom_link_info": "Använder inbyggda delningsalternativ baserat på webbläsarstöd.",
+      "show_pinterest": "Visa Pinterest",
+      "show_x": "Visa X",
+      "show_facebook": "Visa Facebook",
+      "crop_videos_when_following_images_aspect_ratio": "Beskär videor när de följer bildernas aspektförhållande",
+      "enable_add_to_cart_for_multiple_variants_label": "Aktivera lägg i kundvagn för flera varianter",
+      "enable_add_to_cart_for_multiple_variants_info": "När aktiverat lägger knappen 'Lägg i kundvagn' till den första tillgängliga eller valda varianten direkt i kundvagnen. Om inaktiverat visas istället knappen 'Välj alternativ'.",
+      "button_width": {
+        "label": "Knappbredd",
+        "option_1": "Fullbredd",
+        "option_2": "Begränsad"
+      },
+      "image": "Bild",
+      "maximum_width": "Maximal bredd",
+      "constrain_image_width": "Begränsa bildbredd",
+      "desktop_logo_image": "Skrivbordslogotyp",
+      "desktop_logo_image_max_height": "Maximal höjd för skrivbordslogotyp",
+      "mobile_logo_image": "Mobil logotyp",
+      "mobile_logo_image_max_height": "Maximal höjd för mobil logotyp",
+      "mobile_logo_image_info": "Om du inte laddar upp en mobil logotyp används skrivbordslogotypen istället.",
+      "letter_spacing": "Bokstavsavstånd",
+      "dark_background_foreground": "Mörk bakgrund förgrund",
+      "light_background_foreground": "Ljus bakgrund förgrund",
+      "maximum_page_width": "Maximal sidbredd",
+      "title_font_family": "Titel typsnittsfamilj",
+      "price_size": "Prisstorlek",
+      "align_button_info": "Fungerar bäst om snabbköp är den sista blocket i produktkortet.",
+      "out_of_stock_info": "Dölj snabbköpsknappen när produkten är slutsåld",
+      "modal_label": "Öppna alltid snabbköpsfönstret",
+      "modal_info": "Som standard öppnas snabbköpsfönstret endast för produkter med flera varianter.",
+      "popup_cart": "Popup-avisering",
+      "caption_alignment": "Bildtextjustering",
+      "remove_space_between_images": "Ta bort utrymme mellan bilder",
+      "text_horizontal_alignment": "Horisontell textjustering",
+      "text_vertical_alignment": "Vertikal textjustering",
+      "text_vertical_alignment_info": "Endast för skrivbord om bilden är placerad till vänster eller höger.",
+      "segments_height": "Segmentens höjd",
+      "remove_space_between_segments": "Ta bort utrymme mellan segment",
+      "out_of_stock": "Slut i lager",
+      "regular_stock": "Ordinarie lager",
+      "low_inventory": "Lågt lager",
+      "custom_inventory_notification_colors": "Anpassade färgmeddelanden för lagerstatus",
+      "block_heading": "Blockrubrik",
+      "block_style": "Blockstil",
+      "block_content": "Blockinnehåll",
+      "tooltip_text": "Tooltip-text",
+      "collapsible": "Hopfällbar",
+      "boxed": "Boxad",
+      "darken_the_header": "Mörkna rubriken",
+      "opened_by_default": "Öppnad som standard",
+      "applies_to_boxed_version_only": "Gäller endast boxad version",
+      "dynamic_segments_label": "Använd dynamiska källor för att ställa in aktivt objekt eller segment med produktmetafält. [Lär dig mer](https://shopify-support.krownthemes.com/article/804-product-page#Nutriscore--attribute-meters-OY3p4)",
+      "nutriscore": "Nutriscore",
+      "active_item": "Aktivt objekt",
+      "active_item_metafield": "Aktivt objekts metafält",
+      "item_1": "Objekt 1",
+      "item_2": "Objekt 2",
+      "item_3": "Objekt 3",
+      "item_4": "Objekt 4",
+      "item_5": "Objekt 5",
+      "item_6": "Objekt 6",
+      "item_7": "Objekt 7",
+      "item_8": "Objekt 8",
+      "label": "Etikett",
+      "attribute_meter": "Attributmätare",
+      "segments": "Segment",
+      "active_segment": "Aktiva segment",
+      "active_segment_metafield": "Metafält för aktivt segment",
+      "active_segment_color": "Färg på aktivt segment",
+      "fill_segments_up_to_active_segment": "Fyll segment upp till aktivt segment",
+      "show_active_segments_value": "Visa värde för aktiva segment",
+      "start_label": "Startetikett",
+      "middle_label": "Mittetikett",
+      "end_label": "Slutetikett",
+      "text_banner": "Textbanner",
+      "banner_link": "Bannerlänk",
+      "videos_and_other_media_aspect_ratio": "Aspektförhållande för videor och andra medier"
+    },
+    "options": {
+      "text": "Text",
+      "checkbox": "Kryssruta",
+      "dropdown": "Rullgardinsmeny",
+      "scroll_one_column": "Skrolla en kolumn",
+      "scroll_two_columns": "Skrolla två kolumner",
+      "keep_media_original_aspect_ratio": "Behåll mediets ursprungliga aspektförhållande",
+      "follow_images_aspect_ratio": "Följ bildernas aspektförhållande",
+      "inline": "Inbäddad",
+      "middle": "Mitten"
+    }
+  },
+  "video-extra-functions": {
+    "autoplay": {
+      "label": "Aktivera automatisk uppspelning",
+      "info": "Videon är avstängd och utan kontroller."
+    },
+    "video_upload": {
+      "label": "Videofil",
+      "info": "Värd på Shopify. Ersätter video-URL-inställningar."
+    },
+    "poster": {
+      "info": "Används som en affisch eller reservbild."
+    }
+  },
+  "variant_metafields": {
+    "name": "Variantmetafält",
+    "label": "Variantmetafält nyckel",
+    "info": "Detta tema kan visa ett variantmetafält på produktsidan. [Läs mer](https://shopify-support.krownthemes.com/article/884-using-variant-metafields-in-product-pages)."
+  },
+  "new_color_swatches": "Typen av variatväljare \"block\" erbjuder stöd för färgprover skapade med kategorimetafält. [Läs mer](https://help.shopify.com/en/manual/custom-data/metafields/category-metafields/using-category-metafields).",
+  "video_controls": "Visa videokontroller",
   "sticky_cart_actions": "Aktivera klistriga kundvagnsåtgärder",
   "currency_codes": {
     "header": "Valutaformat",
@@ -28,6 +323,7 @@
     "divider_style_double": "Dubbel",
     "divider_color": "Färg",
     "divider_image": "Avdelarbild",
+    "divider_height": "Höjd",
     "divider_image_info": "En horisontellt repetitiv bild. Ersätter stilen och färgen ovan."
   },
   "cart_actions": {
@@ -38,7 +334,9 @@
   },
   "sticky_atc": {
     "label": "Klibbig lägg till i kundvagn",
-    "enable_sticky_atc": "Aktivera klibbig lägg till i kundvagn"
+    "enable_sticky_atc": "Aktivera klibbig lägg till i kundvagn",
+    "sticky_atc_style_wide": "Wide",
+    "sticky_atc_style_floating": "Floating"
   },
   "performance": {
     "header": "SEO & prestanda",
@@ -114,12 +412,23 @@
       },
       "progress_slider": {
         "name": "Uppföljningsstapeldiagram",
-        "value": "Värde"
+        "value": "Värde",
+        "height": "Slider height",
+        "width": "Slider width",
+        "dynamic_content": {
+          "info": "Use dynamic sources to define unique values by creating product metafields for the progress chart. [Learn more](https://shopify-support.krownthemes.com/article/804-product-page#Progress-chart-S8c6R)",
+          "slider_label": "Value metafield",
+          "dots_label": "Highlighted dots metafield"
+        }
       },
       "progress_dots": {
         "name": "Uppföljningspunktdiagram",
         "highlight": "Markerade punkter",
-        "total": "Totalt antal punkter"
+        "total": "Totalt antal punkter",
+        "icon": "Dot icon",
+        "size": "Dot size",
+        "inactive_color": "Inactive color",
+        "active_color": "Highlighted color"
       },
       "store_selector": {
         "default": "Återgå till första lagring"
@@ -337,6 +646,13 @@
       "content": "Följ på Shop",
       "info": "Shop Pay måste aktiveras för att kunder ska kunna följa din butik i Shop-appen från ditt skyltfönster. [Mer information](https://help.shopify.com/manual/online-store/themes/customizing-themes/follow-on-shop)",
       "label": "Aktivera Följ på Shop"
+    },
+    "labels": {
+      "hide_block_if_no_content_info": "Dölj block om innehållet inte är definierat",
+      "popup_page_info": "Ersätter textinnehållet om en sida är vald",
+      "page": "Sida",
+      "popup": "Popup",
+      "open_popup": "Öppna popup"
     }
   },
   "sections": {
@@ -385,14 +701,17 @@
         "footer_group": "Sidfotsgrupp",
         "header_group": "Sidhuvudsgrupp",
         "overlay_group": "Överläggningsgrupp",
-        "embellishments": "Utsmyckningar"
+        "embellishments": "Utsmyckningar",
+        "show_button": "Show button",
+        "optional": "Optional"
       },
       "text": {
         "icons_info": "För att visualisera och ladda ner fler ikoner ber vi dig att gå till [denna länk](https://resources.krownthemes.com/icons/)."
       },
       "borders": {
         "top_border": "Övre kant",
-        "bottom_border": "Nedre kant"
+        "bottom_border": "Nedre kant",
+        "show_border": "Show border"
       },
       "colors": {
         "heading_background": "Sidhuvudsbakgrund",
@@ -419,13 +738,18 @@
                 "option_2": "Längst ner",
                 "option_3": "Vänster",
                 "option_4": "Höger"
-              }
-            }
-          }
+              },
+              "show_tooltip": "Show tooltip"
+            },
+            "mobile_info": "Only if a mobile image is set"
+          },
+          "image_on_mobile": "Mobile image",
+          "position_on_mobile": "Position on mobile"
         },
         "scrolling_images": {
           "label": "Skrollande bilder",
-          "image_size": "Bildstorlek"
+          "image_size": "Bildstorlek",
+          "columns": "Columns"
         },
         "video": {
           "label": "Video",
@@ -510,11 +834,11 @@
       "cart_upsell": {
         "name": "Individuell produktrekommendation",
         "product": "Produkt",
-        "info": "Dynamiska rekommendationer baseras på varorna i din kundvagn. De förändras och förbättras med tiden. [Ta reda på mer](https://help.shopify.com/en/themes/development/recommended-products)"
+        "info": "Dynamiska rekommendationer baseras på varorna i din kundvagn. De förändras och förbättras med tiden. [Ta reda på mer](https://help.shopify.com/en/manual/online-store/storefront-search/search-and-discovery-recommendations)"
       },
       "gift_wrapping": {
         "name": "Presentinslagning",
-        "info": "Presentinslagning måste ställas in som en produkt. [Ta reda på mer](https://shopify-support.krownthemes.com/article/696-cart-features#gift-wrap)",
+        "info": "Presentinslagning måste ställas in som en produkt. [Ta reda på mer](https://shopify-support.krownthemes.com/article/779-borders-theme-settings-cart)",
         "settings": {
           "label": "Text",
           "button": "Knappetikett"
@@ -612,6 +936,12 @@
             "border_color": "Kantfärg"
           }
         }
+      },
+      "seo_late": {
+        "breadcrumbs": {
+          "label": "Improve product breadcrumb navigation",
+          "info": "Adds collection names to the breadcrumb navigation, by duplicating product url's. [Learn more](https://shopify-support.krownthemes.com/article/697-seo#breadcrumbs)"
+        }
       }
     },
     "local-extra-words": {
@@ -624,7 +954,8 @@
           "settings": {
             "borders": "Gränsen",
             "hide_border": "Dölj gränsen",
-            "accent": "Accent"
+            "accent": "Accent",
+            "overlay": "Overlay"
           }
         },
         "typography": {
@@ -681,6 +1012,14 @@
             "amount": {
               "label": "Minsta belopp för fri frakt",
               "info": "Skriv ett nummer, inga bokstäver eller specialtecken."
+            },
+            "info": "This feature only works with a single currency and shipping method. If you're using multiple shipping methods or currencies, it might show false values to the customer."
+          },
+          "settings": {
+            "media": {
+              "header": "Media aspect ratio",
+              "label": "Aspect ratio",
+              "info_cart": "Changes the aspect ratio for small product thumbnails used in the cart, search popup and some other areas that require small product thumbnails."
             }
           }
         },
@@ -729,10 +1068,21 @@
               "name__3": "Anpassad bricka 3",
               "text": "Text",
               "tags": "Tag",
-              "color": "Bakgrundsfärg"
+              "color": "Bakgrundsfärg",
+              "text_color": "Text color"
             }
           },
-          "icons_list": "Dynamisk lista över ikoner"
+          "icons_list": "Dynamisk lista över ikoner",
+          "products-list": {
+            "name": "Produktlista"
+          }
+        },
+        "embellishments": {
+          "settings": {
+            "show_gotop": {
+              "label": "Show go to top button"
+            }
+          }
         }
       },
       "sections": {
@@ -818,7 +1168,8 @@
           "show_icon": "Visa ikon"
         },
         "cookies": {
-          "name": "Popup-fönster för cookies"
+          "name": "Popup-fönster för cookies",
+          "cookies_info": "Den här webbplatsen använder cookies för att säkerställa bästa användarupplevelse. [Läs mer](https://shopify-support.krownthemes.com/article/790-cookies-popup)."
         },
         "popups": {
           "name": "Popup-fönster",
@@ -1138,6 +1489,9 @@
           "blocks": {
             "shipping-calculator": {
               "name": "Kalkylator för frakt"
+            },
+            "related-products": {
+              "info": "The product recommendations are based on products that are commonly purchased together or products in related collections. If there are no recommendations, the block will not appear."
             }
           }
         },
@@ -1156,7 +1510,9 @@
           "name": "Produktsida",
           "settings": {
             "gallery_pagination": "Galleri med sidofördelning",
-            "show_border": "Visa ram runt galleriet"
+            "show_border": "Visa ram runt galleriet",
+            "gallery_border": "Gallery border",
+            "gallery_border_color": "Gallery border color"
           },
           "blocks": {
             "pickup_availability": {
@@ -1196,7 +1552,7 @@
               },
               "settings": {
                 "icon": "Ikon",
-                "icon_info": "96 x 96px",
+                "icon_info": "128 x 128px",
                 "label": "Etikett"
               }
             }
@@ -1243,7 +1599,13 @@
           "blocks": {
             "payment": {
               "name": "Ikoner för betalningar",
-              "info": "Vilka ikoner som visas bestäms av butikens [betalningsinställningar](/admin/settings/payments) och kundens region och valuta."
+              "info": "Vilka ikoner som visas bestäms av butikens [betalningsinställningar](/admin/settings/payments) och kundens region och valuta.",
+              "custom_icons": "Custom icons",
+              "custom_icons_info": "Upload 114 x 72px .png images",
+              "only_show_custom_icons": "Only show the custom icons"
+            },
+            "text": {
+              "name": "Text & social icons"
             }
           }
         },
@@ -1261,7 +1623,10 @@
             "name": "Sida för aktivering av konto"
           },
           "login": {
-            "name": "Inloggningssida"
+            "name": "Inloggningssida",
+            "shop_login_button": {
+              "enable": "Aktivera inloggning med Shop"
+            }
           },
           "account": {
             "name": "Kontosida"
@@ -1288,7 +1653,8 @@
           "option__2": "3 kolumner",
           "option__3": "4 kolumner",
           "option__4": "5 kolumner",
-          "option__5": "6 kolumner"
+          "option__5": "6 kolumner",
+          "name_mobile": "Mobile layout"
         },
         "promotion-cards": {
           "name": "Kampanjkort",
@@ -1566,7 +1932,7 @@
             "map": {
               "api": {
                 "label": "Google Maps API-nyckel",
-                "info": "Du måste registrera en [Google Maps API Key](http://shopify-support.krownthemes.com/article/385-generate-an-api-key-for-google-maps) för att visa kartan."
+                "info": "Du måste registrera en [Google Maps API Key](http://shopify-support.krownthemes.com/article/385-generate-an-api-key-for-google-maps) to display the map."
               }
             }
           }
@@ -1971,6 +2337,9 @@
         },
         "products_number": {
           "label": "Maximalt antal produkter som visas"
+        },
+        "articles_number": {
+          "label": "Maximalt antal artiklar som visas"
         },
         "collection": {
           "label": "Samling"
@@ -2558,7 +2927,7 @@
         },
         "header__1": {
           "content": "Produktrekommendationer",
-          "info": "Dynamiska rekommendationer använder order- och produktinformation för att ändras sig och bli bättre över tid. [Learn more](https://help.shopify.com/en/themes/development/recommended-products)"
+          "info": "Dynamiska rekommendationer använder order- och produktinformation för att ändras sig och bli bättre över tid. [Learn more](https://help.shopify.com/en/manual/online-store/storefront-search/search-and-discovery-recommendations)"
         }
       }
     },
@@ -2612,6 +2981,9 @@
     "popup": {
       "name": "Pop-up",
       "settings": {
+        "enable_scroll_based_trigger": "Aktivera scroll-baserad trigger",
+        "enable_scroll_based_trigger_info": "Visa popup endast om sidan skrollas till en specifik position.",
+        "scroll_position": "Scrollposition",
         "title": {
           "label": "Rubrik"
         },
@@ -2866,10 +3238,67 @@
         }
       }
     },
+    "words_210": {
+      "text_columns": {
+        "name": "Text columns",
+        "block": {
+          "name": "Text"
+        }
+      }
+    },
     "images": {
       "label_1": "Bild 1",
       "label_2": "Bild 2",
       "label_3": "Bild 3"
+    }
+  },
+  "color-schemes": {
+    "name_plural": "Color schemes",
+    "name_singular": "Color scheme",
+    "default": "Default color scheme",
+    "default_info": "Used to set colors for account pages, 404 pages, and other pages or sections without color scheme settings.",
+    "drawers": "Modals/drawers",
+    "other": "Other colors"
+  },
+  "menu-images": {
+    "label": "Menybilder",
+    "info": "Du kan lägga till bilder i huvudmenyobjekt genom att skapa JPG-filer med samma namn som menyns handle. [Läs mer](https://shopify-support.krownthemes.com/article/798-header-section#mega-menus).",
+    "show": "Visa menybilder",
+    "show_count": "Visa antal produkter"
+  },
+  "bundle-extra-words": {
+    "sections": {
+      "transparent_header": {
+        "header": "Transparent rubrik",
+        "settings": {
+          "homepage_enable": {
+            "label": "Aktivera på huvudsidan",
+            "info": "Se till att den första sektionen på din huvudsida är antingen ett bildspel eller en bild med full bredd."
+          },
+          "collection_enable": {
+            "label": "Aktivera på samlingssidor",
+            "info": "Se till att bannerbilder för samlingar är på och att dina samlingar är försedda med bilder."
+          },
+          "custom_enable": {
+            "label": "Aktivera på anpassade sidor",
+            "info": "Skriv eventuella sidhandtag, separerade med komman."
+          },
+          "logo": {
+            "info": "Uppladdning i samma storlek som originallogotypen."
+          }
+        }
+      }
+    }
+  },
+  "local-250": {
+    "labels": {
+      "show_filters_as": "Visa filter som",
+      "expand_filters_by_default": "Expandera filter som standard",
+      "stick_filters_sidebar_to_top": "Fäst filterfältet högst upp"
+    },
+    "options": {
+      "sidebar": "Sidopanel",
+      "list": "Lista"
     }
   },
   "local-230": {
@@ -2878,7 +3307,13 @@
       "label": "Välj den första tillgängliga varianten som standard",
       "info": "Om den är avmarkerad måste användaren välja en tillgänglig variant innan han/hon kan köpa."
     },
-    "slider_info": "Länken kommer att appliceras på knappen, eller på titeln (om det inte finns någon knapp), eller på hela bilden (om både titeln och knappen är tomma)."
+    "slider_info": "Länken kommer att appliceras på knappen, eller på titeln (om det inte finns någon knapp), eller på hela bilden (om både titeln och knappen är tomma).",
+    "buy_button_labels": {
+      "label": "Köpknappetiketter",
+      "option_1": "Köp nu",
+      "option_2": "Välj alternativ"
+    },
+    "hide_on_mobile": "Dölj på mobila enheter"
   },
   "local-223": {
     "heading_text_color": "Färg på rubriktext",

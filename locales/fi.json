@@ -19,7 +19,9 @@
       "title": "Jaa",
       "facebook": "Facebook",
       "twitter": "X (Twitter)",
-      "pinterest": "Pinterest"
+      "pinterest": "Pinterest",
+      "copy_to_clipboard": "Kopioi leikepöydälle",
+      "url_copied_to_clipboard": "URL kopioitu"
     },
     "newsletter": {
       "email_label": "Syötä sähköpostisi",
@@ -51,7 +53,8 @@
       "powered_by_shopify_html": "Tämän kaupan palvelun tarjoaa {{ shopify }}"
     },
     "prefixes": {
-      "by": "tarjoaa"
+      "by": "tarjoaa",
+      "or": "tai"
     },
     "account_link": {
       "logged_in": "Oma tilini",
@@ -66,7 +69,11 @@
       "cart": "Ostoskori"
     },
     "date_format": {
-      "month_day_year": "%b %d, %Y"
+      "month_day_year": "%b %d, %Y",
+      "days": "päivää",
+      "hours": "tuntia",
+      "minutes": "minuuttia",
+      "seconds": "sekuntia"
     },
     "copyright": "Copyright",
     "meta": {
@@ -95,6 +102,7 @@
       "country_dropdown_label": "Maa/alue",
       "quantity": "Määrä",
       "price": {
+        "price": "Hinta",
         "regular": "Vakituinen hinta",
         "sale": "Alennushinta",
         "unit": "Yksikköhinta"
@@ -108,7 +116,11 @@
       "rating_info": "Arvosana: {{ rating_value }}/{{ rating_max }}",
       "form_error": "Virhe",
       "go_to_top": "Siirry ylös",
-      "top": "Ylhäällä"
+      "top": "Ylhäällä",
+      "slide": "Näytä kalvo {{ count }}",
+      "next_slide": "Seuraava kalvo",
+      "previous_slide": "Edellinen kalvo",
+      "time_left": "Aikaa jäljellä"
     },
     "cookies_popup": {
       "title": "Evästeet",
@@ -200,7 +212,9 @@
       },
       "loading_reviews": "Ladataan lisää arvosteluja",
       "include_taxes": "Sisältää veron.",
+      "exclude_taxes": "Veroton.",
       "shipping_policy_html": "<a href=\"{{ link }}\">Toimituskulut</a> lasketaan kassalla.",
+      "required_line_item": "Tämä kenttä on pakollinen",
       "view_in_space": "Näytä omassa tilassasi",
       "view_in_space_label": "Näytä omassa tilassasi, lataa kohteen lisätyn todellisuuden ikkunaan",
       "sales_amount_html": "säästät {{ amount }}",
@@ -240,6 +254,10 @@
       "one": "{{ count }} tuote lisättiin ostoskoriisi",
       "other": "{{ count }} tuotetta lisättiin ostoskoriisi"
     },
+    "bundled_items_toggle": {
+      "show_items": "Näytä {{ count }} tuotetta",
+      "hide_items": "Piilota {{ count }} tuotetta"
+    },
     "free_shipping_remaining_html": "Olet {{ remaining_amount }} päässä ilmaisesta toimituksesta.",
     "free_shipping_eligible": "Olet oikeutettu ilmaiseen toimitukseen!",
     "shipping_calculator": {
@@ -252,7 +270,10 @@
       "product": "Tuote",
       "quantity": "Määrä",
       "total": "Yhteensä"
-    }
+    },
+    "discount_codes_label": "Alennuskoodit",
+    "discount_code_error": "Alennuskoodia ei voi käyttää ostoskoriisi",
+    "remove_discount_code": "Poista alennuskoodi: {{ code }}"
   },
   "blog": {
     "grid": {
@@ -321,7 +342,8 @@
         "date": "Päivämäärä",
         "payment_status": "Maksun tila",
         "fulfillment_status": "Toimituksen tila",
-        "total": "Yhteensä"
+        "total": "Yhteensä",
+        "view_order": "Näytä tilaus"
       },
       "no_orders_message": "Et ole vielä tehnyt tilauksia.",
       "account_details_title": "Käyttäjätilin tiedot",
@@ -438,7 +460,8 @@
       "email_label": "Vastaanottajan sähköposti",
       "name_label": "Vastaanottajan nimi (valinnainen)",
       "message_label": "Viesti (valinnainen)",
-      "max_characters": "Maksimissaan {{ max_chars }} merkkiä"
+      "max_characters": "Maksimissaan {{ max_chars }} merkkiä",
+      "send_on_label": "Lähetä lahjakortti eri päivämääränä (valinnainen)"
     }
   },
   "store_availability": {

@@ -1,4 +1,9 @@
-<div class="container--large {% unless section.settings.remove_margin %} container--vertical-space {% endunless %} {% if section.settings.section_background_color != "rgba(0,0,0,0)" or section.settings.section_background_gradient != blank %} container--has-background {% endif %} remove-empty-space">
+<div id="section-{{ section.id }}" class="container--large remove-empty-space
+  {% unless section.settings.remove_margin %} {% unless section.settings.descrease_margin %} container--vertical-space {% else %} container--vertical-space-grid {% endunless %} {% endunless %} 
+  {% if section.settings.section_background_color != "rgba(0,0,0,0)" or section.settings.section_background_gradient != blank %} container--has-background {% endif %}
+  {% if section.settings.section_visibility == "mobile" %} element--hide-on-desk {% endif %}
+  {% if section.settings.section_visibility == "desktop" %} element--hide-on-small {% endif %}
+">
   
   {%- render 'section-heading', heading: section.settings.heading, subheading: section.settings.subheading, heading_tag: section.settings.seo_h_tag, layout: section.settings.section_heading_layout -%}
 
@@ -7,6 +12,9 @@
     #shopify-section-{{ section.id }} .card__icon figure, 
     #shopify-section-{{ section.id }} .card__icon img {
       border-radius: {{ section.settings.border_radius }}px;
+    }
+    #shopify-section-{{ section.id }} .card__icon {
+      background-color: transparent;
     }
   </style>
 
@@ -21,11 +29,22 @@
     >
   {%- endif -%}
 
-  <div class="grid {% if section.settings.style == 'slider' %} grid--slider {% else %} grid--layout {% endif %} {{ section.settings.layout }}">
+  {%- if section.settings.inherit_card_design -%}
+    {%- render 'custom-colors', id: section.id, text: section.settings.color_text_main, background: section.settings.color_background_main, accent: section.settings.color_accent_main, borders: section.settings.color_borders_main, shadow: section.settings.color_shadow_main, hide_borders: section.settings.color_hide_borders, hide_shadow: section.settings.color_hide_shadow -%}
+  {%- endif -%}
+
+  <div id="element-{{ section.id }}" class="grid {% if section.settings.style == 'slider' %} grid--slider {% else %} grid--layout {% endif %} {{ section.settings.layout }}">
   
     {%- for block in section.blocks -%}
 
-      <div class="element--no-border text-align--center element--no-radius js-slider-item" {{ block.shopify_attributes }}>
+      <div {{ block.shopify_attributes }} class="js-slider-item 
+        {% unless section.settings.inherit_card_design %} 
+          element--no-border element--no-radius 
+        {% else %} 
+          card gutter--regular
+        {% endunless %}
+        text-align--center 
+      ">
 
         <div class="card__icon card__icon-size--{% if section.settings.layout == 'grid-3 grid-lap-2' %}large{% else %}regular{% endif %}" id="element-{{ block.id }}">
           {%- unless block.settings.image == blank -%}
@@ -60,7 +79,9 @@
           {%- endunless -%}
         </div>
 
-        <div class="gutter--regular spacing--small remove-empty-space">
+        <div class="{% unless section.settings.inherit_card_design %} gutter--regular {% else %} gutter-top--regular {% endunless %} spacing--small remove-empty-space"
+          {% if section.settings.inherit_card_design %} style="padding-bottom: 0" {% endif %}
+        >
 
           {%- unless block.settings.title == blank -%}
             <div style="color:var(--color-text-main)">
@@ -113,7 +134,12 @@
 {%- endif -%}
 {%- if section.settings.section_heading_color != "rgba(0,0,0,0)" -%}
   {% style %}
-    #shopify-section-{{ section.id }} {
+    {% if section.settings.inherit_card_design %}
+      #shopify-section-{{ section.id }} .section-heading,
+      #shopify-section-{{ section.id }} .css-slider-navigation-container {
+    {% else %}
+      #shopify-section-{{ section.id }} {
+    {% endif %}
       --color-text-main: {{ section.settings.section_heading_color }};
     }
   {% endstyle %}
@@ -189,6 +215,14 @@
         {
           "value": "grid-4 grid-portable-3 grid-lap-2",
           "label": "t:sections.local-extra-words.sections.columns.option__3"
+        },
+        {
+          "value": "grid-5 grid-portable-4 grid-lap-3 grid-palm-2 smel",
+          "label": "t:sections.local-extra-words.sections.columns.option__4"
+        },
+        {
+          "value": "grid-6 grid-portable-4 grid-lap-3 grid-palm-2 smel",
+          "label": "t:sections.local-extra-words.sections.columns.option__5"
         }
       ],
       "default": "grid-4 grid-portable-3 grid-lap-2"
@@ -202,6 +236,65 @@
       "step": 2,
       "unit": "px",
       "default": 200
+    },
+    {
+      "type": "header",
+      "content": "t:sections.local-extra-words.sections.headings.custom_colors"
+    },
+    {
+      "type": "checkbox",
+      "id": "inherit_card_design",
+      "label": "t:local-march-update.labels.inherit_card_design",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "color_background_main",
+      "visible_if": "{{ section.settings.inherit_card_design == true }}",
+      "label": "t:sections.split-extra-words.settings_schema.colors.settings.background",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "color_text_main",
+      "visible_if": "{{ section.settings.inherit_card_design == true }}",
+      "label": "t:sections.split-extra-words.settings_schema.colors.settings.text",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "color_accent_main",
+      "visible_if": "{{ section.settings.inherit_card_design == true }}",
+      "label": "t:sections.local-extra-words.settings_schema.colors.settings.accent",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "color_borders_main",
+      "visible_if": "{{ section.settings.inherit_card_design == true }}",
+      "label": "t:sections.local-extra-words.settings_schema.colors.settings.borders",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "color_shadow_main",
+      "visible_if": "{{ section.settings.inherit_card_design == true }}",
+      "label": "t:local-march-update.shadows.label",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "checkbox",
+      "id": "color_hide_borders",
+      "visible_if": "{{ section.settings.inherit_card_design == true }}",
+      "label": "t:sections.local-extra-words.settings_schema.colors.settings.hide_border",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "color_hide_shadow",
+      "visible_if": "{{ section.settings.inherit_card_design == true }}",
+      "label": "t:local-march-update.shadows.hide",
+      "default": false
     },
     {
       "type": "header",
@@ -226,7 +319,15 @@
     },
     {
       "type": "checkbox",
+      "id": "descrease_margin",
+      "visible_if": "{{ section.settings.remove_margin == false }}",
+      "label": "t:theme_blocks.descrease_top_margin",
+      "default": false
+    },
+    {
+      "type": "checkbox",
       "id": "remove_margin",
+      "visible_if": "{{ section.settings.descrease_margin == false }}",
       "label": "t:sections.local-extra-words.sections.rich-text.settings.remove_margin.label",
       "default": false
     },
@@ -262,6 +363,30 @@
         }
       ],
       "default": "h2"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.refactor_words.announcement-bar.visibility.label"
+    },
+    {
+      "type": "select",
+      "id": "section_visibility",
+      "label": "t:sections-visibility.label",
+      "options": [
+        {
+          "value": "always",
+          "label": "t:sections-visibility.options.always"
+        },
+        {
+          "value": "mobile",
+          "label": "t:sections-visibility.options.mobile"
+        },
+        {
+          "value": "desktop",
+          "label": "t:sections-visibility.options.desktop"
+        }
+      ],
+      "default": "always"
     }
   ],
   "blocks": [
@@ -299,6 +424,7 @@
         {
           "type": "checkbox",
           "id": "open_in_new_window",
+          "visible_if": "{{ block.settings.link != blank }}",
           "label": "t:sections.local-extra-words.sections.announcement-bar.blocks.content.settings.target",
           "default": false
         },
@@ -341,6 +467,7 @@
   "presets": [
     {
       "name": "t:sections.text-columns-with-images.name",
+      "category": "t:sections-categories.storytelling",
       "blocks": [
         {
           "type": "image",

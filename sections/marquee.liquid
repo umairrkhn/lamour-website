@@ -1,6 +1,11 @@
 {%- if section.blocks.size > 0 -%}
 
-  <div class="{% unless section.settings.remove_top_margin %} container--vertical-space {% endunless %} {% if section.settings.remove_bottom_margin %} container--negative-margin {% endif %}">
+  <div class="
+    {% unless section.settings.remove_top_margin %} container--vertical-space {% endunless %} 
+    {% if section.settings.remove_bottom_margin %} container--negative-margin {% endif %}
+    {% if section.settings.section_visibility == "mobile" %} element--hide-on-desk {% endif %}
+    {% if section.settings.section_visibility == "desktop" %} element--hide-on-small {% endif %} 
+  ">
 
     <style type="text/css">
       #element-{{ section.id }} {
@@ -16,10 +21,27 @@
           color: {{ section.settings.color_text_main }};
         }
       {% endif %}
+      #element-{{ section.id }} {
+        --scrolling-text-space: {{ section.settings.horizontal_space }};
+        --scrolling-text-size: {{ section.settings.text_size }}px;
+        --scrolling-text-font-size: {%- liquid
+          if section.settings.text_size == '100'
+            echo '100'
+          else
+            echo section.settings.text_size | times: 2
+          endif
+        -%}%;
+      }
+      {%- unless section.settings.text_size == '100' -%}
+        @media screen and (max-width: 767px) {
+          #element-{{ section.id }} {
+            --scrolling-text-font-size: {{ section.settings.text_size | times: 1.25 }}%;
+          }
+        }
+      {%- endunless -%}
     </style>
     
     {{ 'section-marquee.css' | asset_url | stylesheet_tag }}
-    <script src="{{ 'component-scrolling-text.js' | asset_url }}" defer></script>
 
     {%- liquid
       assign scroll_direction = 'ltr'
@@ -30,13 +52,28 @@
 
     <scrolling-text id="element-{{ section.id }}" class="scrolling-text text-size--xlarge" data-scrolling-speed="{{ section.settings.speed }}" data-scrolling-direction="{{ scroll_direction }}" data-pause-on-hover="{{ section.settings.pause_on_hover }}" dir="{{ scroll_direction }}">
       <div class="scrolling-text__container">  
-        {%- liquid
-          for block in section.blocks
-            echo '<span>' | append: block.settings.marquee_text | append: '</span>'
-          endfor
-        -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'text' -%}
+            <span class="scrolling-text__text" id="block-{{ block.id }}" {{ block.shopify_attributes }}>{{ block.settings.marquee_text }}</span>
+          {%- else -%}
+            <span class="scrolling-text__image" id="block-{{ block.id }}" {{ block.shopify_attributes }}>
+              <style>
+                #block-{{ block.id }} img {
+                  border-radius: {{ block.settings.border_radius }}px;
+                }
+              </style>
+              {%- unless block.settings.image == blank -%}
+                {%- render 'lazy-image', image: block.settings.image, sizes: 'sizes="100px"' -%}
+              {%- else -%}
+                <span class="lazy-image">{{ 'image' | placeholder_svg_tag }}</span>
+              {%- endunless -%}
+            </span>
+          {%- endif -%}
+        {%- endfor -%}
       </div>
     </scrolling-text>
+
+    <script src="{{ 'component-scrolling-text.js' | asset_url }}" defer></script>
 
   </div>
 
@@ -79,6 +116,46 @@
       "default": true
     },
     {
+      "type": "select",
+      "id": "horizontal_space",
+      "label": "t:sections.local-extra-words.settings_schema.layout.grid.horizontal_space",
+      "options": [
+        {
+          "value": "0.7",
+          "label": "t:sections.local-extra-words.settings_schema.product-card.title-size.options__1"
+        },
+        {
+          "value": "0.9",
+          "label": "t:sections.local-extra-words.sections.media-with-text-overlay.settings.option__5"
+        },
+        {
+          "value": "1.1",
+          "label": "t:sections.local-extra-words.sections.media-with-text-overlay.settings.option__2"
+        }
+      ],
+      "default": "1.1"
+    },
+    {
+      "type": "select",
+      "id": "text_size",
+      "label": "t:sections.local-extra-words.sections.product-card.blocks.text.settings.size.label",
+      "options": [
+          {
+            "value": "100",
+            "label": "t:sections.local-extra-words.settings_schema.product-card.title-size.options__1"
+          },
+          {
+            "value": "150",
+            "label": "t:sections.local-extra-words.sections.media-with-text-overlay.settings.option__5"
+          },
+          {
+            "value": "200",
+            "label": "t:sections.local-extra-words.sections.media-with-text-overlay.settings.option__2"
+          }
+        ],
+        "default": "100"
+    },
+    {
       "type": "checkbox",
       "id": "remove_top_margin",
       "label": "t:sections.local-extra-words.settings_schema.layout.sections.remove_vertical_space",
@@ -92,7 +169,7 @@
     },
     {
       "type": "header",
-      "content": "t:sections.local-extra-words.sections.headings.custom_colors"
+      "content": "t:local-march-update.labels.section_design"
     },
     {
       "type": "color",
@@ -110,12 +187,36 @@
       "id": "color_text_main",
       "label": "t:sections.split-extra-words.settings_schema.colors.settings.text",
       "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.refactor_words.announcement-bar.visibility.label"
+    },
+    {
+      "type": "select",
+      "id": "section_visibility",
+      "label": "t:sections-visibility.label",
+      "options": [
+        {
+          "value": "always",
+          "label": "t:sections-visibility.options.always"
+        },
+        {
+          "value": "mobile",
+          "label": "t:sections-visibility.options.mobile"
+        },
+        {
+          "value": "desktop",
+          "label": "t:sections-visibility.options.desktop"
+        }
+      ],
+      "default": "always"
     }
   ],
   "blocks": [
     {
       "type": "text",
-      "name": "t:sections.local-extra-words.sections.marquee.settings.scroll_item",
+      "name": "t:local-260.options.text",
       "settings": [
         {
           "type": "header",
@@ -128,11 +229,33 @@
           "default": "Default scrolling text. Lorem ipsum texturum marquee tamet"
         }
       ]
+    },
+    {
+      "type": "image",
+      "name": "t:local-260.labels.image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.refactor_words.before_after.image.label__1"
+        },
+        {
+          "type": "range",
+          "id": "border_radius",
+          "label": "t:sections.split-extra-words.settings_schema.typography.settings.border_radius",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "default": 0
+        }
+      ]
     }
   ],
   "presets": [
     {
       "name": "t:sections.local-extra-words.sections.marquee.name",
+      "category": "t:sections-categories.promotions",
       "blocks": [
         { "type": "text" }
       ]

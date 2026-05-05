@@ -1,14 +1,11 @@
-/*
- *  1.0. Mixins
-*/
 @media screen and (max-width: 1023px) {
-  .newsletter .button, .newsletter input[type=email] {
-    font-size: calc( 					16px / 16 * var(--base-body-size) + 0px 				);
+  .newsletter input[type=email], .newsletter .button {
+    font-size: calc(16px / 16 * var(--base-body-size) + 0px);
   }
 }
 @media screen and (min-width: 1024px) {
-  .newsletter .button, .newsletter input[type=email] {
-    font-size: calc( 				18px / 16 * var(--base-body-size) + 0px 			);
+  .newsletter input[type=email], .newsletter .button {
+    font-size: calc(18px / 16 * var(--base-body-size) + 0px);
   }
 }
 
@@ -25,7 +22,7 @@
 }
 .newsletter fieldset {
   display: grid;
-  grid-template-columns: 1fr min-content;
+  grid-template-columns: 1fr max-content;
   align-items: center;
   margin-inline-start: auto;
   margin-inline-end: auto;

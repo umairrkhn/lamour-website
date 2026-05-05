@@ -19,7 +19,9 @@
       "title": "Paylaş",
       "facebook": "Facebook",
       "twitter": "X (Twitter)",
-      "pinterest": "Pinterest"
+      "pinterest": "Pinterest",
+      "copy_to_clipboard": "Panoya kopyala",
+      "url_copied_to_clipboard": "URL kopyalandı"
     },
     "newsletter": {
       "email_label": "E-posta adresinizi girin",
@@ -51,7 +53,8 @@
       "powered_by_shopify_html": "Bu mağaza {{ shopify }} tarafından desteklenecektir"
     },
     "prefixes": {
-      "by": "ile"
+      "by": "ile",
+      "or": "veya"
     },
     "account_link": {
       "logged_in": "Hesabım",
@@ -66,7 +69,11 @@
       "cart": "Sepet"
     },
     "date_format": {
-      "month_day_year": "%b %d, %Y"
+      "month_day_year": "%b %d, %Y",
+      "days": "Gün",
+      "hours": "Saat",
+      "minutes": "Dakika",
+      "seconds": "Saniye"
     },
     "copyright": "Telif Hakkı",
     "meta": {
@@ -95,6 +102,7 @@
       "country_dropdown_label": "Ülke/bölge",
       "quantity": "Miktar",
       "price": {
+        "price": "Fiyat",
         "regular": "Normal fiyat",
         "sale": "Satış fiyatı",
         "unit": "Birim fiyatı"
@@ -108,7 +116,11 @@
       },
       "rating_info": "Puan: {{ rating_value }} üzerinden {{ rating_max }}",
       "top": "Top",
-      "go_to_top": "Top"
+      "go_to_top": "Top",
+      "slide": "Slayt {{ count }} göster",
+      "next_slide": "Sonraki slayt",
+      "previous_slide": "Önceki slayt",
+      "time_left": "Kalan süre"
     },
     "cookies_popup": {
       "title": "Çerezler",
@@ -200,7 +212,9 @@
       },
       "loading_reviews": "Daha fazla yorum yükleniyor",
       "include_taxes": "Vergi dahil.",
+      "exclude_taxes": "Vergi hariç.",
       "shipping_policy_html": "<a href=\"{{ link }}\">Shipping</a> ödeme içinde hesaplandı.",
+      "required_line_item": "Bu alan gereklidir",
       "view_in_space": "Alanında görüntüle",
       "view_in_space_label": "Alanında görüntüle, ögeyi artırılmış gerçeklik penceresinde yükler",
       "sales_amount_html": "{{ amount }}'i kaydedersiniz",
@@ -240,6 +254,10 @@
       "one": "{{ count }} ürün sepetine eklendi",
       "other": "{{ count }} ürün sepetine eklendi"
     },
+    "bundled_items_toggle": {
+      "show_items": "{{ count }} öğeyi göster",
+      "hide_items": "{{ count }} öğeyi gizle"
+    },
     "free_shipping_remaining_html": "Ücretsiz gönderimden {{ remaining_amount }} kadar uzaktasınız.",
     "free_shipping_eligible": "Ücretsiz gönderim için uygunsunuz!",
     "shipping_calculator": {
@@ -252,7 +270,10 @@
       "product": "Ürün",
       "quantity": "Miktar",
       "total": "Toplam"
-    }
+    },
+    "discount_codes_label": "İndirim kodları",
+    "discount_code_error": "İndirim kodu sepetinize uygulanamıyor",
+    "remove_discount_code": "İndirim kodunu kaldır: {{ code }}"
   },
   "blog": {
     "grid": {
@@ -321,7 +342,8 @@
         "date": "Tarih",
         "payment_status": "Ödeme Durumu",
         "fulfillment_status": "Tamamlanma Durumu",
-        "total": "Toplam"
+        "total": "Toplam",
+        "view_order": "Siparişi görüntüle"
       },
       "no_orders_message": "Henüz herhangi bir sipariş vermedin.",
       "account_details_title": "Hesap Detayları",
@@ -434,11 +456,12 @@
     "shop_link": "Alışverişe başlayın",
     "print": "Yazdır",
     "recipient": {
+      "email_label": "Alıcı e-posta adresi",
       "checkbox": "Bunu hediye olarak göndermek istiyorum",
-      "email_label_optional": "Alıcı e-postası (isteğe bağlı)",
       "name_label": "Alıcı adı (isteğe bağlı)",
       "message_label": "Mesaj (isteğe bağlı)",
-      "max_characters": "Maksimum {{ max_chars }} karakter"
+      "max_characters": "Maksimum {{ max_chars }} karakter",
+      "send_on_label": "Hediye kartını farklı bir tarihte gönder (isteğe bağlı)"
     }
   },
   "store_availability": {

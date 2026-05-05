@@ -1,5 +1,9 @@
 {{ 'section-account.css' | asset_url | stylesheet_tag }}
 
+{%- if section.settings.enable_shop_login_button == false -%}
+  {%- assign hide_shop_login_button = true -%}
+{%- endif -%}
+
 <div class="container--large container--vertical-space">
 	<div class="account">
 
@@ -32,9 +36,23 @@
 
 					<div class="form-actions gutter-top--small">
 
-						<button type="submit" class="button button--solid button--regular"  >{{ 'customers.login_page.form_login_button' | t }}</button>
+						<div class="form-actions__login">
 
-						<div style="text-align: end;" class="gutter-top--small">
+							<button type="submit" class="button button--solid button--regular button--regular-mobile"  >{{ 'customers.login_page.form_login_button' | t }}</button>
+
+							<div name="sign-in-with-shop-provider" style="{% if hide_shop_login_button %}display:none;{% endif %}--buttons-radius:var(--border-radius-buttons)">
+								{{ shop | login_button: hide_button: hide_shop_login_button }}
+							</div>
+
+						</div>
+
+						<div class="
+							{% if hide_shop_login_button %} 
+								gutter-top--small text-align--right
+							{% else %}
+							 	gutter-top--regular
+							{% endif %}
+						">
 							{% if form.password_needed %}
 								<span style="display: block;" class="text-size--small"><a href="#recover" onclick="showRecoverPasswordForm();return false;">{{ 'customers.login_page.forgot_password_check' | t }}</a></span>
 							{% endif %}
@@ -55,7 +73,7 @@
 
 				{% form 'recover_customer_password', class: 'simple-form' %}
 
-					{% render 'form-errors', form: form %}
+					{%- render 'form-errors', form: form -%}
 
 					{% if form.posted_successfully? %}
 						{% assign reset_success = true %}
@@ -70,9 +88,9 @@
 
 						<div class="account__form-row account__form-row--flex form-actions gutter-top--small">
 
-							<button type="submit" class="button button--solid button--regular" >{{ 'customers.login_page.password_reset.submit_button' | t }}</button>
+							<button type="submit" class="button button--solid button--regular  button--regular-mobile">{{ 'customers.login_page.password_reset.submit_button' | t }}</button>
 
-							<a href="#" class="button button--outline button--regular" onclick="hideRecoverPasswordForm();return false;">{{ 'customers.login_page.password_reset.cancel_button' | t }}</a>
+							<a href="#" class="button button--outline button--regular button--regular-mobile" onclick="hideRecoverPasswordForm();return false;">{{ 'customers.login_page.password_reset.cancel_button' | t }}</a>
 
 						</div>
 					</div>
@@ -122,6 +140,14 @@
 {% schema %}
   {
     "name": "t:sections.local-extra-words.sections.customers.login.name",
-    "class": "section--remove-bottom-margin-after"
+    "class": "section--remove-bottom-margin-after",
+		"settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_shop_login_button",
+        "label": "t:sections.local-extra-words.sections.customers.login.shop_login_button.enable",
+        "default": false
+      }
+    ]
   }
 {% endschema %}

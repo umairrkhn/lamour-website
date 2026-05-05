@@ -1,6 +1,3 @@
-/*
- *  1.0. Mixins
-*/
 @media screen and (max-width: 767px) {
   before-after.invert-layout:after {
     content: "invert-layout";
@@ -99,6 +96,9 @@ html[dir=ltr] .before-after__label {
 }
 .before-after .foreground-img {
   clip-path: inset(0 0 0 var(--position));
+}
+html[dir=rtl] [data-layout=horizontal] .before-after .foreground-img {
+  clip-path: inset(0 0 0 calc(100% - var(--position)));
 }
 [data-layout=vertical] .before-after .foreground-img {
   clip-path: inset(calc(100% - var(--position)) 0 0 0);

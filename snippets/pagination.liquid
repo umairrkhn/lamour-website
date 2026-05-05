@@ -1,3 +1,13 @@
+{%- comment -%}
+  Renders pagination.
+  
+  Accepts:
+  - paginate: {Object} the paginate object.
+  
+  Usage:
+  {%- render 'pagination', paginate: paginate -%}
+{%- endcomment -%}
+
 {%- if paginate.pages > 1 -%}
 
   {{ 'component-pagination.css' | asset_url | stylesheet_tag }}

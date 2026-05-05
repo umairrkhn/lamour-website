@@ -19,7 +19,9 @@
       "title": "Udostępnij",
       "facebook": "Facebook",
       "twitter": "X (Twitter)",
-      "pinterest": "Pinterest"
+      "pinterest": "Pinterest",
+      "copy_to_clipboard": "Skopiuj do schowka",
+      "url_copied_to_clipboard": "URL skopiowany"
     },
     "newsletter": {
       "email_label": "Wprowadź swój e-mail",
@@ -51,7 +53,8 @@
       "powered_by_shopify_html": "Ten sklep będzie obsługiwany przez {{ shopify }}"
     },
     "prefixes": {
-      "by": "od:"
+      "by": "od:",
+      "or": "lub"
     },
     "account_link": {
       "logged_in": "Moje konto",
@@ -60,17 +63,21 @@
     "breadcrumb": {
       "homepage": "Strona główna",
       "collections": "Kolekcje",
-      "search": "Wyniki wyszukiwania dla frazy „{{ terms }}”",
+      "search": "Wyniki wyszukiwania dla frazy \"{{ terms }}\"",
       "blog": "Blog",
       "account": "Konto",
       "cart": "Koszyk"
     },
     "date_format": {
-      "month_day_year": "%d %b %Y"
+      "month_day_year": "%d %b %Y",
+      "days": "dni",
+      "hours": "godziny",
+      "minutes": "minuty",
+      "seconds": "sekundy"
     },
     "copyright": "Prawa autorskie",
     "meta": {
-      "tags": "Otagowane jako „{{ tags }}”",
+      "tags": "Otagowane jako \"{{ tags }}\"",
       "page": "Strona {{ page }}"
     },
     "share_on": "Udostępnij w serwisie",
@@ -95,6 +102,7 @@
       "country_dropdown_label": "Kraj/region",
       "quantity": "Ilość",
       "price": {
+        "price": "Cena",
         "regular": "Cena standardowa",
         "sale": "Cena promocyjna",
         "unit": "Cena jednostkowa"
@@ -108,7 +116,11 @@
       },
       "rating_info": "Ocena: {{ rating_value }} z {{ rating_max }}",
       "top": "Top",
-      "go_to_top": "Top"
+      "go_to_top": "Top",
+      "slide": "Pokaż slajd {{ count }}",
+      "next_slide": "Volgende dia",
+      "previous_slide": "Vorige dia",
+      "time_left": "Pozostał czas"
     },
     "cookies_popup": {
       "title": "Pliki cookie",
@@ -200,9 +212,11 @@
       },
       "loading_reviews": "Wczytuję więcej recenzji",
       "include_taxes": "Z wliczonym podatkiem.",
+      "exclude_taxes": "Bez podatku.",
       "shipping_policy_html": "Koszt <a href=\"{{ link }}\">wysyłki</a> obliczany jest przy finalizacji zamówienia.",
+      "required_line_item": "To pole jest wymagane",
       "view_in_space": "Zobacz w swojej przestrzeni",
-      "view_in_space_label": "Opcja „Zobacz w swojej przestrzeni” ładuje produkt w oknie rzeczywistości rozszerzonej",
+      "view_in_space_label": "Opcja \"Zobacz w swojej przestrzeni\" ładuje produkt w oknie rzeczywistości rozszerzonej",
       "sales_amount_html": "oszczędzasz {{ amount }}",
       "variants": "Odmiany"
     },
@@ -240,6 +254,10 @@
       "one": "{{ count }} produkt został dodany do Twojego koszyka",
       "other": "Do Twojego koszyka dodano {{ count }} produkty(ów)"
     },
+    "bundled_items_toggle": {
+      "show_items": "Pokaż {{ count }} elementów",
+      "hide_items": "Ukryj {{ count }} elementów"
+    },
     "free_shipping_remaining_html": "Brakuje Ci jeszcze {{ remaining_amount }} do bezpłatnej wysyłki.",
     "free_shipping_eligible": "Kwalifikujesz się do bezpłatnej wysyłki!",
     "shipping_calculator": {
@@ -252,7 +270,10 @@
       "product": "Produkt",
       "quantity": "Ilość",
       "total": "Suma"
-    }
+    },
+    "discount_codes_label": "Kody rabatowe",
+    "discount_code_error": "Nie można zastosować kodu rabatowego do Twojego koszyka",
+    "remove_discount_code": "Usuń kod rabatowy: {{ code }}"
   },
   "blog": {
     "grid": {
@@ -291,16 +312,16 @@
       "collection_results_title": "Kolekcje",
       "page_results_title": "Strony",
       "article_results_title": "Posty na blogu",
-      "search_for_html": "Wyszukaj frazy „{{ terms }}”",
+      "search_for_html": "Wyszukaj frazy \"{{ terms }}\"",
       "product_results_title": "Produkty"
     },
     "page": {
       "title": "Wyniki wyszukiwania",
       "subtitle": "Użyj paska wyszukiwania poniżej, aby znaleźć produkty:",
-      "no_results": "Nie znaleziono wyników dla frazy „{{ terms }}”",
-      "results": "Znaleziono wyniki ({{ count }}) dla „{{ terms }}”",
+      "no_results": "Nie znaleziono wyników dla frazy \"{{ terms }}\"",
+      "results": "Znaleziono wyniki ({{ count }}) dla \"{{ terms }}\"",
       "products_found": "Produkty ({{ count }})",
-      "pages_and_articles_found": "Strony i artykuły dotyczące „{{ terms }}”",
+      "pages_and_articles_found": "Strony i artykuły dotyczące \"{{ terms }}\"",
       "results_count": {
         "zero": "Brak wyników",
         "one": "Wyświetlanie {{ count }} wyniku",
@@ -321,7 +342,8 @@
         "date": "Data",
         "payment_status": "Status płatności",
         "fulfillment_status": "Status realizacji",
-        "total": "Suma"
+        "total": "Suma",
+        "view_order": "Zobacz zamówienie"
       },
       "no_orders_message": "Nie złożono jeszcze żadnego zamówienia.",
       "account_details_title": "Szczegóły konta",
@@ -438,7 +460,8 @@
       "email_label": "E-mail odbiorcy",
       "name_label": "Nazwa odbiorcy (opcjonalnie)",
       "message_label": "Wiadomość (opcjonalna)",
-      "max_characters": "Maks. {{ max_chars }} znaki(-ów)"
+      "max_characters": "Maks. {{ max_chars }} znaki(-ów)",
+      "send_on_label": "Wyślij kartę podarunkową w innym terminie (opcjonalnie)"
     }
   },
   "store_availability": {

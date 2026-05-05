@@ -1,13 +1,10 @@
-/*
- *  1.0. Mixins
-*/
-.account-widget__head, .account-table .thead {
+.account-table .thead, .account-widget__head {
   background-color: rgba(0, 0, 0, 0.05);
   height: 3.4375rem;
   border-bottom: solid var(--color-borders-main) var(--border-width-cards);
 }
 
-.account-widget, .account-table {
+.account-table, .account-widget {
   width: 100%;
   border: solid var(--color-borders-main) var(--border-width-cards);
   border-radius: var(--border-radius-cards);
@@ -15,6 +12,13 @@
   margin-bottom: var(--gutter-regular);
 }
 
+.account .form-actions__login {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
 .account-layout {
   display: grid;
   grid-template-columns: 2fr 1fr;

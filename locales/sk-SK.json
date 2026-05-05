@@ -19,7 +19,9 @@
       "title": "Zdieľať",
       "facebook": "Facebook",
       "twitter": "X (Twitter)",
-      "pinterest": "Pinterest"
+      "pinterest": "Pinterest",
+      "copy_to_clipboard": "Kopírovať do schránky",
+      "url_copied_to_clipboard": "URL skopírované"
     },
     "newsletter": {
       "email_label": "Zadajte svoj e-mail",
@@ -51,7 +53,8 @@
       "powered_by_shopify_html": "Tento obchod bude využívať technológiu {{ shopify }}"
     },
     "prefixes": {
-      "by": "od"
+      "by": "od",
+      "or": "alebo"
     },
     "account_link": {
       "logged_in": "Moje Konto",
@@ -66,11 +69,15 @@
       "cart": "Nákupný košík"
     },
     "date_format": {
-      "month_day_year": "%b %d, %Y"
+      "month_day_year": "%b %d, %Y",
+      "days": "Dni",
+      "hours": "Hodiny",
+      "minutes": "Minúty",
+      "seconds": "Sekundy"
     },
     "copyright": "Autorské práva",
     "meta": {
-      "tags": "Označené “{{ tags }“",
+      "tags": "Označené \"{{ tags }\"",
       "page": "Stránka {{ page }}"
     },
     "share_on": "Zdieľať na",
@@ -95,6 +102,7 @@
       "country_dropdown_label": "Krajina/región",
       "quantity": "Množstvo",
       "price": {
+        "price": "Cena",
         "regular": "Bežná cena",
         "sale": "Výpredajová cena",
         "unit": "Cena za jednotku"
@@ -108,7 +116,11 @@
       "rating_info": "Hodnotenie: {{ rating_value }} z {{ rating_max }}",
       "form_error": "Chyba",
       "go_to_top": "Prejsť na začiatok",
-      "top": "Top"
+      "top": "Top",
+      "slide": "Zobraziť snímku {{ count }}",
+      "next_slide": "Ďalší snímok",
+      "previous_slide": "Predchádzajúci snímok",
+      "time_left": "Zostávajúci čas"
     },
     "cookies_popup": {
       "title": "súbory Cookies",
@@ -200,7 +212,9 @@
       },
       "loading_reviews": "Načítavajú sa ďalšie recenzie",
       "include_taxes": "Vrátane dane.",
+      "exclude_taxes": "Bez dane.",
       "shipping_policy_html": "<a href=\"{{ link }}\">Doprava</a> vypočítaná pri pokladni.",
+      "required_line_item": "Toto pole je povinné",
       "view_in_space": "Zobraziť vo svojom priestore",
       "view_in_space_label": "Zobraziť vo svojom priestore, načíta položku v okne rozšírenej reality",
       "sales_amount_html": "ušetríte {{ amount }}",
@@ -240,6 +254,10 @@
       "one": "Do košíka bol pridaný {{ count }} produkt",
       "other": "Do košíka bolo pridaných {{ count }} produktov"
     },
+    "bundled_items_toggle": {
+      "show_items": "Zobraziť {{ count }} položiek",
+      "hide_items": "Skryť {{ count }} položiek"
+    },
     "free_shipping_remaining_html": "Od bezplatnej dopravy vás delí {{ remaining_amount }}.",
     "free_shipping_eligible": "Máte nárok na bezplatnú dopravu!",
     "shipping_calculator": {
@@ -252,7 +270,10 @@
       "product": "Produkt",
       "quantity": "Množstvo",
       "total": "Celkom"
-    }
+    },
+    "discount_codes_label": "Zľavové kódy",
+    "discount_code_error": "Zľavový kód nie je možné uplatniť na váš košík",
+    "remove_discount_code": "Odstrániť zľavový kód: {{ code }}"
   },
   "blog": {
     "grid": {
@@ -291,16 +312,16 @@
       "collection_results_title": "Kolekcie",
       "page_results_title": "Stránky",
       "article_results_title": "Blogové príspevky",
-      "search_for_html": "Hľadať \"{{ terms }“",
+      "search_for_html": "Hľadať \"{{ terms }\"",
       "product_results_title": "Produkty"
     },
     "page": {
       "title": "Výsledky vyhľadávania",
       "subtitle": "Na vyhľadanie produktov použite panel vyhľadávania nižšie:",
-      "no_results": "Nenašli sa žiadne výsledky pre \"{{ terms }}“",
-      "results": "Počet nájdených výsledkov pre dopyt \"{{ terms }}“: {{ count }}",
+      "no_results": "Nenašli sa žiadne výsledky pre \"{{ terms }}\"",
+      "results": "Počet nájdených výsledkov pre dopyt \"{{ terms }}\": {{ count }}",
       "products_found": "Produkty ({{ count }})",
-      "pages_and_articles_found": "Stránky a články pre \"{{ terms }}“",
+      "pages_and_articles_found": "Stránky a články pre \"{{ terms }}\"",
       "results_count": {
         "zero": "Žiadne výsledky",
         "one": "Zobrazuje sa {{ count }} výsledok",
@@ -321,7 +342,8 @@
         "date": "Dátum",
         "payment_status": "Stav platby",
         "fulfillment_status": "Stav plnenia",
-        "total": "Celkom"
+        "total": "Celkom",
+        "view_order": "Zobraziť objednávku"
       },
       "no_orders_message": "Zatiaľ ste nezadali žiadne objednávky.",
       "account_details_title": "Detaily účtu",
@@ -438,7 +460,8 @@
       "email_label": "E-mail príjemcu",
       "name_label": "Meno príjemcu (voliteľné)",
       "message_label": "Správa (voliteľné)",
-      "max_characters": "Max. počet znakov: {{ max_chars }}"
+      "max_characters": "Max. počet znakov: {{ max_chars }}",
+      "send_on_label": "Odoslať darčekovú kartu v iný deň (voliteľné)"
     }
   },
   "store_availability": {

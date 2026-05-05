@@ -19,7 +19,9 @@
       "title": "Partajați",
       "facebook": "Facebook",
       "twitter": "X (Twitter)",
-      "pinterest": "Pinterest"
+      "pinterest": "Pinterest",
+      "copy_to_clipboard": "Copiază în clipboard",
+      "url_copied_to_clipboard": "URL copiat"
     },
     "newsletter": {
       "email_label": "Introdu adresa ta de e-mail",
@@ -51,7 +53,8 @@
       "powered_by_shopify_html": "Acest magazin va folosi platforma {{ shopify }}"
     },
     "prefixes": {
-      "by": "de"
+      "by": "de",
+      "or": "sau"
     },
     "account_link": {
       "logged_in": "Contul meu",
@@ -66,7 +69,11 @@
       "cart": "Coș"
     },
     "date_format": {
-      "month_day_year": "%l %z, %A"
+      "month_day_year": "%l %z, %A",
+      "days": "Zile",
+      "hours": "Ore",
+      "minutes": "Minute",
+      "seconds": "Secunde"
     },
     "copyright": "Drepturi de autor",
     "meta": {
@@ -95,6 +102,7 @@
       "country_dropdown_label": "Țară/Regiune",
       "quantity": "Cantitate",
       "price": {
+        "price": "Preț",
         "regular": "Preț obișnuit",
         "sale": "Preț de vânzare",
         "unit": "Prețul pe unitate"
@@ -108,7 +116,11 @@
       },
       "rating_info": "Evaluare: {{ rating_value }} din {{ rating_max }}",
       "top": "Sus",
-      "go_to_top": "Sus"
+      "go_to_top": "Sus",
+      "slide": "Afișează slide-ul {{ count }}",
+      "next_slide": "Slide-ul următor",
+      "previous_slide": "Slide-ul anterior",
+      "time_left": "Timp rămas"
     },
     "cookies_popup": {
       "title": "Cookie-uri",
@@ -200,9 +212,11 @@
       },
       "loading_reviews": "Se încarcă mai multe recenzii",
       "include_taxes": "Incluzând taxele.",
+      "exclude_taxes": "Fără taxe.",
       "shipping_policy_html": "<a href=\"{{ link }}\">Shipping</a> se calculează la finalizare.",
+      "required_line_item": "Acest câmp este obligatoriu",
       "view_in_space": "Vizualizează în spațiul tău",
-      "view_in_space_label": "„Vizualizează în spațiul tău” încarcă elementul în fereastra de realitate augmentată",
+      "view_in_space_label": "\"Vizualizează în spațiul tău\" încarcă elementul în fereastra de realitate augmentată",
       "sales_amount_html": "economisiți {{ amount }}",
       "variants": "Variante"
     },
@@ -240,6 +254,10 @@
       "one": "{{ count }} produs a fost adăugat în coșul tău",
       "other": "{{ count }} produse au fost adăugate în coșul tău"
     },
+    "bundled_items_toggle": {
+      "show_items": "Afișează {{ count }} articole",
+      "hide_items": "Ascunde {{ count }} articole"
+    },
     "free_shipping_remaining_html": "Sunteți la {{ remaining_amount }} distanță de transportul gratuit.",
     "free_shipping_eligible": "Sunteți eligibil pentru transport gratuit!",
     "shipping_calculator": {
@@ -252,7 +270,10 @@
       "product": "Produs",
       "quantity": "Cantitate",
       "total": "Total"
-    }
+    },
+    "discount_codes_label": "Coduri de reducere",
+    "discount_code_error": "Codul de reducere nu poate fi aplicat coșului tău",
+    "remove_discount_code": "Șterge codul de reducere: {{ code }}"
   },
   "blog": {
     "grid": {
@@ -321,7 +342,8 @@
         "date": "Dată",
         "payment_status": "Stare plată",
         "fulfillment_status": "Stare procesare",
-        "total": "Total"
+        "total": "Total",
+        "view_order": "Vezi comanda"
       },
       "no_orders_message": "Încă nu ai făcut nicio comandă.",
       "account_details_title": "Detalii cont",
@@ -438,7 +460,8 @@
       "email_label": "Adresă de e-mail destinatar",
       "name_label": "Nume destinatar (opțional)",
       "message_label": "Mesaj (opțional)",
-      "max_characters": "Maximum {{ max_chars }} (de) caractere"
+      "max_characters": "Maximum {{ max_chars }} (de) caractere",
+      "send_on_label": "Trimite cardul cadou într-o altă dată (opțional)"
     }
   },
   "store_availability": {

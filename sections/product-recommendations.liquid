@@ -1,4 +1,4 @@
-<product-recommendations class="product-recommendations" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ section.settings.products_number }}&intent=related"">
+<product-recommendations class="product-recommendations" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ section.settings.products_number }}&intent=related">
 
   {%- if recommendations.performed and recommendations.products_count > 0 -%}
 
@@ -16,10 +16,11 @@
         id="css-slider-{{ section.id }}"
       >
         {%- render 'custom-shadow', section_id: section.id -%}
-        <div class="grid grid--slider {{ section.settings.layout }}">
+
+        <div class="grid grid--slider {{ section.settings.layout }} {{ section.settings.layout_mobile }} kill-grid-tiny">
           {%- liquid
             for recommendation in recommendations.products
-              render 'product-item', product: recommendation, section_blocks: section.blocks, index: forloop.index, layout: section.settings.layout
+              render 'product-item', product: recommendation, section_blocks: section.blocks, layout: section.settings.layout, mobile_layout: section.settings.layout_mobile
             endfor
           -%}
         </div>
@@ -54,6 +55,49 @@
   {%- endif -%}
   
 </product-recommendations>
+
+
+<style>
+
+  #shopify-section-{{ section.id }} .product-item {
+    {%- if section.settings.color_background_main != 'rgba(0,0,0,0)' -%}
+      --color-background-cards: {{ section.settings.color_background_main }};
+    {%- endif -%}
+    {%- if section.settings.color_text_main != 'rgba(0,0,0,0)' -%}
+      --color-text-cards: {{ section.settings.color_text_main }};
+    {%- endif -%}
+    {%- if section.settings.color_borders_main != 'rgba(0,0,0,0)' -%}
+      --color-borders-cards: {{ section.settings.color_borders_main }};
+    {%- endif -%}
+    {%- if section.settings.color_shadow_main != 'rgba(0,0,0,0)' -%}
+      --color-shadow-cards: {{ section.settings.color_shadow_main }};
+    {%- endif -%}
+    {%- if section.settings.color_hide_borders -%}
+      --border-width-cards: 0;
+    {%- endif -%}
+    {%- if section.settings.color_hide_shadow -%}
+      --shadow-x-cards: 0;
+      --shadow-y-cards: 0;
+      --shadow-blur-cards: 0;
+    {%- endif -%}
+  }
+
+  {%- if section.settings.color_button_main != 'rgba(0,0,0,0)' -%}
+    #shopify-section-{{ section.id }} .product-item .button {
+      --color-text-cards: {{ section.settings.color_button_main }};
+      {%- liquid 
+        assign brightness_product_button = section.settings.color_button_main | color_brightness
+        if brightness_product_button > 150 
+          assign color_foreground_product_button = settings.color_foreground_light 
+        else 
+          assign color_foreground_product_button = settings.color_foreground_dark 
+        endif 
+      -%}
+      --color-foreground-cards: {{ color_foreground_product_button }};
+    }
+  {%- endif -%}
+
+</style>
 
 {% schema %}
   {
@@ -104,7 +148,6 @@
             "type": "text",
             "id": "metafield",
             "label": "t:sections.local-extra-words.sections.product-card.blocks.text.settings.text.label",
-            "info": "t:sections.local-extra-words.sections.product-card.blocks.text.info",
             "info": "custom.product_text"
           },
           {
@@ -140,6 +183,23 @@
             "default": false
           }
         ]
+      },
+      {
+        "type": "product_link",
+        "name": "t:sections.featured-product.blocks.product_link.name",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "t:sections.local-extra-words.sections.main-header.settings.promotion_block.button.label",
+            "default": "View product"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "name": "t:local-march-update.blocks.space.name"
       }
     ],
     "settings": [
@@ -187,7 +247,6 @@
         "type": "select",
         "id": "layout",
         "label": "t:sections.local-extra-words.sections.columns.name",
-        "info": "t:sections.local-extra-words.sections.columns.info",
         "options": [
           {
             "value": "grid-3 grid-lap-2 grid-tiny-1",
@@ -196,18 +255,83 @@
           {
             "value": "grid-4 grid-portable-3 grid-lap-2 grid-tiny-1",
             "label": "t:sections.local-extra-words.sections.columns.option__3"
+          },
+          {
+            "value": "grid-5 grid-laptop-4 grid-portable-3 grid-lap-2",
+            "label": "t:sections.local-extra-words.sections.columns.option__4"
           }
         ],
         "default": "grid-4 grid-portable-3 grid-lap-2 grid-tiny-1"
+      },
+      {
+        "type": "select",
+        "id": "layout_mobile",
+        "label": "t:sections.local-extra-words.sections.columns.name_mobile",
+        "options": [
+          {
+            "value": "grid-palm-1",
+            "label": "t:sections.local-extra-words.sections.columns.option__0"
+          },
+          {
+            "value": "grid-palm-2",
+            "label": "t:sections.local-extra-words.sections.columns.option__1"
+          }
+        ],
+        "default": "grid-palm-1"
       },
       {
         "type": "range",
         "id": "products_number",
         "label": "t:sections.featured-collection.settings.products_number.label",
         "min": 3,
-        "max": 8,
+        "max": 10,
         "step": 1,
         "default": 4
+      },{
+        "type": "header",
+        "content": "t:sections.local-extra-words.sections.headings.custom_colors"
+      },
+      {
+        "type": "color",
+        "id": "color_background_main",
+        "label": "t:sections.split-extra-words.settings_schema.colors.settings.background",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "color",
+        "id": "color_text_main",
+        "label": "t:sections.split-extra-words.settings_schema.colors.settings.text",
+        "default": "rgba(0,0,0,0)"
+      },
+			{
+				"type": "color",
+				"id": "color_button_main",
+				"label": "t:sections.local-extra-words.settings_schema.borders.buttons.name",
+				"default": "rgba(0,0,0,0)"
+			},
+      {
+        "type": "color",
+        "id": "color_borders_main",
+        "label": "t:sections.local-extra-words.settings_schema.colors.settings.borders",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "color",
+        "id": "color_shadow_main",
+        "label": "t:local-march-update.shadows.label",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "checkbox",
+        "id": "color_hide_borders",
+        "label": "t:sections.local-extra-words.settings_schema.colors.settings.hide_border",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "color_hide_shadow",
+        "label": "t:local-march-update.shadows.hide",
+        "default": false
       },
       {
         "type": "header",

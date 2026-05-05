@@ -1,6 +1,3 @@
-/*
- *  1.0. Mixins
-*/
 .modal {
   position: fixed;
   width: 100%;
@@ -49,6 +46,7 @@ html[dir=ltr] .modal-background {
   top: 0;
   background: var(--color-background-main);
   color: var(--color-text-main);
+  border-radius: var(--border-radius-cards);
   transform: translateY(50px);
   padding: calc(var(--gutter-large) * 0.4) calc(var(--gutter-large) * 0.75) calc(var(--gutter-large) * 0.6);
   opacity: 0;
@@ -56,7 +54,7 @@ html[dir=ltr] .modal-background {
   transition: all 300ms linear 50ms;
   z-index: 9;
   overflow-y: auto;
-  max-height: calc(100vh - (var(--gutter-large) * 2));
+  max-height: calc(100vh - var(--gutter-large) * 2);
   pointer-events: none;
 }
 html[dir=rtl] .modal-content {
@@ -67,6 +65,9 @@ html[dir=ltr] .modal-content {
 }
 .modal-content interactive-map {
   z-index: 0;
+}
+.modal-content interactive-map .map-object * {
+  border-radius: 0 !important;
 }
 modal-box.active .modal-content {
   pointer-events: all;
@@ -112,7 +113,7 @@ modal-box.active .modal-content {
     height: 100%;
   }
   .modal .store-selector-map {
-    width: calc(100% + (var(--gutter-large) * 1.5));
+    width: calc(100% + var(--gutter-large) * 1.5);
     margin-inline-start: calc(var(--gutter-large) * -0.75);
   }
   .modal .store-selector-map .map-object {

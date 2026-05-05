@@ -8,6 +8,301 @@
  * ------------------------------------------------------------
  */
 {
+  "new-account-component": {
+    "title": "Tài khoản khách hàng",
+    "menu": "Menu tài khoản khách hàng",
+    "info": "Chỉ hoạt động với thành phần tài khoản khách hàng mới. [Tìm hiểu thêm](https://help.shopify.com/en/manual/customers/customer-accounts/account-component)"
+  },
+  "video-compression": {
+    "compress_videos_with_m3u8": "Nén video MP4",
+    "compress_videos_with_m3u8_info": "Sử dụng tính năng nén video của Shopify để cải thiện hiệu suất. Có thể ảnh hưởng đến chất lượng, đặc biệt là video ngắn."
+  },
+  "sections-categories": {
+    "promotions": "Khuyến mãi",
+    "products": "Sản phẩm",
+    "content": "Nội dung",
+    "brand-trust": "Niềm tin thương hiệu",
+    "media-galleries": "Phương tiện & thư viện",
+    "storytelling": "Kể chuyện",
+    "custom": "Tùy chỉnh",
+    "forms": "Biểu mẫu",
+    "layout": "Bố cục",
+    "collections": "Bộ sưu tập",
+    "presets": {
+      "media_collage": "Cắt dán phương tiện",
+      "text_cards_collage": "Cắt dán thẻ văn bản",
+      "flex_promotion_cards": "Thẻ khuyến mãi linh hoạt",
+      "promotion_slider": "Trình chiếu khuyến mãi",
+      "search_bar": "Thanh tìm kiếm",
+      "rich_text_with_image": "Văn bản có hình ảnh",
+      "fullwidth_text_banner": "Biểu ngữ văn bản toàn chiều rộng",
+      "heading_text": "Tiêu đề và văn bản",
+      "logo_list": "Danh sách logo",
+      "logo": "Logo",
+      "fullwidth_media_with_text": "Phương tiện toàn chiều rộng có văn bản",
+      "faq": "Câu hỏi thường gặp",
+      "events_calendar": "Lịch sự kiện"
+    }
+  },
+  "sections-visibility": {
+    "label": "Hiển thị phần",
+    "options": {
+      "always": "Luôn hiển thị",
+      "mobile": "Chỉ hiển thị trên di động",
+      "desktop": "Chỉ hiển thị trên máy tính"
+    }
+  },
+  "flex-cards": {
+    "header": "Thẻ linh hoạt",
+    "settings": {
+      "height": {
+        "desktop": "Chiều cao phương tiện trên máy tính",
+        "auto": "Giữ nguyên chiều cao phương tiện trên di động",
+        "mobile": "Chiều cao phương tiện trên di động"
+      },
+      "image_visibility": "Không hiển thị phương tiện",
+      "enhance_first_image": "Cải thiện hình ảnh đầu tiên",
+      "star-rating": {
+        "name": "Xếp hạng sao",
+        "color": "Màu sao"
+      }
+    }
+  },
+  "notes-discounts": {
+    "header": "Ghi chú và giảm giá",
+    "show_discount_code": {
+      "label": "Bật giảm giá giỏ hàng",
+      "text": "Văn bản giảm giá",
+      "placeholder": "Mã giảm giá",
+      "collapsible": "Làm cho các trường ghi chú và giảm giá có thể thu gọn trong ngăn giỏ hàng"
+    }
+  },
+  "back-in-stock-alert": {
+    "header": "Thông báo hàng về kho",
+    "content": "Chủ cửa hàng sẽ nhận được email khi khách hàng điền vào mẫu này. Chủ cửa hàng cần phải thông báo thủ công cho khách hàng khi sản phẩm đã về kho.",
+    "info": "Mẫu thông báo hàng về kho này sẽ hiển thị khi sản phẩm hết hàng.",
+    "succcess_message": "Thông báo thành công",
+    "email_message": "Nội dung email"
+  },
+  "theme_blocks": {
+    "group": {
+      "name": "Nhóm nội dung"
+    },
+    "heading": {
+      "settings": {
+        "info": "Sử dụng [br] để chèn ngắt dòng.",
+        "option_1": "Mặc định"
+      }
+    },
+    "slide_image": {
+      "settings": {
+        "info": "Nếu toàn bộ thẻ có liên kết, các liên kết bên trong sẽ không hoạt động"
+      }
+    },
+    "caption": {
+      "settings": {
+        "option_1": "Rất nhỏ",
+        "content": "Nội dung"
+      }
+    },
+    "button-caption": {
+      "name": "Nhãn phân cách",
+      "settings": {
+        "separator": "Phân cách"
+      }
+    },
+    "empty-space": {
+      "name": "Khoảng trống"
+    },
+    "grid-text": {
+      "name": "Thẻ văn bản",
+      "column_desktop": "Cột trên máy tính",
+      "column_mobile": "Cột trên di động",
+      "row_desktop": "Hàng trên máy tính",
+      "row_mobile": {
+        "label": "Hàng trên di động",
+        "option_1": "1 hàng",
+        "option_2": "2 hàng"
+      },
+      "spacing": "Khoảng cách ngang giữa các khối"
+    },
+    "grid-media": {
+      "name": "Thẻ đa phương tiện"
+    },
+    "product-add-to-cart-button": {
+      "name": "Nút mua nhanh"
+    },
+    "divider": {
+      "divider_width": "Chiều rộng",
+      "option_1": "Nhỏ",
+      "option_2": "Trung bình",
+      "option_3": "Lớn",
+      "option_4": "Tối đa"
+    },
+    "sections": {
+      "flex-slideshow": {
+        "name": "Trình chiếu linh hoạt",
+        "desktop_height": "Chiều cao máy tính",
+        "mobile_height": "Chiều cao di động",
+        "legacy_name": "Trình chiếu (cũ)"
+      },
+      "flex-section": {
+        "name": "Lưới linh hoạt",
+        "gutter_size": "Khoảng đệm văn bản",
+        "grid_design": "Thiết kế lưới",
+        "remove_gap": "Xóa khoảng cách giữa thẻ",
+        "height": {
+          "label_desktop": "Chiều cao tối thiểu thẻ máy tính",
+          "label_mobile": "Chiều cao tối thiểu thẻ di động",
+          "info": "Thẻ sẽ tự động mở rộng nếu nội dung yêu cầu thêm không gian."
+        }
+      }
+    },
+    "descrease_top_margin": "Giảm lề trên"
+  },
+  "cart-tos-update": {
+    "cart_terms_heading": "Điều khoản và điều kiện",
+    "cart_terms_checkbox": "Bật yêu cầu điều khoản và điều kiện cho thanh toán",
+    "cart_terms_text": "Nhãn hộp kiểm",
+    "drawer_actions": "Hành động giỏ hàng"
+  },
+  "product-siblings": {
+    "name": "Sản phẩm liên quan",
+    "info": "Để gán một danh sách khác cho mỗi sản phẩm, hãy sử dụng trường meta danh sách tham chiếu sản phẩm làm nguồn động. [Tìm hiểu thêm](https://shopify-support.krownthemes.com/article/804-product-page#Product-siblings-IzGzR)."
+  },
+  "local-260": {
+    "labels": {
+      "disable_parallax_effect": "Tắt hiệu ứng parallax",
+      "default_image": "Hình ảnh mặc định",
+      "default_image_info": "Được sử dụng khi sản phẩm không có hình ảnh.",
+      "value": "Giá trị",
+      "default_value": "Giá trị mặc định",
+      "values": "Giá trị",
+      "values_info": "Tách các giá trị bằng dấu phẩy.",
+      "dropdown_property_settings": "Cài đặt thuộc tính dropdown",
+      "appears_on_the_order_summary": "Xuất hiện trong tóm tắt đơn hàng.",
+      "checkbox_property_settings": "Cài đặt thuộc tính hộp kiểm",
+      "maximum_characters": "Số ký tự tối đa",
+      "allow_long_text": "Cho phép văn bản dài",
+      "text_property_settings": "Cài đặt thuộc tính văn bản",
+      "hide_at_checkout": "Ẩn khi thanh toán",
+      "hide_at_checkout_info": "Nếu được chọn, thuộc tính mục không được hiển thị trong tóm tắt đơn hàng.",
+      "required": "Bắt buộc",
+      "required_info": "Khách hàng phải điền vào trường này để thêm sản phẩm vào giỏ hàng.",
+      "type": "Loại",
+      "custom_property": "Thuộc tính tùy chỉnh",
+      "custom_property_info": "Thuộc tính mục cho phép bạn thu thập chi tiết tùy chỉnh cho sản phẩm được thêm vào giỏ hàng.",
+      "show_custom_link": "Hiển thị liên kết tùy chỉnh",
+      "show_custom_link_info": "Sử dụng các tùy chọn chia sẻ tự nhiên dựa trên hỗ trợ trình duyệt.",
+      "show_pinterest": "Hiển thị Pinterest",
+      "show_x": "Hiển thị X",
+      "show_facebook": "Hiển thị Facebook",
+      "crop_videos_when_following_images_aspect_ratio": "Cắt video khi theo tỉ lệ khung hình của hình ảnh",
+      "enable_add_to_cart_for_multiple_variants_label": "Bật thêm vào giỏ hàng cho nhiều biến thể",
+      "enable_add_to_cart_for_multiple_variants_info": "Khi được bật, nút 'Thêm vào giỏ hàng' sẽ thêm biến thể đầu tiên có sẵn hoặc được chọn trực tiếp vào giỏ hàng. Nếu bị tắt, một nút 'Chọn tùy chọn' sẽ được hiển thị thay thế.",
+      "button_width": {
+        "label": "Chiều rộng nút",
+        "option_1": "Chiều rộng đầy đủ",
+        "option_2": "Hạn chế"
+      },
+      "image": "Hình ảnh",
+      "maximum_width": "Chiều rộng tối đa",
+      "constrain_image_width": "Giới hạn chiều rộng hình ảnh",
+      "desktop_logo_image": "Hình ảnh logo máy tính để bàn",
+      "desktop_logo_image_max_height": "Chiều cao tối đa của logo máy tính để bàn",
+      "mobile_logo_image": "Hình ảnh logo di động",
+      "mobile_logo_image_max_height": "Chiều cao tối đa của logo di động",
+      "mobile_logo_image_info": "Nếu bạn không tải lên logo di động, logo máy tính để bàn sẽ được sử dụng thay thế.",
+      "letter_spacing": "Khoảng cách giữa các chữ",
+      "dark_background_foreground": "Nền tối tiền cảnh",
+      "light_background_foreground": "Nền sáng tiền cảnh",
+      "maximum_page_width": "Chiều rộng trang tối đa",
+      "title_font_family": "Phông chữ tiêu đề",
+      "price_size": "Kích thước giá",
+      "align_button_info": "Hoạt động tốt nhất nếu mua nhanh là khối cuối cùng trong thẻ sản phẩm.",
+      "out_of_stock_info": "Ẩn nút mua nhanh khi sản phẩm hết hàng",
+      "modal_label": "Luôn mở cửa sổ mua nhanh",
+      "modal_info": "Theo mặc định, cửa sổ mua nhanh chỉ mở cho những sản phẩm có nhiều phiên bản.",
+      "popup_cart": "Thông báo pop-up",
+      "caption_alignment": "Canh lề chú thích",
+      "remove_space_between_images": "Xóa khoảng cách giữa các hình ảnh",
+      "text_horizontal_alignment": "Canh lề ngang văn bản",
+      "text_vertical_alignment": "Canh lề dọc văn bản",
+      "text_vertical_alignment_info": "Chỉ dành cho máy tính để bàn nếu hình ảnh được đặt bên trái hoặc phải.",
+      "segments_height": "Chiều cao của các phân đoạn",
+      "remove_space_between_segments": "Xóa khoảng cách giữa các phân đoạn",
+      "out_of_stock": "Hết hàng",
+      "regular_stock": "Hàng tồn kho thường",
+      "low_inventory": "Hàng tồn kho thấp",
+      "custom_inventory_notification_colors": "Màu thông báo tồn kho tùy chỉnh",
+      "block_heading": "Tiêu đề khối",
+      "block_style": "Kiểu khối",
+      "block_content": "Nội dung khối",
+      "tooltip_text": "Văn bản chú giải công cụ",
+      "collapsible": "Có thể gập lại",
+      "boxed": "Đóng khung",
+      "darken_the_header": "Làm tối đầu trang",
+      "opened_by_default": "Mở theo mặc định",
+      "applies_to_boxed_version_only": "Chỉ áp dụng cho phiên bản đóng khung",
+      "dynamic_segments_label": "Sử dụng nguồn động để thiết lập mục hoặc phân đoạn hoạt động với metafield sản phẩm. [Tìm hiểu thêm](https://shopify-support.krownthemes.com/article/804-product-page#Nutriscore--attribute-meters-OY3p4)",
+      "nutriscore": "Nutriscore",
+      "active_item": "Mục đang hoạt động",
+      "active_item_metafield": "Metafield mục đang hoạt động",
+      "item_1": "Mục 1",
+      "item_2": "Mục 2",
+      "item_3": "Mục 3",
+      "item_4": "Mục 4",
+      "item_5": "Mục 5",
+      "item_6": "Mục 6",
+      "item_7": "Mục 7",
+      "item_8": "Mục 8",
+      "label": "Nhãn",
+      "attribute_meter": "Đồng hồ đo thuộc tính",
+      "segments": "Phân đoạn",
+      "active_segment": "Phân đoạn hoạt động",
+      "active_segment_metafield": "Metafield phân đoạn hoạt động",
+      "active_segment_color": "Màu phân đoạn hoạt động",
+      "fill_segments_up_to_active_segment": "Điền các phân đoạn đến phân đoạn hoạt động",
+      "show_active_segments_value": "Hiển thị giá trị phân đoạn hoạt động",
+      "start_label": "Nhãn bắt đầu",
+      "middle_label": "Nhãn giữa",
+      "end_label": "Nhãn kết thúc",
+      "text_banner": "Biểu ngữ văn bản",
+      "banner_link": "Liên kết biểu ngữ",
+      "videos_and_other_media_aspect_ratio": "Tỉ lệ khung hình video và phương tiện khác"
+    },
+    "options": {
+      "text": "Văn bản",
+      "checkbox": "Hộp kiểm",
+      "dropdown": "Menu xổ xuống",
+      "scroll_one_column": "Cuộn một cột",
+      "scroll_two_columns": "Cuộn hai cột",
+      "keep_media_original_aspect_ratio": "Giữ tỷ lệ gốc của phương tiện",
+      "follow_images_aspect_ratio": "Theo tỷ lệ khung hình của hình ảnh",
+      "inline": "Trực tiếp",
+      "middle": "Giữa"
+    }
+  },
+  "video-extra-functions": {
+    "autoplay": {
+      "label": "Bật tự động phát",
+      "info": "Video sẽ bị tắt tiếng và không có điều khiển."
+    },
+    "video_upload": {
+      "label": "Tệp video",
+      "info": "Lưu trữ bởi Shopify. Thay thế các thiết lập URL video."
+    },
+    "poster": {
+      "info": "Được sử dụng làm hình ảnh poster hoặc hình ảnh dự phòng."
+    }
+  },
+  "variant_metafields": {
+    "name": "Trường siêu dữ liệu biến thể",
+    "label": "Khóa trường siêu dữ liệu biến thể",
+    "info": "Giao diện này có thể hiển thị trường siêu dữ liệu biến thể trên trang sản phẩm. [Tìm hiểu thêm](https://shopify-support.krownthemes.com/article/884-using-variant-metafields-in-product-pages)."
+  },
+  "new_color_swatches": "Loại trình chọn biến thể \"khối\" hỗ trợ các mẫu màu được tạo bằng các trường siêu dữ liệu danh mục. [Tìm hiểu thêm](https://help.shopify.com/en/manual/custom-data/metafields/category-metafields/using-category-metafields).",
+  "video_controls": "Hiển thị điều khiển video",
   "sticky_cart_actions": "Bật hành động giỏ hàng cố định",
   "currency_codes": {
     "header": "Định dạng tiền tệ",
@@ -28,6 +323,7 @@
     "divider_style_double": "Đôi",
     "divider_color": "Màu sắc",
     "divider_image": "Hình ảnh ngăn cách",
+    "divider_height": "Chiều cao",
     "divider_image_info": "Hình ảnh lặp lại theo chiều ngang. Thay thế kiểu và màu sắc phía trên."
   },
   "cart_actions": {
@@ -38,7 +334,9 @@
   },
   "sticky_atc": {
     "label": "Thêm vào giỏ hàng cố định",
-    "enable_sticky_atc": "Kích hoạt thêm vào giỏ hàng cố định"
+    "enable_sticky_atc": "Kích hoạt thêm vào giỏ hàng cố định",
+    "sticky_atc_style_wide": "Wide",
+    "sticky_atc_style_floating": "Floating"
   },
   "performance": {
     "header": "SEO & hiệu suất",
@@ -348,6 +646,13 @@
       "content": "Theo dõi trên Shop",
       "info": "Để cho phép khách hàng theo dõi cửa hàng của bạn trên ứng dụng Shop từ website cửa hàng, bạn phải bật Shop Pay. [Tìm hiểu thêm](https://help.shopify.com/manual/online-store/themes/customizing-themes/follow-on-shop)",
       "label": "Bật tính năng Theo dõi trên Shop"
+    },
+    "labels": {
+      "hide_block_if_no_content_info": "Ẩn khối nếu nội dung không được xác định",
+      "popup_page_info": "Thay thế nội dung văn bản nếu một trang được chọn",
+      "page": "Trang",
+      "popup": "Popup",
+      "open_popup": "Mở popup"
     }
   },
   "sections": {
@@ -584,7 +889,8 @@
           "show_icon": "Hiển thị biểu tượng"
         },
         "cookies": {
-          "name": "Cửa sổ bật lên cookie"
+          "name": "Cửa sổ bật lên cookie",
+          "cookies_info": "Trang web này sử dụng cookie để đảm bảo mang lại trải nghiệm tốt nhất cho người dùng. [Tìm hiểu thêm](https://shopify-support.krownthemes.com/article/790-cookies-popup)."
         },
         "popups": {
           "name": "Cửa sổ bật lên",
@@ -795,7 +1101,7 @@
             },
             "video": {
               "name": "Video",
-              "label": "URL Video MP4",
+              "label": "Video",
               "info": "Hình ảnh trên sẽ hiển thị nếu không thể phát video này."
             }
           },
@@ -861,7 +1167,7 @@
               "info": "Trên máy tính để bàn, hình ảnh sẽ cắt xén để lấp đầy toàn bộ chiều cao của thẻ. Trên thiết bị di động, hình ảnh sẽ luôn được hiển thị đầy đủ."
             },
             "remove_margin": {
-              "label": "Xóa lề trên của phần này"
+              "label": "Xóa lề trên"
             }
           }
         },
@@ -967,7 +1273,7 @@
               },
               "settings": {
                 "icon": "Biểu tượng",
-                "icon_info": "96 x 96px",
+                "icon_info": "128 x 128px",
                 "label": "Nhãn"
               }
             }
@@ -988,7 +1294,7 @@
         },
         "main-article-comments": {
           "name": "Bình luận bài viết",
-          "info": "Để bật bình luận, hãy vào mục [cài đặt blog] của bạn.(/admin/blogs)"
+          "info": "Để bật bình luận, hãy vào mục [cài đặt blog] của bạn(/admin/blogs)."
         },
         "main-article-navigation": {
           "name": "Điều hướng bài viết",
@@ -1014,7 +1320,10 @@
           "blocks": {
             "payment": {
               "name": "Biểu tượng thanh toán",
-              "info": "Các biểu tượng hiển thị được xác định theo mục [cài đặt thanh toán](/admin/settings/payments) trong cửa hàng của bạn cũng như khu vực và đơn vị tiền tệ của khách hàng."
+              "info": "Các biểu tượng hiển thị được xác định theo mục [cài đặt thanh toán](/admin/settings/payments) trong cửa hàng của bạn cũng như khu vực và đơn vị tiền tệ của khách hàng.",
+              "custom_icons": "Custom icons",
+              "custom_icons_info": "Upload 114 x 72px .png images",
+              "only_show_custom_icons": "Only show the custom icons"
             },
             "text": {
               "name": "Văn bản &amp; biểu tượng mạng xã hội"
@@ -1035,7 +1344,10 @@
             "name": "Trang kích hoạt tài khoản"
           },
           "login": {
-            "name": "Trang đăng nhập"
+            "name": "Trang đăng nhập",
+            "shop_login_button": {
+              "enable": "Bật Đăng nhập bằng Shop"
+            }
           },
           "account": {
             "name": "Trang tài khoản"
@@ -1062,7 +1374,8 @@
           "option__2": "3 cột",
           "option__3": "4 cột",
           "option__4": "5 cột",
-          "option__5": "6 cột"
+          "option__5": "6 cột",
+          "name_mobile": "Mobile layout"
         },
         "promotion-cards": {
           "name": "Thẻ khuyến mãi",
@@ -1326,11 +1639,11 @@
       "cart_upsell": {
         "name": "Đề xuất sản phẩm cá nhân",
         "product": "Sản phẩm",
-        "info": "Các đề xuất linh động dựa trên mặt hàng trong giỏ hàng của bạn. Chúng thay đổi và cải thiện theo thời gian. [Tìm hiểu thêm](https://help.shopify.com/en/themes/development/recommended-products)"
+        "info": "Các đề xuất linh động dựa trên mặt hàng trong giỏ hàng của bạn. Chúng thay đổi và cải thiện theo thời gian. [Tìm hiểu thêm](https://help.shopify.com/en/manual/online-store/storefront-search/search-and-discovery-recommendations)"
       },
       "gift_wrapping": {
         "name": "Gói quà",
-        "info": "Cần thiết lập việc gói quà như một sản phẩm. [Tìm hiểu thêm](https://shopify-support.krownthemes.com/article/696-cart-features#gift-wrap)",
+        "info": "Cần thiết lập việc gói quà như một sản phẩm. [Tìm hiểu thêm](https://shopify-support.krownthemes.com/article/779-borders-theme-settings-cart)",
         "settings": {
           "label": "Văn bản",
           "button": "Nhãn nút"
@@ -1627,7 +1940,7 @@
             "map": {
               "api": {
                 "label": "Khóa API Google Maps",
-                "info": "Bạn cần đăng ký [Khóa API Google Maps](http://shopify-support.krownthemes.com/article/385-generate-an-api-key-for-google-maps) để hiển thị bản đồ."
+                "info": "Bạn cần đăng ký [Khóa API Google Maps](http://shopify-support.krownthemes.com/article/385-generate-an-api-key-for-google-maps) to display the map."
               }
             }
           }
@@ -2032,6 +2345,9 @@
         },
         "products_number": {
           "label": "Số lượng sản phẩm hiển thị tối đa"
+        },
+        "articles_number": {
+          "label": "Số lượng bài viết hiển thị tối đa"
         },
         "collection": {
           "label": "Bộ sưu tập"
@@ -2619,7 +2935,7 @@
         },
         "header__1": {
           "content": "Đề xuất sản phẩm",
-          "info": "Tính năng đề xuất linh động sử dụng thông tin về đơn hàng và sản phẩm để thay đổi và cải thiện theo thời gian. [Tìm hiểu thêm](https://help.shopify.com/en/themes/development/recommended-products)"
+          "info": "Tính năng đề xuất linh động sử dụng thông tin về đơn hàng và sản phẩm để thay đổi và cải thiện theo thời gian. [Tìm hiểu thêm](https://help.shopify.com/en/manual/online-store/storefront-search/search-and-discovery-recommendations)"
         }
       }
     },
@@ -2673,6 +2989,9 @@
     "popup": {
       "name": "Cửa sổ bật lên",
       "settings": {
+        "enable_scroll_based_trigger": "Kích hoạt kích hoạt dựa trên cuộn",
+        "enable_scroll_based_trigger_info": "Chỉ hiển thị popup nếu trang được cuộn đến một vị trí cụ thể.",
+        "scroll_position": "Vị trí cuộn",
         "title": {
           "label": "Tiêu đề"
         },
@@ -2933,13 +3252,68 @@
       "label_3": "Hình ảnh 3"
     }
   },
+  "color-schemes": {
+    "name_plural": "Color schemes",
+    "name_singular": "Color scheme",
+    "default": "Default color scheme",
+    "default_info": "Used to set colors for account pages, 404 pages, and other pages or sections without color scheme settings.",
+    "drawers": "Modals/drawers",
+    "other": "Other colors"
+  },
+  "menu-images": {
+    "label": "Hình ảnh menu",
+    "info": "Bạn có thể thêm hình ảnh vào các mục menu cấp cao nhất bằng cách tạo tệp JPG có cùng tên với handle của menu. [Tìm hiểu thêm](https://shopify-support.krownthemes.com/article/798-header-section#mega-menus).",
+    "show": "Hiển thị hình ảnh menu",
+    "show_count": "Hiển thị số lượng sản phẩm"
+  },
+  "bundle-extra-words": {
+    "sections": {
+      "transparent_header": {
+        "header": "Thiết kế đầu trang trong suốt",
+        "settings": {
+          "homepage_enable": {
+            "label": "Kích hoạt trên trang chủ",
+            "info": "Đảm bảo rằng phần đầu tiên trên trang chủ của bạn là thanh trượt hình ảnh hoặc hình ảnh có chiều rộng đầy đủ."
+          },
+          "collection_enable": {
+            "label": "Kích hoạt trên các trang bộ sưu tập",
+            "info": "Đảm bảo rằng bạn đã kích hoạt hình ảnh biểu ngữ bộ sưu tập và bộ sưu tập của bạn có hình ảnh nổi bật."
+          },
+          "custom_enable": {
+            "label": "Kích hoạt trên các trang tùy chỉnh",
+            "info": "Viết bất kỳ tên handle nào cho trang, phân tách bằng dấu phẩy."
+          },
+          "logo": {
+            "info": "Tải lên cùng kích thước với logo gốc."
+          }
+        }
+      }
+    }
+  },
+  "local-250": {
+    "labels": {
+      "show_filters_as": "Hiển thị bộ lọc dưới dạng",
+      "expand_filters_by_default": "Mở rộng bộ lọc theo mặc định",
+      "stick_filters_sidebar_to_top": "Ghim thanh bên bộ lọc lên trên cùng"
+    },
+    "options": {
+      "sidebar": "Thanh bên",
+      "list": "Danh sách"
+    }
+  },
   "local-230": {
     "background_gradient": "Gradient nền",
     "variant_default": {
       "label": "Chọn mẫu mã đầu tiên còn hàng theo mặc định",
       "info": "Nếu bạn không chọn mục này, người dùng sẽ phải chọn một mẫu mã còn hàng rồi mới mua được."
     },
-    "slider_info": "Liên kết sẽ được áp dụng cho nút, hoặc cho tiêu đề (nếu không có nút), hoặc cho toàn bộ slide (nếu cả tiêu đề và nút đều trống)."
+    "slider_info": "Liên kết sẽ được áp dụng cho nút, hoặc cho tiêu đề (nếu không có nút), hoặc cho toàn bộ slide (nếu cả tiêu đề và nút đều trống).",
+    "buy_button_labels": {
+      "label": "Nhãn nút mua",
+      "option_1": "Mua ngay",
+      "option_2": "Chọn tùy chọn"
+    },
+    "hide_on_mobile": "Ẩn trên thiết bị di động"
   },
   "local-223": {
     "heading_text_color": "Màu văn bản tiêu đề",

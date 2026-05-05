@@ -1,4 +1,9 @@
-<div class="container--large {% unless section.settings.remove_margin %} container--vertical-space {% endunless %} {% if section.settings.section_background_color != "rgba(0,0,0,0)" or section.settings.section_background_gradient != blank %} container--has-background {% endif %} remove-empty-space">
+<div id="section-{{ section.id }}" class="container--large remove-empty-space
+  {% unless section.settings.remove_margin %} {% unless section.settings.descrease_margin %} container--vertical-space {% else %} container--vertical-space-grid {% endunless %} {% endunless %} 
+  {% if section.settings.section_background_color != "rgba(0,0,0,0)" or section.settings.section_background_gradient != blank %} container--has-background {% endif %}
+  {% if section.settings.section_visibility == "mobile" %} element--hide-on-desk {% endif %}
+  {% if section.settings.section_visibility == "desktop" %} element--hide-on-small {% endif %}
+">
 
   {%- render 'section-heading', heading: section.settings.heading, subheading: section.settings.subheading, button: section.settings.show_view_all, button_label: 'collections.view_all_collections', link: routes.collections_url, heading_tag: section.settings.seo_h_tag, layout: section.settings.section_heading_layout -%}
 
@@ -17,7 +22,11 @@
       {%- render 'custom-shadow', section_id: section.id -%}
     {%- endif -%}
 
-      <div class="grid {% if section.settings.style == 'slider' %} grid--slider {% else %} grid--layout {% endif %} {{ section.settings.layout }}">
+      <div class="grid {% if section.settings.style == 'slider' %} grid--slider {% else %} grid--layout {% endif %} 
+        {% if section.settings.collection_style == 'card' %} {{ section.settings.layout }} {% else %} grid-4 grid-laptop-3 grid-portable-2 grid-palm-1  {% endif %}
+      "
+        id="element-{{ section.id }}"
+      >
 
         {%- liquid
 
@@ -33,20 +42,31 @@
             assign sizes =  sizes | append: ', (max-width: 767px) calc(100vw - 40px)'
           endif
 
-          if layout contains 'grid-6'
-            assign sizes = sizes | append : ', (max-width: 1023px) calc((100vw - 80px) / 3), (max-width: 1280px) calc((100vw - 160px) / 6), 190px'
-          elsif layout contains 'grid-4'
-            assign sizes = sizes | append: ', (max-width: 1280px) calc((100vw - 100px) / 4), 300px'
-          elsif layout contains 'grid-3'
-            assign sizes = sizes | append: ', (max-width: 1280px) calc((100vw - 100px) / 3), 420px'
-          elsif layout contains 'grid-2'
-            assign sizes = sizes | append: ', (max-width: 1280px) calc((100vw - 100px) / 2), 620px'
-          endif 
+        -%}
+          
+        {%- if layout contains 'grid-6' -%}
+          {%- capture desk_sizes -%}
+            , (max-width: 1023px) calc((100vw - 80px) / 3), (max-width: {{ settings.theme_max_width }}px) calc((100vw - 160px) / 6), {{ settings.theme_max_width | divided_by: 6 }}px
+          {%- endcapture -%}
+        {%- elsif layout contains 'grid-4' -%}
+          {%- capture desk_sizes -%}
+            , (max-width: {{ settings.theme_max_width }}px) calc((100vw - 100px) / 4), {{ settings.theme_max_width | divided_by: 4 }}px
+          {%- endcapture -%}
+        {%- elsif layout contains 'grid-3' -%}
+          {%- capture desk_sizes -%}
+            , (max-width: {{ settings.theme_max_width }}px) calc((100vw - 100px) / 3), {{ settings.theme_max_width | divided_by: 3 }}px
+          {%- endcapture -%}
+        {%- elsif layout contains 'grid-2' -%}
+          {%- capture desk_sizes -%}
+            , (max-width: {{ settings.theme_max_width }}px) calc((100vw - 100px) / 2), {{ settings.theme_max_width | divided_by: 2 }}px
+          {%- endcapture -%}
+        {%- endif -%}
 
-          assign sizes = sizes | prepend: 'sizes="' | append: '"'
+        {%- liquid
+          assign sizes = sizes | append: desk_sizes | prepend: 'sizes="' | append: '"'
 
           for block in section.blocks
-            render 'collection-item', collection: collections[block.settings.collection], index: forloop.index, image: block.settings.image, sizes: sizes, image_aspect_ratio: section.settings.image_aspect_ratio
+            render 'collection-item', collection: collections[block.settings.collection], index: forloop.index, image: block.settings.image, sizes: sizes, image_aspect_ratio: section.settings.image_aspect_ratio, style: section.settings.collection_style, show_count: section.settings.show_count, title_size: section.settings.title_size
           endfor
         -%}
 
@@ -63,6 +83,17 @@
       <a class="button button--outline button--regular" href="{{ routes.collections_url }}">{{ 'collections.view_all_collections' | t }}</a>
     </div>
   {%- endif -%}
+
+  {%- render 'custom-colors', id: section.id, text: section.settings.color_text_main, background: section.settings.color_background_main, borders: section.settings.color_borders_main, shadow: section.settings.color_shadow_main, hide_borders: section.settings.color_hide_borders, hide_shadow: section.settings.color_hide_shadow -%}
+  {% style %}
+    #element-{{ section.id }} .card__text {
+      {%- if section.settings.color_text_main != "rgba(0,0,0,0)" -%}
+        --color-text-main: {{ section.settings.color_text_main }};
+      {% else %}
+        --color-text-main: {{ settings.color_text_main }};
+      {%- endif -%}
+    }
+  {% endstyle %}
 
 </div>
 
@@ -156,6 +187,7 @@
         "id": "layout",
         "label": "t:sections.local-extra-words.sections.columns.name",
         "info": "t:sections.local-extra-words.sections.columns.info",
+        "visible_if": "{{ section.settings.collection_style == 'card' }}",
         "options": [
           {
             "value": "grid-2 grid-lap-1",
@@ -201,6 +233,84 @@
         "default": "1"
       },
       {
+        "type": "select",
+        "id": "collection_style",
+        "label": "t:sections.local-extra-words.sections.header.blocks.info.style.label",
+        "options": [
+          {
+            "value": "card",
+            "label": "t:sections.local-extra-words.sections.promotion-cards.blocks.name"
+          },
+          {
+            "value": "button",
+            "label": "t:sections.rich-text.blocks.button.name"
+          }
+        ],
+        "default": "card"
+      },
+      {
+        "type": "select",
+        "id": "title_size",
+        "label": "t:sections.local-extra-words.settings_schema.product-card.title-size.name",
+        "options": [
+          {
+            "value": "small",
+            "label": "t:sections.local-extra-words.settings_schema.product-card.title-size.options__1"
+          },
+          {
+            "value": "large",
+            "label": "t:sections.local-extra-words.settings_schema.product-card.title-size.options__2"
+          }
+        ],
+        "default": "small"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_count",
+        "label": "t:menu-images.show_count",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "t:sections.local-extra-words.sections.headings.custom_colors"
+      },
+      {
+        "type": "color",
+        "id": "color_background_main",
+        "label": "t:sections.split-extra-words.settings_schema.colors.settings.background",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "color",
+        "id": "color_text_main",
+        "label": "t:sections.split-extra-words.settings_schema.colors.settings.text",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "color",
+        "id": "color_borders_main",
+        "label": "t:sections.local-extra-words.settings_schema.colors.settings.borders",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "color",
+        "id": "color_shadow_main",
+        "label": "t:local-march-update.shadows.label",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "checkbox",
+        "id": "color_hide_borders",
+        "label": "t:sections.local-extra-words.settings_schema.colors.settings.hide_border",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "color_hide_shadow",
+        "label": "t:local-march-update.shadows.hide",
+        "default": false
+      },
+      {
         "type": "header",
         "content": "t:local-march-update.labels.section_design"
       },
@@ -223,7 +333,15 @@
       },
       {
         "type": "checkbox",
+        "id": "descrease_margin",
+        "visible_if": "{{ section.settings.remove_margin == false }}",
+        "label": "t:theme_blocks.descrease_top_margin",
+        "default": false
+      },
+      {
+        "type": "checkbox",
         "id": "remove_margin",
+        "visible_if": "{{ section.settings.descrease_margin == false }}",
         "label": "t:sections.local-extra-words.sections.rich-text.settings.remove_margin.label",
         "default": false
       },
@@ -259,6 +377,30 @@
           }
         ],
         "default": "h2"
+      },
+      {
+        "type": "header",
+        "content": "t:sections.refactor_words.announcement-bar.visibility.label"
+      },
+      {
+        "type": "select",
+        "id": "section_visibility",
+        "label": "t:sections-visibility.label",
+        "options": [
+          {
+            "value": "always",
+            "label": "t:sections-visibility.options.always"
+          },
+          {
+            "value": "mobile",
+            "label": "t:sections-visibility.options.mobile"
+          },
+          {
+            "value": "desktop",
+            "label": "t:sections-visibility.options.desktop"
+          }
+        ],
+        "default": "always"
       }
     ],
     "blocks": [
@@ -283,7 +425,20 @@
     "presets": [
       {
         "name": "t:sections.collection-list.presets.name",
+        "category": "t:sections-categories.collections",
         "blocks": [
+          {
+            "type": "collection"
+          },
+          {
+            "type": "collection"
+          },
+          {
+            "type": "collection"
+          },
+          {
+            "type": "collection"
+          },
           {
             "type": "collection"
           },

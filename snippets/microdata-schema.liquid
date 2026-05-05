@@ -1,143 +1,6 @@
 {%- comment -%}
-This snippet structures the micro-data using JSON-LD specification. Please note that for Product especially,
-the schema often changes. We try to output as much info as possible, but Google may add new requirements over time, or change the format of some info
+  This snippet structures the micro-data using JSON-LD specification. For product and article pages, the data is 100% outputted by Shopify. The theme only offers schema for the organization and breadcrumb.
 {%- endcomment -%}
-
-{%- if request.page_type == 'product' -%}
-  {%- capture main_entity_microdata -%}
-    "@type": "Product",
-    "@id": "{{ shop.url }}{{ product.url }}#productSchema",
-    "offers": [
-    {%- for variant in product.variants -%}
-        {
-        "@type": "Offer",
-        "name": {{ variant.title | json }},
-        "availability": {%- if variant.available -%}"https://schema.org/InStock"{%- else -%}"https://schema.org/OutOfStock"{%- endif -%},
-        "price": {{ variant.price | divided_by: 100.00 | json }},
-        "priceCurrency": {{ shop.currency | json }},
-        "itemCondition": "https://schema.org/NewCondition",
-        "hasMerchantReturnPolicy": {
-            "@type": "MerchantReturnPolicy",
-            "applicableCountry": "DE",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-            "merchantReturnDays": 30,
-            "itemCondition": "https://schema.org/NewCondition",
-            "returnMethod": "https://schema.org/ReturnByMail",
-            "returnFees": "http://schema.org/FreeReturn"
-        },
-        "shippingDetails": {
-            "@type": "OfferShippingDetails",
-            "shippingRate": {
-                "@type": "MonetaryAmount",
-                "value": 10.00,
-                "currency": "EUR"
-            },
-            "shippingDestination": {
-                "@type": "DefinedRegion",
-                "addressCountry": "DE"
-            },
-            "deliveryTime": {
-                "@type": "ShippingDeliveryTime",
-                "handlingTime": {
-                    "@type": "QuantitativeValue",
-                    "minValue": 1,
-                    "maxValue": 2,
-                    "unitCode": "DAY"
-                },
-                "transitTime": {
-                    "@type": "QuantitativeValue",
-                    "minValue": 7,
-                    "maxValue": 14,
-                    "unitCode": "DAY"
-                }
-            }
-        },
-        "inventoryLevel": {{ variant.inventory_quantity | json }},
-        "priceValidUntil": {{ 'now' | date: '%s' | plus: 864000 | date: '%Y-%m-%d' | json }},
-        {%- if variant.sku != blank -%}
-            "sku": {{ variant.sku | json }},
-        {%- endif -%}
-        "url": {{ shop.url | append: variant.url | json }}
-        }{% unless forloop.last %},{% endunless %}
-    {%- endfor -%}
-    ],
-    "brand": {
-    "@type": "Brand",
-    "name": {{ product.vendor | json }}
-    },
-    "name": {{ product.title | json }},
-    "description": {{ product.description | strip_html | json }},
-    "category": {{ product.type | json }},
-    "url": "{{ shop.url }}{{ product.url }}",
-    "sku": {{ product.selected_or_first_available_variant.sku | default: product.selected_or_first_available_variant.id | default: product.id | json }},
-    "productId": {{ product.id | json }},
-    {%- if isBarCodeAvailable and isValidGtinLength -%}
-    "{{ gtinString }}": {{ current_variant.barcode |json }},
-    {%- elsif isBarCodeAvailable -%}
-    "mpn": {{ current_variant.barcode | json }},
-    {%- else -%}
-    "mpn": {{ current_variant.sku | default: current_variant.id | default: product.id | json }},
-    {%- endif -%}
-    {%- if product.selected_or_first_available_variant.weight != blank %}
-        "weight": "{{ product.selected_or_first_available_variant.weight | weight_with_unit | replace: " ", "" }}",
-    {%- endif -%}
-    "image": {
-    "@type": "ImageObject",
-    "url": "https:{{ product.featured_image | img_url: '1024x' }}",
-    "image": "https:{{ product.featured_image | img_url: '1024x' }}",
-    "name": {{ product.featured_image.alt | json }},
-    "width": "1024",
-    "height": "1024"
-    }{%- if ratingValue != blank and reviewCount != blank -%}
-    ,"aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "{{ ratingValue  }}",
-        "reviewCount": "{{ reviewCount }}"
-    }{%- endif -%}
-}
-  {%- endcapture -%}
-{%- elsif request.page_type == 'article' -%}
-  {%- capture main_entity_microdata -%}
-    "@type": "Article",
-    "articleBody": {{ article.content | strip_html | json }},
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": {{ request.origin | append: page.url | json }}
-    },
-    "headline": {{ article.title | json }},
-    {%- if article.excerpt != blank -%}
-      "description": {{ article.excerpt | strip_html | json }},
-    {%- endif -%}
-    {%- if article.image -%}
-      "image": [
-        {{ article | image_url: width: 1920 | prepend: "https:" | json }}
-      ],
-    {%- endif -%}
-    "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
-    "dateCreated": {{ article.created_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
-    "author": {
-      "@type": "Person",
-      "name": {{ article.author | json }}
-    },
-    {%- if article.comments_count > 0 -%}
-      "commentCount": {{ article.comments_count }},
-      "comment": [
-        {%- for comment in article.comments limit: 5 -%}
-          {
-            "@type": "Comment",
-            "author": {{ comment.author | json }},
-            "datePublished": "{{ comment.created_at | date: '%Y-%m-%dT%T' }}",
-            "text": {{ comment.content | json }}
-          }{%- unless forloop.last -%},{%- endunless -%}
-        {%- endfor -%}
-      ],
-    {%- endif -%}
-    "publisher": {
-      "@type": "Organization",
-      "name": {{ shop.name | json }}
-    }
-  {%- endcapture -%}
-{%- endif -%}
 
 <script type="application/ld+json">
   [
@@ -168,9 +31,19 @@ the schema often changes. We try to output as much info as possible, but Google 
       "item": "{{ shop.url }}"
     }
     {%- if request.page_type == 'product' -%}
+      {%- assign product_position = '2' -%}
+      {%- if collection -%}
+        ,{
+          "@type": "ListItem",
+          "position": 2,
+          "name": {{ collection.title | json }},
+          "item": "{{ shop.url }}{{ collection.url }}"
+        }
+        {%- assign product_position = '3' -%}
+      {%- endif -%}
       ,{
         "@type": "ListItem",
-        "position": 2,
+        "position": {{ product_position }},
         "name": {{ product.title | json }},
         "item": "{{ shop.url }}{{ product.url }}"
       }
@@ -197,7 +70,7 @@ the schema often changes. We try to output as much info as possible, but Google 
       }, {
         "@type": "ListItem",
         "position": 3,
-        "name": {{ blog.title | json }},
+        "name": {{ article.title | json }},
         "item": "{{ shop.url }}{{ article.url }}"
       }
     {%- elsif request.page_type == 'page' -%}
@@ -212,11 +85,8 @@ the schema often changes. We try to output as much info as possible, but Google 
 }
 </script>
 
-{%- if main_entity_microdata != blank -%}
-  <script type="application/ld+json">
-  {
-    "@context": "http://schema.org",
-    {{ main_entity_microdata }}
-  }
-  </script>
+{%- if request.page_type == 'product' -%}
+  <script type="application/ld+json">{{ product | structured_data }}</script>
+{%- elsif request.page_type == 'article' -%}
+  <script type="application/ld+json">{{ article | structured_data }}</script>
 {%- endif -%}

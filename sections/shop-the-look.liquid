@@ -29,7 +29,11 @@
   {% endstyle %}
 {%- endif -%}
 
-<div class="container--large container--vertical-space remove-empty-space {% if section.settings.is_fullwidth %} container--fullwidth {% endif %}">
+<div class="container--large remove-empty-space {% if section.settings.is_fullwidth %} container--fullwidth {% endif %}
+  {% unless section.settings.remove_margin %} {% unless section.settings.descrease_margin %} container--vertical-space {% else %} container--vertical-space-grid {% endunless %} {% endunless %} 
+  {% if section.settings.section_visibility == "mobile" %} element--hide-on-desk {% endif %}
+  {% if section.settings.section_visibility == "desktop" %} element--hide-on-small {% endif %}
+">
 
   <div class="{% if section.settings.is_fullwidth %} container--large container--vertical-space {% endif %}">
     {%- render 'section-heading', heading: section.settings.heading, subheading: section.settings.subheading, heading_tag: section.settings.seo_h_tag, layout: section.settings.section_heading_layout -%}
@@ -38,19 +42,21 @@
   <div id="element-{{ section.id }}" class="panel {% if section.settings.is_fullwidth %} panel--no-radius panel--no-sideborders {% endif %} gutter-top--large gutter-bottom--large element--height-small">
    
     <div class="shop-the-look__image {% if section.settings.image == blank %} shop-the-look__image--blank {% endif %}">
-      {%- liquid
-        if section.settings.image == blank
-          render 'lazy-svg', image: 'product-1', ratio: 1, class: 'svg-placeholder'
-        else
+      {%- if section.settings.image == blank -%}
+        {%- render 'lazy-svg', image: 'product-1', ratio: 1, class: 'svg-placeholder' -%}
+      {%- else -%}
+        {%- liquid
           if section.index == 1
             assign preload = true
           else 
             assign preload = false
           endif
-          assign sizes = 'sizes="(max-width: 767px) 100vw, (max-width: 1280px) 50vw, 640px"'
-          render 'lazy-image', image: section.settings.image, alt: section.settings.heading, sizes: sizes, image_alignment: true, preload: preload
-        endif
-      -%}
+        -%}
+        {%- capture sizes -%}
+          sizes="(max-width: 767px) 100vw, (max-width: {{ settings.theme_max_width }}px) 50vw, {{ settings.theme_max_width | minus: 80 | divided_by: 2 }}px"
+        {%- endcapture -%}
+        {%- render 'lazy-image', image: section.settings.image, alt: section.settings.heading, sizes: sizes, image_alignment: true, preload: preload -%}
+      {%- endif -%}
     </div>
 
     <div class="shop-the-look__slider"
@@ -72,7 +78,18 @@
         id="css-slider-{{ section.id }}"
       >
         {%- render 'custom-shadow', section_id: section.id -%}
-        <div class="grid grid--slider grid-4 grid-portable-3 grid-lap-2 {% if size == 1 %} grid-palm-1 {% endif %} grid-tiny-1">
+
+        <div class="grid grid--slider grid-4 grid-portable-3 grid-lap-2 {% if size == 1 %} grid-palm-1 {% endif %}">
+          {%- capture sizes -%}
+            (max-width: 767px) calc((100vw - 50px) / 2), (max-width: 1023px) calc((100vw - 100px) / 3), (max-width: {{ settings.theme_max_width }}px) calc((100vw - 120px) / 4), {{ settings.theme_max_width | minus: 120 | divided_by: 4 }}px"
+          {%- endcapture -%}
+          {%- liquid 
+            if size == 1
+              assign sizes = 'sizes="(max-width: 474px) calc(100vw - 100px), ' | append: sizes
+            else
+              assign sizes = 'sizes="(max-width: 394px) calc(100vw - 100px), ' | append: sizes
+            endif
+          -%}
           {%- liquid
             if section.settings.product_list != blank
               for product in section.settings.product_list
@@ -81,7 +98,7 @@
                 else 
                   assign preload = false
                 endif
-                render 'product-item', product: product, section_blocks: section.blocks, index: forloop.index, layout: 'shop', preload: preload
+                render 'product-item', product: product, section_blocks: section.blocks, layout: 'shop', preload: preload, sizes: sizes
               endfor
             endif
           -%}
@@ -154,7 +171,6 @@
             "type": "text",
             "id": "metafield",
             "label": "t:sections.local-extra-words.sections.product-card.blocks.text.settings.text.label",
-            "info": "t:sections.local-extra-words.sections.product-card.blocks.text.info",
             "info": "custom.product_text"
           },
           {
@@ -190,6 +206,23 @@
             "default": false
           }
         ]
+      },
+      {
+        "type": "product_link",
+        "name": "t:sections.featured-product.blocks.product_link.name",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "t:sections.local-extra-words.sections.main-header.settings.promotion_block.button.label",
+            "default": "View product"
+          }
+        ]
+      },
+      {
+        "type": "space",
+        "name": "t:local-march-update.blocks.space.name"
       }
     ],
     "settings": [
@@ -269,6 +302,37 @@
         "default": false
       },
       {
+        "type": "color",
+        "id": "section_background_color",
+        "label": "t:sections.local-extra-words.settings_schema.product-card.badges.custom_badges.color",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "color_background",
+        "id": "section_background_gradient",
+        "label": "t:local-230.background_gradient"
+      },
+      {
+        "type": "color",
+        "id": "section_heading_color",
+        "label": "t:local-223.heading_text_color",
+        "default": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "checkbox",
+        "id": "descrease_margin",
+        "visible_if": "{{ section.settings.remove_margin == false }}",
+        "label": "t:theme_blocks.descrease_top_margin",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "remove_margin",
+        "visible_if": "{{ section.settings.descrease_margin == false }}",
+        "label": "t:sections.local-extra-words.sections.rich-text.settings.remove_margin.label",
+        "default": false
+      },
+      {
         "type": "header",
         "content": "t:sections.refactor_words.seo.name"
       },
@@ -300,10 +364,35 @@
           }
         ],
         "default": "h2"
+      },
+      {
+        "type": "header",
+        "content": "t:sections.refactor_words.announcement-bar.visibility.label"
+      },
+      {
+        "type": "select",
+        "id": "section_visibility",
+        "label": "t:sections-visibility.label",
+        "options": [
+          {
+            "value": "always",
+            "label": "t:sections-visibility.options.always"
+          },
+          {
+            "value": "mobile",
+            "label": "t:sections-visibility.options.mobile"
+          },
+          {
+            "value": "desktop",
+            "label": "t:sections-visibility.options.desktop"
+          }
+        ],
+        "default": "always"
       }
     ],
     "presets": [{
       "name": "t:sections.shop-the-look.name",
+      "category": "t:sections-categories.products",
       "blocks": [
         { "type": "price" },
         { "type": "title" },

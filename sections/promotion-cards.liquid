@@ -1,4 +1,9 @@
-<div class="container--large {% unless section.settings.remove_margin %} container--vertical-space {% endunless %} {% if section.settings.section_background_color != "rgba(0,0,0,0)" or section.settings.section_background_gradient != blank %} container--has-background {% endif %}">
+<div id="section-{{ section.id }}" class="container--large remove-empty-space
+  {% unless section.settings.remove_margin %} {% unless section.settings.descrease_margin %} container--vertical-space {% else %} container--vertical-space-grid {% endunless %} {% endunless %} 
+  {% if section.settings.section_background_color != "rgba(0,0,0,0)" or section.settings.section_background_gradient != blank %} container--has-background {% endif %}
+  {% if section.settings.section_visibility == "mobile" %} element--hide-on-desk {% endif %}
+  {% if section.settings.section_visibility == "desktop" %} element--hide-on-small {% endif %}
+">
 
   {%- render 'section-heading', heading: section.settings.heading, subheading: section.settings.subheading, heading_tag: section.settings.seo_h_tag, layout: section.settings.section_heading_layout -%}
 
@@ -20,25 +25,36 @@
               class="card__image border-radius-top"
               style="padding-top:{{ 100 | divided_by: section.settings.image_aspect_ratio }}%"
             >
-              {%- liquid 
-                unless block.settings.image == blank
-                  if section.settings.layout contains 'grid-4'
-                    assign sizes = 'sizes="(max-width: 767px) calc(100vw - 20px), (max-width: 1024px) 50vw, (max-width: 1360px) 25vw, 320px"'
-                  elsif section.settings.layout contains 'grid-3'
-                    assign sizes = 'sizes="(max-width: 767px) calc(100vw - 20px), (max-width: 1360px) 33vw, 420px"'
-                  else
-                    assign sizes = 'sizes="(max-width: 767px) calc(100vw - 20px), (max-width: 1360px) 50vw, 640px"'
-                  endif
-                  if section.index == 1 and forloop.index <= 2
-                    assign preload = true
-                  else
-                    assign preload = false
-                  endif
-                  render 'lazy-image', image: block.settings.image, sizes: sizes, ratio: section.settings.image_aspect_ratio, type: 'background', alt: block.settings.title, preload: preload
+
+              {%- liquid
+                if section.index == 1 and forloop.index <= 2
+                  assign preload = true
                 else
-                  echo 'image' | placeholder_svg_tag
-                endunless
+                  assign preload = false
+                endif
               -%}
+
+              {%- unless block.settings.image == blank -%}
+                {%- if section.settings.layout contains 'grid-4' -%}
+                  {%- capture sizes -%}
+                    sizes="(max-width: 767px) calc(100vw - 20px), (max-width: 1024px) 50vw, (max-width: {{ settings.theme_max_width }}px) 25vw, {{ settings.theme_max_width | divided_by: 4 }}px"
+                  {%- endcapture -%}
+                {%- elsif section.settings.layout contains 'grid-3' -%}
+                  {%- capture sizes -%}
+                    sizes="(max-width: 767px) calc(100vw - 20px), (max-width: {{ settings.theme_max_width }}px) 33vw, {{ settings.theme_max_width | divided_by: 3 }}px"
+                  {%- endcapture -%}
+                {%- else -%}
+                  {%- capture sizes -%}
+                    sizes="(max-width: 767px) calc(100vw - 20px), (max-width: {{ settings.theme_max_width }}px) 50vw, {{ settings.theme_max_width | divided_by: 2 }}px"
+                  {%- endcapture -%}
+                {%- endif -%}
+
+                {%- render 'lazy-image', image: block.settings.image, sizes: sizes, ratio: section.settings.image_aspect_ratio, type: 'background', alt: block.settings.title, preload: preload -%}
+                
+              {%- else -%}
+                {{ 'image' | placeholder_svg_tag }}
+              {%- endunless -%}
+
             </div>
 
             <div class="card__text  
@@ -65,7 +81,7 @@
 
               {%- if block.settings.button_label != blank -%}
                 <div class="increased-spacing">
-                  <a href="{{ block.settings.link | escape }}" {% unless block.settings.open_in_new_window == false %} target="_blank" {% endunless %}  class="button {% unless section.settings.layout contains 'grid-2' %} button--fullwidth {% endunless %} button--{{ section.settings.button_size }} button--{{ section.settings.button_style }}">{{ block.settings.button_label | escape }}</a>
+                  <a href="{{ block.settings.link | escape }}" {% unless block.settings.open_in_new_window == false %} target="_blank" {% endunless %}  class="button {% unless section.settings.layout contains 'grid-2' %} button--{{ section.settings.button_width }} {% endunless %} button--{{ section.settings.button_size }} button--{{ section.settings.button_style }}">{{ block.settings.button_label | escape }}</a>
                 </div>
               {%- endif -%}
 
@@ -247,16 +263,20 @@
         "label": "t:sections.local-extra-words.sections.main-header.settings.promotion_block.title.size",
         "options": [
           {
-            "value": "h3",
+            "value": "h4",
             "label": "t:sections.local-extra-words.sections.media-with-text-overlay.settings.option__1"
           },
           {
-            "value": "h2",
+            "value": "h3",
             "label": "t:sections.local-extra-words.sections.media-with-text-overlay.settings.option__5"
           },
           {
-            "value": "h1",
+            "value": "h2",
             "label": "t:sections.local-extra-words.sections.media-with-text-overlay.settings.option__2"
+          },
+          {
+            "value": "h1",
+            "label": "t:sections.local-extra-words.sections.media-with-text-overlay.settings.option__3"
           }
         ],
         "default": "h3"
@@ -310,6 +330,22 @@
         "default": "outline"
       },
       {
+        "id": "button_width",
+        "label": "t:local-260.labels.button_width.label",
+        "type": "select",
+        "options": [
+          {
+            "value": "fullwidth",
+            "label": "t:local-260.labels.button_width.option_1"
+          },
+          {
+            "value": "fit",
+            "label": "t:local-260.labels.button_width.option_2"
+          }
+        ],
+        "default": "fullwidth"
+      },
+      {
         "type": "header",
         "content": "t:local-march-update.labels.section_design"
       },
@@ -332,7 +368,15 @@
       },
       {
         "type": "checkbox",
+        "id": "descrease_margin",
+        "visible_if": "{{ section.settings.remove_margin == false }}",
+        "label": "t:theme_blocks.descrease_top_margin",
+        "default": false
+      },
+      {
+        "type": "checkbox",
         "id": "remove_margin",
+        "visible_if": "{{ section.settings.descrease_margin == false }}",
         "label": "t:sections.local-extra-words.sections.rich-text.settings.remove_margin.label",
         "default": false
       },
@@ -368,6 +412,30 @@
           }
         ],
         "default": "h2"
+      },
+      {
+        "type": "header",
+        "content": "t:sections.refactor_words.announcement-bar.visibility.label"
+      },
+      {
+        "type": "select",
+        "id": "section_visibility",
+        "label": "t:sections-visibility.label",
+        "options": [
+          {
+            "value": "always",
+            "label": "t:sections-visibility.options.always"
+          },
+          {
+            "value": "mobile",
+            "label": "t:sections-visibility.options.mobile"
+          },
+          {
+            "value": "desktop",
+            "label": "t:sections-visibility.options.desktop"
+          }
+        ],
+        "default": "always"
       }
     ], 
     "blocks": [
@@ -411,6 +479,7 @@
           {
             "type": "checkbox",
             "id": "open_in_new_window",
+            "visible_if": "{{ block.settings.link != blank }}",
             "label": "t:sections.local-extra-words.sections.announcement-bar.blocks.content.settings.target",
             "default": false
           },
@@ -505,6 +574,7 @@
     "presets": [
       {
         "name": "t:sections.local-extra-words.sections.promotion-cards.name",
+        "category": "t:sections-categories.promotions",
         "blocks": [
           { "type": "card" },
           { "type": "card" },

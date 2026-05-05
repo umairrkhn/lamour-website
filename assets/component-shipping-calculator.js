@@ -50,10 +50,10 @@ if ( typeof ShippingCalculator !== 'function' ) {
 							resultsBlock.style.display = "block";
 							resultsBlockContent.style.display = "block";
 							
-							if(rates.length == 1) {
+							if ( rates.length == 1 ) {
 								resultsBlockContentHeading.innerHTML = KROWN.settings.locales.shipping_calculator_results_heading_one;
 							} else {
-								resultsBlockContentHeading.innerHTML = KROWN.settings.locales.shipping_calculator_results_heading_one;
+								resultsBlockContentHeading.innerHTML = KROWN.settings.locales.shipping_calculator_results_heading_multiple;
 							}
 
 							rates.forEach(key => {

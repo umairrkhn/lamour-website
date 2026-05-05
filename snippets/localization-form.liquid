@@ -1,3 +1,15 @@
+{%- comment -%}
+  Renders a localization form.
+
+  Accepts:
+  - show_country_selector: {Boolean} whether to show the country selector.
+  - show_locale_selector: {Boolean} whether to show the locale selector.
+  - location: {String} unique identifier for the localization form.
+
+  Usage:
+  {% render 'localization-form', show_country_selector: true, show_locale_selector: true, location: 'footer' %}
+{%- endcomment -%}
+
 {%- liquid 
   if show_country_selector and localization.available_countries.size > 1
     assign country_selector = true
@@ -11,8 +23,7 @@
 {%- if country_selector or locale_selector -%}
 
   {{ 'component-localization-form.css' | asset_url | stylesheet_tag }}
-  
-  {%- assign formId = 'localization_form-' | append: location -%}
+  {% # theme-check-disable VariableName %}{%- assign formId = 'localization_form-' | append: location -%}{% # theme-check-enable VariableName %}
   {%- form 'localization', id: formId, class: 'localization-form' -%}
 
     {%- if locale_selector -%}
