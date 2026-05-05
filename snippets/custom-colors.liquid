@@ -1,3 +1,18 @@
+{%- comment -%}
+  Renders inline CSS style for custom colors in sections & blocks.
+
+  Accepts:
+  - id: {String} section or block id.
+  - text: {String} text color (hex format).
+  - background {String} background color (hex format).
+  - borders: {String} border color (hex format).
+  - hide_borders: {Boolean} hide borders.
+  - hide_shadow: {Boolean} hide shadow.
+
+  Usage:
+  {% render 'custom-colors', id: section.id, text: '#ff0000', background: '#000000', hide_borders: true, hide_shadow: false %}
+{%- endcomment -%}
+
 {%- if background != blank and background != "rgba(0,0,0,0)" -%}
   {% style %}
     #element-{{ id }} {
@@ -10,9 +25,9 @@
   {%- liquid
     assign brightness_text_main = text | color_brightness
     if brightness_text_main > 150 
-      assign color_foreground_main = '#000' 
+      assign color_foreground_main = settings.color_foreground_light 
     else 
-      assign color_foreground_main = '#fff' 
+      assign color_foreground_main = settings.color_foreground_dark 
     endif 
   -%}
   {% style %}
@@ -28,9 +43,9 @@
   {%- liquid
     assign brightness_text_accent = accent | color_brightness
     if brightness_text_accent > 150 
-      assign color_foreground_accent = '#000' 
+      assign color_foreground_accent = settings.color_foreground_light 
     else 
-      assign color_foreground_accent = '#fff' 
+      assign color_foreground_accent = settings.color_foreground_dark 
     endif 
   -%}
   {% style %}

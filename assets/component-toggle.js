@@ -3,8 +3,8 @@ if ( typeof ToggleTab !== 'function' ) {
 	class ToggleTab extends HTMLElement {
 
 		constructor(){
-
 			super();
+			this._prefix = window.KT_PREFIX || '';
 
 			this.titleEl = this.querySelector('[data-js-title]');
 			this.contentEl = this.querySelector('[data-js-content]');
@@ -22,10 +22,10 @@ if ( typeof ToggleTab !== 'function' ) {
 			})
 
 		}
-
+		
 		onClickHandler(){
-			if ( ! this.classList.contains('opened') ) {
-				this.classList.add('opened');
+			if ( ! this.classList.contains(`${this._prefix}opened`) ) {
+				this.classList.add(`${this._prefix}opened`);
 				this.titleEl.setAttribute('aria-expanded', 'true');
 				this.slideDown(this.contentEl, 200);
 				if ( this.toggleInert ) {
@@ -35,7 +35,7 @@ if ( typeof ToggleTab !== 'function' ) {
 					this.contentEl.querySelector('css-slider')?.resetSlider();
 				}, 200);
 			} else {
-				this.classList.remove('opened');
+				this.classList.remove(`${this._prefix}opened`);
 				this.titleEl.setAttribute('aria-expanded', 'false');
 				if ( this.toggleInert ) {
 					this.contentEl.setAttribute('inert', '');
@@ -115,9 +115,10 @@ if ( typeof ToggleGroup !== 'function' ) {
 		constructor(){
 
 			super();
+			this._prefix = window.KT_PREFIX || '';
 			this.querySelectorAll('toggle-tab').forEach(allToggle=>{
 				allToggle.querySelector('[data-js-title]').addEventListener('click', ()=>{
-					this.querySelectorAll('toggle-tab.opened').forEach(openedToggle=>{
+					this.querySelectorAll(`toggle-tab.${this._prefix}opened`).forEach(openedToggle=>{
 						if ( allToggle !== openedToggle ) {
 							openedToggle.onClickHandler();
 						}

@@ -1,3 +1,21 @@
+{%- comment -%}
+  Renders a regular image, that can be used in any area of the theme.
+
+  Accepts:
+  - image: {Object} the image object.
+	- sizes: {String} image sizes attribute.
+	- type: {String} image type (background or unset).
+	- alt: {String} image alt attribute (fallback to image.alt if not provided).
+	- image_alignment: {Boolean} whether the image should be aligned to the focal point.
+	- preload: {Boolean} whether the image should be lazy loaded or not (false: image is lazyloaded).
+	- ratio: {String} image aspect ratio (needs to be a valid width/height ratio).
+  - fit: {Boolean} whether the image should be cropped to fit the container.
+  - class: {String} additional classes to add to the figure element.
+
+  Usage:
+	{% render 'lazy-image', image: product.featured_image, sizes: '(max-width: 480px) 100vw, 50vw', type: 'background', alt: 'Product image', image_alignment: true, preload: false, ratio: '1', fit: true, class: 'product__image' %}
+{%- endcomment -%}
+
 {%- liquid
 
 	assign no_crop = true
@@ -68,10 +86,10 @@
 			{%- if image.width >= 1540 and image.height >= height_1540 -%},{{ image | image_url: width: 1540, height: height_1540, crop: 'center' }} 1540w{%- endif -%}
 			{%- if image.width >= 1860 and image.height >= height_1860 -%},{{ image | image_url: width: 1860, height: height_1860, crop: 'center' }} 1860w{%- endif -%}
 			{%- if image.width >= 2100 and image.height >= height_2100 -%},{{ image | image_url: width: 2100, height: height_2100, crop: 'center' }} 2100w{%- endif -%}
-			{%- if image.width >= 2460 and image.height >= height__2460 -%},{{ image | image_url: width: 2460, height: height_2460 }} 2460w{%- endif -%}
-			{%- if image.width >= 2820 and image.height >= height__2820 -%},{{ image | image_url: width: 2820, height: height_2820 }} 2820w{%- endif -%}
-			{%- if image.width >= 3360 and image.height >= height__3360 -%},{{ image | image_url: width: 3360, height: height_3360 }} 3360w{%- endif -%}
-			{%- if image.width >= 3820 and image.height >= height__3820 -%},{{ image | image_url: width: 3820, height: height_3820 }} 3820w{%- endif -%}
+			{%- if image.width >= 2460 and image.height >= height_2460 -%},{{ image | image_url: width: 2460, height: height_2460, crop: 'center' }} 2460w{%- endif -%}
+			{%- if image.width >= 2820 and image.height >= height_2820 -%},{{ image | image_url: width: 2820, height: height_2820, crop: 'center' }} 2820w{%- endif -%}
+			{%- if image.width >= 3360 and image.height >= height_3360 -%},{{ image | image_url: width: 3360, height: height_3360, crop: 'center' }} 3360w{%- endif -%}
+			{%- if image.width >= 3820 and image.height >= height_3820 -%},{{ image | image_url: width: 3820, height: height_3820, crop: 'center' }} 3820w{%- endif -%}
 		" 
 	{%- endcapture -%}
 {%- endif -%}

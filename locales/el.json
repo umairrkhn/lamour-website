@@ -19,7 +19,9 @@
       "title": "Κοινοποίηση",
       "facebook": "Facebook",
       "twitter": "X (Twitter)",
-      "pinterest": "Pinterest"
+      "pinterest": "Pinterest",
+      "copy_to_clipboard": "Αντιγραφή στο πρόχειρο",
+      "url_copied_to_clipboard": "Το URL αντιγράφηκε"
     },
     "newsletter": {
       "email_label": "Συμπληρώστε το email σας",
@@ -51,7 +53,8 @@
       "powered_by_shopify_html": "Το κατάστημα θα υποστηρίζεται από {{ shopify }}"
     },
     "prefixes": {
-      "by": "από"
+      "by": "από",
+      "or": "ή"
     },
     "account_link": {
       "logged_in": "Ο λογαριασμός μου",
@@ -66,7 +69,11 @@
       "cart": "Καλάθι"
     },
     "date_format": {
-      "month_day_year": "%b %d, %Y"
+      "month_day_year": "%b %d, %Y",
+      "days": "Μέρες",
+      "hours": "Ώρες",
+      "minutes": "Λεπτά",
+      "seconds": "Δευτερόλεπτα"
     },
     "copyright": "Πνευματική ιδιοκτησία",
     "meta": {
@@ -95,6 +102,7 @@
       "country_dropdown_label": "Χώρα/περιοχή",
       "quantity": "Ποσότητα",
       "price": {
+        "price": "Τιμή",
         "regular": "Κανονική τιμή",
         "sale": "Εκπτωτική τιμή",
         "unit": "Τιμή μονάδας"
@@ -108,7 +116,11 @@
       "rating_info": "Βαθμολογία: {{ rating_value }} από {{ rating_max }}",
       "form_error": "Σφάλμα",
       "go_to_top": "Μετάβαση στην κορυφή",
-      "top": "Κορυφή"
+      "top": "Κορυφή",
+      "slide": "Εμφάνιση διαφάνειας {{ count }}",
+      "next_slide": "Επόμενη διαφάνεια",
+      "previous_slide": "Προηγούμενη διαφάνεια",
+      "time_left": "Χρόνος που απομένει"
     },
     "cookies_popup": {
       "title": "Cookies",
@@ -200,7 +212,9 @@
       },
       "loading_reviews": "Φόρτωση περισσότερων κριτικών",
       "include_taxes": "Συμπεριλαμβάνεται φόρος.",
+      "exclude_taxes": "Φόρος εξαιρούμενος.",
       "shipping_policy_html": "<a href=\"{{ link }}\">Τα μεταφορικά</a> υπολογίζονται στη σελίδα πληρωμής.",
+      "required_line_item": "Αυτό το πεδίο είναι υποχρεωτικό",
       "view_in_space": "Προβολή στον χώρο σας",
       "view_in_space_label": "Η προβολή στον χώρο σας φορτώνει το αντικείμενο σε παράθυρο επαυξημένης πραγματικότητας",
       "sales_amount_html": "κερδίζετε {{ amount }}",
@@ -240,6 +254,10 @@
       "one": "{{ count }} προϊόν προστέθηκε στο καλάθι σας",
       "other": "{{ count }} προϊόντα προστέθηκαν στο καλάθι σας"
     },
+    "bundled_items_toggle": {
+      "show_items": "Εμφάνιση {{ count }} αντικειμένων",
+      "hide_items": "Απόκρυψη {{ count }} αντικειμένων"
+    },
     "free_shipping_remaining_html": "Απομένουν {{ remaining_amount }} για δωρεάν μεταφορικά.",
     "free_shipping_eligible": "Έχετε κερδίσει δωρεάν μεταφορικά!",
     "shipping_calculator": {
@@ -252,7 +270,10 @@
       "product": "Προϊόν",
       "quantity": "Ποσότητα",
       "total": "Σύνολο"
-    }
+    },
+    "discount_codes_label": "Κωδικοί έκπτωσης",
+    "discount_code_error": "Ο κωδικός έκπτωσης δεν μπορεί να εφαρμοστεί στο καλάθι σας",
+    "remove_discount_code": "Αφαίρεση κωδικού έκπτωσης: {{ code }}"
   },
   "blog": {
     "grid": {
@@ -321,7 +342,8 @@
         "date": "Ημερομηνία",
         "payment_status": "Κατάσταση πληρωμής",
         "fulfillment_status": "Κατάσταση εκτέλεσης",
-        "total": "Σύνολο"
+        "total": "Σύνολο",
+        "view_order": "Προβολή παραγγελίας"
       },
       "no_orders_message": "Δεν έχετε κάνει καμία παραγγελία ακόμα.",
       "account_details_title": "Στοιχεία λογαριασμού",
@@ -438,7 +460,8 @@
       "email_label": "Email παραλήπτη",
       "name_label": "Όνομα παραλήπτη (προαιρετικό)",
       "message_label": "Μήνυμα (προαιρετικό)",
-      "max_characters": "{{ max_chars }} χαρακτήρες το πολύ"
+      "max_characters": "{{ max_chars }} χαρακτήρες το πολύ",
+      "send_on_label": "Αποστολή δωροκάρτας σε διαφορετική ημερομηνία (προαιρετικό)"
     }
   },
   "store_availability": {

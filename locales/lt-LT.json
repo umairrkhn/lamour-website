@@ -19,7 +19,9 @@
       "title": "Bendrinti",
       "facebook": "Facebook",
       "twitter": "X (Twitter)",
-      "pinterest": "Pinterest"
+      "pinterest": "Pinterest",
+      "copy_to_clipboard": "Kopijuoti į iškarpinę",
+      "url_copied_to_clipboard": "URL nukopijuotas"
     },
     "newsletter": {
       "email_label": "Įrašykite savo el. pašto adresą",
@@ -51,7 +53,8 @@
       "powered_by_shopify_html": "Ši parduotuvė veikia naudodama {{ shopify }}"
     },
     "prefixes": {
-      "by": "pateikė"
+      "by": "pateikė",
+      "or": "arba"
     },
     "account_link": {
       "logged_in": "Mano paskyra",
@@ -66,7 +69,11 @@
       "cart": "Krepšelis"
     },
     "date_format": {
-      "month_day_year": "%b %d, %Y"
+      "month_day_year": "%b %d, %Y",
+      "days": "Dienos",
+      "hours": "Valandos",
+      "minutes": "Minutės",
+      "seconds": "Sekundės"
     },
     "copyright": "Autorių teisės",
     "meta": {
@@ -95,20 +102,25 @@
       "country_dropdown_label": "Šalis / regionas",
       "quantity": "Kiekis",
       "price": {
+        "price": "Kaina",
         "regular": "Normali kaina",
         "sale": "Išpardavimo kaina",
         "unit": "Vieneto kaina"
       },
       "share": {
-        "facebook": "Bendrinti „Facebook“",
+        "facebook": "Bendrinti \"Facebook\"",
         "twitter": "Bendrinti X",
-        "pinterest": "Bendrinti „Pinterest“"
+        "pinterest": "Bendrinti \"Pinterest\""
       },
       "rating": "įvertinimas",
       "rating_info": "Įvertinimas: {{ rating_value }} iš {{ rating_max }}",
       "form_error": "Klaida",
       "go_to_top": "Eiti į viršų",
-      "top": "Į viršų"
+      "top": "Į viršų",
+      "slide": "Rodyti skaidrę {{ count }}",
+      "next_slide": "Kita skaidrė",
+      "previous_slide": "Ankstesnė skaidrė",
+      "time_left": "Liko laiko"
     },
     "cookies_popup": {
       "title": "Slapukai",
@@ -200,7 +212,9 @@
       },
       "loading_reviews": "Įkeliama daugiau atsiliepimų",
       "include_taxes": "Mokesčiai įskaičiuoti.",
+      "exclude_taxes": "Mokesčiai neįskaičiuoti.",
       "shipping_policy_html": "<a href=\"{{ link }}\">Siuntimas</a> įskaičiuojamas apmokant.",
+      "required_line_item": "Šis laukas yra privalomas",
       "view_in_space": "Žiūrėkite savo erdvėje",
       "view_in_space_label": "Peržiūrėkite savo erdvėje, prekė įkeliama papildytosios realybės lange",
       "sales_amount_html": "sutaupote {{ amount }}",
@@ -240,6 +254,10 @@
       "one": "{{ count }} produktas įdėtas į jūsų krepšelį",
       "other": "{{ count }} produktai (-ų) įdėti (-a) į jūsų krepšelį"
     },
+    "bundled_items_toggle": {
+      "show_items": "Rodyti {{ count }} elementus",
+      "hide_items": "Slėpti {{ count }} elementus"
+    },
     "free_shipping_remaining_html": "Jums trūksta {{ remaining_amount }} iki nemokamo pristatymo.",
     "free_shipping_eligible": "Turite teisę į nemokamą pristatymą!",
     "shipping_calculator": {
@@ -252,7 +270,10 @@
       "product": "Produktas",
       "quantity": "Kiekis",
       "total": "Iš viso"
-    }
+    },
+    "discount_codes_label": "Nuolaidų kodai",
+    "discount_code_error": "Nuolaidos kodas negali būti pritaikytas jūsų krepšeliui",
+    "remove_discount_code": "Pašalinti nuolaidos kodą: {{ code }}"
   },
   "blog": {
     "grid": {
@@ -286,7 +307,7 @@
   "search": {
     "form": {
       "placeholder": "Ieškoti...",
-      "responsive_placeholder": "Įveskite raktažodį ir paspauskite „Enter“...",
+      "responsive_placeholder": "Įveskite raktažodį ir paspauskite \"Enter\"...",
       "submit": "Pateikti",
       "collection_results_title": "Kolekcijos",
       "page_results_title": "Puslapiai",
@@ -321,7 +342,8 @@
         "date": "Data",
         "payment_status": "Apmokėjimo būsena",
         "fulfillment_status": "Įvykdymo būsena",
-        "total": "Iš viso"
+        "total": "Iš viso",
+        "view_order": "Peržiūrėti užsakymą"
       },
       "no_orders_message": "Dar nepateikėte jokių užsakymų.",
       "account_details_title": "Paskyros informacija",
@@ -438,7 +460,8 @@
       "email_label": "Gavėjo el. paštas",
       "name_label": "Gavėjo vardas (pasirinktinai)",
       "message_label": "Pranešimas (pasirinktinai)",
-      "max_characters": "Maks. {{ max_chars }} simb."
+      "max_characters": "Maks. {{ max_chars }} simb.",
+      "send_on_label": "Siųsti dovanų kortelę kitu dieną (pasirinktinai)"
     }
   },
   "store_availability": {

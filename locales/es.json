@@ -19,7 +19,9 @@
       "title": "Compartir",
       "facebook": "Facebook",
       "twitter": "X (Twitter)",
-      "pinterest": "Pinterest"
+      "pinterest": "Pinterest",
+      "copy_to_clipboard": "Copiar al portapapeles",
+      "url_copied_to_clipboard": "URL copiada"
     },
     "newsletter": {
       "email_label": "Correo electrónico",
@@ -51,14 +53,19 @@
       "powered_by_shopify_html": "Esta tienda estará basada en {{ shopify }}"
     },
     "prefixes": {
-      "by": "por"
+      "by": "por",
+      "or": "o"
     },
     "account_link": {
       "logged_in": "Entrar",
       "logged_out": "Salir"
     },
     "date_format": {
-      "month_day_year": "%d de %B, %Y"
+      "month_day_year": "%d de %B, %Y",
+      "days": "Días",
+      "hours": "Horas",
+      "minutes": "Minutos",
+      "seconds": "Segundos"
     },
     "copyright": "Derechos de autor",
     "breadcrumb": {
@@ -94,6 +101,7 @@
       "language_dropdown_label": "Idioma",
       "country_dropdown_label": "País/región",
       "price": {
+        "price": "Precio",
         "regular": "Precio normal",
         "sale": "Precio rebajado",
         "unit": "Precio unitario"
@@ -108,7 +116,11 @@
       "rating": "rating",
       "rating_info": "Rating: {{ rating_value }} out of {{ rating_max }}",
       "top": "Top",
-      "go_to_top": "Top"
+      "go_to_top": "Top",
+      "slide": "Mostrar diapositiva {{ count }}",
+      "next_slide": "Siguiente diapositiva",
+      "previous_slide": "Diapositiva anterior",
+      "time_left": "Tiempo restante"
     },
     "cookies_popup": {
       "title": "Cookies",
@@ -200,7 +212,9 @@
       },
       "loading_reviews": "Cargando opiniones",
       "include_taxes": "Taxes incluses.",
+      "exclude_taxes": "Impuestos excluidos.",
       "shipping_policy_html": "Los <a href=\"{{ link }}\">gastos de envío</a> se calculan en la pantalla de pagos.",
+      "required_line_item": "Este campo es obligatorio",
       "view_in_space": "Ver en tu espacio",
       "view_in_space_label": "Ver en tu espacio, carga el artículo en la ventana de realidad aumentada.",
       "sales_amount_html": "ahorra {{ amount }}",
@@ -240,6 +254,10 @@
       "one": "{{ count }} producto se ha añadido a tu carrito",
       "other": "{{ count }} productos se han añadido a tu carrito"
     },
+    "bundled_items_toggle": {
+      "show_items": "Mostrar {{ count }} artículos",
+      "hide_items": "Ocultar {{ count }} artículos"
+    },
     "free_shipping_remaining_html": "Te encuentras a {{ remaining_amount }} del envío gratuito.",
     "free_shipping_eligible": "¡Eres elegible para el envío gratuito!",
     "shipping_calculator": {
@@ -252,7 +270,10 @@
       "product": "Producto",
       "quantity": "Cantidad",
       "total": "Total"
-    }
+    },
+    "discount_codes_label": "Códigos de descuento",
+    "discount_code_error": "El código de descuento no se puede aplicar a tu carrito",
+    "remove_discount_code": "Eliminar código de descuento: {{ code }}"
   },
   "blog": {
     "grid": {
@@ -321,7 +342,8 @@
         "date": "Fecha",
         "payment_status": "Estado de pago",
         "fulfillment_status": "Estado de la preparación",
-        "total": "Total"
+        "total": "Total",
+        "view_order": "Ver pedido"
       },
       "no_orders_message": "Ningún pedido.",
       "account_details_title": "Detalles de la cuenta",
@@ -438,7 +460,8 @@
       "email_label": "Correo electrónico de la persona destinataria",
       "name_label": "Nombre de la persona destinataria (opcional)",
       "message_label": "Mensaje (opcional)",
-      "max_characters": "{{ max_chars }} caracteres máx."
+      "max_characters": "{{ max_chars }} caracteres máx.",
+      "send_on_label": "Enviar tarjeta regalo en una fecha diferente (opcional)"
     }
   },
   "store_availability": {

@@ -1,6 +1,3 @@
-/*
- *  1.0. Mixins
-*/
 @media screen and (max-width: 767px) {
   .shipping-calculator__cell {
     padding-bottom: var(--gutter-small);

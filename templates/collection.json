@@ -47,7 +47,6 @@
         "vendor_QHgcCX"
       ],
       "settings": {
-        "layout": "grid-4 grid-portable-3 grid-lap-2 grid-tiny-1",
         "products_number": 24,
         "enable_filtering": true,
         "enable_sorting": true,

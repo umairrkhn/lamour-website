@@ -19,7 +19,9 @@
       "title": "Bagikan",
       "facebook": "Facebook",
       "twitter": "X (Twitter)",
-      "pinterest": "Pinterest"
+      "pinterest": "Pinterest",
+      "copy_to_clipboard": "Salin ke clipboard",
+      "url_copied_to_clipboard": "URL Disalin"
     },
     "newsletter": {
       "email_label": "Masukkan email Anda",
@@ -51,7 +53,8 @@
       "powered_by_shopify_html": "Toko ini akan didukung oleh {{ shopify }}"
     },
     "prefixes": {
-      "by": "oleh"
+      "by": "oleh",
+      "or": "atau"
     },
     "account_link": {
       "logged_in": "Akun saya",
@@ -66,7 +69,11 @@
       "cart": "Keranjang"
     },
     "date_format": {
-      "month_day_year": "%b %d, %Y"
+      "month_day_year": "%b %d, %Y",
+      "days": "Hari",
+      "hours": "Jam",
+      "minutes": "Menit",
+      "seconds": "Detik"
     },
     "copyright": "Hak cipta",
     "meta": {
@@ -95,6 +102,7 @@
       "country_dropdown_label": "Negara/kawasan",
       "quantity": "Kuantitas",
       "price": {
+        "price": "Harga",
         "regular": "Harga normal",
         "sale": "Harga diskon",
         "unit": "Harga satuan"
@@ -108,7 +116,11 @@
       "rating_info": "Nilai: {{ rating_value }} dari {{ rating_max }}",
       "form_error": "Kesalahan",
       "go_to_top": "Pergi ke atas",
-      "top": "Atas"
+      "top": "Atas",
+      "slide": "Tampilkan slide {{ count }}",
+      "next_slide": "Slide berikutnya",
+      "previous_slide": "Slide sebelumnya",
+      "time_left": "Waktu tersisa"
     },
     "cookies_popup": {
       "title": "Cookie",
@@ -200,7 +212,9 @@
       },
       "loading_reviews": "memuat lebih banyak ulasan",
       "include_taxes": "Termasuk pajak.",
+      "exclude_taxes": "Tidak termasuk pajak.",
       "shipping_policy_html": "<a href=\"{{ link }}\">Pengiriman</a> dihitung saat checkout.",
+      "required_line_item": "Kolom ini wajib diisi",
       "view_in_space": "Lihat di ruang Anda",
       "view_in_space_label": "Lihat di ruang Anda, muat barang di jendela augmented reality",
       "sales_amount_html": "Anda menghemat {{ amount }}",
@@ -217,7 +231,7 @@
     "subtotal": "Subtotal",
     "discount": "Diskon",
     "discounts": "Diskon",
-    "checkout": "Check Out",
+    "checkout": "Checkout",
     "update": "Perbarui keranjang",
     "note": "Instruksi pesanan",
     "policies": {
@@ -240,6 +254,10 @@
       "one": "{{ count }} produk ditambahkan ke keranjang Anda",
       "other": "{{ count }} produk ditambahkan ke keranjang Anda"
     },
+    "bundled_items_toggle": {
+      "show_items": "Tampilkan {{ count }} item",
+      "hide_items": "Sembunyikan {{ count }} item"
+    },
     "free_shipping_remaining_html": "Anda membutuhkan {{ remaining_amount }} lagi untuk mendapatkan pengiriman gratis.",
     "free_shipping_eligible": "Anda berhak mendapatkan pengiriman gratis!",
     "shipping_calculator": {
@@ -252,7 +270,10 @@
       "product": "Produk",
       "quantity": "Kuantitas",
       "total": "Total"
-    }
+    },
+    "discount_codes_label": "Kode diskon",
+    "discount_code_error": "Kode diskon tidak dapat diterapkan pada keranjang Anda",
+    "remove_discount_code": "Hapus kode diskon: {{ code }}"
   },
   "blog": {
     "grid": {
@@ -321,7 +342,8 @@
         "date": "Tanggal",
         "payment_status": "Status Pembayaran",
         "fulfillment_status": "Status Pemenuhan",
-        "total": "Total"
+        "total": "Total",
+        "view_order": "Lihat pesanan"
       },
       "no_orders_message": "Anda belum membuat pesanan.",
       "account_details_title": "Detail Akun",
@@ -438,7 +460,8 @@
       "email_label": "Email penerima",
       "name_label": "Nama penerima (opsional)",
       "message_label": "Pesan (opsional)",
-      "max_characters": "{{ max_chars }} karakter maks"
+      "max_characters": "{{ max_chars }} karakter maks",
+      "send_on_label": "Kirim kartu hadiah pada tanggal berbeda (opsional)"
     }
   },
   "store_availability": {

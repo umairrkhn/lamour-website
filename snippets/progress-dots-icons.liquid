@@ -1,6 +1,18 @@
+{%- comment -%}
+  Renders an icon from our selected icon pack (used in the product page progress dots block).
+
+  Accepts:
+  - icon: {String} the selected icon.
+  - color_1: {String} the primary color.
+  - color_2: {String} the secondary color.
+
+  Usage:  
+  {% render 'progress-dots-icons', icon: 'coffee-bean' %}
+{%- endcomment -%}
+ 
 {%- if icon == "coffee-bean" -%}
   
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="21" fill="none"><path fill="{{ color_1 }}" stroke="{{ color_1 }}" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21.566 9.051c1.889 5.167-1.111 9.945-6.611 10.722-5.5.778-11.5-2.777-13.39-7.944C-.322 6.662 2.678 1.885 8.178 1.107c5.5-.778 11.5 2.778 13.389 7.944Z"/><path stroke="{{ color_2 }}" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.455 6.551c2.056 2.722 3.278 3.222 6.667 3.334 3.389.11 5.5.889 6.666 3.333"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="21" fill="none"><path fill="{{ color_1 }}" stroke="{{ color_1 }}" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21.566 9.051c1.889 5.167-1.111 9.945-6.611 10.722-5.5.778-11.5-2.777-13.39-7.944C-.322 6.662 2.678 1.885 8.178 1.107c5.5-.778 11.5 2.778 13.389 7.944Z"/><path stroke="{{ color_2 }}" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.455 6.551c2.056 2.722 3.278 3.222 6.667 3.334 3.389.11 5.5.889 6.666 3.333"/></svg>
 
 {%- elsif icon == "circle" -%}
   
@@ -83,6 +95,7 @@
   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none"><path stroke="{{ color_1 }}" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" d="m16 24-8.5 5 2-9.5-7-6.5 9.5-1 4-9 4 9 9.5 1-7 6.5 2 9.5-8.5-5Z"/></svg>
 
 {%- elsif icon == "star-active" -%}
+
   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none"><path fill="{{ color_1 }}" d="m32.02 12.402-11.268-1.337L16 .755l-4.753 10.31L-.02 12.402l8.33 7.707-2.212 11.135L16 25.7l9.901 5.545L23.69 20.11l8.331-7.707Z"/></svg>
 
 {%- elsif icon == "sun" -%}

@@ -19,7 +19,9 @@
       "title": "共有する",
       "facebook": "Facebook",
       "twitter": "X (Twitter)",
-      "pinterest": "Pinterest"
+      "pinterest": "Pinterest",
+      "copy_to_clipboard": "クリップボードにコピー",
+      "url_copied_to_clipboard": "URLをコピーしました"
     },
     "newsletter": {
       "email_label": "メールアドレスを入力してください",
@@ -51,7 +53,8 @@
       "powered_by_shopify_html": "このショップは {{ shopify }} を使用しています"
     },
     "prefixes": {
-      "by": "によって"
+      "by": "によって",
+      "or": "または"
     },
     "account_link": {
       "logged_in": "マイアカウント",
@@ -66,7 +69,11 @@
       "cart": "カート"
     },
     "date_format": {
-      "month_day_year": "%b %d、%Y"
+      "month_day_year": "%b %d、%Y",
+      "days": "日々",
+      "hours": "時間",
+      "minutes": "分",
+      "seconds": "秒"
     },
     "copyright": "著作権",
     "meta": {
@@ -95,6 +102,7 @@
       "country_dropdown_label": "国/地域",
       "quantity": "数量",
       "price": {
+        "price": "価格",
         "regular": "定価",
         "sale": "特価",
         "unit": "単価"
@@ -108,7 +116,11 @@
       "rating": "評価",
       "rating_info": "Rating: {{ rating_value }} out of {{ rating_max }}",
       "top": "上",
-      "go_to_top": "上"
+      "go_to_top": "上",
+      "slide": "スライド{{ count }}を表示",
+      "next_slide": "次のスライド",
+      "previous_slide": "前のスライド",
+      "time_left": "残り時間"
     },
     "cookies_popup": {
       "title": "クッキー",
@@ -200,7 +212,9 @@
       },
       "loading_reviews": "さらにレビューを読み込んでいます",
       "include_taxes": "税込み。",
+      "exclude_taxes": "税抜き。",
       "shipping_policy_html": "<a href=\"{{ link }}\">送料</a>はチェックアウト時に計算されます。",
+      "required_line_item": "この項目は必須です",
       "view_in_space": "お客様のスペースで表示する",
       "view_in_space_label": "お客様のスペースで表示し、拡張現実ウィンドウにアイテムを読み込む",
       "sales_amount_html": "{{ amount }}の割引が適用されます",
@@ -240,6 +254,10 @@
       "one": "{{ count }} 点の商品がカートに追加されました",
       "other": "{{ count }} 点の商品がカートに追加されました"
     },
+    "bundled_items_toggle": {
+      "show_items": "{{ count }} 件を表示",
+      "hide_items": "{{ count }} 件を非表示"
+    },
     "free_shipping_remaining_html": "送料無料まであと{{ remaining_amount }}です。",
     "free_shipping_eligible": "お客様には送料無料が適用されます。",
     "shipping_calculator": {
@@ -252,7 +270,10 @@
       "product": "商品",
       "quantity": "数量",
       "total": "合計"
-    }
+    },
+    "discount_codes_label": "割引コード",
+    "discount_code_error": "割引コードをカートに適用できません",
+    "remove_discount_code": "割引コードを削除: {{ code }}"
   },
   "blog": {
     "grid": {
@@ -321,7 +342,8 @@
         "date": "日付",
         "payment_status": "支払状況",
         "fulfillment_status": "処理状況",
-        "total": "合計"
+        "total": "合計",
+        "view_order": "注文を見る"
       },
       "no_orders_message": "まだ何も注文していません。",
       "account_details_title": "アカウントの詳細",
@@ -438,7 +460,8 @@
       "email_label": "受信者のメール",
       "name_label": "受信者の名前 (任意）",
       "message_label": "メッセージ (任意)",
-      "max_characters": "最大{{ max_chars }}文字"
+      "max_characters": "最大{{ max_chars }}文字",
+      "send_on_label": "別の日にギフトカードを送信する（任意）"
     }
   },
   "store_availability": {

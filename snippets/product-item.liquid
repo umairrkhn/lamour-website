@@ -1,3 +1,19 @@
+{%- comment -%}
+  Renders a product item card.
+  
+  Accepts:
+  - product: {Object} the product object.
+  - product_collection: {Object} the product collection object (optional, used for canonical links).
+  - section_blocks: {array} section.blocks array (to access block settings).
+  - blank_product: {Boolean} a flag to indicate if the product is blank (for onboarding).
+  - layout: {String} desktop grid classes (used to determine the image sizes attribute).
+  - mobile_layout: {String} desktop grid classes (used to determine the image sizes attribute).
+  - preload: {Boolean} a flag to indicate if the thumbnail should be preloaded.
+  
+  Usage:
+  {% render 'product-item', product: product, section_blocks: section.blocks, blank_product: blank_product, layout: layout, mobile_layout: mobile_layout, preload: true, product_collection: collection %}
+{%- endcomment -%}
+
 {%- assign product_variant = product.selected_or_first_available_variant -%}
 
 <div id="product-item-{{ product.id }}" class="product-item card" data-js-product-item>
@@ -33,21 +49,41 @@
     style="padding-top:{{ 100 | divided_by: aspect_ratio }}%"
   >
 
-    {%- liquid
 
-      unless layout == 'shop'
-        if layout contains 'grid-4'
-          assign sizes = '(max-width: 1023px) calc((100vw - 100px) / 3), (max-width: 1280px) calc((100vw - 120px) / 4), 300px"'
-        else 
-          assign sizes= '(max-width: 1280px) calc((100vw - 120px) / 3), 420px"'
-        endif
-        assign sizes = sizes | prepend: 'sizes="(max-width: 359px) calc(100vw - 30px), (max-width: 767px) calc((100vw - 50px) / 2),'
-      else
-        assign sizes = 'sizes="(max-width: 474px) calc((100vw - 100px) / 2), (max-width: 767px) calc((100vw - 50px) / 2), (max-width: 1023px) calc((100vw - 100px) / 3), (max-width: 1280px) calc((100vw - 150px) / 4), 285px"'
-      endunless
+    {%- unless layout == 'shop' -%}
+
+      {%- if layout contains 'grid-5' -%}
+       {%- capture sizes -%}
+          (max-width: 1023px) calc((100vw - 100px) / 3), (max-width: 1280px) calc((100vw - 100px) / 4), (max-width: {{ settings.theme_max_width }}px) calc((100vw - 120px) / 5), {{ settings.theme_max_width | minus: 120 | divided_by: 5 }}px"
+        {%- endcapture -%}
+      {%- elsif layout contains 'grid-4' -%}
+        {%- capture sizes -%}
+          (max-width: 1023px) calc((100vw - 100px) / 3), (max-width: {{ settings.theme_max_width }}px) calc((100vw - 120px) / 4), {{ settings.theme_max_width | minus: 80 | divided_by: 4 }}px"
+        {%- endcapture -%}
+      {%- else -%}
+        {%- capture sizes -%}
+          (max-width: {{ settings.theme_max_width }}px) calc((100vw - 120px) / 3), {{ settings.theme_max_width | minus: 80 | divided_by: 3 }}px"
+        {%- endcapture -%}
+      {%- endif -%} 
       
+      {%- liquid 
+        assign sizes = sizes | prepend: ' (max-width: 767px) calc((100vw - 50px) / 2), '
+        if mobile_layout contains 'palm-1'
+          assign sizes = sizes | prepend: 'sizes="(max-width: 474px) calc(100vw - 30px), '
+        else 
+          assign sizes = sizes | prepend: 'sizes="(max-width: 474px) calc(50vw - 20px), '
+        endif
+      -%}
+      
+    {%- endunless -%}
+    
+    {%- liquid
       if product.media.size == 0 or blank_product
-        echo 'image' | placeholder_svg_tag
+        unless settings.product_card_fallback_image == blank
+          render 'lazy-image', image: settings.product_card_fallback_image, alt: product.title, ratio: aspect_ratio, fit: settings.product_card_aspect_ratio_fit, type: 'background', class: 'product-item__image-figure product-item__image-figure--primary lazy-image--animation', sizes: sizes, preload: preload
+        else
+          echo 'image' | placeholder_svg_tag
+        endunless
       else
         render 'lazy-image', image: product.featured_media, alt: product.title, ratio: aspect_ratio, fit: settings.product_card_aspect_ratio_fit, type: 'background', class: 'product-item__image-figure product-item__image-figure--primary lazy-image--animation', sizes: sizes, preload: preload
       endif
@@ -55,7 +91,6 @@
       if settings.product_card_show_secondary_image and product.media.size >= 2
         render 'lazy-image', image: product.media[1], ratio: aspect_ratio, fit: settings.product_card_aspect_ratio_fit, type: 'background', class: 'product-item__image-figure product-item__image-figure--secondary lazy-image--animation', sizes: sizes
       endif
-
     -%}
 
   </a>
@@ -71,7 +106,17 @@
             {{ block.shopify_attributes }}
           >
             <div class="remove-line-height-space--small">
-              <span class="text-animation--underline text-size--{{ settings.product_card_text_size }} text-line-height--small text-weight--bold text-animation--underline">
+              <span class="text-animation--underline text-line-height--small 
+                {% if settings.product_card_title_font == 'body' %}
+                  text-size--{{ settings.product_card_text_size }} text-weight--bold 
+                {% else %}
+                  {% if settings.product_card_text_size == 'xlarge' %}
+                    h4
+                  {% else %}
+                    h5
+                  {% endif %}
+                {% endif %}
+              ">
                 {%- liquid 
                   unless blank_product 
                     echo product.title 
@@ -85,7 +130,7 @@
 
         {%- when 'price' -%}
           <div 
-            class="product-item__price text-size--large equalize-white-space" 
+            class="product-item__price text-size--{{ settings.product_card_price_size }} equalize-white-space" 
             {{ block.shopify_attributes }}
           >
             <div class="remove-line-height-space">
@@ -123,6 +168,7 @@
             class="product-item__icons"
             {{ block.shopify_attributes }}
           >
+            {% # theme-check-disable VariableName %}
             {%- liquid
 
               if settings.product_icon_1_image != blank or settings.product_icon_1_label != blank
@@ -174,6 +220,7 @@
               endif
 
             -%}
+            {% # theme-check-enable VariableName %}
 
           </div>
 
@@ -186,21 +233,51 @@
           </div>
 
         {%- when 'quick_buy' -%}
-          {%- if product.available -%}
+          {%- if product.available or settings.product_card_show_out_of_stock == false -%}
+            {% # theme-check-disable UnclosedHTMLElement %}
             {%- if settings.product_card_align_buy -%}
               </div><div 
                 class="product-item__text gutter--regular spacing--xlarge remove-empty-space text-align--{{ settings.product_card_text_alignment }}" 
                 style="padding-top: 0;"
               >
             {%- endif -%}
+            {% # theme-check-enable UnclosedHTMLElement %}
             <div 
               class="product-item__quick-buy" 
               {{ block.shopify_attributes }}
             >
               {%- render 'quick-buy', product: product, button_classes: 'button--regular button--fullwidth', layout: layout -%}
             </div>
+          {%- elsif settings.product_card_show_out_of_stock == false -%}
+            <div 
+              class="product-item__quick-buy" 
+              {{ block.shopify_attributes }}
+            >
+              <span 
+                class="button button--{{ settings.product_card_button_style }} button--regular button--fullwidth" 
+                style="pointer-events:none;opacity:.36"
+              >
+                <span class="button__text {% if layout == 'shop' %} text-size--regular {% endif %}">
+                  {{ 'products.page.inventory.sold_out_variant' | t }}
+                </span>
+              </span>
+            </div>
           {%- endif -%}
 
+        {%- when 'product_link' -%}
+          {%- unless product == blank -%}
+            <a class="button button--{{ settings.product_card_button_style }} button--regular" 
+              href="{{ product.url }}" {{ block.shopify_attributes }}
+            >
+              <span class="button__text {% if layout == 'shop' %} text-size--regular {% endif %}">
+                {{ block.settings.button_label | escape }}
+              </span>
+            </a>
+          {%- endunless-%}
+
+        {%- when 'space' -%}
+          <div style="height:0" aria-hidden="true" {{ block.shopify_attributes }}>&nbsp;</div>
+        
         {%- when 'rating' -%}
           <div 
             class="product-item__ratings"

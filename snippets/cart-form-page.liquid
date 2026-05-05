@@ -1,3 +1,10 @@
+{% comment %}
+  Renders cart form (page version).
+
+  Usage:
+  {% render 'cart-form-page' %}
+{% endcomment %}
+
 <cart-form id="AjaxCartForm">
 	
   {%- liquid
@@ -19,7 +26,7 @@
 					</div>
 					{%- for item in cart.items -%}
 
-						<div id="item-{{ item.id }}" class="cart-form-item" data-title="{{ item.product.title | escape }} {%- unless item.product.has_only_default_variant -%} ({{ item.variant.title | escape }}) {%- endunless -%}" data-id="{{ item.key }}" data-qty="{{ item.quantity }}" data-line="{{ forloop.index }}" data-product-id="{{ item.product.id }}" data-js-cart-item>
+						<div id="item-{{ item.id }}" class="cart-form-item {% if item.product.id == settings.gift_wrap_product.id %} cart-item--gift-wrapping {% endif %}" data-title="{{ item.product.title | escape }} {%- unless item.product.has_only_default_variant -%} ({{ item.variant.title | escape }}) {%- endunless -%}" data-id="{{ item.key }}" data-qty="{{ item.quantity }}" data-line="{{ forloop.index }}" data-product-id="{{ item.product.id }}" data-js-cart-item>
 
 							<div class="cart-item__product-info cart-form-item--layout">
 
@@ -77,12 +84,54 @@
 										<span class="text-animation--underline-thin">{{ item.product.title | escape }}</span>
 									</a>
 
+									{% if item.item_components and item.item_components.size > 0 %}
+										{% assign count = item.item_components.size %}
+										
+										<div class="cart-item__bundle bundle-components-container text-size--xsmall text-line-height--small">
+
+											<details>
+												<summary class="cart-item__bundle-toggle">
+													<span class="show-bundle">
+														{{ 'cart.bundled_items_toggle.show_items' | t: count: count }}
+													</span>
+													<span class="hide-bundle">
+														{{ 'cart.bundled_items_toggle.hide_items' | t: count: count }}
+													</span>
+													<span aria-hidden="true" class="cart-item__bundle-toggle-icon toggle-bundle-btn__icon">{%- render 'theme-symbols', icon: 'chevron' -%}</span>
+												</summary>
+
+												<div class="cart-item__bundle-components">
+													{%- for component in item.item_components -%}
+														<div class="cart-item__bundle-component align-content align-content--vertical-middle">
+	
+															<div class="cart-item__thumbnail element--border-width-clamped element--border-radius">
+																{%- render 'lazy-image-small', image: component.image, aspect_ratio: settings.cart_image_ratio, fit: settings.cart_image_fit, sizes: '60px' -%}
+															</div>
+
+															<div class="cart-item__bundle-component-info">
+																<span class="text-weight--bold">{{ component.quantity }} × {{ component.product.title | escape }}</span>
+																{%- unless component.product.has_only_default_variant -%} 
+																	<span class="text-color--opacity">{{ component.variant.title | escape }}</span>
+																{%- endunless -%}
+															</div>
+
+														</div>
+													{%- endfor -%}
+												</div>
+											</details>
+											
+										</div>
+										
+									{% endif %}
+
 									{%- unless item.product.has_only_default_variant -%}
+										{%- unless item.item_components and item.item_components.size > 0 -%}
 											{%- for option in item.options_with_values -%}
 												<span class="cart-item__variant text-size--small text-color--opacity">
 													{{ option.name }}: {{ option.value }}
 												</span>
 											{%- endfor -%}
+										{%- endunless -%}
 									{%- endunless -%}
 
 									{%- if item.selling_plan_allocation -%}
@@ -92,9 +141,14 @@
 									{%- endif -%}
 
 									{%- if item.line_level_discount_allocations.size > 0 -%}
-										{%- for discount_allocation in item.line_level_discount_allocations -%}
-											<spann class="text-size--xsmall">{{ 'cart.discount' | t }} {{ discount_allocation.discount_application.title }} (-{{ discount_allocation.amount | money | append: iso_code }})</spann>
-										{%- endfor -%}
+										<span class="cart-item__discounts">
+											{%- for discount_allocation in item.line_level_discount_allocations -%}
+												{%- capture discount -%}
+													{{ discount_allocation.discount_application.title }} (-{{ discount_allocation.amount | money | append: iso_code }})
+												{%- endcapture -%}
+												{%- render 'cart-item-discount', discount: discount -%}
+											{%- endfor -%}
+										</span>
 									{%- endif -%}
 
 									{%- assign property_size = item.properties | size -%}
@@ -123,7 +177,7 @@
 												<button class="qty-button qty-minus no-js-hidden" aria-label="{{ 'general.accessibility_labels.decrease_quantity' | t }}" role="button" controls="updates_{{ item.id }}">
 													{%- render 'theme-symbols', icon: 'minus' -%}
 												</button>
-												<label for="qty-{{ id }}" class="visually-hidden">{{ 'general.accessibility_labels.quantity' | t }}</label>
+												<label for="updates_{{ item.id }}" class="visually-hidden">{{ 'general.accessibility_labels.quantity' | t }}</label>
 												<input type="number" name="updates[]" value="{{ item.quantity }}" min="0" class="qty qty-selector product__quantity" id="updates_{{ item.id }}" data-href="{{ routes.cart_change_url }}?line={{ forloop.index }}&amp;quantity=$qty">
 												<button class="qty-button qty-plus no-js-hidden" aria-label="{{ 'general.accessibility_labels.increase_quantity' | t }}" role="button" controls="updates_{{ item.id }}">
 													{%- render 'theme-symbols', icon: 'plus' -%}
@@ -177,6 +231,8 @@
 	<span class="cart__total hidden" aria-hidden="true" data-cart-total>{{ cart.total_price | money | append: iso_code }}</span>
 
 </cart-form>
+
+{%- render 'cart-gift-wrapping', class: 'cart-wrapping--page' -%}
 
 <noscript>
 	<button type="submit" class="button button--outline button--regular" form="cart">

@@ -1,3 +1,13 @@
+{%- comment -%}
+  Renders cart subtotal, checkout buttons, notes and shipping notice (page version).
+
+	Accepts: 
+	- type: {String} 'page' or 'sidebar'.
+
+  Usage:
+  {% render 'cart-subtotal', type: 'page' %}
+{%- endcomment -%}
+
 <div id="AjaxCartSubtotal">
 	
   {%- liquid
@@ -11,8 +21,7 @@
 			data-free-shipping="{{ settings.cart_free_shipping_amount | times: 100 }}"
 			data-cart-total-amount="{{ cart.total_price }}"
 			data-show-alert
-		>
-		</shipping-notice>
+		></shipping-notice>
 		<script src="{{ 'component-shipping-notice.js' | asset_url }}" defer></script>
 	{%- endif - %}
 
@@ -28,25 +37,90 @@
 			</div>
 			<div class="cart__discounts">
 				<span>{{ 'cart.discounts' | t }}</span>
-				{%- for discount_application in cart.cart_level_discount_applications -%}
-					<strong class="text-size--large">{{ discount_application.title }} ( -{{ discount_application.total_allocated_amount | money | append: iso_code }} )</strong>
-				{%- endfor -%}
+				<div class="cart__discount-codes">
+					{%- for discount_application in cart.cart_level_discount_applications -%}
+						<span class="cart__discount-code">
+							<span class="cart__discount-code-title">
+								{%- render 'theme-symbols', icon: 'discount' -%}
+								{{ discount_application.title }}
+							</span>
+							<span class="cart__discount-code-amount">-{{ discount_application.total_allocated_amount | money | append: iso_code }} </span>
+						</span>
+					{%- endfor -%}
+				</div>
 			</div>
 		{%- endif -%}
 
 		<div class="cart__total">
 			<span>{{ 'cart.total' | t }}</span> 
 			<strong class="text-size--heading">{{ cart.total_price | money | append: iso_code }}</strong>
-		</div>
-
+		</div>	
 
 		{%- if settings.cart_notes_enable and type == 'page' -%}
 			<div class="cart__instructions">
 				<div class="form-field">
-					<label for="cartSpecialInstructions">{{ 'cart.note' | t }}</label>
-					<textarea name="note" id="cartSpecialInstructions" form="cart">{{ cart.note }}</textarea>
+					<cart-note>
+						<label for="CartPage-Note">
+							{{ 'cart.note' | t }}
+						</label>
+						<textarea id="CartPage-Note" name="note">{{ cart.note }}</textarea>
+					</cart-note> 
 				</div>
 			</div>
+		{%- endif -%}
+
+		{%- if settings.show_discount_code -%}
+
+			{%- liquid
+				assign discount_codes = cart.cart_level_discount_applications | where: 'type', 'discount_code' | map: 'title'
+				for item in cart.items
+					for allocation in item.line_level_discount_allocations
+						if allocation.discount_application.type == 'discount_code'
+							assign discount_codes = item.line_level_discount_allocations | slice: forloop.index0 | map: 'discount_application' | map: 'title' | concat: discount_codes
+						endif
+					endfor
+				endfor
+				assign discount_codes = discount_codes | uniq
+			-%}
+
+			{%- if type == 'page' -%}
+				<div class="cart__coupons form-field">
+					<cart-discounts>
+
+						<label for="CartPage-Discount">
+							{{ 'cart.discount_codes_label' | t }}
+						</label>
+					
+						<form class="cart__coupons-form">
+							<input id="CartPage-Discount" name="discount" type="text" data-js-discount-input>
+							<button type="submit" id="cartDiscountSubmit" class="button button--small button--small-mobile button--solid" data-js-discount-submit>
+								{{ 'collections.apply' | t }}
+							</button>
+						</form>
+
+						{%- if settings.discount_text != blank -%}
+							<div class="cart__coupons-label text-size--small text-color--opacity">
+								{{ settings.discount_text | escape }}
+							</div>
+						{%- endif -%}
+						
+						<div class="cart__coupons-error" data-js-discount-error></div>
+
+						<div class="cart__coupons-codes">
+							{%- for discount_code in discount_codes -%}
+								{%- render 'cart-item-discount', discount: discount_code, remove: true -%}
+							{%- endfor -%}
+						</div>
+
+					</cart-discounts>
+				</div>
+			{%- else -%}
+				<div data-js-discount-codes style="display: none !important">
+					{%- for discount_code in discount_codes -%}
+						{%- render 'cart-item-discount', discount: discount_code, remove: true -%}
+					{%- endfor -%}
+				</div>
+			{%- endif -%}
 		{%- endif -%}
 
 		<div class="cart__shipping text-color--opacity text-size--small">
@@ -63,6 +137,19 @@
 			-%}
 		</div>
 
+		{%- if settings.cart_terms_checkbox -%}
+			<terms-checkbox>
+				<div class="agree-to-terms gutter-top--small">
+					<input type="checkbox" id="AgreeToTos" class="styled-checkbox" required />
+					<label for="AgreeToTos" class="text-size--small">
+						{{ settings.cart_terms_text }}
+					</label>
+				</div>
+			</terms-checkbox>
+
+			<script src="{{ 'component-terms-checkbox.js' | asset_url }}" defer></script>
+		{%- endif -%}
+
 		<div {% unless template contains 'cart' %} class="flex-buttons" {% endunless %}>
 			{%- unless type == 'page' -%}
 				{%- if settings.cart_drawer_actions contains 'show-view' -%}
@@ -70,7 +157,7 @@
 				{%- endif -%}
 			{%- endunless -%}
 			{%- if settings.cart_drawer_actions contains 'show-checkout' or type == 'page' -%}
-				<button id="CheckOut" class="button button--regular button--solid" type="submit" name="checkout" form="cart">
+				<button id="CheckOut" class="button button--regular {% if type == 'page' %} button--regular-mobile {% endif %} button--solid" type="submit" name="checkout" form="cart" {%- if settings.cart_terms_checkbox -%} disabled {%- endif -%}>
 					{{ 'cart.checkout' | t }}
 				</button>
 			{%- endif -%}

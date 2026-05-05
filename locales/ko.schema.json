@@ -8,6 +8,301 @@
  * ------------------------------------------------------------
  */
 {
+  "new-account-component": {
+    "title": "고객 계정",
+    "menu": "고객 계정 메뉴",
+    "info": "새로운 고객 계정 컴포넌트에서만 작동합니다. [자세히 알아보기](https://help.shopify.com/en/manual/customers/customer-accounts/account-component)"
+  },
+  "video-compression": {
+    "compress_videos_with_m3u8": "MP4 동영상 압축",
+    "compress_videos_with_m3u8_info": "성능 향상을 위해 Shopify 동영상 압축을 사용합니다. 품질에 영향을 줄 수 있으며, 특히 짧은 동영상에서 그렇습니다."
+  },
+  "sections-categories": {
+    "promotions": "프로모션",
+    "products": "제품",
+    "content": "콘텐츠",
+    "brand-trust": "브랜드 신뢰",
+    "media-galleries": "미디어 및 갤러리",
+    "storytelling": "스토리텔링",
+    "custom": "사용자 지정",
+    "forms": "양식",
+    "layout": "레이아웃",
+    "collections": "컬렉션",
+    "presets": {
+      "media_collage": "미디어 콜라주",
+      "text_cards_collage": "텍스트 카드 콜라주",
+      "flex_promotion_cards": "유연한 프로모션 카드",
+      "promotion_slider": "프로모션 슬라이더",
+      "search_bar": "검색창",
+      "rich_text_with_image": "이미지가 있는 리치 텍스트",
+      "fullwidth_text_banner": "전체 너비 텍스트 배너",
+      "heading_text": "제목 및 텍스트",
+      "logo_list": "로고 목록",
+      "logo": "로고",
+      "fullwidth_media_with_text": "텍스트 포함 전체 너비 미디어",
+      "faq": "자주 묻는 질문",
+      "events_calendar": "이벤트 달력"
+    }
+  },
+  "sections-visibility": {
+    "label": "섹션 표시",
+    "options": {
+      "always": "항상 표시",
+      "mobile": "모바일에서만 표시",
+      "desktop": "데스크탑에서만 표시"
+    }
+  },
+  "flex-cards": {
+    "header": "플렉스 카드",
+    "settings": {
+      "height": {
+        "desktop": "데스크탑 미디어 높이",
+        "auto": "모바일에서 미디어 높이 유지",
+        "mobile": "모바일 미디어 높이"
+      },
+      "image_visibility": "미디어 표시 안 함",
+      "enhance_first_image": "첫 번째 이미지 향상",
+      "star-rating": {
+        "name": "별점",
+        "color": "별 색상"
+      }
+    }
+  },
+  "notes-discounts": {
+    "header": "메모 및 할인",
+    "show_discount_code": {
+      "label": "장바구니 할인 활성화",
+      "text": "할인 문구",
+      "placeholder": "할인 코드",
+      "collapsible": "장바구니 서랍 내에서 메모 및 할인 필드를 접을 수 있도록 설정"
+    }
+  },
+  "back-in-stock-alert": {
+    "header": "재입고 알림",
+    "content": "고객이 이 양식을 작성하면 상점 소유자에게 이메일이 전송됩니다. 제품이 재입고되면 상점 소유자가 수동으로 고객에게 알림을 보내야 합니다.",
+    "info": "이 재입고 알림 양식은 제품이 품절일 때 표시됩니다.",
+    "succcess_message": "성공 메시지",
+    "email_message": "이메일 메시지"
+  },
+  "theme_blocks": {
+    "group": {
+      "name": "콘텐츠 그룹"
+    },
+    "heading": {
+      "settings": {
+        "info": "[br]을 사용하여 줄 바꿈을 삽입하세요.",
+        "option_1": "기본값"
+      }
+    },
+    "slide_image": {
+      "settings": {
+        "info": "전체 카드에 링크가 있으면 내부 링크는 작동하지 않습니다"
+      }
+    },
+    "caption": {
+      "settings": {
+        "option_1": "매우 작음",
+        "content": "콘텐츠"
+      }
+    },
+    "button-caption": {
+      "name": "구분자 라벨",
+      "settings": {
+        "separator": "구분자"
+      }
+    },
+    "empty-space": {
+      "name": "빈 공간"
+    },
+    "grid-text": {
+      "name": "텍스트 카드",
+      "column_desktop": "데스크톱 열",
+      "column_mobile": "모바일 열",
+      "row_desktop": "데스크톱 행",
+      "row_mobile": {
+        "label": "모바일 행",
+        "option_1": "1행",
+        "option_2": "2행"
+      },
+      "spacing": "블록 간 수평 간격"
+    },
+    "grid-media": {
+      "name": "미디어 카드"
+    },
+    "product-add-to-cart-button": {
+      "name": "빠른 구매 버튼"
+    },
+    "divider": {
+      "divider_width": "너비",
+      "option_1": "작음",
+      "option_2": "중간",
+      "option_3": "큼",
+      "option_4": "최대"
+    },
+    "sections": {
+      "flex-slideshow": {
+        "name": "플렉스 슬라이드쇼",
+        "desktop_height": "데스크톱 높이",
+        "mobile_height": "모바일 높이",
+        "legacy_name": "슬라이드쇼(구)"
+      },
+      "flex-section": {
+        "name": "플렉스 그리드",
+        "gutter_size": "텍스트 패딩",
+        "grid_design": "그리드 디자인",
+        "remove_gap": "카드 간격 제거",
+        "height": {
+          "label_desktop": "데스크톱 카드 최소 높이",
+          "label_mobile": "모바일 카드 최소 높이",
+          "info": "콘텐츠가 필요할 경우 카드가 자동으로 확장됩니다."
+        }
+      }
+    },
+    "descrease_top_margin": "상단 여백 줄이기"
+  },
+  "cart-tos-update": {
+    "cart_terms_heading": "이용약관",
+    "cart_terms_checkbox": "결제 시 이용약관 동의 필수",
+    "cart_terms_text": "체크박스 라벨",
+    "drawer_actions": "장바구니 작업"
+  },
+  "product-siblings": {
+    "name": "관련 제품",
+    "info": "각 제품에 다른 목록을 할당하려면 제품 참조 목록 메타필드를 동적 소스로 사용하십시오. [자세히 알아보기](https://shopify-support.krownthemes.com/article/804-product-page#Product-siblings-IzGzR)."
+  },
+  "local-260": {
+    "labels": {
+      "disable_parallax_effect": "패럴랙스 효과 비활성화",
+      "default_image": "기본 이미지",
+      "default_image_info": "제품에 이미지가 없을 때 사용됩니다.",
+      "value": "값",
+      "default_value": "기본값",
+      "values": "값",
+      "values_info": "값은 쉼표로 구분됩니다.",
+      "dropdown_property_settings": "드롭다운 속성 설정",
+      "appears_on_the_order_summary": "주문 요약에 표시됩니다.",
+      "checkbox_property_settings": "체크박스 속성 설정",
+      "maximum_characters": "최대 문자 수",
+      "allow_long_text": "긴 텍스트 허용",
+      "text_property_settings": "텍스트 속성 설정",
+      "hide_at_checkout": "결제 시 숨기기",
+      "hide_at_checkout_info": "선택된 경우, 주문 요약에서 항목 속성이 표시되지 않습니다.",
+      "required": "필수",
+      "required_info": "고객은 이 필드를 작성하여 제품을 장바구니에 추가해야 합니다.",
+      "type": "유형",
+      "custom_property": "맞춤 속성",
+      "custom_property_info": "항목 속성을 사용하여 장바구니에 추가된 제품의 맞춤화 세부 정보를 수집합니다.",
+      "show_custom_link": "맞춤 링크 표시",
+      "show_custom_link_info": "브라우저 지원에 기반한 기본 공유 옵션 사용.",
+      "show_pinterest": "Pinterest 표시",
+      "show_x": "X 표시",
+      "show_facebook": "Facebook 표시",
+      "crop_videos_when_following_images_aspect_ratio": "이미지의 종횡비를 따를 때 비디오 자르기",
+      "enable_add_to_cart_for_multiple_variants_label": "여러 변형에 대한 장바구니 추가 활성화",
+      "enable_add_to_cart_for_multiple_variants_info": "활성화되면 '장바구니에 추가' 버튼이 첫 번째 사용 가능하거나 선택된 변형을 바로 장바구니에 추가합니다. 비활성화되면 '옵션 선택' 버튼이 대신 표시됩니다.",
+      "button_width": {
+        "label": "버튼 너비",
+        "option_1": "전체 너비",
+        "option_2": "제한됨"
+      },
+      "image": "이미지",
+      "maximum_width": "최대 너비",
+      "constrain_image_width": "이미지 너비 제한",
+      "desktop_logo_image": "데스크탑 로고 이미지",
+      "desktop_logo_image_max_height": "데스크탑 로고 이미지 최대 높이",
+      "mobile_logo_image": "모바일 로고 이미지",
+      "mobile_logo_image_max_height": "모바일 로고 이미지 최대 높이",
+      "mobile_logo_image_info": "모바일 로고를 업로드하지 않으면 데스크탑 로고가 대신 사용됩니다.",
+      "letter_spacing": "글자 간격",
+      "dark_background_foreground": "어두운 배경 전경",
+      "light_background_foreground": "밝은 배경 전경",
+      "maximum_page_width": "페이지 최대 너비",
+      "title_font_family": "제목 글꼴 패밀리",
+      "price_size": "가격 크기",
+      "align_button_info": "빠른 구매가 상품 카드의 마지막 블록일 때 가장 잘 작동합니다.",
+      "out_of_stock_info": "품절 시 빠른 구매 버튼 숨기기",
+      "modal_label": "항상 빠른 구매 모달 열기",
+      "modal_info": "기본적으로 빠른 구매 모달은 여러 버전이 있는 상품에만 열립니다.",
+      "popup_cart": "팝업 알림",
+      "caption_alignment": "캡션 정렬",
+      "remove_space_between_images": "이미지 간 공간 제거",
+      "text_horizontal_alignment": "텍스트 수평 정렬",
+      "text_vertical_alignment": "텍스트 수직 정렬",
+      "text_vertical_alignment_info": "이미지가 왼쪽 또는 오른쪽에 위치한 경우 데스크탑에만 적용됩니다.",
+      "segments_height": "세그먼트 높이",
+      "remove_space_between_segments": "세그먼트 간 공간 제거",
+      "out_of_stock": "재고 없음",
+      "regular_stock": "정규 재고",
+      "low_inventory": "낮은 재고",
+      "custom_inventory_notification_colors": "맞춤 재고 알림 색상",
+      "block_heading": "블록 제목",
+      "block_style": "블록 스타일",
+      "block_content": "블록 내용",
+      "tooltip_text": "툴팁 텍스트",
+      "collapsible": "접을 수 있는",
+      "boxed": "박스형",
+      "darken_the_header": "헤더를 어둡게",
+      "opened_by_default": "기본적으로 열림",
+      "applies_to_boxed_version_only": "박스형 버전에만 적용",
+      "dynamic_segments_label": "제품 메타필드를 사용하여 활성 항목 또는 세그먼트를 설정하기 위해 동적 소스를 사용합니다. [더 알아보기](https://shopify-support.krownthemes.com/article/804-product-page#Nutriscore--attribute-meters-OY3p4)",
+      "nutriscore": "뉴트리스코어",
+      "active_item": "활성 항목",
+      "active_item_metafield": "활성 항목 메타필드",
+      "item_1": "항목 1",
+      "item_2": "항목 2",
+      "item_3": "항목 3",
+      "item_4": "항목 4",
+      "item_5": "항목 5",
+      "item_6": "항목 6",
+      "item_7": "항목 7",
+      "item_8": "항목 8",
+      "label": "라벨",
+      "attribute_meter": "속성 미터",
+      "segments": "세그먼트",
+      "active_segment": "활성 세그먼트",
+      "active_segment_metafield": "활성 세그먼트 메타필드",
+      "active_segment_color": "활성 세그먼트 색상",
+      "fill_segments_up_to_active_segment": "활성 세그먼트까지 세그먼트 채우기",
+      "show_active_segments_value": "활성 세그먼트 값 표시",
+      "start_label": "시작 라벨",
+      "middle_label": "중간 라벨",
+      "end_label": "끝 라벨",
+      "text_banner": "텍스트 배너",
+      "banner_link": "배너 링크",
+      "videos_and_other_media_aspect_ratio": "비디오 및 기타 미디어의 종횡비"
+    },
+    "options": {
+      "text": "텍스트",
+      "checkbox": "체크박스",
+      "dropdown": "드롭다운",
+      "scroll_one_column": "한 열 스크롤",
+      "scroll_two_columns": "두 열 스크롤",
+      "keep_media_original_aspect_ratio": "미디어의 원래 종횡비 유지",
+      "follow_images_aspect_ratio": "이미지의 종횡비 따르기",
+      "inline": "인라인",
+      "middle": "중간"
+    }
+  },
+  "video-extra-functions": {
+    "autoplay": {
+      "label": "자동 재생 활성화",
+      "info": "비디오는 음소거되고 컨트롤 없이 재생됩니다."
+    },
+    "video_upload": {
+      "label": "비디오 파일",
+      "info": "Shopify에서 호스팅합니다. 비디오 URL 설정을 대체합니다."
+    },
+    "poster": {
+      "info": "포스터 또는 대체 이미지로 사용됩니다."
+    }
+  },
+  "variant_metafields": {
+    "name": "변형 메타필드",
+    "label": "변형 메타필드 키",
+    "info": "이 테마는 제품 페이지에 변형 메타필드를 표시할 수 있습니다. [자세히 알아보기](https://shopify-support.krownthemes.com/article/884-using-variant-metafields-in-product-pages)."
+  },
+  "new_color_swatches": "\"블록\" 변형 선택기 유형은 카테고리 메타필드를 사용하여 생성된 색상 견본을 지원합니다. [자세히 알아보기](https://help.shopify.com/en/manual/custom-data/metafields/category-metafields/using-category-metafields).",
+  "video_controls": "비디오 제어 표시",
   "sticky_cart_actions": "고정된 드로어 장바구니 동작 활성화",
   "currency_codes": {
     "header": "통화 형식",
@@ -28,6 +323,7 @@
     "divider_style_double": "이중선",
     "divider_color": "색상",
     "divider_image": "구분선 이미지",
+    "divider_height": "높이",
     "divider_image_info": "수평 반복 이미지. 위의 스타일과 색상을 대체합니다."
   },
   "cart_actions": {
@@ -38,7 +334,9 @@
   },
   "sticky_atc": {
     "label": "스티키 장바구니에 추가",
-    "enable_sticky_atc": "스티키 장바구니에 추가 활성화"
+    "enable_sticky_atc": "스티키 장바구니에 추가 활성화",
+    "sticky_atc_style_wide": "Wide",
+    "sticky_atc_style_floating": "Floating"
   },
   "performance": {
     "header": "SEO 및 성능",
@@ -114,12 +412,23 @@
       },
       "progress_slider": {
         "name": "진행률 막대 차트",
-        "value": "값"
+        "value": "값",
+        "height": "Slider height",
+        "width": "Slider width",
+        "dynamic_content": {
+          "info": "Use dynamic sources to define unique values by creating product metafields for the progress chart. [Learn more](https://shopify-support.krownthemes.com/article/804-product-page#Progress-chart-S8c6R)",
+          "slider_label": "Value metafield",
+          "dots_label": "Highlighted dots metafield"
+        }
       },
       "progress_dots": {
         "name": "진행률 점 차트",
-        "highlight": "강조 표시된 점",
-        "total": "총 점 개수"
+        "highlight": "강조된 점",
+        "total": "총 점 개수",
+        "icon": "점 아이콘",
+        "size": "점 크기",
+        "inactive_color": "비활성 색상",
+        "active_color": "강조된 색상"
       },
       "store_selector": {
         "default": "첫 번째 상점으로 기본값 설정"
@@ -337,6 +646,13 @@
       "content": "Shop에서 팔로우",
       "info": "고객이 상점에서 Shop 앱의 스토어를 팔로우할 수 있도록 하려면 Shop Pay를 활성화해야 합니다. [자세히 알아보기](https://help.shopify.com/manual/online-store/themes/customizing-themes/follow-on-shop)",
       "label": "Shop에서 팔로우 사용"
+    },
+    "labels": {
+      "hide_block_if_no_content_info": "내용이 정의되지 않은 경우 블록 숨기기",
+      "popup_page_info": "페이지가 선택되면 텍스트 내용을 대체합니다",
+      "page": "페이지",
+      "popup": "팝업",
+      "open_popup": "팝업 열기"
     }
   },
   "sections": {
@@ -385,14 +701,17 @@
         "footer_group": "꼬리말 그룹",
         "header_group": "표제 그룹",
         "overlay_group": "오버레이 그룹",
-        "embellishments": "장식"
+        "embellishments": "장식",
+        "show_button": "Show button",
+        "optional": "Optional"
       },
       "text": {
         "icons_info": "시각화를 위해 더 많은 아이콘을 다운로드하려면 [이 링크](https://resources.krownthemes.com/icons/)를 방문해 주십시오."
       },
       "borders": {
         "top_border": "상단 테두리",
-        "bottom_border": "하단 테두리"
+        "bottom_border": "하단 테두리",
+        "show_border": "Show border"
       },
       "colors": {
         "heading_background": "표제 배경",
@@ -419,13 +738,18 @@
                 "option_2": "바닥",
                 "option_3": "왼쪽",
                 "option_4": "오른쪽"
-              }
-            }
-          }
+              },
+              "show_tooltip": "Show tooltip"
+            },
+            "mobile_info": "Only if a mobile image is set"
+          },
+          "image_on_mobile": "Mobile image",
+          "position_on_mobile": "Position on mobile"
         },
         "scrolling_images": {
           "label": "이미지 스크롤",
-          "image_size": "이미지 크기"
+          "image_size": "이미지 크기",
+          "columns": "Columns"
         },
         "video": {
           "label": "동영상",
@@ -510,11 +834,11 @@
       "cart_upsell": {
         "name": "개별 제품 추천",
         "product": "제품",
-        "info": "동적 추천은 장바구니에 있는 상품을 기반으로 합니다. 시간이 지남에 따라 변화하며 개선됩니다. [더 알아보기](https://help.shopify.com/en/themes/development/recommended-products)"
+        "info": "동적 추천은 장바구니에 있는 상품을 기반으로 합니다. 시간이 지남에 따라 변화하며 개선됩니다. [더 알아보기](https://help.shopify.com/en/manual/online-store/storefront-search/search-and-discovery-recommendations)"
       },
       "gift_wrapping": {
         "name": "선물 포장",
-        "info": "선물 포장은 제품으로 설정되어야 합니다. [더 알아보기](https://shopify-support.krownthemes.com/article/696-cart-features#gift-wrap)",
+        "info": "선물 포장은 제품으로 설정되어야 합니다. [더 알아보기](https://shopify-support.krownthemes.com/article/779-borders-theme-settings-cart)",
         "settings": {
           "label": "글",
           "button": "버튼 레이블"
@@ -611,6 +935,12 @@
             "text_color": "글자 색상",
             "border_color": "테두리 색상"
           }
+        }
+      },
+      "seo_late": {
+        "breadcrumbs": {
+          "label": "Improve product breadcrumb navigation",
+          "info": "Adds collection names to the breadcrumb navigation, by duplicating product url's. [Learn more](https://shopify-support.krownthemes.com/article/697-seo#breadcrumbs)"
         }
       }
     },
@@ -749,7 +1079,10 @@
               "text_color": "글자 색상"
             }
           },
-          "icons_list": "동적 아이콘 목록"
+          "icons_list": "동적 아이콘 목록",
+          "products-list": {
+            "name": "상품 목록"
+          }
         }
       },
       "sections": {
@@ -835,7 +1168,8 @@
           "show_icon": "아이콘 표시"
         },
         "cookies": {
-          "name": "쿠키 팝업"
+          "name": "쿠키 팝업",
+          "cookies_info": "이 사이트는 최상의 사용자 경험을 제공하기 위해 쿠키를 사용합니다. [자세히 알아보기](https://shopify-support.krownthemes.com/article/790-cookies-popup)."
         },
         "popups": {
           "name": "팝업",
@@ -1176,7 +1510,9 @@
           "name": "제품 페이지",
           "settings": {
             "gallery_pagination": "갤러리 슬라이더 페이지 매기기",
-            "show_border": "갤러리 주위 경계 표시"
+            "show_border": "갤러리 주위 경계 표시",
+            "gallery_border": "Gallery border",
+            "gallery_border_color": "Gallery border color"
           },
           "blocks": {
             "pickup_availability": {
@@ -1216,7 +1552,7 @@
               },
               "settings": {
                 "icon": "아이콘",
-                "icon_info": "96 x 96px",
+                "icon_info": "128 x 128px",
                 "label": "레이블"
               }
             }
@@ -1263,7 +1599,10 @@
           "blocks": {
             "payment": {
               "name": "결제 아이콘",
-              "info": "표시되는 아이콘은 매의 [결제 설정](/admin/settings/payments) 및 고객의 지역과 통화에 따라 결정됩니다."
+              "info": "표시되는 아이콘은 매의 [결제 설정](/admin/settings/payments) 및 고객의 지역과 통화에 따라 결정됩니다.",
+              "custom_icons": "Custom icons",
+              "custom_icons_info": "Upload 114 x 72px .png images",
+              "only_show_custom_icons": "Only show the custom icons"
             },
             "text": {
               "name": "글 및 소셜 아이콘"
@@ -1284,7 +1623,10 @@
             "name": "계정 활성화 페이지"
           },
           "login": {
-            "name": "로그인 페이지"
+            "name": "로그인 페이지",
+            "shop_login_button": {
+              "enable": "Shop으로 로그인 활성화"
+            }
           },
           "account": {
             "name": "계정 페이지"
@@ -1311,7 +1653,8 @@
           "option__2": "3 문단",
           "option__3": "4 문단",
           "option__4": "5 문단",
-          "option__5": "6 문단"
+          "option__5": "6 문단",
+          "name_mobile": "Mobile layout"
         },
         "promotion-cards": {
           "name": "프로모션 카드",
@@ -1589,7 +1932,7 @@
             "map": {
               "api": {
                 "label": "Google 지도 API 키",
-                "info": "[Google 지도 API 키](http://shopify-support.krownthemes.com/article/385-generate-an-api-key-for-google-maps)를 등록해야 합니다. 지도를 보여줘."
+                "info": "[Google 지도 API 키](http://shopify-support.krownthemes.com/article/385-generate-an-api-key-for-google-maps) to display the map."
               }
             }
           }
@@ -1994,6 +2337,9 @@
         },
         "products_number": {
           "label": "제품 최대 갯수 표시됨"
+        },
+        "articles_number": {
+          "label": "표시되는 기사 최대 개수"
         },
         "collection": {
           "label": "컬렉션"
@@ -2581,7 +2927,7 @@
         },
         "header__1": {
           "content": "제품 천",
-          "info": "동적 추천은 주문 정보와 제품 정보를 사용하여 점점 더 개선되고 변화합니다. [더 알아보기](https://help.shopify.com/en/themes/development/recommended-products)"
+          "info": "동적 추천은 주문 정보와 제품 정보를 사용하여 점점 더 개선되고 변화합니다. [더 알아보기](https://help.shopify.com/en/manual/online-store/storefront-search/search-and-discovery-recommendations)"
         }
       }
     },
@@ -2635,6 +2981,9 @@
     "popup": {
       "name": "팝업",
       "settings": {
+        "enable_scroll_based_trigger": "스크롤 기반 트리거 활성화",
+        "enable_scroll_based_trigger_info": "페이지가 특정 위치로 스크롤되었을 때만 팝업을 표시합니다.",
+        "scroll_position": "스크롤 위치",
         "title": {
           "label": "제목"
         },
@@ -2889,10 +3238,67 @@
         }
       }
     },
+    "words_210": {
+      "text_columns": {
+        "name": "Text columns",
+        "block": {
+          "name": "Text"
+        }
+      }
+    },
     "images": {
       "label_1": "이미지 1",
       "label_2": "이미지 2",
       "label_3": "이미지 3"
+    }
+  },
+  "color-schemes": {
+    "name_plural": "Color schemes",
+    "name_singular": "Color scheme",
+    "default": "Default color scheme",
+    "default_info": "Used to set colors for account pages, 404 pages, and other pages or sections without color scheme settings.",
+    "drawers": "Modals/drawers",
+    "other": "Other colors"
+  },
+  "menu-images": {
+    "label": "메뉴 이미지",
+    "info": "메뉴 핸들과 동일한 이름의 JPG 파일을 생성하여 최상위 메뉴 항목에 이미지를 추가할 수 있습니다. [자세히 알아보기](https://shopify-support.krownthemes.com/article/798-header-section#mega-menus).",
+    "show": "메뉴 이미지 표시",
+    "show_count": "제품 수 표시"
+  },
+  "bundle-extra-words": {
+    "sections": {
+      "transparent_header": {
+        "header": "투명 헤더 디자인",
+        "settings": {
+          "homepage_enable": {
+            "label": "페이지에서 활성화",
+            "info": "홈페이지의 첫 번째 섹션이 이미지 슬라이더 또는 전체 너비 이미지인지 확인하십시오."
+          },
+          "collection_enable": {
+            "label": "컬렉션 페이지에서 활성화",
+            "info": "컬렉션 배너 이미지가 활성화되어있고 컬렉션에 대표 이미지가 있는지 확인하십시오."
+          },
+          "custom_enable": {
+            "label": "사용자 정의 페이지에서 활성화",
+            "info": "쉼표로 구분하여 페이지 핸들을 작성하세요."
+          },
+          "logo": {
+            "info": "오리지널 로고와 같은 크기로 업로드하십시오. "
+          }
+        }
+      }
+    }
+  },
+  "local-250": {
+    "labels": {
+      "show_filters_as": "필터 표시 방식",
+      "expand_filters_by_default": "기본적으로 필터 확장",
+      "stick_filters_sidebar_to_top": "필터 사이드바를 상단에 고정"
+    },
+    "options": {
+      "sidebar": "사이드바",
+      "list": "목록"
     }
   },
   "local-230": {
@@ -2901,7 +3307,13 @@
       "label": "기본적으로 사용 가능한 첫 번째 버전을 선택합니다.",
       "info": "이 옵션을 선택하지 않으면 사용자가 구매하기 전에 사용 가능한 버전을 선택해야 합니다."
     },
-    "slider_info": "링크는 버튼에 적용되거나(버튼이 없는 경우) 제목에 적용되거나(제목과 버튼이 모두 비어 있는 경우) 전체 슬라이드에 적용됩니다."
+    "slider_info": "링크는 버튼에 적용되거나(버튼이 없는 경우) 제목에 적용되거나(제목과 버튼이 모두 비어 있는 경우) 전체 슬라이드에 적용됩니다.",
+    "buy_button_labels": {
+      "label": "구매 버튼 라벨",
+      "option_1": "지금 구매",
+      "option_2": "옵션 선택"
+    },
+    "hide_on_mobile": "모바일에서 숨기기"
   },
   "local-223": {
     "heading_text_color": "제목 텍스트 색상",

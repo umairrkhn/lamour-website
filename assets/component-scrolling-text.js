@@ -1,138 +1,171 @@
 if (typeof ScrollingText !== "function") {
-	class ScrollingText extends HTMLElement {
-		constructor() {
-			super();
+  class ScrollingText extends HTMLElement {
 
-			var ScrollingText = (function () {
-				function getWidth(element) {
-					var rect = element.getBoundingClientRect();
-					return rect.right - rect.left;
-				}
+    constructor() {
+      super();
+    }
+    
+    connectedCallback() {
+      requestAnimationFrame(() => this.init());
+    }
 
-				function ScrollingText(box, speed) {
-					var inner_element = (box.children && box.children[0]) || null;
-					if (!inner_element) throw "No child node found";
+    disconnectedCallback() {
+      this.stop();
+      if (this._intersectionObserver) this._intersectionObserver.disconnect();
+      if (this._resizeObserver) this._resizeObserver.disconnect();
+      window.removeEventListener("blur", this._onBlur);
+      window.removeEventListener("focus", this._onFocus);
 
-					inner_element.style.position = "relative";
+      this.removeEventListener("mouseover", this._onMouseOver);
+      this.removeEventListener("mouseout", this._onMouseOut);
+    }
 
-					this.position = 0;
-					this.speed = speed;
-					this.box_width = getWidth(box);
-					this.inner_element_width = getWidth(inner_element);
-					this.box = box;
-					this.inner_element = inner_element.cloneNode(true);
-					setUpChildrens.call(this);
-				}
+    init() {
 
-				function refreshWidths() {
-					this.box_width = getWidth(this.box);
-					this.inner_element_width = getWidth(this.box.children[0]);
-				}
+      this._running = false;
+      this._position = 0;
 
-				function calculateNumElements() {
-					return Math.ceil(this.box_width / this.inner_element_width) + 1;
-				}
+      this._speed = window.innerWidth > 768
+        ? parseFloat(this.dataset.scrollingSpeed)
+        : parseFloat(this.dataset.scrollingSpeed) / 1.5;
 
-				function setUpChildrens() {
-					var qty = calculateNumElements.call(this);
-					if (qty > this.box.children.length) {
-						for (var i = this.box.children.length; i < qty; i++)
-							this.box.appendChild(this.inner_element.cloneNode(true));
-					} else if (qty < this.box.children.length) {
-						for (var i = qty; i < this.box.children.length; i++)
-							this.box.removeChild(this.box.lastChild);
-					}
-				}
+      this._direction = this.dataset.scrollingDirection || "ltr";
+      this._pauseOnHover = this.dataset.pauseOnHover === "true";
 
-				function nextFrame(delta, direction) {
-					var self = this;
-					refreshWidths.call(this);
-					setUpChildrens.call(this);
-					Array.prototype.forEach.call(this.box.children, function (el) {
-						if (direction == "rtl") {
-							el.style.transform = `translateX(${self.position}px)`;
-						} else {
-							el.style.transform = `translateX(${-self.position}px)`;
-						}
-					});
-					this.position += (this.speed * delta) / 1000;
-					if (this.position >= this.inner_element_width)
-						this.position = this.position % this.inner_element_width;
-				}
+      this._lastTime = null;
 
-				ScrollingText.prototype = {
-					start: function (direction, speed) {
-						this._running = true;
-						var self = this;
-						var last_time = null;
-						var loop_func = function () {
-							if (!self._running) return;
-							var now = Date.now();
-							var delta = last_time === null ? 0 : now - last_time;
-							nextFrame.call(self, delta, direction, speed);
-							last_time = now;
-							window.requestAnimationFrame(loop_func);
-						};
-						window.requestAnimationFrame(loop_func);
-					},
+      this._loop = this._loop.bind(this);
+      this._onMouseOver = this._onMouseOver.bind(this);
+      this._onMouseOut = this._onMouseOut.bind(this);
+      this._onResize = this._onResize.bind(this);
 
-					stop: function () {
-						this._running = false;
-					},
-				};
+      this._base = this.children[0];
+      if (!this._base) return;
 
-				return ScrollingText;
-			})();
+      this._base.style.position = "relative";
 
-			const speed = window.innerWidth > 768 ? parseInt(this.dataset.scrollingSpeed) : parseInt(this.dataset.scrollingSpeed) / 1.5;
-			const direction = this.dataset.scrollingDirection;
-			const scrolling_text = new ScrollingText(this, speed, direction);
-			// scrolling_text.start(direction);
-			
-			if(this.dataset.pauseOnHover == "true") {
-				const carusel = this;
-				let windowInFocus = true;
+      for (const child of this.children) {
+        child.style.willChange = "transform";
+        child.style.transform = "translate3d(0,0,0)";
+      }
 
-				window.addEventListener("blur", function() {
-					windowInFocus = false;
-				});
+      this._template = this._base.cloneNode(true);
 
-				window.addEventListener("focus", function() {
-					windowInFocus = true;
-				});
+      this._readSizes();
+      this._setupChildren();
 
-				carusel.addEventListener('mouseover', isMouseOver);
-				carusel.addEventListener('mouseout', isMouseOut);
+      this._setupHoverPause();
+      this._setupIntersectionObserver();
+      this._setupResizeObserver();
 
+      this.start();
+    }
 
-				function isMouseOver() {
-					if (windowInFocus) {
-						scrolling_text.stop();
-					}
-				}
+    _readSizes() {
+      const rectBox = this.getBoundingClientRect();
+      const rectChild = this._base.getBoundingClientRect();
+      this._boxWidth = rectBox.width;
+      this._itemWidth = rectChild.width;
+    }
 
-				function isMouseOut() {
-					if (windowInFocus) {
-						scrolling_text.start(direction);
-					}
-				}
+    _neededChildren() {
+      return Math.ceil(this._boxWidth / this._itemWidth) + 1;
+    }
 
-			}
+    _setupChildren() {
+      const needed = this._neededChildren();
+      const current = this.children.length;
 
-			const intersectionObserver = new IntersectionObserver(entries => {
-				if ( entries[0].isIntersecting ) {
-					scrolling_text.start(direction);
-				} else {
-					scrolling_text.stop();
-				}
-			});
-			intersectionObserver.observe(this);
+      if (needed > current) {
+        for (let i = current; i < needed; i++) {
+          const clone = this._template.cloneNode(true);
+          clone.style.willChange = "transform";
+          clone.style.transform = "translate3d(0,0,0)";
+          this.appendChild(clone);
+        }
+      } else if (needed < current) {
+        for (let i = current; i > needed; i--) {
+          this.removeChild(this.lastElementChild);
+        }
+      }
+    }
 
+    start() {
+      if (this._running) return;
+      this._running = true;
+      this._lastTime = null;
+      requestAnimationFrame(this._loop);
+    }
 
-		}
-	}
+    stop() {
+      this._running = false;
+    }
 
-	if (typeof customElements.get("scrolling-text") == "undefined") {
-		customElements.define("scrolling-text", ScrollingText);
-	}
+    _loop(timestamp) {
+      if (!this._running) return;
+
+      if (!this._lastTime) this._lastTime = timestamp;
+      const delta = timestamp - this._lastTime;
+      this._lastTime = timestamp;
+
+      const p = this._position;
+      const dir = this._direction;
+
+      const transformValue = dir === "rtl"
+        ? `translate3d(${p}px, 0, 0)`
+        : `translate3d(${-p}px, 0, 0)`;
+
+      for (const el of this.children) {
+        el.style.transform = transformValue;
+      }
+
+      this._position += (this._speed * delta) / 1000;
+      if (this._position >= this._itemWidth) {
+        this._position = this._position % this._itemWidth;
+      }
+
+      requestAnimationFrame(this._loop);
+    }
+
+    _setupHoverPause() {
+      if (!this._pauseOnHover) return;
+
+      this._windowInFocus = true;
+
+      this._onBlur = () => (this._windowInFocus = false);
+      this._onFocus = () => (this._windowInFocus = true);
+
+      window.addEventListener("blur", this._onBlur);
+      window.addEventListener("focus", this._onFocus);
+
+      this.addEventListener("mouseover", this._onMouseOver);
+      this.addEventListener("mouseout", this._onMouseOut);
+    }
+
+    _onMouseOver() { if (this._windowInFocus) this.stop(); }
+    _onMouseOut() { if (this._windowInFocus) this.start(); }
+
+    _setupIntersectionObserver() {
+      this._intersectionObserver = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) this.start();
+        else this.stop();
+      });
+      this._intersectionObserver.observe(this);
+    }
+
+    _setupResizeObserver() {
+      this._resizeObserver = new ResizeObserver(this._onResize);
+      this._resizeObserver.observe(this);
+    }
+
+    _onResize() {
+      if (!this._running) return;
+      this._readSizes();
+      this._setupChildren();
+    }
+
+  }
+
+  customElements.define("scrolling-text", ScrollingText);
+
 }

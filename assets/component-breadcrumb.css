@@ -1,6 +1,3 @@
-/*
- *  1.0. Mixins
-*/
 .breadcrumb-container {
   overflow: -moz-scrollbars-none;
   -ms-overflow-style: none;
@@ -13,12 +10,12 @@
 
 @media screen and (max-width: 1023px) {
   .breadcrumb {
-    font-size: calc( 					12px / 16 * var(--base-body-size) + 0px 				);
+    font-size: calc(12px / 16 * var(--base-body-size) + 0px);
   }
 }
 @media screen and (min-width: 1024px) {
   .breadcrumb {
-    font-size: calc( 				14px / 16 * var(--base-body-size) + 0px 			);
+    font-size: calc(14px / 16 * var(--base-body-size) + 0px);
   }
 }
 
@@ -60,6 +57,27 @@ html[dir=ltr] .breadcrumb-main {
   width: var(--gutter-regular);
   background: linear-gradient(90deg, var(--color-background-main) 50%, var(--color-opacity-background-main) 100%);
 }
+.header-absolute-in-collection .breadcrumb-main {
+  display: none;
+}
+.header-absolute-in-collection .breadcrumb-main + .shopify-section .container--vertical-space-small {
+  margin-top: 0;
+}
+.breadcrumb--collection-banner {
+  position: static;
+  height: auto;
+  margin-bottom: var(--gutter-regular);
+  display: none;
+}
+.header-absolute-in-collection .breadcrumb--collection-banner {
+  display: block;
+}
+.breadcrumb--collection-banner:before, .breadcrumb--collection-banner:after {
+  display: none;
+}
+.breadcrumb--collection-banner .breadcrumb-container {
+  padding: 0;
+}
 .breadcrumb-container {
   display: flex;
   align-items: center;
@@ -67,7 +85,7 @@ html[dir=ltr] .breadcrumb-main {
   overflow-x: auto;
   height: 100%;
   width: 100%;
-  max-width: 1360px;
+  max-width: var(--theme-max-width);
   padding: 0 var(--gutter-container);
   margin: auto;
 }
@@ -83,4 +101,7 @@ html[dir=ltr] .breadcrumb-main {
 }
 .no-touchevents .breadcrumb__link a:hover {
   color: var(--color-accent-main);
+}
+.no-touchevents .card__text .breadcrumb__link a:hover {
+  color: var(--color-text-cards);
 }

@@ -1,7 +1,7 @@
 <div class="container--large container--vertical-space remove-empty-space">
 
-  <div class="contact-form">
-    <div class="contact-form__the-form">
+  <div class="contact-form grid grid--layout grid-4 grid-portable-2 grid-lap-1">
+    <div class="contact-form__the-form grid-offset-2 grid-offset-lap-1">
 
       {%- unless section.settings.heading == blank -%}
         <{{ section.settings.seo_h_tag }} class="h4 gutter-bottom--small" style="display:block">{{ section.settings.heading | escape }}</{{ section.settings.seo_h_tag }}>
@@ -50,7 +50,7 @@
         {%- if section.settings.show_subject -%}
           <div class="contact-form__row">
             <label class="visually-hidden" for="{{ form_id }}-subject">{{ 'general.contact_form.subject_label' | t }}</label>
-            <input type="text" id="{{ form_id }}-subject" class="field__input" autocomplete="tel" name="contact[Subject]"  value="{% if form.subject %}{{ form.subject }}{% elsif customer %}{{ customer.subject }}{% endif %}" placeholder="{{ 'general.contact_form.subject_label' | t }}">
+            <input type="text" id="{{ form_id }}-subject" class="field__input" autocomplete="tel" name="contact[Title]"  value="{% if form.subject %}{{ form.subject }}{% elsif customer %}{{ customer.subject }}{% endif %}" placeholder="{{ 'general.contact_form.subject_label' | t }}">
           </div>
         {%- endif -%}
 
@@ -74,7 +74,7 @@
         </div>
 
         <div class="contact-form__row">
-          <button type="submit" class="button button--solid button--regular">
+          <button type="submit" class="button button--solid button--regular button--regular-mobile">
             {{ 'general.contact_form.submit_label' | t }}
           </button>
         </div>
@@ -85,7 +85,7 @@
 
     {%- if section.blocks.size > 0 -%}
       {%- for block in section.blocks -%}
-      <div class="contact-form__info">
+      <div class="contact-form__info" {{ block.shopify_attributes }}>
         {%- unless block.settings.title == blank -%}
           <{{ block.settings.seo_h_tag }} class="h4 gutter-bottom--small" style="display:block">{{ block.settings.title | escape }}</{{ block.settings.seo_h_tag }}>
         {%- endunless -%}
@@ -110,7 +110,6 @@
 {% schema %}
 	{
     "name": "t:sections.contact-form.name",
-    "tag": "section",
 		"settings": [
       {
         "type": "text",
@@ -225,6 +224,7 @@
     "presets": [
       {
         "name": "t:sections.contact-form.presets.name",
+        "category": "t:sections-categories.forms",
         "blocks": [
           {
             "type": "text",

@@ -46,6 +46,7 @@
             this.createMap();
           });
           googleScript.defer = true;
+          googleScript.setAttribute('loading', 'async');
           googleScript.src = `https://maps.googleapis.com/maps/api/js?v=3&key=${KROWN.settings.google_maps_api_key}&callback=window.initLocalMap`;
           document.body.appendChild(googleScript);
         
@@ -133,9 +134,15 @@
   
     }
 
+    disconnectedCallback(){
+      if ( this.ti ) {
+        clearInterval(this.ti);
+      }
+    }
+
     fallback(){
-      this.querySelector('[data-js-map-fallback').style.display = "block";
-      this.querySelector('[data-js-map-object').style.display = "none";
+      this.querySelector('[data-js-map-fallback]').style.display = "block";
+      this.querySelector('[data-js-map-object]').style.display = "none";
     }
   
   }

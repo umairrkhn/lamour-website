@@ -4,9 +4,10 @@ if (typeof BeforeAfter !== "function") {
 		constructor() {
 
 			super();
+			this._prefix = window.KT_PREFIX || '';	
 
-			this.container = this.querySelector(".before-after");
-			this.slider = this.querySelector(".before-after__slider");
+			this.container = this.querySelector(`.${this._prefix}before-after`);
+			this.slider = this.querySelector(`.${this._prefix}before-after__slider`);
 
 			this.slider.addEventListener("input", (e) => {
 				this.container.style.setProperty('--position', `${e.target.value}%`);
@@ -16,7 +17,7 @@ if (typeof BeforeAfter !== "function") {
 				this.container.style.setProperty('--position', `${e.target.value}%`);
 			});
 
-			if ( this.classList.contains('invert-layout') ) {
+			if ( this.classList.contains(`${this._prefix}invert-layout`) ) {
 
 				this.originalLayout = this.dataset.layout;
 
@@ -35,6 +36,12 @@ if (typeof BeforeAfter !== "function") {
 
 		}
 
+		disconnectedCallback() {
+			if ( this.RESIZE_WATCHER ) {
+				window.removeEventListener('resize', this.RESIZE_WATCHER);
+			}
+		}
+
 		invertLayout() {
 			this.dataset.layout = this.dataset.layout === 'vertical' ? 'horizontal' : 'vertical';
 			this.setAttribute('data-layout', this.dataset.layout);
@@ -46,4 +53,5 @@ if (typeof BeforeAfter !== "function") {
 	if (typeof customElements.get("before-after") == "undefined") {
 		customElements.define("before-after", BeforeAfter);
 	}
+	
 }

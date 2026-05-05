@@ -1,6 +1,11 @@
 {{ 'section-image-with-hotspots.css' | asset_url | stylesheet_tag }}
 
-<div id="section-{{ section.id }}" class="container--large {% unless section.settings.remove_margin %} container--vertical-space {% endunless %} {% if section.settings.section_background_color != "rgba(0,0,0,0)" or section.settings.section_background_gradient != blank %} container--has-background {% endif %} remove-empty-space">
+<div id="section-{{ section.id }}" class="container--large remove-empty-space
+  {% unless section.settings.remove_margin %} {% unless section.settings.descrease_margin %} container--vertical-space {% else %} container--vertical-space-grid {% endunless %} {% endunless %} 
+  {% if section.settings.section_background_color != "rgba(0,0,0,0)" or section.settings.section_background_gradient != blank %} container--has-background {% endif %}
+  {% if section.settings.section_visibility == "mobile" %} element--hide-on-desk {% endif %}
+  {% if section.settings.section_visibility == "desktop" %} element--hide-on-small {% endif %}
+">
 
   {%- render 'section-heading', heading: section.settings.heading, subheading: section.settings.subheading, heading_tag: section.settings.seo_h_tag, layout: section.settings.section_heading_layout -%}
 
@@ -29,22 +34,21 @@
   <div class="image-with-hotspots-wrapper element--overflow-hidden">
     <div class="image-with-hotspots" style="width:100%">
 
+      {%- capture sizes -%}
+        sizes="(max-width: {{ settings.theme_max_width }}px) calc(100vw - 20px), {{ settings.theme_max_width | minus: 100 }}px"
+      {%- endcapture -%}
+
       <div class="{% if section.settings.image_mobile %} element--hide-on-small {% endif %}">
         {%- if section.settings.image == blank -%}
-          <span class="onboarding-svg">{{ 'collection-1' | placeholder_svg_tag }}</span>
+          <span class="onboarding-svg" style="background:rgba(0,0,0,0.06);">{{ 'collection-1' | placeholder_svg_tag }}</span>
         {%- else -%}
-          {%- liquid
-              render 'lazy-image', image: section.settings.image, sizes: 'sizes="(max-width: 1360px) calc(100vw - 20px), 1280px"', preload: preload
-              if settings.show_preloader
-                render 'preloader'
-              endif
-            -%}
+          {%- render 'lazy-image', image: section.settings.image, sizes: sizes, preload: preload -%}
         {%- endif -%}
       </div>
       
       {%- if section.settings.image_mobile -%}
         <div class="element--hide-on-desk ">
-          {%- render 'lazy-image', image: section.settings.image_mobile, sizes: 'sizes="(max-width: 1360px) calc(100vw - 20px), 1280px"', preload: preload -%}
+          {%- render 'lazy-image', image: section.settings.image_mobile, sizes: sizes, preload: preload -%}
         </div>
       {%- endif -%}
 
@@ -240,6 +244,10 @@
         "default": "section-heading--left"
       },
       {
+        "type": "header",
+        "content": "t:sections.main-article.blocks.content.name"
+      },
+      {
         "type": "image_picker",
         "id": "image",
         "label": "t:sections.main-list-collections.blocks.collection.settings.image.label"
@@ -289,7 +297,15 @@
       },
       {
         "type": "checkbox",
+        "id": "descrease_margin",
+        "visible_if": "{{ section.settings.remove_margin == false }}",
+        "label": "t:theme_blocks.descrease_top_margin",
+        "default": false
+      },
+      {
+        "type": "checkbox",
         "id": "remove_margin",
+        "visible_if": "{{ section.settings.descrease_margin == false }}",
         "label": "t:sections.local-extra-words.sections.rich-text.settings.remove_margin.label",
         "default": false
       },
@@ -325,6 +341,30 @@
           }
         ],
         "default": "h3"
+      },
+      {
+        "type": "header",
+        "content": "t:sections.refactor_words.announcement-bar.visibility.label"
+      },
+      {
+        "type": "select",
+        "id": "section_visibility",
+        "label": "t:sections-visibility.label",
+        "options": [
+          {
+            "value": "always",
+            "label": "t:sections-visibility.options.always"
+          },
+          {
+            "value": "mobile",
+            "label": "t:sections-visibility.options.mobile"
+          },
+          {
+            "value": "desktop",
+            "label": "t:sections-visibility.options.desktop"
+          }
+        ],
+        "default": "always"
       }
     ],
     "blocks": [
@@ -575,6 +615,7 @@
     "presets": [
       {
         "name": "t:sections.refactor_words.settings.image_with_hotspots.label",
+        "category": "t:sections-categories.storytelling",
         "blocks": [
           {
             "type": "product"

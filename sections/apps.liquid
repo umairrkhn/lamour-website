@@ -1,5 +1,10 @@
 <div class="container {% unless section.settings.remove_margin %} container--vertical-space {% endunless %} {% unless section.settings.full_width %} container--large {% else %} container--fullwidth {% endunless %}">
-  {%- render 'section-heading', heading: section.settings.heading, subheading: section.settings.subheading, heading_tag: section.settings.seo_h_tag, layout: section.settings.section_heading_layout -%}
+  {%- render 'section-heading',
+    heading: section.settings.heading,
+    subheading: section.settings.subheading,
+    heading_tag: section.settings.seo_h_tag,
+    layout: section.settings.section_heading_layout
+  -%}
   {%- liquid
     for block in section.blocks
       render block
@@ -99,7 +104,8 @@
   ],
   "presets": [
     {
-      "name": "t:sections.apps.presets.name"
+      "name": "t:sections.apps.presets.name",
+      "category": "t:sections-categories.custom"
     }
   ]
 }

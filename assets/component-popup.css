@@ -1,10 +1,7 @@
-/*
- *  1.0. Mixins
-*/
 .popup {
   position: fixed;
   bottom: var(--gutter-large);
-  width: calc(100% - (var(--gutter-large) * 2));
+  width: calc(100% - var(--gutter-large) * 2);
   background: var(--color-background-main);
   color: var(--color-text-main);
   border: 1px solid var(--color-borders-main);
@@ -59,7 +56,8 @@ html[dir=ltr] .popup--newsletter button[type=submit] {
   stroke: var(--color-text-main);
 }
 
-.popup-age-verification {
+.popup-age-verification,
+.popup-common {
   position: fixed;
   width: 100%;
   height: 100%;
@@ -73,13 +71,16 @@ html[dir=ltr] .popup--newsletter button[type=submit] {
   text-align: center;
   padding: var(--gutter-regular);
 }
-html[dir=rtl] .popup-age-verification {
+html[dir=rtl] .popup-age-verification,
+html[dir=rtl] .popup-common {
   right: 0;
 }
-html[dir=ltr] .popup-age-verification {
+html[dir=ltr] .popup-age-verification,
+html[dir=ltr] .popup-common {
   left: 0;
 }
-.popup-age-verification__content {
+.popup-age-verification__content,
+.popup-common__content {
   position: absolute;
   width: 100%;
   max-width: 33.75rem;
@@ -91,12 +92,18 @@ html[dir=ltr] .popup-age-verification {
   padding: var(--gutter-regular);
   transform: translate(-50%, -50%);
 }
-.popup-age-verification .button {
+.popup-age-verification .button,
+.popup-common .button {
   width: auto;
 }
-.popup-age-verification.active {
+.popup-age-verification.active,
+.popup-common.active {
   opacity: 1;
   visibility: visible;
+}
+
+.popup-common > div {
+  z-index: 9;
 }
 
 .popup-close {
@@ -125,12 +132,23 @@ html[dir=ltr] .popup-close {
   justify-items: end;
   z-index: 999;
   pointer-events: none;
-  width: calc(100% - (var(--gutter-regular) * 2));
+  width: calc(100% - var(--gutter-regular) * 2);
 }
-html[dir=rtl] .stacked-popups {
+.stacked-popups--position-left {
+  width: 100%;
+  justify-items: start;
+  padding-inline-end: var(--gutter-regular);
+}
+html[dir=rtl] .stacked-popups--position-left {
+  right: var(--gutter-regular);
+}
+html[dir=ltr] .stacked-popups--position-left {
   left: var(--gutter-regular);
 }
-html[dir=ltr] .stacked-popups {
+html[dir=rtl] .stacked-popups--position-right {
+  left: var(--gutter-regular);
+}
+html[dir=ltr] .stacked-popups--position-right {
   right: var(--gutter-regular);
 }
 .stacked-popups .popup {

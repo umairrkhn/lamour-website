@@ -8,6 +8,301 @@
  * ------------------------------------------------------------
  */
 {
+  "new-account-component": {
+    "title": "บัญชีลูกค้า",
+    "menu": "เมนูบัญชีลูกค้า",
+    "info": "ใช้งานได้เฉพาะกับคอมโพเนนต์บัญชีลูกค้าใหม่เท่านั้น [เรียนรู้เพิ่มเติม](https://help.shopify.com/en/manual/customers/customer-accounts/account-component)"
+  },
+  "video-compression": {
+    "compress_videos_with_m3u8": "บีบอัดวิดีโอ MP4",
+    "compress_videos_with_m3u8_info": "ใช้การบีบอัดวิดีโอของ Shopify เพื่อประสิทธิภาพที่ดีขึ้น อาจส่งผลต่อคุณภาพ โดยเฉพาะวิดีโอสั้นๆ"
+  },
+  "sections-categories": {
+    "promotions": "โปรโมชั่น",
+    "products": "สินค้า",
+    "content": "เนื้อหา",
+    "brand-trust": "ความเชื่อมั่นในแบรนด์",
+    "media-galleries": "มีเดียและแกลเลอรี่",
+    "storytelling": "การเล่าเรื่อง",
+    "custom": "กำหนดเอง",
+    "forms": "ฟอร์ม",
+    "layout": "เค้าโครง",
+    "collections": "คอลเลกชัน",
+    "presets": {
+      "media_collage": "ภาพตัดปะสื่อ",
+      "text_cards_collage": "ภาพตัดปะการ์ดข้อความ",
+      "flex_promotion_cards": "การ์ดโปรโมชันแบบยืดหยุ่น",
+      "promotion_slider": "ตัวเลื่อนโปรโมชัน",
+      "search_bar": "แถบค้นหา",
+      "rich_text_with_image": "ข้อความพร้อมภาพ",
+      "fullwidth_text_banner": "แบนเนอร์ข้อความเต็มความกว้าง",
+      "heading_text": "หัวเรื่องและข้อความ",
+      "logo_list": "รายการโลโก้",
+      "logo": "โลโก้",
+      "fullwidth_media_with_text": "สื่อเต็มความกว้างพร้อมข้อความ",
+      "faq": "คำถามที่พบบ่อย",
+      "events_calendar": "ปฏิทินกิจกรรม"
+    }
+  },
+  "sections-visibility": {
+    "label": "การมองเห็นของเซกชัน",
+    "options": {
+      "always": "แสดงเสมอ",
+      "mobile": "แสดงบนมือถือเท่านั้น",
+      "desktop": "แสดงบนเดสก์ท็อปเท่านั้น"
+    }
+  },
+  "flex-cards": {
+    "header": "การ์ดแบบยืดหยุ่น",
+    "settings": {
+      "height": {
+        "desktop": "ความสูงของสื่อบนเดสก์ท็อป",
+        "auto": "รักษาความสูงของสื่อบนมือถือ",
+        "mobile": "ความสูงของสื่อบนมือถือ"
+      },
+      "image_visibility": "ไม่แสดงสื่อ",
+      "enhance_first_image": "ปรับปรุงรูปภาพแรก",
+      "star-rating": {
+        "name": "การให้คะแนนดาว",
+        "color": "สีของดาว"
+      }
+    }
+  },
+  "notes-discounts": {
+    "header": "บันทึกและส่วนลด",
+    "show_discount_code": {
+      "label": "เปิดใช้งานส่วนลดในรถเข็น",
+      "text": "ข้อความส่วนลด",
+      "placeholder": "รหัสส่วนลด",
+      "collapsible": "ทำให้ฟิลด์บันทึกและส่วนลดพับได้ภายในลิ้นชักรถเข็น"
+    }
+  },
+  "back-in-stock-alert": {
+    "header": "แจ้งเตือนสินค้าในสต็อก",
+    "content": "เจ้าของร้านจะได้รับอีเมลเมื่อมีลูกค้ากรอกแบบฟอร์มนี้ เจ้าของร้านต้องแจ้งลูกค้าเองเมื่อสินค้ากลับมาในสต็อก",
+    "info": "แบบฟอร์มแจ้งเตือนสินค้าในสต็อกนี้จะแสดงเมื่อสินค้าหมดสต็อก",
+    "succcess_message": "ข้อความสำเร็จ",
+    "email_message": "ข้อความอีเมล"
+  },
+  "theme_blocks": {
+    "group": {
+      "name": "กลุ่มเนื้อหา"
+    },
+    "heading": {
+      "settings": {
+        "info": "ใช้ [br] เพื่อแทรกการขึ้นบรรทัดใหม่",
+        "option_1": "ค่าเริ่มต้น"
+      }
+    },
+    "slide_image": {
+      "settings": {
+        "info": "หากการ์ดทั้งหมดมีลิงก์ ลิงก์ภายในจะไม่ทำงาน"
+      }
+    },
+    "caption": {
+      "settings": {
+        "option_1": "เล็กมาก",
+        "content": "เนื้อหา"
+      }
+    },
+    "button-caption": {
+      "name": "ป้ายคั่น",
+      "settings": {
+        "separator": "คั่น"
+      }
+    },
+    "empty-space": {
+      "name": "ช่องว่าง"
+    },
+    "grid-text": {
+      "name": "การ์ดข้อความ",
+      "column_desktop": "คอลัมน์บนเดสก์ท็อป",
+      "column_mobile": "คอลัมน์บนมือถือ",
+      "row_desktop": "แถวบนเดสก์ท็อป",
+      "row_mobile": {
+        "label": "แถวบนมือถือ",
+        "option_1": "1 แถว",
+        "option_2": "2 แถว"
+      },
+      "spacing": "ระยะห่างแนวนอนระหว่างบล็อก"
+    },
+    "grid-media": {
+      "name": "การ์ดสื่อ"
+    },
+    "product-add-to-cart-button": {
+      "name": "ปุ่มซื้อด่วน"
+    },
+    "divider": {
+      "divider_width": "ความกว้าง",
+      "option_1": "เล็ก",
+      "option_2": "กลาง",
+      "option_3": "ใหญ่",
+      "option_4": "สูงสุด"
+    },
+    "sections": {
+      "flex-slideshow": {
+        "name": "สไลด์โชว์แบบยืดหยุ่น",
+        "desktop_height": "ความสูงบนเดสก์ท็อป",
+        "mobile_height": "ความสูงบนมือถือ",
+        "legacy_name": "สไลด์โชว์ (เดิม)"
+      },
+      "flex-section": {
+        "name": "กริดแบบยืดหยุ่น",
+        "gutter_size": "การเติมข้อความ",
+        "grid_design": "การออกแบบกริด",
+        "remove_gap": "ลบช่องว่างระหว่างการ์ด",
+        "height": {
+          "label_desktop": "ความสูงขั้นต่ำของการ์ดบนเดสก์ท็อป",
+          "label_mobile": "ความสูงขั้นต่ำของการ์ดบนมือถือ",
+          "info": "การ์ดจะขยายอัตโนมัติหากเนื้อหาต้องการพื้นที่เพิ่มเติม"
+        }
+      }
+    },
+    "descrease_top_margin": "ลดระยะขอบด้านบน"
+  },
+  "cart-tos-update": {
+    "cart_terms_heading": "ข้อกำหนดและเงื่อนไข",
+    "cart_terms_checkbox": "เปิดใช้งานข้อกำหนดและเงื่อนไขสำหรับการชำระเงิน",
+    "cart_terms_text": "ป้ายกำกับช่องทำเครื่องหมาย",
+    "drawer_actions": "การดำเนินการตะกร้าสินค้า"
+  },
+  "product-siblings": {
+    "name": "สินค้าที่เกี่ยวข้อง",
+    "info": "หากต้องการกำหนดรายการที่แตกต่างกันให้กับแต่ละสินค้า ให้ใช้เมตาฟิลด์รายการอ้างอิงสินค้าเป็นแหล่งข้อมูลแบบไดนามิก [เรียนรู้เพิ่มเติม](https://shopify-support.krownthemes.com/article/804-product-page#Product-siblings-IzGzR)."
+  },
+  "local-260": {
+    "labels": {
+      "disable_parallax_effect": "ปิดใช้งานเอฟเฟกต์พารัลแลกซ์",
+      "default_image": "รูปภาพสำรอง",
+      "default_image_info": "ใช้เมื่อไม่มีภาพของสินค้า",
+      "value": "ค่า",
+      "default_value": "ค่าเริ่มต้น",
+      "values": "ค่า",
+      "values_info": "คั่นค่าด้วยจุลภาค",
+      "dropdown_property_settings": "การตั้งค่าคุณสมบัติแบบดรอปดาวน์",
+      "appears_on_the_order_summary": "ปรากฏในสรุปคำสั่งซื้อ",
+      "checkbox_property_settings": "การตั้งค่าคุณสมบัติช่องทำเครื่องหมาย",
+      "maximum_characters": "ตัวอักษรสูงสุด",
+      "allow_long_text": "อนุญาตให้มีข้อความยาว",
+      "text_property_settings": "การตั้งค่าคุณสมบัติข้อความ",
+      "hide_at_checkout": "ซ่อนที่จุดชำระเงิน",
+      "hide_at_checkout_info": "ถ้าติดตั้งแล้วคุณสมบัติของรายการจะไม่แสดงในสรุปการสั่งซื้อ",
+      "required": "จำเป็น",
+      "required_info": "ลูกค้าต้องกรอกข้อมูลในช่องนี้เพื่อเพิ่มผลิตภัณฑ์ลงในตะกร้าสินค้า",
+      "type": "ชนิด",
+      "custom_property": "คุณสมบัติที่กำหนดเอง",
+      "custom_property_info": "คุณสมบัติของรายการช่วยให้คุณสามารถรวบรวมรายละเอียดการปรับแต่งสำหรับผลิตภัณฑ์ที่เพิ่มเข้าในตะกร้าสินค้า",
+      "show_custom_link": "แสดงลิงก์ที่กำหนดเอง",
+      "show_custom_link_info": "ใช้ตัวเลือกการแชร์เนทีฟตามการสนับสนุนของเบราว์เซอร์",
+      "show_pinterest": "แสดง Pinterest",
+      "show_x": "แสดง X",
+      "show_facebook": "แสดง Facebook",
+      "crop_videos_when_following_images_aspect_ratio": "ครอบตัดวิดีโอเมื่อตามอัตราส่วนภาพของรูปภาพ",
+      "enable_add_to_cart_for_multiple_variants_label": "เปิดใช้งานการเพิ่มลงในรถเข็นสำหรับตัวเลือกหลายตัว",
+      "enable_add_to_cart_for_multiple_variants_info": "เมื่อเปิดใช้งาน ปุ่ม 'เพิ่มลงในรถเข็น' จะเพิ่มตัวเลือกแรกที่มีหรือที่เลือกลงในรถเข็นโดยตรง หากปิดใช้งาน จะปรากฏปุ่ม 'เลือกตัวเลือก' แทน",
+      "button_width": {
+        "label": "ความกว้างของปุ่ม",
+        "option_1": "เต็มความกว้าง",
+        "option_2": "จำกัด"
+      },
+      "image": "รูปภาพ",
+      "maximum_width": "ความกว้างสูงสุด",
+      "constrain_image_width": "จำกัดความกว้างของภาพ",
+      "desktop_logo_image": "โลโก้เดสก์ท็อป",
+      "desktop_logo_image_max_height": "ความสูงสูงสุดของโลโก้เดสก์ท็อป",
+      "mobile_logo_image": "โลโก้มือถือ",
+      "mobile_logo_image_max_height": "ความสูงสูงสุดของโลโก้มือถือ",
+      "mobile_logo_image_info": "หากคุณไม่ได้อัปโหลดโลโก้สำหรับมือถือ จะใช้โลโก้เดสก์ท็อปแทน",
+      "letter_spacing": "ระยะห่างตัวอักษร",
+      "dark_background_foreground": "พื้นหลังเข้ม ภาพเบื้องหน้า",
+      "light_background_foreground": "พื้นหลังสว่าง ภาพเบื้องหน้า",
+      "maximum_page_width": "ความกว้างสูงสุดของหน้า",
+      "title_font_family": "ตระกูลแบบอักษรของชื่อเรื่อง",
+      "price_size": "ขนาดราคา",
+      "align_button_info": "ทำงานได้ดีที่สุดหากการซื้ออย่างรวดเร็วเป็นบล็อกสุดท้ายในการ์ดสินค้า",
+      "out_of_stock_info": "ซ่อนปุ่มซื้ออย่างรวดเร็วเมื่อสินค้าหมด",
+      "modal_label": "เปิดหน้าต่างซื้ออย่างรวดเร็วเสมอ",
+      "modal_info": "โดยค่าเริ่มต้น หน้าต่างซื้ออย่างรวดเร็วจะเปิดสำหรับสินค้าที่มีหลายตัวเลือกเท่านั้น",
+      "popup_cart": "การแจ้งเตือนแบบป๊อปอัป",
+      "caption_alignment": "การจัดตำแหน่งคำบรรยาย",
+      "remove_space_between_images": "ลบพื้นที่ระหว่างภาพ",
+      "text_horizontal_alignment": "การจัดแนวตั้งแนวนอนของข้อความ",
+      "text_vertical_alignment": "การจัดแนวตั้งแนวตั้งของข้อความ",
+      "text_vertical_alignment_info": "สำหรับเดสก์ท็อปเท่านั้นหากภาพตั้งอยู่ทางซ้ายหรือขวา",
+      "segments_height": "ความสูงของส่วน",
+      "remove_space_between_segments": "ลบช่องว่างระหว่างส่วน",
+      "out_of_stock": "สินค้าหมด",
+      "regular_stock": "สต็อกปกติ",
+      "low_inventory": "สินค้าในสต็อกน้อย",
+      "custom_inventory_notification_colors": "สีการแจ้งเตือนสินค้าในสต็อกที่กำหนดเอง",
+      "block_heading": "หัวข้อบล็อก",
+      "block_style": "สไตล์บล็อก",
+      "block_content": "เนื้อหาบล็อก",
+      "tooltip_text": "ข้อความเคล็ดลับ",
+      "collapsible": "พับได้",
+      "boxed": "กล่อง",
+      "darken_the_header": "ทำให้ส่วนหัวมืดขึ้น",
+      "opened_by_default": "เปิดโดยค่าเริ่มต้น",
+      "applies_to_boxed_version_only": "ใช้กับเวอร์ชันกล่องเท่านั้น",
+      "dynamic_segments_label": "ใช้แหล่งข้อมูลแบบไดนามิกเพื่อตั้งค่าไอเท็มหรือส่วนที่ใช้งานอยู่ด้วย metafields ผลิตภัณฑ์ [เรียนรู้เพิ่มเติม](https://shopify-support.krownthemes.com/article/804-product-page#Nutriscore--attribute-meters-OY3p4)",
+      "nutriscore": "Nutriscore",
+      "active_item": "รายการที่ใช้งานอยู่",
+      "active_item_metafield": "metafield ของรายการที่ใช้งานอยู่",
+      "item_1": "รายการ 1",
+      "item_2": "รายการ 2",
+      "item_3": "รายการ 3",
+      "item_4": "รายการ 4",
+      "item_5": "รายการ 5",
+      "item_6": "รายการ 6",
+      "item_7": "รายการ 7",
+      "item_8": "รายการ 8",
+      "label": "ป้าย",
+      "attribute_meter": "เมตรแอตทริบิวต์",
+      "segments": "ส่วน",
+      "active_segment": "ส่วนที่ใช้งาน",
+      "active_segment_metafield": "metafield ส่วนที่ใช้งาน",
+      "active_segment_color": "สีของส่วนที่ใช้งาน",
+      "fill_segments_up_to_active_segment": "เติมส่วนจนถึงส่วนที่ใช้งาน",
+      "show_active_segments_value": "แสดงค่าของส่วนที่ใช้งาน",
+      "start_label": "ป้ายเริ่มต้น",
+      "middle_label": "ป้ายกลาง",
+      "end_label": "ป้ายสุดท้าย",
+      "text_banner": "แบนเนอร์ข้อความ",
+      "banner_link": "ลิงค์แบนเนอร์",
+      "videos_and_other_media_aspect_ratio": "อัตราส่วนภาพของวิดีโอและสื่ออื่น ๆ"
+    },
+    "options": {
+      "text": "ข้อความ",
+      "checkbox": "ช่องทำเครื่องหมาย",
+      "dropdown": "ดรอปดาวน์",
+      "scroll_one_column": "เลื่อนหนึ่งคอลัมน์",
+      "scroll_two_columns": "เลื่อนสองคอลัมน์",
+      "keep_media_original_aspect_ratio": "รักษาอัตราส่วนภาพเดิมของสื่อ",
+      "follow_images_aspect_ratio": "ตามอัตราส่วนภาพของรูปภาพ",
+      "inline": "อินไลน์",
+      "middle": "กลาง"
+    }
+  },
+  "video-extra-functions": {
+    "autoplay": {
+      "label": "เปิดใช้งานการเล่นอัตโนมัติ",
+      "info": "วิดีโอจะถูกปิดเสียงและไม่มีการควบคุม"
+    },
+    "video_upload": {
+      "label": "ไฟล์วิดีโอ",
+      "info": "โฮสต์โดย Shopify แทนที่การตั้งค่า URL ของวิดีโอ"
+    },
+    "poster": {
+      "info": "ใช้เป็นโปสเตอร์หรือภาพสำรอง"
+    }
+  },
+  "variant_metafields": {
+    "name": "เมทาฟิลด์ของตัวเลือกสินค้า",
+    "label": "คีย์เมทาฟิลด์ของตัวเลือกสินค้า",
+    "info": "ธีมนี้สามารถแสดงเมทาฟิลด์ของตัวเลือกสินค้าบนหน้าผลิตภัณฑ์ [เรียนรู้เพิ่มเติม](https://shopify-support.krownthemes.com/article/884-using-variant-metafields-in-product-pages)."
+  },
+  "new_color_swatches": "ประเภทตัวเลือกตัวแปร \"บล็อก\" รองรับตัวอย่างสีที่สร้างด้วยเมตาฟิลด์หมวดหมู่ [เรียนรู้เพิ่มเติม](https://help.shopify.com/en/manual/custom-data/metafields/category-metafields/using-category-metafields).",
+  "video_controls": "แสดงการควบคุมวิดีโอ",
   "sticky_cart_actions": "เปิดใช้งานการดำเนินการตะกร้าติดหนึบ",
   "currency_codes": {
     "header": "รูปแบบสกุลเงิน",
@@ -28,6 +323,7 @@
     "divider_style_double": "คู่",
     "divider_color": "สี",
     "divider_image": "ภาพตัวคั่น",
+    "divider_height": "ความสูง",
     "divider_image_info": "ภาพที่ซ้ำกันแนวนอน แทนที่สไตล์และสีด้านบน"
   },
   "cart_actions": {
@@ -38,7 +334,9 @@
   },
   "sticky_atc": {
     "label": "เพิ่มลงในตะกร้าแบบติด",
-    "enable_sticky_atc": "เปิดใช้งานการเพิ่มลงในตะกร้าแบบติด"
+    "enable_sticky_atc": "เปิดใช้งานการเพิ่มลงในตะกร้าแบบติด",
+    "sticky_atc_style_wide": "Wide",
+    "sticky_atc_style_floating": "Floating"
   },
   "performance": {
     "header": "SEO และประสิทธิภาพ",
@@ -114,12 +412,23 @@
       },
       "progress_slider": {
         "name": "แผนภูมิแท่งความคืบหน้า",
-        "value": "ค่า"
+        "value": "ค่า",
+        "height": "Slider height",
+        "width": "Slider width",
+        "dynamic_content": {
+          "info": "Use dynamic sources to define unique values by creating product metafields for the progress chart. [Learn more](https://shopify-support.krownthemes.com/article/804-product-page#Progress-chart-S8c6R)",
+          "slider_label": "Value metafield",
+          "dots_label": "Highlighted dots metafield"
+        }
       },
       "progress_dots": {
         "name": "แผนภูมิจุดความคืบหน้า",
         "highlight": "จุดที่เน้น",
-        "total": "จุดทั้งหมด"
+        "total": "จุดทั้งหมด",
+        "icon": "Dot icon",
+        "size": "Dot size",
+        "inactive_color": "Inactive color",
+        "active_color": "Highlighted color"
       },
       "store_selector": {
         "default": "ตั้งค่าเริ่มต้นตามร้านแรก"
@@ -337,6 +646,13 @@
       "content": "ติดตามบน Shop",
       "info": "คุณต้องเปิดใช้งาน Shop Pay เพื่อให้ลูกค้าสามารถติดตามร้านค้าของคุณในแอป Shop ได้จากหน้าร้าน [ดูข้อมูลเพิ่มเติม](https://help.shopify.com/manual/online-store/themes/customizing-themes/follow-on-shop)",
       "label": "เปิดใช้งานการติดตามบน Shop"
+    },
+    "labels": {
+      "hide_block_if_no_content_info": "ซ่อนบล็อกหากไม่มีการกำหนดเนื้อหา",
+      "popup_page_info": "แทนที่เนื้อหาข้อความหากเลือกหน้า",
+      "page": "หน้า",
+      "popup": "ป็อปอัพ",
+      "open_popup": "เปิดป็อปอัพ"
     }
   },
   "sections": {
@@ -385,14 +701,17 @@
         "footer_group": "กลุ่มส่วนท้าย",
         "header_group": "กลุ่มส่วนหัว",
         "overlay_group": "กลุ่มซ้อนทับ",
-        "embellishments": "สิ่งตกแต่ง"
+        "embellishments": "สิ่งตกแต่ง",
+        "show_button": "Show button",
+        "optional": "Optional"
       },
       "text": {
         "icons_info": "หากต้องการดูและดาวน์โหลดไอคอนเพิ่มเติมโปรดไปที่ [ลิงก์นี้ ]( https://resources.krownthemes.com/icons/)"
       },
       "borders": {
         "top_border": "ขอบด้านบน",
-        "bottom_border": "ขอบด้านล่าง"
+        "bottom_border": "ขอบด้านล่าง",
+        "show_border": "Show border"
       },
       "colors": {
         "heading_background": "พื้นหลังหัวเรื่อง",
@@ -419,13 +738,18 @@
                 "option_2": "ด้านล่าง",
                 "option_3": "ซ้าย",
                 "option_4": "ขวา"
-              }
-            }
-          }
+              },
+              "show_tooltip": "Show tooltip"
+            },
+            "mobile_info": "Only if a mobile image is set"
+          },
+          "image_on_mobile": "Mobile image",
+          "position_on_mobile": "Position on mobile"
         },
         "scrolling_images": {
           "label": "การเลื่อนภาพ",
-          "image_size": "ขนาดภาพ"
+          "image_size": "ขนาดภาพ",
+          "columns": "Columns"
         },
         "video": {
           "label": "วิดีโอ",
@@ -510,11 +834,11 @@
       "cart_upsell": {
         "name": "การแนะนำผลิตภัณฑ์แต่ละรายการ",
         "product": "ผลิตภัณฑ์",
-        "info": "คำแนะนำแบบไดนามิกจะขึ้นอยู่กับรายการในตะกร้าสินค้าของคุณ สิ่งเหล่านั้นจะเปลี่ยนแปลงและพัฒนาไปตามกาลเวลา [ดูข้อมูลเพิ่มเติม ](https://help.shopify.com/en/themes/development/recommended-products)"
+        "info": "คำแนะนำแบบไดนามิกจะขึ้นอยู่กับรายการในตะกร้าสินค้าของคุณ สิ่งเหล่านั้นจะเปลี่ยนแปลงและพัฒนาไปตามกาลเวลา [ดูข้อมูลเพิ่มเติม ](https://help.shopify.com/en/manual/online-store/storefront-search/search-and-discovery-recommendations)"
       },
       "gift_wrapping": {
         "name": "การห่อของขวัญ",
-        "info": "การห่อของขวัญจะต้องตั้งค่าเป็นผลิตภัณฑ์ [เรียนรู้เพิ่มเติม ](https://shopify-support.krownthemes.com/article/696-cart-features#gift-wrap)",
+        "info": "การห่อของขวัญจะต้องตั้งค่าเป็นผลิตภัณฑ์ [เรียนรู้เพิ่มเติม ](https://shopify-support.krownthemes.com/article/779-borders-theme-settings-cart)",
         "settings": {
           "label": "ข้อความ",
           "button": "ป้ายกำกับปุ่ม"
@@ -612,6 +936,12 @@
             "border_color": "สีเส้นขอบ"
           }
         }
+      },
+      "seo_late": {
+        "breadcrumbs": {
+          "label": "Improve product breadcrumb navigation",
+          "info": "Adds collection names to the breadcrumb navigation, by duplicating product url's. [Learn more](https://shopify-support.krownthemes.com/article/697-seo#breadcrumbs)"
+        }
       }
     },
     "local-extra-words": {
@@ -624,7 +954,8 @@
           "settings": {
             "borders": "เส้นขอบ",
             "hide_border": "ซ่อนเส้นขอบ",
-            "accent": "การเน้น"
+            "accent": "การเน้น",
+            "overlay": "Overlay"
           }
         },
         "typography": {
@@ -681,6 +1012,14 @@
             "amount": {
               "label": "จำนวนขั้นต่ำในการจัดส่งฟรี",
               "info": "เขียนตัวเลข ไม่ใช้ตัวอักษรหรืออักขระพิเศษ\n"
+            },
+            "info": "This feature only works with a single currency and shipping method. If you're using multiple shipping methods or currencies, it might show false values to the customer."
+          },
+          "settings": {
+            "media": {
+              "header": "Media aspect ratio",
+              "label": "Aspect ratio",
+              "info_cart": "Changes the aspect ratio for small product thumbnails used in the cart, search popup and some other areas that require small product thumbnails."
             }
           }
         },
@@ -729,10 +1068,21 @@
               "name__3": "ป้ายกำหนดเอง 3",
               "text": "ข้อความ",
               "tags": "แท็ก",
-              "color": "สีพื้นหลัง"
+              "color": "สีพื้นหลัง",
+              "text_color": "Text color"
             }
           },
-          "icons_list": "รายการไอคอนแบบไดนามิก"
+          "icons_list": "รายการไอคอนแบบไดนามิก",
+          "products-list": {
+            "name": "รายการสินค้า"
+          }
+        },
+        "embellishments": {
+          "settings": {
+            "show_gotop": {
+              "label": "Show go to top button"
+            }
+          }
         }
       },
       "sections": {
@@ -818,7 +1168,8 @@
           "show_icon": "แสดงไอคอน"
         },
         "cookies": {
-          "name": "ป็อปอัปคุกกี้"
+          "name": "ป็อปอัปคุกกี้",
+          "cookies_info": "เว็บไซต์นี้ใช้คุกกี้เพื่อให้แน่ใจว่ามอบประสบการณ์ที่ดีที่สุดแก่ผู้ใช้ [เรียนรู้เพิ่มเติม](https://shopify-support.krownthemes.com/article/790-cookies-popup)."
         },
         "popups": {
           "name": "ป็อปอัป",
@@ -1138,6 +1489,9 @@
           "blocks": {
             "shipping-calculator": {
               "name": "เครื่องคำนวณค่าจัดส่งสินค้า"
+            },
+            "related-products": {
+              "info": "The product recommendations are based on products that are commonly purchased together or products in related collections. If there are no recommendations, the block will not appear."
             }
           }
         },
@@ -1156,7 +1510,9 @@
           "name": "หน้าสินค้า",
           "settings": {
             "gallery_pagination": "การจัดหน้าตัวเลื่อนแกลเลอรี",
-            "show_border": "แสดงเส้นขอบรอบๆ แกลเลอรี"
+            "show_border": "แสดงเส้นขอบรอบๆ แกลเลอรี",
+            "gallery_border": "Gallery border",
+            "gallery_border_color": "Gallery border color"
           },
           "blocks": {
             "pickup_availability": {
@@ -1196,7 +1552,7 @@
               },
               "settings": {
                 "icon": "ไอคอน",
-                "icon_info": "96 x 96px",
+                "icon_info": "128 x 128px",
                 "label": "ป้ายกำกับ"
               }
             }
@@ -1243,7 +1599,13 @@
           "blocks": {
             "payment": {
               "name": "ไอคอนการชำระเงิน",
-              "info": "ไอคอนที่แสดงจะถูกกำหนดโดย [การตั้งค่าการชำระเงิน](/admin/settings/payments) ภูมิภาคและสกุลเงินของของร้านค้าของคุณและลูกค้า"
+              "info": "ไอคอนที่แสดงจะถูกกำหนดโดย [การตั้งค่าการชำระเงิน](/admin/settings/payments) ภูมิภาคและสกุลเงินของของร้านค้าของคุณและลูกค้า",
+              "custom_icons": "Custom icons",
+              "custom_icons_info": "Upload 114 x 72px .png images",
+              "only_show_custom_icons": "Only show the custom icons"
+            },
+            "text": {
+              "name": "Text & social icons"
             }
           }
         },
@@ -1261,7 +1623,10 @@
             "name": "เปิดใช้งานหน้าบัญชี"
           },
           "login": {
-            "name": "หน้าเข้าสู่ระบบ"
+            "name": "หน้าเข้าสู่ระบบ",
+            "shop_login_button": {
+              "enable": "เปิดใช้การลงชื่อเข้าใช้ด้วย Shop"
+            }
           },
           "account": {
             "name": "หน้าบัญชี"
@@ -1288,7 +1653,8 @@
           "option__2": "3 คอลัมน์",
           "option__3": "4 คอลัมน์",
           "option__4": "5 คอลัมน์",
-          "option__5": "6 คอลัมน์"
+          "option__5": "6 คอลัมน์",
+          "name_mobile": "Mobile layout"
         },
         "promotion-cards": {
           "name": "การ์ดโปรโมชัน",
@@ -1566,7 +1932,7 @@
             "map": {
               "api": {
                 "label": "คีย์ API แผนที่กูเกิล",
-                "info": "คุณจะต้องลงทะเบียน [Google Maps API Key](http://shopify-support.krownthemes.com/article/385-generate-an-api-key-for-google-maps) เพื่อแสดงแผนที่"
+                "info": "คุณจะต้องลงทะเบียน [Google Maps API Key](http://shopify-support.krownthemes.com/article/385-generate-an-api-key-for-google-maps) to display the map."
               }
             }
           }
@@ -1971,6 +2337,9 @@
         },
         "products_number": {
           "label": "จำนวนสูงสุดของผลิตภัณฑ์ที่แสดง"
+        },
+        "articles_number": {
+          "label": "จำนวนสูงสุดของบทความที่แสดง"
         },
         "collection": {
           "label": "คอลเลกชัน"
@@ -2558,7 +2927,7 @@
         },
         "header__1": {
           "content": "การแนะนำสินค้า",
-          "info": "คำแนะนำแบบพลวัตใช้ข้อมูลคำสั่งซื้อและผลิตภัณฑ์เพื่อเปลี่ยนแปลงและปรับปรุงเมื่อเวลาผ่านไป [Learn more](https://help.shopify.com/en/themes/development/recommended-products)"
+          "info": "คำแนะนำแบบพลวัตใช้ข้อมูลคำสั่งซื้อและผลิตภัณฑ์เพื่อเปลี่ยนแปลงและปรับปรุงเมื่อเวลาผ่านไป [Learn more](https://help.shopify.com/en/manual/online-store/storefront-search/search-and-discovery-recommendations)"
         }
       }
     },
@@ -2612,6 +2981,9 @@
     "popup": {
       "name": "ป๊อปอัป",
       "settings": {
+        "enable_scroll_based_trigger": "เปิดใช้งานทริกเกอร์ตามการเลื่อน",
+        "enable_scroll_based_trigger_info": "แสดงป็อปอัพเฉพาะเมื่อเลื่อนหน้าไปยังตำแหน่งที่กำหนดเท่านั้น",
+        "scroll_position": "ตำแหน่งการเลื่อน",
         "title": {
           "label": "ส่วนหัว"
         },
@@ -2866,10 +3238,67 @@
         }
       }
     },
+    "words_210": {
+      "text_columns": {
+        "name": "Text columns",
+        "block": {
+          "name": "Text"
+        }
+      }
+    },
     "images": {
       "label_1": "รูปภาพ 1",
       "label_2": "รูปภาพ 2",
       "label_3": "รูปภาพ 3"
+    }
+  },
+  "color-schemes": {
+    "name_plural": "Color schemes",
+    "name_singular": "Color scheme",
+    "default": "Default color scheme",
+    "default_info": "Used to set colors for account pages, 404 pages, and other pages or sections without color scheme settings.",
+    "drawers": "Modals/drawers",
+    "other": "Other colors"
+  },
+  "menu-images": {
+    "label": "รูปภาพเมนู",
+    "info": "คุณสามารถเพิ่มรูปภาพในเมนูระดับบนสุดได้โดยการสร้างไฟล์ JPG ที่มีชื่อเดียวกับ handle ของเมนู [ดูเพิ่มเติม](https://shopify-support.krownthemes.com/article/798-header-section#mega-menus).",
+    "show": "แสดงรูปภาพเมนู",
+    "show_count": "แสดงจำนวนสินค้า"
+  },
+  "bundle-extra-words": {
+    "sections": {
+      "transparent_header": {
+        "header": "ดีไซน์ส่วนหัวแบบใส",
+        "settings": {
+          "homepage_enable": {
+            "label": "เปิดใช้งานในหน้าแรก",
+            "info": "ตรวจสอบให้แน่ใจว่าส่วนแรกของหน้าแรกของคุณเป็นแถบเลื่อนภาพหรือภาพความกว้างเต็มขั้นอย่างใดอย่างหนึ่ง"
+          },
+          "collection_enable": {
+            "label": "เปิดใช้งานในหน้าคอลเลกชัน",
+            "info": "ตรวจสอบให้แน่ใจว่าภาพแบนเนอร์คอลเลกชันเปิดใช้งานอยู่ และคอลเลกชันของคุณมีภาพที่แนะนำ"
+          },
+          "custom_enable": {
+            "label": "เปิดใช้งานในหน้ากำหนดเอง",
+            "info": "เขียนตัวจัดการหน้าใดๆ คั่นด้วยเครื่องหมายลูกน้ำ"
+          },
+          "logo": {
+            "info": "อัปโหลดขนาดเดียวกับโลโก้เดิม"
+          }
+        }
+      }
+    }
+  },
+  "local-250": {
+    "labels": {
+      "show_filters_as": "แสดงตัวกรองเป็น",
+      "expand_filters_by_default": "ขยายตัวกรองตามค่าเริ่มต้น",
+      "stick_filters_sidebar_to_top": "ติดแถบตัวกรองด้านข้างไว้ที่ด้านบน"
+    },
+    "options": {
+      "sidebar": "แถบด้านข้าง",
+      "list": "รายการ"
     }
   },
   "local-230": {
@@ -2878,7 +3307,13 @@
       "label": "เลือกตัวเลือกแรกที่มีอยู่ตามค่าเริ่มต้น",
       "info": "หากไม่ได้ทำเครื่องหมาย ผู้ใช้จะต้องเลือกตัวเลือกที่มีอยู่ก่อนจึงจะสามารถซื้อได้"
     },
-    "slider_info": "ลิงก์จะถูกใช้กับปุ่ม, หรือกับหัวข้อ (ถ้าไม่มีปุ่ม), หรือกับทั้งสไลด์ (ถ้าทั้งหัวข้อและปุ่มว่างเปล่า)."
+    "slider_info": "ลิงก์จะถูกใช้กับปุ่ม, หรือกับหัวข้อ (ถ้าไม่มีปุ่ม), หรือกับทั้งสไลด์ (ถ้าทั้งหัวข้อและปุ่มว่างเปล่า).",
+    "buy_button_labels": {
+      "label": "ป้ายปุ่มซื้อ",
+      "option_1": "ซื้อทันที",
+      "option_2": "เลือกตัวเลือก"
+    },
+    "hide_on_mobile": "ซ่อนบนอุปกรณ์มือถือ"
   },
   "local-223": {
     "heading_text_color": "สีข้อความหัวข้อ",

@@ -8,6 +8,301 @@
  * ------------------------------------------------------------
  */
 {
+  "new-account-component": {
+    "title": "客户账户",
+    "menu": "客户账户菜单",
+    "info": "仅适用于新的客户账户组件。[了解更多](https://help.shopify.com/en/manual/customers/customer-accounts/account-component)"
+  },
+  "video-compression": {
+    "compress_videos_with_m3u8": "压缩 MP4 视频",
+    "compress_videos_with_m3u8_info": "使用 Shopify 的视频压缩以提升性能。可能会影响画质，尤其是短视频。"
+  },
+  "sections-categories": {
+    "promotions": "促销",
+    "products": "产品",
+    "content": "内容",
+    "brand-trust": "品牌信任",
+    "media-galleries": "媒体和图库",
+    "storytelling": "故事讲述",
+    "custom": "自定义",
+    "forms": "表单",
+    "layout": "布局",
+    "collections": "集合",
+    "presets": {
+      "media_collage": "媒体拼贴",
+      "text_cards_collage": "文本卡拼贴",
+      "flex_promotion_cards": "灵活促销卡",
+      "promotion_slider": "促销滑块",
+      "search_bar": "搜索栏",
+      "rich_text_with_image": "带图丰富文本",
+      "fullwidth_text_banner": "全宽文本横幅",
+      "heading_text": "标题文本",
+      "logo_list": "Logo 列表",
+      "logo": "Logo",
+      "fullwidth_media_with_text": "带文本的全宽媒体",
+      "faq": "常见问题",
+      "events_calendar": "活动日历"
+    }
+  },
+  "sections-visibility": {
+    "label": "分区可见性",
+    "options": {
+      "always": "始终显示",
+      "mobile": "仅在移动端显示",
+      "desktop": "仅在桌面端显示"
+    }
+  },
+  "flex-cards": {
+    "header": "灵活卡片",
+    "settings": {
+      "height": {
+        "desktop": "桌面媒体高度",
+        "auto": "在移动端保留媒体高度",
+        "mobile": "移动端媒体高度"
+      },
+      "image_visibility": "不显示媒体",
+      "enhance_first_image": "增强第一张图片",
+      "star-rating": {
+        "name": "星级评分",
+        "color": "星星颜色"
+      }
+    }
+  },
+  "notes-discounts": {
+    "header": "备注和折扣",
+    "show_discount_code": {
+      "label": "启用购物车折扣",
+      "text": "折扣文本",
+      "placeholder": "折扣码",
+      "collapsible": "使备注和折扣字段可在购物车抽屉中折叠"
+    }
+  },
+  "back-in-stock-alert": {
+    "header": "补货提醒",
+    "content": "当客户填写此表单时，店主将收到电子邮件。店主必须在产品补货后手动通知客户。",
+    "info": "当产品缺货时，此补货提醒表单将显示。",
+    "succcess_message": "成功消息",
+    "email_message": "电子邮件内容"
+  },
+  "theme_blocks": {
+    "group": {
+      "name": "内容组"
+    },
+    "heading": {
+      "settings": {
+        "info": "使用 [br] 插入换行。",
+        "option_1": "默认"
+      }
+    },
+    "slide_image": {
+      "settings": {
+        "info": "如果整个卡片有链接，内部链接将不起作用"
+      }
+    },
+    "caption": {
+      "settings": {
+        "option_1": "特小",
+        "content": "内容"
+      }
+    },
+    "button-caption": {
+      "name": "分隔标签",
+      "settings": {
+        "separator": "分隔符"
+      }
+    },
+    "empty-space": {
+      "name": "空白"
+    },
+    "grid-text": {
+      "name": "文本卡片",
+      "column_desktop": "桌面列数",
+      "column_mobile": "移动端列数",
+      "row_desktop": "桌面行数",
+      "row_mobile": {
+        "label": "移动端行数",
+        "option_1": "1 行",
+        "option_2": "2 行"
+      },
+      "spacing": "区块间水平间距"
+    },
+    "grid-media": {
+      "name": "媒体卡片"
+    },
+    "product-add-to-cart-button": {
+      "name": "快速购买按钮"
+    },
+    "divider": {
+      "divider_width": "宽度",
+      "option_1": "小",
+      "option_2": "中",
+      "option_3": "大",
+      "option_4": "最大"
+    },
+    "sections": {
+      "flex-slideshow": {
+        "name": "灵活幻灯片",
+        "desktop_height": "桌面高度",
+        "mobile_height": "移动端高度",
+        "legacy_name": "幻灯片（旧版）"
+      },
+      "flex-section": {
+        "name": "灵活网格",
+        "gutter_size": "文本内边距",
+        "grid_design": "网格设计",
+        "remove_gap": "移除卡片间距",
+        "height": {
+          "label_desktop": "桌面卡片最小高度",
+          "label_mobile": "移动端卡片最小高度",
+          "info": "如果内容需要更多空间，卡片会自动扩展。"
+        }
+      }
+    },
+    "descrease_top_margin": "减少上边距"
+  },
+  "cart-tos-update": {
+    "cart_terms_heading": "条款和条件",
+    "cart_terms_checkbox": "启用结账时的条款和条件要求",
+    "cart_terms_text": "复选框标签",
+    "drawer_actions": "购物车操作"
+  },
+  "product-siblings": {
+    "name": "相关产品",
+    "info": "要为每个产品分配不同的列表，请使用产品参考列表元字段作为动态源。 [了解更多](https://shopify-support.krownthemes.com/article/804-product-page#Product-siblings-IzGzR)."
+  },
+  "local-260": {
+    "labels": {
+      "disable_parallax_effect": "禁用视差效果",
+      "default_image": "备用图片",
+      "default_image_info": "在产品没有图片时使用。",
+      "value": "值",
+      "default_value": "默认值",
+      "values": "值",
+      "values_info": "用逗号分隔值。",
+      "dropdown_property_settings": "下拉属性设置",
+      "appears_on_the_order_summary": "在订单摘要中显示。",
+      "checkbox_property_settings": "复选框属性设置",
+      "maximum_characters": "最大字符数",
+      "allow_long_text": "允许长文本",
+      "text_property_settings": "文本属性设置",
+      "hide_at_checkout": "在结账时隐藏",
+      "hide_at_checkout_info": "如果选中，该项属性不会在订单摘要中显示。",
+      "required": "必填",
+      "required_info": "客户必须填写此字段才能将产品添加到购物车。",
+      "type": "类型",
+      "custom_property": "自定义属性",
+      "custom_property_info": "行项目属性允许您收集添加到购物车的产品的自定义细节。",
+      "show_custom_link": "显示自定义链接",
+      "show_custom_link_info": "根据浏览器支持使用原生分享选项。",
+      "show_pinterest": "显示Pinterest",
+      "show_x": "显示X",
+      "show_facebook": "显示Facebook",
+      "crop_videos_when_following_images_aspect_ratio": "按照图片宽高比裁剪视频",
+      "enable_add_to_cart_for_multiple_variants_label": "启用多变体的加入购物车",
+      "enable_add_to_cart_for_multiple_variants_info": "启用后，\"加入购物车\"按钮会直接将第一个可用或已选择的变体添加到购物车。如果禁用，则会显示\"选择选项\"按钮。",
+      "button_width": {
+        "label": "按钮宽度",
+        "option_1": "全宽",
+        "option_2": "受限"
+      },
+      "image": "图片",
+      "maximum_width": "最大宽度",
+      "constrain_image_width": "限制图像宽度",
+      "desktop_logo_image": "桌面徽标图像",
+      "desktop_logo_image_max_height": "桌面徽标图像最大高度",
+      "mobile_logo_image": "移动徽标图像",
+      "mobile_logo_image_max_height": "移动徽标图像最大高度",
+      "mobile_logo_image_info": "如果您未上传移动徽标，将使用桌面徽标。",
+      "letter_spacing": "字母间距",
+      "dark_background_foreground": "深色背景前景",
+      "light_background_foreground": "浅色背景前景",
+      "maximum_page_width": "页面最大宽度",
+      "title_font_family": "标题字体族",
+      "price_size": "价格大小",
+      "align_button_info": "如果快速购买是产品卡中的最后一个区块，则效果最佳。",
+      "out_of_stock_info": "当产品缺货时隐藏快速购买按钮",
+      "modal_label": "始终打开快速购买弹窗",
+      "modal_info": "默认情况下，只有在有多个变体的产品时才会打开快速购买弹窗。",
+      "popup_cart": "弹出式通知",
+      "caption_alignment": "标题对齐",
+      "remove_space_between_images": "移除图片间空隙",
+      "text_horizontal_alignment": "文本水平对齐",
+      "text_vertical_alignment": "文本垂直对齐",
+      "text_vertical_alignment_info": "仅当图片位于左侧或右侧时适用于桌面。",
+      "segments_height": "段高",
+      "remove_space_between_segments": "移除段落间空隙",
+      "out_of_stock": "缺货",
+      "regular_stock": "常规库存",
+      "low_inventory": "低库存",
+      "custom_inventory_notification_colors": "自定义库存通知颜色",
+      "block_heading": "区块标题",
+      "block_style": "区块样式",
+      "block_content": "区块内容",
+      "tooltip_text": "提示文字",
+      "collapsible": "可折叠",
+      "boxed": "盒装",
+      "darken_the_header": "加深标题",
+      "opened_by_default": "默认打开",
+      "applies_to_boxed_version_only": "仅适用于盒装版本",
+      "dynamic_segments_label": "使用动态来源设置产品元字段的活动项或段。[了解更多](https://shopify-support.krownthemes.com/article/804-product-page#Nutriscore--attribute-meters-OY3p4)",
+      "nutriscore": "营养评分",
+      "active_item": "活跃项目",
+      "active_item_metafield": "活跃项目元字段",
+      "item_1": "项目 1",
+      "item_2": "项目 2",
+      "item_3": "项目 3",
+      "item_4": "项目 4",
+      "item_5": "项目 5",
+      "item_6": "项目 6",
+      "item_7": "项目 7",
+      "item_8": "项目 8",
+      "label": "标签",
+      "attribute_meter": "属性计量器",
+      "segments": "段",
+      "active_segment": "活跃段",
+      "active_segment_metafield": "活跃段元字段",
+      "active_segment_color": "活跃段颜色",
+      "fill_segments_up_to_active_segment": "填充至活跃段",
+      "show_active_segments_value": "显示活跃段的值",
+      "start_label": "开始标签",
+      "middle_label": "中间标签",
+      "end_label": "结束标签",
+      "text_banner": "文本横幅",
+      "banner_link": "横幅链接",
+      "videos_and_other_media_aspect_ratio": "视频及其他媒体的宽高比"
+    },
+    "options": {
+      "text": "文本",
+      "checkbox": "复选框",
+      "dropdown": "下拉菜单",
+      "scroll_one_column": "滚动一列",
+      "scroll_two_columns": "滚动两列",
+      "keep_media_original_aspect_ratio": "保持媒体原始宽高比",
+      "follow_images_aspect_ratio": "遵循图片的宽高比",
+      "inline": "内联",
+      "middle": "中间"
+    }
+  },
+  "video-extra-functions": {
+    "autoplay": {
+      "label": "启用自动播放",
+      "info": "视频将被静音且无控制按钮。"
+    },
+    "video_upload": {
+      "label": "视频文件",
+      "info": "由 Shopify 托管。替换视频 URL 设置。"
+    },
+    "poster": {
+      "info": "用作海报或备用图片。"
+    }
+  },
+  "variant_metafields": {
+    "name": "变体元字段",
+    "label": "变体元字段键",
+    "info": "此主题可以在产品页面上显示变体元字段。 [了解更多](https://shopify-support.krownthemes.com/article/884-using-variant-metafields-in-product-pages)."
+  },
+  "new_color_swatches": "\"块\"变体选择器类型支持使用类别元字段创建的颜色样本。 [了解更多](https://help.shopify.com/en/manual/custom-data/metafields/category-metafields/using-category-metafields).",
+  "video_controls": "显示视频控件",
   "sticky_cart_actions": "启用粘性抽屉购物车操作",
   "currency_codes": {
     "header": "货币格式",
@@ -28,17 +323,20 @@
     "divider_style_double": "双线",
     "divider_color": "颜色",
     "divider_image": "分隔线图片",
+    "divider_height": "高度",
     "divider_image_info": "一张水平重复的图片。替换上面的样式和颜色。"
   },
   "cart_actions": {
     "label": "抽屉购物车操作",
-    "option_1": "显示“查看购物车”按钮",
-    "option_2": "显示“结帐”按钮",
+    "option_1": "显示\"查看购物车\"按钮",
+    "option_2": "显示\"结帐\"按钮",
     "option_3": "显示两者"
   },
   "sticky_atc": {
     "label": "粘性加入购物车",
-    "enable_sticky_atc": "启用粘性加入购物车"
+    "enable_sticky_atc": "启用粘性加入购物车",
+    "sticky_atc_style_wide": "Wide",
+    "sticky_atc_style_floating": "Floating"
   },
   "performance": {
     "header": "SEO与性能",
@@ -114,12 +412,23 @@
       },
       "progress_slider": {
         "name": "进度条形图",
-        "value": "值"
+        "value": "值",
+        "height": "Slider height",
+        "width": "Slider width",
+        "dynamic_content": {
+          "info": "Use dynamic sources to define unique values by creating product metafields for the progress chart. [Learn more](https://shopify-support.krownthemes.com/article/804-product-page#Progress-chart-S8c6R)",
+          "slider_label": "Value metafield",
+          "dots_label": "Highlighted dots metafield"
+        }
       },
       "progress_dots": {
         "name": "进度原点图",
         "highlight": "高亮显示的点",
-        "total": "总计点数"
+        "total": "总计点数",
+        "icon": "Dot icon",
+        "size": "Dot size",
+        "inactive_color": "Inactive color",
+        "active_color": "Highlighted color"
       },
       "store_selector": {
         "default": "默认为第一家商店"
@@ -306,7 +615,7 @@
           "info": "页面路径导航可帮助用户在商店中浏览，并且仅显示在产品系列、产品和搜索页面上。"
         },
         "show_go_top": {
-          "label": "显示“转到顶部”按钮"
+          "label": "显示\"转到顶部\"按钮"
         }
       }
     },
@@ -337,6 +646,13 @@
       "content": "在 Shop 中关注",
       "info": "若要使客户能够通过您的店面在 Shop 应用中关注您的商店，则必须启用 Shop Pay。[了解详细信息](https://help.shopify.com/manual/online-store/themes/customizing-themes/follow-on-shop)",
       "label": "启用在 Shop 中关注"
+    },
+    "labels": {
+      "hide_block_if_no_content_info": "如果内容未定义，则隐藏块",
+      "popup_page_info": "如果选择了页面，则替换文本内容",
+      "page": "页面",
+      "popup": "弹窗",
+      "open_popup": "打开弹窗"
     }
   },
   "sections": {
@@ -385,14 +701,17 @@
         "footer_group": "页脚组",
         "header_group": "页眉组",
         "overlay_group": "叠加面板组",
-        "embellishments": "装饰"
+        "embellishments": "装饰",
+        "show_button": "Show button",
+        "optional": "Optional"
       },
       "text": {
         "icons_info": "如果要显示 & 下载更多图标，请访问 [此链接](https://resources.krownthemes.com/icons/)。"
       },
       "borders": {
         "top_border": "上边框",
-        "bottom_border": "下边框"
+        "bottom_border": "下边框",
+        "show_border": "Show border"
       },
       "colors": {
         "heading_background": "标题背景",
@@ -419,13 +738,18 @@
                 "option_2": "底部",
                 "option_3": "靠左",
                 "option_4": "靠右"
-              }
-            }
-          }
+              },
+              "show_tooltip": "Show tooltip"
+            },
+            "mobile_info": "Only if a mobile image is set"
+          },
+          "image_on_mobile": "Mobile image",
+          "position_on_mobile": "Position on mobile"
         },
         "scrolling_images": {
           "label": "滚动图片",
-          "image_size": "图片大小"
+          "image_size": "图片大小",
+          "columns": "Columns"
         },
         "video": {
           "label": "视频",
@@ -510,11 +834,11 @@
       "cart_upsell": {
         "name": "单个产品推荐",
         "product": "产品",
-        "info": "动态推荐根据的是您的购物车中的商品。它们会随着时间而发生改变和完善。[了解更多](https://help.shopify.com/en/themes/development/recommended-products)"
+        "info": "动态推荐根据的是您的购物车中的商品。它们会随着时间而发生改变和完善。[了解更多](https://help.shopify.com/en/manual/online-store/storefront-search/search-and-discovery-recommendations)"
       },
       "gift_wrapping": {
         "name": "礼品包装",
-        "info": "礼品包装需要设置为产品。[了解更多](https://shopify-support.krownthemes.com/article/696-cart-features#gift-wrap)",
+        "info": "礼品包装需要设置为产品。[了解更多](https://shopify-support.krownthemes.com/article/779-borders-theme-settings-cart)",
         "settings": {
           "label": "文本",
           "button": "按钮标签"
@@ -582,8 +906,8 @@
           "settings": {
             "colors": {
               "text": "标识文本颜色",
-              "sold_out": "“售罄”背景色",
-              "sale": "“折扣”背景色"
+              "sold_out": "\"售罄\"背景色",
+              "sale": "\"折扣\"背景色"
             }
           },
           "badge_sale": {
@@ -595,8 +919,8 @@
           },
           "sold_out": {
             "name": "售罄徽章",
-            "text_color": "“售罄”文字颜色",
-            "sale_text": "“折扣”文字颜色"
+            "text_color": "\"售罄\"文字颜色",
+            "sale_text": "\"折扣\"文字颜色"
           },
           "custom_badges": {
             "name": "定制产品标识",
@@ -612,6 +936,12 @@
             "border_color": "边框颜色"
           }
         }
+      },
+      "seo_late": {
+        "breadcrumbs": {
+          "label": "Improve product breadcrumb navigation",
+          "info": "Adds collection names to the breadcrumb navigation, by duplicating product url's. [Learn more](https://shopify-support.krownthemes.com/article/697-seo#breadcrumbs)"
+        }
       }
     },
     "local-extra-words": {
@@ -624,7 +954,8 @@
           "settings": {
             "borders": "边框",
             "hide_border": "隐藏边框",
-            "accent": "音调"
+            "accent": "音调",
+            "overlay": "Overlay"
           }
         },
         "typography": {
@@ -661,7 +992,8 @@
           "name": "布局格式",
           "sections": {
             "vertical_space": "不同分部之间的垂直空间",
-            "remove_vertical_space": "删除上边距"
+            "remove_vertical_space": "删除上边距",
+            "remove_bottom_margin": "Remove bottom margin"
           },
           "grid": {
             "name": "网格",
@@ -680,6 +1012,14 @@
             "amount": {
               "label": "免费送货的最低金额",
               "info": "写一个数字，不要用字母或特殊字符。"
+            },
+            "info": "This feature only works with a single currency and shipping method. If you're using multiple shipping methods or currencies, it might show false values to the customer."
+          },
+          "settings": {
+            "media": {
+              "header": "Media aspect ratio",
+              "label": "Aspect ratio",
+              "info_cart": "Changes the aspect ratio for small product thumbnails used in the cart, search popup and some other areas that require small product thumbnails."
             }
           }
         },
@@ -713,8 +1053,8 @@
             "settings": {
               "colors": {
                 "text": "标识文本颜色",
-                "sold_out": "“售罄”背景色",
-                "sale": "“折扣”背景色"
+                "sold_out": "\"售罄\"背景色",
+                "sale": "\"折扣\"背景色"
               }
             },
             "badge_sale": {
@@ -728,10 +1068,21 @@
               "name__3": "自定义标识 3",
               "text": "文本",
               "tags": "标签",
-              "color": "背景颜色"
+              "color": "背景颜色",
+              "text_color": "Text color"
             }
           },
-          "icons_list": "动态图标列表"
+          "icons_list": "动态图标列表",
+          "products-list": {
+            "name": "产品列表"
+          }
+        },
+        "embellishments": {
+          "settings": {
+            "show_gotop": {
+              "label": "Show go to top button"
+            }
+          }
         }
       },
       "sections": {
@@ -817,7 +1168,8 @@
           "show_icon": "显示图标"
         },
         "cookies": {
-          "name": "Cookies 弹出"
+          "name": "Cookies 弹出",
+          "cookies_info": "本网站使用Cookie以确保为用户提供最佳体验。 [了解更多](https://shopify-support.krownthemes.com/article/790-cookies-popup)."
         },
         "popups": {
           "name": "弹出窗口",
@@ -858,7 +1210,7 @@
           "settings": {
             "map": {
               "label": "启用动态地图",
-              "info": "确定你在”主题设置“中正确设置了谷歌地图 API 密钥"
+              "info": "确定你在\"主题设置\"中正确设置了谷歌地图 API 密钥"
             },
             "zoom": {
               "label": "地图缩放",
@@ -932,7 +1284,7 @@
                   "info": "标记的经度坐标。例如：23.5464733"
                 },
                 "get_directions_button": {
-                  "label": "显示“获取路线”按钮",
+                  "label": "显示\"获取路线\"按钮",
                   "info": "在新的浏览器页面中打开更大的地图。"
                 },
                 "map_pin": {
@@ -982,7 +1334,7 @@
             },
             "store-selector": {
               "name": "商店选择器",
-              "content": "可以在“店铺选择器“分部中对商店选择器进行配置。[了解更多](https://shopify-support.krownthemes.com/article/799-store-selector)",
+              "content": "可以在\"店铺选择器\"分部中对商店选择器进行配置。[了解更多](https://shopify-support.krownthemes.com/article/799-store-selector)",
               "info": "这个主题允许你将真实商店位置连接到交互式商店选择器。[了解更多](https://shopify-support.krownthemes.com/article/799-store-selector)"
             },
             "mega-menu": {
@@ -1137,6 +1489,9 @@
           "blocks": {
             "shipping-calculator": {
               "name": "运费计算器"
+            },
+            "related-products": {
+              "info": "The product recommendations are based on products that are commonly purchased together or products in related collections. If there are no recommendations, the block will not appear."
             }
           }
         },
@@ -1155,7 +1510,9 @@
           "name": "产品页面",
           "settings": {
             "gallery_pagination": "图集幻灯片页码",
-            "show_border": "在图集周围显示边框"
+            "show_border": "在图集周围显示边框",
+            "gallery_border": "Gallery border",
+            "gallery_border_color": "Gallery border color"
           },
           "blocks": {
             "pickup_availability": {
@@ -1195,7 +1552,7 @@
               },
               "settings": {
                 "icon": "图标",
-                "icon_info": "96 x 96px",
+                "icon_info": "128 x 128px",
                 "label": "标签"
               }
             }
@@ -1242,7 +1599,13 @@
           "blocks": {
             "payment": {
               "name": "付款图标",
-              "info": "显示的图标取决于商店的 [支付设置](/admin/settings/payments) 以及客户所在的地区和使用的货币。"
+              "info": "显示的图标取决于商店的 [支付设置](/admin/settings/payments) 以及客户所在的地区和使用的货币。",
+              "custom_icons": "Custom icons",
+              "custom_icons_info": "Upload 114 x 72px .png images",
+              "only_show_custom_icons": "Only show the custom icons"
+            },
+            "text": {
+              "name": "Text & social icons"
             }
           }
         },
@@ -1260,7 +1623,10 @@
             "name": "活跃账户页面"
           },
           "login": {
-            "name": "登录页面"
+            "name": "登录页面",
+            "shop_login_button": {
+              "enable": "启用使用 Shop 登录"
+            }
           },
           "account": {
             "name": "账户页面"
@@ -1287,7 +1653,8 @@
           "option__2": "3 列",
           "option__3": "4 列",
           "option__4": "5 列",
-          "option__5": "6 列"
+          "option__5": "6 列",
+          "name_mobile": "Mobile layout"
         },
         "promotion-cards": {
           "name": "促销卡",
@@ -1441,7 +1808,7 @@
           },
           "quick_buy": {
             "name": "快速购买",
-            "info": "添加即时“添加至购物车”按钮。如果产品有变体，将显示“快速购买”弹窗。",
+            "info": "添加即时\"添加至购物车\"按钮。如果产品有变体，将显示\"快速购买\"弹窗。",
             "label": "启动快速购买"
           },
           "rating": {
@@ -1565,7 +1932,7 @@
             "map": {
               "api": {
                 "label": "Google Maps API 密钥",
-                "info": "您需要注册一个[Google Maps API Key](http://shopify-support.krownthemes.com/article/385-generate-an-api-key-for-google-maps) 以显示地图。"
+                "info": "您需要注册一个[Google Maps API Key](http://shopify-support.krownthemes.com/article/385-generate-an-api-key-for-google-maps) to display the map."
               }
             }
           }
@@ -1613,7 +1980,7 @@
           }
         },
         "paragraph": {
-          "content": "默认情况下会列出您的所有产品系列。要自定义您的列表，请选择“已选择”并添加产品系列。"
+          "content": "默认情况下会列出您的所有产品系列。要自定义您的列表，请选择\"已选择\"并添加产品系列。"
         },
         "display_type": {
           "label": "选择要显示的产品系列",
@@ -1626,7 +1993,7 @@
         },
         "sort": {
           "label": "产品系列排序方式：",
-          "info": "排序仅在选择“全部”时适用",
+          "info": "排序仅在选择\"全部\"时适用",
           "options__1": {
             "label": "按字母顺序 A-Z"
           },
@@ -1970,6 +2337,9 @@
         },
         "products_number": {
           "label": "所显示产品的最大数量"
+        },
+        "articles_number": {
+          "label": "所显示文章的最大数量"
         },
         "collection": {
           "label": "产品系列"
@@ -2557,7 +2927,7 @@
         },
         "header__1": {
           "content": "产品推荐",
-          "info": "动态推荐使用订单和产品信息，以便随时间变化和改进。 [了解更多](https://help.shopify.com/en/themes/development/recommended-products)"
+          "info": "动态推荐使用订单和产品信息，以便随时间变化和改进。 [了解更多](https://help.shopify.com/en/manual/online-store/storefront-search/search-and-discovery-recommendations)"
         }
       }
     },
@@ -2611,6 +2981,9 @@
     "popup": {
       "name": "弹出窗口",
       "settings": {
+        "enable_scroll_based_trigger": "启用基于滚动的触发器",
+        "enable_scroll_based_trigger_info": "仅在页面滚动到特定位置时显示弹出窗口。",
+        "scroll_position": "滚动位置",
         "title": {
           "label": "标题"
         },
@@ -2865,10 +3238,67 @@
         }
       }
     },
+    "words_210": {
+      "text_columns": {
+        "name": "Text columns",
+        "block": {
+          "name": "Text"
+        }
+      }
+    },
     "images": {
       "label_1": "图 1",
       "label_2": "图 2",
       "label_3": "图 3"
+    }
+  },
+  "color-schemes": {
+    "name_plural": "Color schemes",
+    "name_singular": "Color scheme",
+    "default": "Default color scheme",
+    "default_info": "Used to set colors for account pages, 404 pages, and other pages or sections without color scheme settings.",
+    "drawers": "Modals/drawers",
+    "other": "Other colors"
+  },
+  "menu-images": {
+    "label": "菜单图片",
+    "info": "你可以通过创建与菜单 handle 同名的 JPG 文件，为顶级菜单项添加图片。 [了解更多](https://shopify-support.krownthemes.com/article/798-header-section#mega-menus)。",
+    "show": "显示菜单图片",
+    "show_count": "显示产品数量"
+  },
+  "bundle-extra-words": {
+    "sections": {
+      "transparent_header": {
+        "header": "透明页眉设计",
+        "settings": {
+          "homepage_enable": {
+            "label": "在主页上启用",
+            "info": "请确保主页上的第一栏是图像滑块或全宽图像。"
+          },
+          "collection_enable": {
+            "label": "在系列页面上启用",
+            "info": "请确保启用系列横幅图像，并且系列有特色图像。"
+          },
+          "custom_enable": {
+            "label": "在自定义页面上启用",
+            "info": "写入所有页面控点（用逗号分隔）。"
+          },
+          "logo": {
+            "info": "上传原尺寸徽标。"
+          }
+        }
+      }
+    }
+  },
+  "local-250": {
+    "labels": {
+      "show_filters_as": "显示筛选方式",
+      "expand_filters_by_default": "默认展开筛选条件",
+      "stick_filters_sidebar_to_top": "将筛选侧边栏固定在顶部"
+    },
+    "options": {
+      "sidebar": "侧边栏",
+      "list": "列表"
     }
   },
   "local-230": {
@@ -2877,7 +3307,13 @@
       "label": "默认选择第一个可用的变体",
       "info": "如果未选中，用户必须先选择一个可用的变体，然后才能购买。"
     },
-    "slider_info": "链接将应用于按钮，或标题（如果没有按钮），或整个幻灯片（如果标题和按钮都为空）。"
+    "slider_info": "链接将应用于按钮，或标题（如果没有按钮），或整个幻灯片（如果标题和按钮都为空）。",
+    "buy_button_labels": {
+      "label": "购买按钮标签",
+      "option_1": "立即购买",
+      "option_2": "选择选项"
+    },
+    "hide_on_mobile": "在移动设备上隐藏"
   },
   "local-223": {
     "heading_text_color": "标题文字颜色",
@@ -2890,8 +3326,8 @@
       },
       "sold_out": {
         "name": "售罄的徽章",
-        "text_color": "“售罄”文字颜色",
-        "sale_text": "“折扣”文字颜色"
+        "text_color": "\"售罄\"文字颜色",
+        "sale_text": "\"折扣\"文字颜色"
       }
     },
     "rich-text": {

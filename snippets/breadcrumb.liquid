@@ -1,6 +1,13 @@
+{%- comment -%}
+  Renders breadcrumb navigation
+
+  Usage:
+  {% render 'breadcrumb', class: 'option-class' %}
+{%- endcomment -%}
+
 {%- if settings.show_breadcrumb and template != 'index' and template != blank and template != '404' -%}
 
-	<div class="breadcrumb-main">
+	<div class="breadcrumb-main {{ class }}">
 	
 		<div class="breadcrumb-container">
 

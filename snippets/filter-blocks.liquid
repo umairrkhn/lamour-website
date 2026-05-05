@@ -1,3 +1,15 @@
+{%- comment -%}
+  Renders options for a given filtering object.
+
+  Accepts:
+  - filter: {Object} the actual filter object.
+  - location: {String} the location of the filter (used for unique identification).
+  - image_filter_layout:  {String} layout for image filters (onecolumn or twocolumns).
+
+  Usage:
+  {% render 'filter-blocks', filter: filter, location: 'desktop', image_filter_layout: 'onecolumn' %}
+{%- endcomment -%}
+
 <ul class="facets__list list-unstyled swatch-list--{{ filter.presentation }} swatch-list--{{ filter.presentation }}-{{ image_filter_layout }}" role="list">
 
   {%- liquid
@@ -14,13 +26,13 @@
     {%- assign filter_downcased = filter.label | downcase -%}
     <li class="list-menu__item facets__item  {% if filter.presentation and filter.presentation != "text" %} swatch-list__item swatch-list__item--{{ filter.presentation }} {% endif %} {% if color_label contains filter_downcased and settings.color_swatches %} facets__item--swatch {% endif %} {% if value.active %} swatch-list__item--{{ filter.presentation }}-active {% endif %}">
 
-      <label for="{{ location }}-Filter-{{ filter.label | escape }}-{{ forloop.index }}" class="facet-checkbox{% if value.count == 0 and value.active == false %} facet-checkbox--disabled{% endif %}">
+      <label for="{{ location }}-Filter-{{ filter.label | handleize }}-{{ forloop.index }}" class="facet-checkbox{% if value.count == 0 and value.active == false %} facet-checkbox--disabled{% endif %}">
         
         <input type="checkbox"
           class="styled-checkbox"
           name="{{ value.param_name }}"
           value="{{ value.value }}"
-          id="{{ location }}-Filter-{{ filter.label | escape }}-{{ forloop.index }}"
+          id="{{ location }}-Filter-{{ filter.label | handleize }}-{{ forloop.index }}"
           {% if value.active %}checked{% endif %}
           {% if value.count == 0 and value.active == false %}disabled{% endif %}
         >

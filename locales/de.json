@@ -19,7 +19,9 @@
       "title": "Teilen",
       "facebook": "Facebook",
       "twitter": "X (Twitter)",
-      "pinterest": "Pinterest"
+      "pinterest": "Pinterest",
+      "copy_to_clipboard": "In die Zwischenablage kopieren",
+      "url_copied_to_clipboard": "URL kopiert"
     },
     "newsletter": {
       "email_label": "E-mail Adresse",
@@ -51,20 +53,25 @@
       "powered_by_shopify_html": "Dieser Shop wird mit Hilfe von {{ shopify }} betrieben werden."
     },
     "prefixes": {
-      "by": "von"
+      "by": "von",
+      "or": "oder"
     },
     "account_link": {
       "logged_in": "Mein Konto",
       "logged_out": "Login"
     },
     "date_format": {
-      "month_day_year": "%B %d, %Y"
+      "month_day_year": "%B %d, %Y",
+      "days": "Tage",
+      "hours": "Std",
+      "minutes": "Minuten",
+      "seconds": "Sekunden"
     },
     "copyright": "Urheberrecht",
     "breadcrumb": {
       "homepage": "Startseite",
       "collections": "Kollektionen",
-      "search": "Suchen nach „{{ terms }}“",
+      "search": "Suchen nach \"{{ terms }}\"",
       "blog": "Blog",
       "account": "Mein Konto",
       "cart": "Warenkorb"
@@ -94,6 +101,7 @@
       "language_dropdown_label": "Sprache",
       "country_dropdown_label": "Land/Region",
       "price": {
+        "price": "Preis",
         "regular": "Regulärer Preis",
         "sale": "Sale-Preis",
         "unit": "Stückpreis"
@@ -108,7 +116,11 @@
       "rating": "Bewertung",
       "rating_info": "Rating: {{ rating_value }} out of {{ rating_max }}",
       "top": "Obere",
-      "go_to_top": "Obere"
+      "go_to_top": "Obere",
+      "slide": "Zeige Folie {{ count }}",
+      "next_slide": "Nächste Folie",
+      "previous_slide": "Vorherige Folie",
+      "time_left": "Verbleibende Zeit"
     },
     "cookies_popup": {
       "title": "Cookies",
@@ -200,9 +212,11 @@
       },
       "loading_reviews": "Laden Sie weitere Bewertungen",
       "include_taxes": "inkl. MwSt.",
+      "exclude_taxes": "zzgl. MwSt.",
       "shipping_policy_html": "zzgl. <a href=\"{{ link }}\">Versandkosten</a>",
+      "required_line_item": "Dieses Feld ist erforderlich",
       "view_in_space": "In Ihrem Bereich ansehen",
-      "view_in_space_label": "Ansicht in Ihrem Raum“ lädt den Artikel im Augmented-Reality-Fenster",
+      "view_in_space_label": "Ansicht in Ihrem Raum\" lädt den Artikel im Augmented-Reality-Fenster",
       "sales_amount_html": "Sie sparen {{ amount }}",
       "variants": "Varianten"
     },
@@ -240,6 +254,10 @@
       "one": "{{ count }} Produkt wurde Ihrem Warenkorb hinzugefügt",
       "other": "{{ count }} Produkte wurden Ihrem Warenkorb hinzugefügt"
     },
+    "bundled_items_toggle": {
+      "show_items": "Zeige {{ count }} Elemente",
+      "hide_items": "Verstecke {{ count }} Elemente"
+    },
     "free_shipping_remaining_html": "Ihnen fehlen noch {{ remaining_amount }} für den kostenlosen Versand.",
     "free_shipping_eligible": "Sie haben Anspruch auf kostenlosen Versand!",
     "shipping_calculator": {
@@ -252,7 +270,10 @@
       "product": "Produkt",
       "quantity": "Anzahl",
       "total": "Summe"
-    }
+    },
+    "discount_codes_label": "Rabattcodes",
+    "discount_code_error": "Der Rabattcode kann nicht auf deinen Warenkorb angewendet werden",
+    "remove_discount_code": "Rabattcode entfernen: {{ code }}"
   },
   "blog": {
     "grid": {
@@ -298,7 +319,7 @@
       "title": "Suchergebnisse",
       "subtitle": "Suchen Sie auf unserer Seite nach Produkten",
       "no_results": "Ihre Suche nach \"{{ terms }}\"",
-      "results": "{{ count }} Ergebnisse gefunden für „{{ terms }}“",
+      "results": "{{ count }} Ergebnisse gefunden für \"{{ terms }}\"",
       "products_found": "Produkte ({{ count }})",
       "pages_and_articles_found": "Seiten unt Posts \"{{ terms }}\"",
       "results_count": {
@@ -321,7 +342,8 @@
         "date": "Datum",
         "payment_status": "Zahlungsstatus",
         "fulfillment_status": "Lieferstatus",
-        "total": "Gesamt"
+        "total": "Gesamt",
+        "view_order": "Bestellung ansehen"
       },
       "no_orders_message": "Sie haben noch keine Bestellungen aufgegeben.",
       "account_details_title": "Kontodetails",
@@ -438,7 +460,8 @@
       "email_label": "Empfänger E-Mail",
       "name_label": "Name des Empfängers (optional)",
       "message_label": "Nachricht (optional)",
-      "max_characters": "Maximal {{ max_chars }} Zeichen"
+      "max_characters": "Maximal {{ max_chars }} Zeichen",
+      "send_on_label": "Geschenkkarte an einem anderen Datum senden (optional)"
     }
   },
   "store_availability": {

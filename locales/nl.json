@@ -19,7 +19,9 @@
       "title": "Delen",
       "facebook": "Facebook",
       "twitter": "X (Twitter)",
-      "pinterest": "Pinterest"
+      "pinterest": "Pinterest",
+      "copy_to_clipboard": "Kopiëren naar klembord",
+      "url_copied_to_clipboard": "URL gekopieerd"
     },
     "newsletter": {
       "email_label": "Voer je e-mailadres in",
@@ -51,7 +53,8 @@
       "powered_by_shopify_html": "Deze winkel wordt gesponsord door {{ shopify }}"
     },
     "prefixes": {
-      "by": "op"
+      "by": "op",
+      "or": "of"
     },
     "account_link": {
       "logged_in": "Mijn account",
@@ -66,7 +69,11 @@
       "cart": "Winkelmand"
     },
     "date_format": {
-      "month_day_year": "%b %d, %Y"
+      "month_day_year": "%b %d, %Y",
+      "days": "Dager",
+      "hours": "Timer",
+      "minutes": "Minutter",
+      "seconds": "Sekunder"
     },
     "copyright": "Copyright",
     "meta": {
@@ -95,6 +102,7 @@
       "country_dropdown_label": "Land/region",
       "quantity": "Aantal",
       "price": {
+        "price": "Prijs",
         "regular": "Normale prijs",
         "sale": "Uitverkoopprijs",
         "unit": "Prijs per stuk"
@@ -108,7 +116,11 @@
       },
       "rating_info": "Rating: {{ rating_value }} van de {{ rating_max }}",
       "top": "Top",
-      "go_to_top": "Top"
+      "go_to_top": "Top",
+      "slide": "Toon dia {{ count }}",
+      "next_slide": "Volgende dia",
+      "previous_slide": "Vorige dia",
+      "time_left": "Resterende tijd"
     },
     "cookies_popup": {
       "title": "Cookies",
@@ -200,7 +212,9 @@
       },
       "loading_reviews": "Meer reviews aan het laden",
       "include_taxes": "Inclusief BTW.",
+      "exclude_taxes": "Exclusief BTW.",
       "shipping_policy_html": "<a href=\"{{ link }}\">Verzending</a> wordt berekend bij het afrekenen.",
+      "required_line_item": "Dit veld is verplicht",
       "view_in_space": "Bekijk in jouw ruimte",
       "view_in_space_label": "Bekijk in jouw ruimte, laadt artikel in augmented reality venster",
       "sales_amount_html": "je bespaart {{ amount }}",
@@ -240,6 +254,10 @@
       "one": "{{ count }} product is toegevoegd aan je winkelmand",
       "other": "{{ count }} producten zijn toegevoegd aan je winkelmand"
     },
+    "bundled_items_toggle": {
+      "show_items": "{{ count }} items weergeven",
+      "hide_items": "{{ count }} items verbergen"
+    },
     "free_shipping_remaining_html": "Je komt nog {{ remaining_amount }} tekort voor gratis verzending.",
     "free_shipping_eligible": "Je komt in aanmerking voor gratis verzending!",
     "shipping_calculator": {
@@ -252,7 +270,10 @@
       "product": "Product",
       "quantity": "Hoe",
       "total": "Totaal "
-    }
+    },
+    "discount_codes_label": "Kortingscodes",
+    "discount_code_error": "Kortingscode kan niet op je winkelwagen worden toegepast",
+    "remove_discount_code": "Kortingscode verwijderen: {{ code }}"
   },
   "blog": {
     "grid": {
@@ -321,7 +342,8 @@
         "date": "Datum",
         "payment_status": "Betalingsstatus",
         "fulfillment_status": "Afhandelingsstatus",
-        "total": "Totaal"
+        "total": "Totaal",
+        "view_order": "Bestelling bekijken"
       },
       "no_orders_message": "Je hebt nog geen bestellingen geplaatst",
       "account_details_title": "Accountgegevens",
@@ -438,7 +460,8 @@
       "email_label": "E-mailadres ontvanger",
       "name_label": "Naam ontvanger (optioneel)",
       "message_label": "Bericht (optioneel)",
-      "max_characters": "Maximaal {{ max_chars }} tekens"
+      "max_characters": "Maximaal {{ max_chars }} tekens",
+      "send_on_label": "Cadeaubon op een andere datum verzenden (optioneel)"
     }
   },
   "store_availability": {

@@ -1,6 +1,3 @@
-/*
- *  1.0. Mixins
-*/
 .main-footer {
   margin-top: var(--container-vertical-space);
   border-top: 1px solid var(--color-borders-footer);
@@ -13,6 +10,9 @@
 }
 .no-touchevents .main-footer a:hover {
   color: var(--color-accent-footer);
+}
+.main-footer .social-icons {
+  margin-bottom: 1rem;
 }
 .main-footer .social-icons svg * {
   fill: var(--color-text-footer);
@@ -30,6 +30,9 @@
 .main-footer .footer-item__menu span {
   display: block;
   margin-bottom: 0.3125rem;
+}
+.main-footer .footer-item__content > :last-child {
+  margin-bottom: 0;
 }
 
 .shop-login-button {
@@ -63,14 +66,24 @@
   border-radius: 2px;
 }
 
-.footer-item__newsletter input {
+.footer-item__newsletter input#Email-newsletter-footer-block {
+  background: var(--color-background-footer);
+  color: var(--color-text-footer);
   padding-inline-end: 2.5rem;
+  border-color: var(--color-borders-footer);
+}
+.footer-item__newsletter input#Email-newsletter-footer-block::placeholder {
+  color: var(--color-text-footer);
+}
+.footer-item__newsletter input#Email-newsletter-footer-block:-webkit-autofill, .footer-item__newsletter input#Email-newsletter-footer-block:-webkit-autofill:hover, .footer-item__newsletter input#Email-newsletter-footer-block:-webkit-autofill:focus, .footer-item__newsletter input#Email-newsletter-footer-block:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1.875rem var(--color-background-footer) inset !important;
+  -webkit-text-fill-color: var(--color-text-footer);
 }
 .footer-item__newsletter button[type=submit] {
-  top: var(--gutter-small);
+  top: 0;
   position: absolute;
   width: 50px;
-  height: calc(100% - var(--gutter-small));
+  height: 100%;
   padding-top: 9px;
 }
 html[dir=rtl] .footer-item__newsletter button[type=submit] {

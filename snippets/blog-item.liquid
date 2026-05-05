@@ -1,4 +1,18 @@
-{%- assign date_format = 'general.date_format.month_day_year' | t -%}
+{%- comment -%}
+  Renders blog item
+
+  Accepts:
+  - article: {Object} article object.
+  - section_blocks: {array} section.blocks array (to access block settings).
+  - show_image: {Boolean} if true, show article featured image (fallbacks to SVG placeholder).
+  - image_aspect_ratio: {String} image aspect ratio (needs to be a valid width/height ratio).
+  - emphasize_first: {Boolean} if true, first article in the grid will have a larger display.
+  - type: {String} type of the article (page or grid).
+  - index: {Integer} index of the article in the list (can be forloop.index).
+  
+  Usage:
+  {% render 'blog-item', article: article, section_blocks: section.blocks, show_image: true, image_aspect_ratio: '1', emphasize_first: true, type: 'section', index: forloop.index %}
+{%- endcomment -%}
 
 <div class="blog-item 
   {% if type == 'page' %} 
@@ -12,31 +26,45 @@ remove-empty-space">
 
   {%- if show_image -%}
     <a class="blog-item__image element--has-border element--border-radius increased-spacing" href="{{ article.url }}" title="{{ article.title | escape }}">
-      {%- liquid
-        if article.image == blank
-          render 'lazy-svg', image: 'product-1', ratio: image_aspect_ratio, class: 'svg-placeholder'
-        else
-          if type == 'page'
-            assign sizes = 'sizes="(max-width: 767px) 100vw, (max-width: 1280px) 50vw, 640px"'
-          else  
-            if emphasize_first 
-              if index == 1
-                assign sizes = 'sizes="(max-width: 767px) 100vw, (max-width: 1280px) 50vw, 640px"'
-              else 
-                assign sizes = 'sizes="(max-width: 767px) 100vw, (max-width: 1280px) 25vw, 320px"'
-              endif
-            else 
-              assign sizes = 'sizes="(max-width: 767px) 100vw, (max-width: 1280px) 33vw, 430px"'
-            endif
-          endif
+
+      {%- if article.image == blank -%}
+        {%- render 'lazy-svg', image: 'product-1', ratio: image_aspect_ratio, class: 'svg-placeholder' -%}
+      {%- else -%}
+
+        {%- if type == 'page' -%}
+          {%- capture sizes -%}
+            sizes="(max-width: 767px) 100vw, (max-width: {{ settings.theme_max_width }}px) 50vw, calc({{ settings.theme_max_width }}px / 2)"
+          {%- endcapture -%}
+        {%- else -%}
+          {%- if emphasize_first -%}
+            {%- if index == 1 -%}
+              {%- capture sizes -%}
+                sizes="(max-width: 767px) 100vw, (max-width: {{ settings.theme_max_width }}px) 50vw, calc({{ settings.theme_max_width }}px / 2)"
+              {%- endcapture -%}
+            {%- else -%} 
+              {%- capture sizes -%}
+                sizes="(max-width: 767px) 100vw, (max-width: {{ settings.theme_max_width }}px) 25vw, calc({{ settings.theme_max_width }}px / 4)"
+              {%- endcapture -%}
+            {%- endif -%}
+          {%- else -%} 
+            {%- capture sizes -%}
+              sizes="(max-width: 767px) 100vw, (max-width: {{ settings.theme_max_width }}px) 33vw, calc({{ settings.theme_max_width }}px / 3)"
+            {%- endcapture -%}
+          {%- endif -%}
+        {%- endif -%}
+
+        {%- liquid
           if section.index == 1 and index <= 2
             assign preload = true
           else
             assign preload = false
           endif
-          render 'lazy-image', image: article.image.src, alt: article.title, ratio: image_aspect_ratio, class: 'lazy-image--animation element--border-radius', sizes: sizes, preload: preload
-        endif
-      -%}
+        -%}
+
+        {%- render 'lazy-image', image: article.image.src, alt: article.title, ratio: image_aspect_ratio, class: 'lazy-image--animation element--border-radius', sizes: sizes, preload: preload -%}
+
+      {%- endif -%}
+
     </a>
   {%- endif -%}
   
@@ -91,9 +119,9 @@ remove-empty-space">
             <span class="blog-item__date text-size--small">
               {%- liquid 
                 unless blank_article
-                  echo article.published_at | date: date_format 
+                  echo article.published_at | date: format: 'date' 
                 else 
-                  echo 'Feb 28 2020' | date: date_format
+                  echo 'Feb 28 2020' | date: format: 'date'
                 endunless
               -%}
             </span>

@@ -1,3 +1,23 @@
+{%- comment -%}
+  Renders an image with a small size, up to 100px wide (used in carts, search drawers, etc).  
+
+  Accepts:
+  - image: {Object} the image object.
+  - aspect_ratio: {String} image aspect ratio (needs to be a valid width/height ratio).
+  - fit: {Boolean} whether the image should be cropped to fit the container.
+  - sizes: {String} the sizes attribute for the image (default: '100px').
+  - class: {String} additional classes to add to the figure element.
+
+  Usage:
+  {% render 'lazy-image-small', image: product.featured_image, aspect_ratio: '1', fit: true %}
+{%- endcomment -%}
+
+{%- liquid
+  if image == blank and settings.product_card_fallback_image
+    assign image = settings.product_card_fallback_image
+  endif
+-%}
+
 <figure 
   class="lazy-image lazy-image--small {% if settings.cart_image_fit %} lazy-image--fit {% endif %} {{ class }} {% if image == false or image == blank %} lazy-image--no-transition {% endif %}" 
   data-ratio style="padding-top: {{ 100 | divided_by: aspect_ratio }}%"
@@ -27,7 +47,7 @@
       {% endunless %}
       alt="{{ image.alt | escape }}"
       loading="lazy"
-      sizes="100px"
+      sizes="{{ sizes | default: '100px' }}"
       width="{{ image.width }}" height="{{ image.height }}"
       onload="this.parentNode.classList.add('lazyloaded')"
     />

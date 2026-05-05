@@ -7,39 +7,57 @@ if ( typeof PickupAvailabilityCompact !== 'function' ) {
       super();
       this.classList.add('active');
 
-      const widgetIntersection = (entries, observer) => {
-        if (!entries[0].isIntersecting) return;
-        observer.unobserve(this);
-        this.fetchAvailability(this.dataset.variantId);
-      }
-      new IntersectionObserver(widgetIntersection.bind(this), {rootMargin: '0px 0px 50px 0px'}).observe(this);
-
       this.storeSelector = document.querySelector('store-selector[data-main-selector]');
-      window.addEventListener('load', ()=>{
-        if ( this.storeSelector ) {
-          this.storeSelector.addEventListener('storechanged', e=>{
-            this.fetchAvailability(this.dataset.variantId);
-          })
+      if ( this.storeSelector ) {
+        const STORE_CHANGED_EVENT = () => {
+          this.fetchAvailability(this.dataset.variantId, true);
         }
-      })
+        this.storeSelector.addEventListener('storechanged', STORE_CHANGED_EVENT);
+				const observer = new MutationObserver(()=>{
+          this.storeSelector.removeEventListener('storechanged', STORE_CHANGED_EVENT);
+					observer.disconnect();
+				});
+				observer.observe(this.parentElement, {
+					attributes: false, childList: true, subtree: false
+				});
+      }
+
+      if ( this.hasAttribute('data-static') ) {
+        this.fetchAvailability(this.dataset.variantId);
+      } else {
+        const widgetIntersection = (entries, observer) => {
+          if (!entries[0].isIntersecting) return;
+          observer.unobserve(this);
+          this.fetchAvailability(this.dataset.variantId);
+        }
+        new IntersectionObserver(widgetIntersection.bind(this), {rootMargin: '0px 0px 50px 0px'}).observe(this);
+      }
       
     }
 
-    fetchAvailability(variantId) {
+    fetchAvailability(variantId, forceFetch = false) {
 
-      const variantSectionUrl = `${this.dataset.baseUrl.endsWith('/')?this.dataset.baseUrl:`${this.dataset.baseUrl}/`}variants/${variantId}/?section_id=helper-pickup-availability-compact`;
+      const pickupAvailabilityData = this.querySelector('[data-js-pickup-availability-data]');
 
-      fetch(variantSectionUrl)
-        .then(response => response.text())
-        .then(text => {
-          const sectionInnerHTML = new DOMParser()
-            .parseFromString(text, 'text/html')
-            .querySelector('.shopify-section');
-          this.renderPreview(sectionInnerHTML);
-        })
-        .catch(e => {
-          console.log(e);
-        });
+      if ( pickupAvailabilityData && ! forceFetch ) {
+        this.renderPreview(pickupAvailabilityData);
+      } else {
+
+        const variantSectionUrl = `${this.dataset.baseUrl.endsWith('/')?this.dataset.baseUrl:`${this.dataset.baseUrl}/`}variants/${variantId}/?section_id=helper-pickup-availability-compact`;
+
+        fetch(variantSectionUrl)
+          .then(response => response.text())
+          .then(text => {
+            const sectionInnerHTML = new DOMParser()
+              .parseFromString(text, 'text/html')
+              .querySelector('.shopify-section');
+            this.renderPreview(sectionInnerHTML);
+          })
+          .catch(e => {
+            console.log(e);
+          });
+
+      }
 
     }
     
@@ -76,71 +94,6 @@ if ( typeof PickupAvailabilityCompact !== 'function' ) {
 
   if ( typeof customElements.get('pickup-availability-compact') == 'undefined' ) {
     customElements.define('pickup-availability-compact', PickupAvailabilityCompact);
-	}
-
-}
-
-if ( typeof PickupAvailabilityExtended !== 'function' ) {
-
-  class PickupAvailabilityExtended extends HTMLElement {
-
-    constructor() {
-      super();
-      this.classList.add('active');
-      this.fetchAvailability(this.dataset.variantId);
-    }
-
-
-    fetchAvailability(variantId) {
-
-      const variantSectionUrl = `${this.dataset.baseUrl.endsWith('/')?this.dataset.baseUrl:`${this.dataset.baseUrl}/`}variants/${variantId}/?section_id=helper-pickup-availability-extended`;
-
-      fetch(variantSectionUrl)
-        .then(response => response.text())
-        .then(text => {
-          const sectionInnerHTML = new DOMParser()
-            .parseFromString(text, 'text/html')
-            .querySelector('.shopify-section');
-          this.renderPreview(sectionInnerHTML);
-        })
-        .catch(e => {
-          console.log(e);
-        });
-
-    }
-
-    renderPreview(sectionInnerHTML) {
-      const availabilityWidget = sectionInnerHTML.querySelector('#PickupAvailabilityWidget');
-      if ( availabilityWidget ) {
-        this.innerHTML = availabilityWidget.innerHTML;
-        this.querySelectorAll('.pickup-availability-widget__location-view').forEach(elm=>{
-          elm.addEventListener('click', ()=>{
-            document.getElementById(`${elm.getAttribute('aria-controls')}`).classList.toggle('opened');
-            elm.setAttribute('aria-selected', elm.getAttribute('aria-selected') == "true" ? "false" : "true");
-          })
-        })
-      } else {
-        console.log('error in availablity fetch');
-      }
-
-      const availabilitySidebar = sectionInnerHTML.querySelector('#PickupAvailabilitySidebar');
-      if ( availabilitySidebar ) {
-        if ( document.querySelector('sidebar-drawer#site-availability-sidebar') ) {
-          document.querySelector('sidebar-drawer#site-availability-sidebar').remove();
-        } 
-        document.body.appendChild(availabilitySidebar.querySelector('#site-availability-sidebar'));
-        document.querySelector('.pickup-availability-widget__more').addEventListener('click', e=>{
-          e.preventDefault();
-          document.getElementById('site-availability-sidebar').show();
-        })
-      }
-
-    }
-
-  }
-
-  if ( typeof customElements.get('pickup-availability-extended') == 'undefined' ) {
-    customElements.define('pickup-availability-extended', PickupAvailabilityExtended);
 	}
 
 }

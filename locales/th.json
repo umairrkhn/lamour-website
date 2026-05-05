@@ -19,7 +19,9 @@
       "title": "แบ่งปัน",
       "facebook": "Facebook",
       "twitter": "X (Twitter)",
-      "pinterest": "Pinterest"
+      "pinterest": "Pinterest",
+      "copy_to_clipboard": "คัดลอกไปยังคลิปบอร์ด",
+      "url_copied_to_clipboard": "URL ถูกคัดลอก"
     },
     "newsletter": {
       "email_label": "ระบุอีเมลของคุณ",
@@ -51,7 +53,8 @@
       "powered_by_shopify_html": "ร้านค้านี้จะถูกขับเคลื่อนโดย {{ shopify }}"
     },
     "prefixes": {
-      "by": "โดย"
+      "by": "โดย",
+      "or": "หรือ"
     },
     "account_link": {
       "logged_in": "บัญชีของฉัน",
@@ -66,7 +69,11 @@
       "cart": "ตะกร้าสินค้า"
     },
     "date_format": {
-      "month_day_year": "%b %d, %Y"
+      "month_day_year": "%b %d, %Y",
+      "days": "วัน",
+      "hours": "ชั่วโมง",
+      "minutes": "นาที",
+      "seconds": "วินาที"
     },
     "copyright": "ลิขสิทธิ์",
     "meta": {
@@ -95,6 +102,7 @@
       "country_dropdown_label": "ประเทศ/ภูมิภาค",
       "quantity": "ปริมาณ",
       "price": {
+        "price": "ราคา",
         "regular": "ราคาปกติ",
         "sale": "ราคาขาย",
         "unit": "ราคาต่อหน่วย"
@@ -108,7 +116,11 @@
       },
       "rating_info": "คะแนน: {{ rating_value }} จาก {{ rating_max }}",
       "top": "สูงสุด",
-      "go_to_top": "สูงสุด"
+      "go_to_top": "สูงสุด",
+      "slide": "แสดงสไลด์ {{ count }}",
+      "next_slide": "สไลด์ถัดไป",
+      "previous_slide": "สไลด์ก่อนหน้า",
+      "time_left": "เวลาที่เหลือ"
     },
     "cookies_popup": {
       "title": "คุกกี้",
@@ -200,7 +212,9 @@
       },
       "loading_reviews": "กำลังโหลดรีวิวเพิ่มเติม",
       "include_taxes": "รวมภาษีแล้ว",
+      "exclude_taxes": "ไม่รวมภาษี",
       "shipping_policy_html": "<a href=\"{{ link }}\">การจัดส่ง</a> คำนวณเมื่อเช็กเอาต์",
+      "required_line_item": "ต้องระบุข้อมูลในช่องนี้",
       "view_in_space": "ดูในพื้นที่ของคุณ",
       "view_in_space_label": "ดูในพื้นที่ของคุณ โหลดรายการในหน้าต่างความเป็นจริงส่วนขยาย",
       "sales_amount_html": "คุณประหยัดไป {{ amount }}",
@@ -240,6 +254,10 @@
       "one": "สินค้า {{ count }} ชิ้นถูกเพิ่มไปยังรถเข็นของคุณแล้ว",
       "other": "สินค้า {{ count }} ชิ้นถูกเพิ่มไปยังรถเข็นของคุณแล้ว"
     },
+    "bundled_items_toggle": {
+      "show_items": "แสดง {{ count }} รายการ",
+      "hide_items": "ซ่อน {{ count }} รายการ"
+    },
     "free_shipping_remaining_html": "คุณเหลืออีก {{ remaining_amount }} ก็จะได้รับสิทธิ์จัดส่งฟรี",
     "free_shipping_eligible": "คุณได้รับสิทธิ์จัดส่งฟรี!",
     "shipping_calculator": {
@@ -252,7 +270,10 @@
       "product": "ผลิตภัณฑ์",
       "quantity": "จำนวน",
       "total": "รวม"
-    }
+    },
+    "discount_codes_label": "รหัสส่วนลด",
+    "discount_code_error": "ไม่สามารถใช้รหัสส่วนลดกับรถเข็นของคุณได้",
+    "remove_discount_code": "ลบรหัสส่วนลด: {{ code }}"
   },
   "blog": {
     "grid": {
@@ -321,7 +342,8 @@
         "date": "วันที่",
         "payment_status": "สถานะการชำระเงิน",
         "fulfillment_status": "สถานะการจัดการคำสั่งซื้อ",
-        "total": "ทั้งหมด"
+        "total": "ทั้งหมด",
+        "view_order": "ดูคำสั่งซื้อ"
       },
       "no_orders_message": "คุณยังไม่ได้สั่งซื้อเลย",
       "account_details_title": "รายละเอียดบัญชี",
@@ -438,7 +460,8 @@
       "email_label": "อีเมลผู้รับ",
       "name_label": "ชื่อผู้รับ (ระบุหรือไม่ก็ได้)",
       "message_label": "ข้อความ (ระบุหรือไม่ก็ได้)",
-      "max_characters": "สูงสุด {{ max_chars }} อักขระ"
+      "max_characters": "สูงสุด {{ max_chars }} อักขระ",
+      "send_on_label": "ส่งบัตรของขวัญในวันที่แตกต่างกัน (ระบุหรือไม่ก็ได้)"
     }
   },
   "store_availability": {

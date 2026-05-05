@@ -1,4 +1,9 @@
-<div class="container--large {% unless section.settings.remove_margin %} container--vertical-space {% endunless %} {% if section.settings.section_background_color != "rgba(0,0,0,0)" or section.settings.section_background_gradient != blank %} container--has-background {% endif %} remove-empty-space">
+<div id="section-{{ section.id }}" class="container--large remove-empty-space
+  {% unless section.settings.remove_margin %} {% unless section.settings.descrease_margin %} container--vertical-space {% else %} container--vertical-space-grid {% endunless %} {% endunless %} 
+  {% if section.settings.section_background_color != "rgba(0,0,0,0)" or section.settings.section_background_gradient != blank %} container--has-background {% endif %}
+  {% if section.settings.section_visibility == "mobile" %} element--hide-on-desk {% endif %}
+  {% if section.settings.section_visibility == "desktop" %} element--hide-on-small {% endif %}
+">
   
   {%- render 'section-heading', heading: section.settings.heading, subheading: section.settings.subheading, heading_tag: section.settings.seo_h_tag, layout: section.settings.section_heading_layout -%}
 
@@ -61,33 +66,36 @@
 
         </div>
           
-        <div class="gutter--regular spacing--small remove-empty-space"
-          {% if block.settings.color_background_main == 'rgba(0,0,0,0)' %} style="padding-top:0" {% endif %}
-        >
+        {%- if block.settings.title != blank or block.settings.caption != blank -%}
+          <div class="gutter--regular spacing--small remove-empty-space"
+            {% if block.settings.color_background_main == 'rgba(0,0,0,0)' %} style="padding-top:0" {% endif %}
+          >
 
-          {%- unless block.settings.title == blank -%}
-            <div style="color:var(--color-text-main)">
-              <{{ block.settings.seo_h_tag }} class="h5" style="margin-bottom:0;display:block">
-                
-                {%- if block.settings.link != blank -%}
-                  <a title="{{ block.settings.title | escape }}" href="{{ block.settings.link }}" {% unless block.settings.open_in_new_window == false %} target="_blank" {% endunless %}>
-                {%- endif -%}
-                
-                  <span class="text-animation--underline">{{ block.settings.title | escape }}</span>
-                
-                {%- if block.settings.link != blank -%}
-                  </a>
-                {%- endif -%}
+            {%- unless block.settings.title == blank -%}
+              <div style="color:var(--color-text-main)">
+                <{{ block.settings.seo_h_tag }} class="h5" style="margin-bottom:0;display:block">
+                  
+                  {%- if block.settings.link != blank -%}
+                    <a title="{{ block.settings.title | escape }}" href="{{ block.settings.link }}" {% unless block.settings.open_in_new_window == false %} target="_blank" {% endunless %}>
+                  {%- endif -%}
+                  
+                    <span class="text-animation--underline">{{ block.settings.title | escape }}</span>
+                  
+                  {%- if block.settings.link != blank -%}
+                    </a>
+                  {%- endif -%}
 
-              </{{ block.settings.seo_h_tag }}>
-            </div>
-          {%- endunless -%}
+                </{{ block.settings.seo_h_tag }}>
+              </div>
+            {%- endunless -%}
 
-          {%- unless block.settings.caption == blank -%}
-            <div class="text-size--small text-color--opacity" style="color:var(--color-text-main)">{{ block.settings.caption | escape }}</div>
-          {%- endunless -%}
+            {%- unless block.settings.caption == blank -%}
+              <div class="text-size--small text-color--opacity" style="color:var(--color-text-main)">{{ block.settings.caption | escape }}</div>
+            {%- endunless -%}
 
-        </div>
+          </div>
+        {%- endif -%}
+
       </div>
 
       {%- if block.settings.color_background_main != 'rgba(0,0,0,0)' -%}
@@ -253,7 +261,15 @@
     },
     {
       "type": "checkbox",
+      "id": "descrease_margin",
+      "visible_if": "{{ section.settings.remove_margin == false }}",
+      "label": "t:theme_blocks.descrease_top_margin",
+      "default": false
+    },
+    {
+      "type": "checkbox",
       "id": "remove_margin",
+      "visible_if": "{{ section.settings.descrease_margin == false }}",
       "label": "t:sections.local-extra-words.sections.rich-text.settings.remove_margin.label",
       "default": false
     },
@@ -289,6 +305,30 @@
         }
       ],
       "default": "h2"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.refactor_words.announcement-bar.visibility.label"
+    },
+    {
+      "type": "select",
+      "id": "section_visibility",
+      "label": "t:sections-visibility.label",
+      "options": [
+        {
+          "value": "always",
+          "label": "t:sections-visibility.options.always"
+        },
+        {
+          "value": "mobile",
+          "label": "t:sections-visibility.options.mobile"
+        },
+        {
+          "value": "desktop",
+          "label": "t:sections-visibility.options.desktop"
+        }
+      ],
+      "default": "always"
     }
   ],
   "blocks": [
@@ -589,6 +629,7 @@
         {
           "type": "checkbox",
           "id": "open_in_new_window",
+          "visible_if": "{{ block.settings.link != blank }}",
           "label": "t:sections.local-extra-words.sections.announcement-bar.blocks.content.settings.target",
           "default": false
         },
@@ -648,6 +689,7 @@
   "presets": [
     {
       "name": "t:sections.text-columns-with-icons.name",
+      "category": "t:sections-categories.storytelling",
       "blocks": [
         {
           "type": "image",

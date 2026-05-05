@@ -1,22 +1,24 @@
-{%- if section.settings.enable or request.design_mode -%} 
-
-  <modal-box id="exit-intent-popup" class="modal" 
-    data-options='{
-      "show": {% unless request.design_mode %} 1 {% else %} 1000 {% endunless %},
-      "appendToBody": true,
-      "frequency": "{{ section.settings.show_repeat }}",
-      "type": "exit_intent_popup",
-      "enabled": {{ section.settings.enable }}
-    }'
+{%- if section.settings.enable or request.design_mode -%}
+  <modal-box
+    id="exit-intent-popup"
+    class="modal"
+    data-options='
+      {
+        "show": {% unless request.design_mode %} 1 {% else %} 1000 {% endunless %},
+        "appendToBody": true,
+        "frequency": "{{ section.settings.show_repeat }}",
+        "type": "exit_intent_popup",
+        "enabled": {{ section.settings.enable }}
+      }
+    '
     style="display:none"
-    tabindex="-1" role="dialog" aria-modal="true" 
+    tabindex="-1"
+    role="dialog"
+    aria-modal="true"
     data-modal-box
-    {{ block.shopify_attributes }}
   >
-    
     <div class="container--small">
       <div class="modal-content" id="modal-{{ section.id }}">
-
         <div class="modal-heading">
           <div class="modal-heading__text remove-empty-space">
             <span class="h4 popup-title">{{ section.settings.title }}</span>
@@ -31,9 +33,18 @@
         </div>
 
         {%- if section.settings.cta_label != blank -%}
-          <div class="increased-spacing"><a href="{{ section.settings.cta_url }}" class="button button--outline button--regular" {% if section.settings.cta_target %}target="_blank"{% endif %}>{{ section.settings.cta_label | escape }}</a></div>
+          <div class="increased-spacing">
+            <a
+              href="{{ section.settings.cta_url }}"
+              class="button button--outline button--regular"
+              {% if section.settings.cta_target %}
+                target="_blank"
+              {% endif %}
+            >
+              {{- section.settings.cta_label | escape -}}
+            </a>
+          </div>
         {%- endif -%}
-
       </div>
     </div>
 
@@ -42,7 +53,7 @@
     <style>
       {%- if section.settings.popup_txtcolor != 'rgba(0,0,0,0)' -%}
         {%- assign popup_txtcolor = section.settings.popup_txtcolor -%}
-        #modal-{{ section.id }}, 
+        #modal-{{ section.id }},
         #modal-{{ section.id }} a {
           color: {{ popup_txtcolor }};
         }
@@ -76,11 +87,7 @@
         }
       {%- endif -%}
     </style>
-
   </modal-box>
-
-</div>
-
 {%- endif -%}
 
 {% schema %}
