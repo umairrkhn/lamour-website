@@ -1,0 +1,108 @@
+{%- unless is_admin_interface -%}
+	{%- capture __html -%}
+		{{ 
+			__clspeedapp-html
+		}}
+	{%- endcapture -%}
+
+	{% comment %} Finding LCP for pages {% endcomment %}
+	{%- assign image_lcp = '' -%}
+	{%- capture find -%}{{ template.name }}_image_lcp [{%- endcapture -%}
+	{%- assign chanks = __html | split: find -%}
+
+	{%- capture image_lcp -%}
+	{% for ch in chanks %}
+	{%- unless forloop.first -%}
+		{%- assign __ch = ch | split: ']' -%}
+		<link rel="preload" as="image" href="{{ __ch[0] }}" fetchpriority="high">
+	{%- endunless -%}
+	{% endfor %}
+	{%- endcapture -%}	
+
+	{% assign chanks = __html | split: '<script' %}
+
+	{% for ch in chanks %}
+		{%- unless forloop.first -%}
+			{% assign __chanks = ch | split: '</script>' %}
+
+			{% if __chanks[0].size > 0 %}
+				{%- assign source = __chanks[0] -%}
+				{%- assign destination = '' -%}
+
+				{%- if source contains ' src=' -%}
+					{%- unless source contains '__clspeedapp-backend' -%}
+						{%- unless source contains '.jpg' or source contains '.png' -%}
+							{%- assign destination = source | replace: ' src=', ' data-src=' -%}
+							{%- assign __html = __html | replace: source, destination -%}
+						{%- endunless -%}
+					{%- endunless -%}
+				{%- endif -%}
+
+			{% endif %}
+			
+		{%- endunless -%}
+	{% endfor %}
+
+
+	{% assign chanks = __html | split: '<iframe' %}
+
+	{% for ch in chanks %}
+		{%- unless forloop.first -%}
+			{% assign __chanks = ch | split: '</iframe>' %}
+
+			{% if __chanks[0].size > 0 %}
+				{%- assign source = __chanks[0] -%}
+				{%- assign destination = '' -%}
+
+				{%- if source contains ' src=' -%}
+					{%- if source contains 'youtube' -%}
+						{%- assign destination = source | replace: ' src=', ' data-src=' -%}
+						{%- assign __html = __html | replace: source, destination -%}
+					{%- else if source contains 'vimeo' -%}
+						{%- assign destination = source | replace: ' src=', ' data-src=' -%}
+						{%- assign __html = __html | replace: source, destination -%}
+					{%- endif -%}
+				{%- endif -%}
+
+			{% endif %}
+			
+		{%- endunless -%}
+	{% endfor %}
+
+
+	{% assign chanks = __html | split: '<video' %}
+
+	{% for ch in chanks %}
+		{%- unless forloop.first -%}
+			{% assign __chanks = ch | split: '</video>' %}
+
+			{% if __chanks[0].size > 0 %}
+				{%- assign source = __chanks[0] -%}
+				{%- assign destination = '' -%}
+
+				{%- if source contains ' src=' -%}
+					{%- assign destination = source | replace: ' src=', ' data-src=' -%}
+					{%- assign __html = __html | replace: source, destination -%}
+				{%- endif -%}
+
+			{% endif %}
+			
+		{%- endunless -%}
+	{% endfor %}	
+	
+	{%- capture prefetch -%}addEventListener('load', prefetchAssets);{%- endcapture -%}
+
+	{%- assign __clspeedapp-html = __html
+		| replace: '<!-- preload_image_lcp -->', image_lcp
+		| replace: 'function asyncLoad()', 'window.asyncLoad = function asyncLoad()'
+		| replace: 'var urls', 'var urls = asyncLoadArr'
+		| replace: 's.src = urls[i];', 'continue;'
+		| replace: '<img', '<img decoding="async" loading="lazy"'
+		| replace: 'decoding="async" loading="lazy" class="lcp', 'loading="eager" fetchpriority="high" class="lcp'
+		| replace: 'decoding="async" loading="lazy" class="none', 'class="'
+		| replace: '<script>window.performance', '<script type="_blocked">window.performance'
+		| replace: prefetch, ''
+	-%}
+{%- endunless -%}
+
+{{ __clspeedapp-html | replace: '</body>', '<script src="https://app.crazyload.io/pageview?shop=0b8499-39.myshopify.com"></script></body>'}}

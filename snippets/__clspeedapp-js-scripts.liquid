@@ -1,0 +1,48 @@
+<script data-preload="{{ '__clspeedapp-jquery.js' | asset_url }}" src="{{ '__clspeedapp-backend.js' | asset_url }}" async></script>
+
+<script class="__init">
+
+	__engine_scripts_queue['loaded'] = function()
+	{
+
+	}
+
+	__engine_scripts_queue['lazypreload'] = function()
+	{
+		$(".lazypreload").addClass('lazyload').removeClass('lazypreload');
+	}
+
+	__engine_scripts_queue['video'] = function()
+	{
+		$( "iframe[data-src]" ).each(function() {
+			$(this).attr('src', $(this).data('src'));
+			$(this).wrap('<div class="video-wrapper"></div>');
+		});
+	}
+
+	__engine_scripts_queue['video-native'] = function()
+	{
+		$( "video[data-src]" ).each(function() {
+			$(this).attr('src', $(this).data('src'));
+			//$(this).wrap('<div class="video-wrapper"></div>');
+		});
+
+		$( "source[data-src]" ).each(function() {
+			$(this).parent().attr('src', $(this).data('src'));
+		});
+	}
+
+	__engine_scripts_queue['buyitnow'] = function()
+	{ 
+		loadJS($('script[data-source-attribution="shopify.dynamic-checkout"]').attr('data-src'));
+	}
+
+	__engine_scripts_queue['recaptcha'] = function()
+	{	
+		if(engine.recaptcha)
+		{
+			document.getElementsByTagName('head')[0].appendChild(engine.recaptcha);
+		}
+	}
+
+</script>

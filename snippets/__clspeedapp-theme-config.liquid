@@ -1,0 +1,49 @@
+{% comment %} you can always turn off the speedupkernel{% endcomment %}
+{%- assign speedupkernel = false -%}
+{%- assign is_admin_interface = true -%}
+
+{%- if speedupkernel -%}
+
+	{%- if request.host contains 'myshopify.com' -%}
+		{%- assign is_admin_interface = true -%}
+	{%- else -%}
+		{%- assign is_admin_interface = false -%}
+	{%- endif -%}
+
+	{%- if request.host contains 'shopifypreview.com' -%}
+		{%- unless is_admin_interface -%}
+			{%- assign is_admin_interface = true -%}
+		{%- endunless -%}
+	{%- endif -%}
+
+	{%- if request.host contains 'gempages.net' -%}
+		{%- unless is_admin_interface -%}
+			{%- assign is_admin_interface = true -%}
+		{%- endunless -%}
+	{%- endif -%}	
+
+	{%- if request.path == '/cart' -%}
+		{%- unless is_admin_interface -%}
+			{%- assign is_admin_interface = true -%}
+		{%- endunless -%}
+	{%- endif -%}
+
+	{%- if request.path == '/checkout' -%}
+		{%- unless is_admin_interface -%}
+			{%- assign is_admin_interface = true -%}
+		{%- endunless -%}
+	{%- endif -%}
+
+	{%- if request.path contains '/account/' -%}
+		{%- unless is_admin_interface -%}
+			{%- assign is_admin_interface = true -%}
+		{%- endunless -%}
+	{%- endif -%}
+
+	{%- if request.path contains '/apps/' -%}
+		{%- unless is_admin_interface -%}
+			{%- assign is_admin_interface = true -%}
+		{%- endunless -%}
+	{%- endif -%}
+	
+{%- endif -%}

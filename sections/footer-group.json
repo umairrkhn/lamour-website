@@ -1,0 +1,109 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "t:sections.refactor_words.labels.footer_group",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "text-1": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "title": "Folge uns",
+            "size": "h5",
+            "content": "",
+            "show_social_icons": true,
+            "enable_follow_on_shop": true
+          }
+        },
+        "menu-1": {
+          "type": "menu",
+          "settings": {
+            "title": "Informationen",
+            "menu": "footer",
+            "open_in_new_window": false
+          }
+        },
+        "text-2": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "title": "Contact information",
+            "size": "h5",
+            "content": "<p>Write your store's address.</p>",
+            "show_social_icons": false,
+            "enable_follow_on_shop": true
+          }
+        },
+        "menu-2": {
+          "type": "menu",
+          "settings": {
+            "title": "Weitere Fragen?",
+            "menu": "weitere-informationen",
+            "open_in_new_window": false
+          }
+        },
+        "payment_3Ak7YL": {
+          "type": "payment",
+          "settings": {
+            "title": "Zahlungsmethoden",
+            "only_show_custom_icons": false
+          }
+        },
+        "menu_cA9g7p": {
+          "type": "menu",
+          "settings": {
+            "title": "Über Lamour",
+            "menu": "ber-lamour",
+            "open_in_new_window": false
+          }
+        },
+        "menu_8M7baX": {
+          "type": "menu",
+          "settings": {
+            "title": "Top Marken",
+            "menu": "backlinks",
+            "open_in_new_window": false
+          }
+        },
+        "menu_QKAypq": {
+          "type": "menu",
+          "settings": {
+            "title": "Top Produkte",
+            "menu": "top-produkte",
+            "open_in_new_window": false
+          }
+        }
+      },
+      "block_order": [
+        "text-1",
+        "menu-1",
+        "text-2",
+        "menu-2",
+        "payment_3Ak7YL",
+        "menu_cA9g7p",
+        "menu_8M7baX",
+        "menu_QKAypq"
+      ],
+      "settings": {
+        "layout": "grid-4 grid-portable-2 grid-lap-1",
+        "show_locale_selector": true,
+        "show_country_selector": true,
+        "remove_margin": false,
+        "seo_h_tag": "h4"
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

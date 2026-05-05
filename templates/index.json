@@ -1,0 +1,607 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "1653646142d6a7c886": {
+      "type": "slideshow",
+      "blocks": {
+        "1653646142fd3f3126-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/bg-banner-01_08ec44b5-4e6a-4c55-a5fe-38e0798bc627.jpg",
+            "mobile_image": "shopify://shop_images/grid-img-4.jpg",
+            "caption": "",
+            "title": "",
+            "link": "shopify://collections/all",
+            "open_in_new_window": false,
+            "button_label": "JETZT SHOPPEN",
+            "color_background_main": "rgba(0,0,0,0)",
+            "color_text_main": "#f597b1",
+            "seo_h_tag": "h3"
+          }
+        },
+        "1653646142fd3f3126-1": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/banner-principal.png",
+            "caption": "Include some awesome images",
+            "title": "Write about yourself",
+            "link": "",
+            "open_in_new_window": false,
+            "button_label": "Learn more",
+            "color_background_main": "rgba(0,0,0,0)",
+            "color_text_main": "rgba(0,0,0,0)",
+            "seo_h_tag": "h3"
+          }
+        }
+      },
+      "block_order": [
+        "1653646142fd3f3126-0",
+        "1653646142fd3f3126-1"
+      ],
+      "settings": {
+        "desktop_height": "40vh",
+        "mobile_height": "60vh",
+        "is_auto_height": false,
+        "autorotate_enable": false,
+        "autorotate_interval": 5,
+        "alignment": "horizontal-left align-content--vertical-bottom",
+        "text_size": "regular",
+        "title_size": "h1",
+        "button_size": "regular",
+        "button_style": "solid",
+        "is_fullwidth": false,
+        "section_background_color": "rgba(0,0,0,0)",
+        "section_background_gradient": "",
+        "section_heading_color": "rgba(0,0,0,0)",
+        "remove_margin": false,
+        "color_hide_borders": false,
+        "color_hide_shadow": false
+      }
+    },
+    "1711898839cebab6b2": {
+      "type": "apps",
+      "blocks": {
+        "logolicious_app_block_YB3p4k": {
+          "type": "shopify://apps/logolicious/blocks/app-block/fa8a9c52-9a2b-4452-9900-ea0c41834d57",
+          "settings": {
+            "slot": "1",
+            "sliderHeading": "",
+            "sliderSubHeading": "",
+            "headingMarginBottom": 0,
+            "headingColorScheme": "default",
+            "headingColor": "#f597b1",
+            "sliderHeadingAlignment": "center",
+            "interval": 2500,
+            "speed": 500,
+            "moveType": "logo",
+            "moveDirection": "ltr",
+            "showArrows": "true",
+            "arrowColor": "#f597b1",
+            "showDots": "false",
+            "pageDotsMarginTop": 24,
+            "dotColor": "#f597b1",
+            "logoColorScheme": "normal",
+            "customLogoColor": "#333333",
+            "showLogoTitles": "disabled",
+            "maxLogoWidth": 140,
+            "maxLogoHeight": 90,
+            "gap": 40,
+            "blockBackground": "rgba(0,0,0,0)",
+            "blockPaddingTop": 0,
+            "blockPaddingBottom": 0
+          }
+        }
+      },
+      "block_order": [
+        "logolicious_app_block_YB3p4k"
+      ],
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "section_heading_layout": "section-heading--left",
+        "full_width": false,
+        "remove_margin": false,
+        "seo_h_tag": "h2"
+      }
+    },
+    "featured_collection_EeCaRK": {
+      "type": "featured-collection",
+      "blocks": {
+        "price_DcV48r": {
+          "type": "price",
+          "settings": {}
+        },
+        "title_yxCB7V": {
+          "type": "title",
+          "settings": {}
+        },
+        "quick_buy_mVEB8R": {
+          "type": "quick_buy",
+          "disabled": true,
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "price_DcV48r",
+        "title_yxCB7V",
+        "quick_buy_mVEB8R"
+      ],
+      "settings": {
+        "heading": "Neuheiten",
+        "subheading": "",
+        "show_view_all": false,
+        "section_heading_layout": "section-heading--left",
+        "style": "grid",
+        "layout": "grid-4 grid-portable-3 grid-lap-2 grid-tiny-1",
+        "products_number": 8,
+        "collection": "neuheiten",
+        "section_background_color": "rgba(0,0,0,0)",
+        "section_background_gradient": "",
+        "section_heading_color": "rgba(0,0,0,0)",
+        "remove_margin": false,
+        "seo_h_tag": "h2"
+      }
+    },
+    "165406738229739f4d": {
+      "type": "promotion-cards",
+      "blocks": {
+        "16540673826052f668-0": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/prod2_4c233e08-bf96-4885-a3fb-22272fd1aaf6.png",
+            "caption": "",
+            "title": "SAUVAGE",
+            "subtitle": "DIOR",
+            "link": "shopify://products/dior-sauvage-eau-de-parfum-200-ml",
+            "open_in_new_window": false,
+            "button_label": "JETZT KAUFEN",
+            "color_background_main": "#ffffff",
+            "color_text_main": "rgba(0,0,0,0)",
+            "color_accent_main": "rgba(0,0,0,0)",
+            "color_borders_main": "#e1e1e1",
+            "color_shadow_main": "rgba(0,0,0,0)",
+            "color_hide_borders": true,
+            "color_hide_shadow": false,
+            "seo_h_tag": "h3"
+          }
+        },
+        "16540673826052f668-1": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/about-1.png",
+            "caption": "",
+            "title": "BLEU DE",
+            "subtitle": "CHANEL",
+            "link": "shopify://products/chanel-bleu-eau-de-parfum-3-x-20-ml",
+            "open_in_new_window": false,
+            "button_label": "JETZT KAUFEN",
+            "color_background_main": "#ffffff",
+            "color_text_main": "rgba(0,0,0,0)",
+            "color_accent_main": "rgba(0,0,0,0)",
+            "color_borders_main": "#e1e1e1",
+            "color_shadow_main": "rgba(0,0,0,0)",
+            "color_hide_borders": true,
+            "color_hide_shadow": false,
+            "seo_h_tag": "h3"
+          }
+        },
+        "16540673826052f668-2": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/about-2.jpg",
+            "caption": "",
+            "title": "MISIA",
+            "subtitle": "CHANEL",
+            "link": "shopify://collections/chanel",
+            "open_in_new_window": false,
+            "button_label": "JETZT KAUFEN",
+            "color_background_main": "#ffffff",
+            "color_text_main": "rgba(0,0,0,0)",
+            "color_accent_main": "rgba(0,0,0,0)",
+            "color_borders_main": "#e1e1e1",
+            "color_shadow_main": "rgba(0,0,0,0)",
+            "color_hide_borders": false,
+            "color_hide_shadow": false,
+            "seo_h_tag": "h3"
+          }
+        },
+        "card_gLAy9R": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/prod3_c54ae2c8-96e5-4020-a0ae-0a4fceb3391e.png",
+            "caption": "",
+            "title": "THE SCENT",
+            "subtitle": "HUGO BOSS",
+            "link": "shopify://products/hugo-boss-the-scent-eau-de-toilette-100-ml",
+            "open_in_new_window": false,
+            "button_label": "JETZT KAUFEN",
+            "color_background_main": "#ffffff",
+            "color_text_main": "rgba(0,0,0,0)",
+            "color_accent_main": "rgba(0,0,0,0)",
+            "color_borders_main": "rgba(0,0,0,0)",
+            "color_shadow_main": "rgba(0,0,0,0)",
+            "color_hide_borders": true,
+            "color_hide_shadow": false,
+            "seo_h_tag": "h3"
+          }
+        }
+      },
+      "block_order": [
+        "16540673826052f668-0",
+        "16540673826052f668-1",
+        "16540673826052f668-2",
+        "card_gLAy9R"
+      ],
+      "settings": {
+        "heading": "Highlights für dich",
+        "subheading": "",
+        "section_heading_layout": "section-heading--left",
+        "layout": "grid-4 grid-portable-2 grid-lap-1",
+        "image_aspect_ratio": "1",
+        "text_alignment": "text-align--center",
+        "caption_size": "small increased-spacing",
+        "title_size": "h3",
+        "subtitle_size": "regular",
+        "button_size": "regular",
+        "button_style": "outline",
+        "section_background_color": "rgba(0,0,0,0)",
+        "section_background_gradient": "",
+        "section_heading_color": "rgba(0,0,0,0)",
+        "remove_margin": false,
+        "seo_h_tag": "h2"
+      }
+    },
+    "featured-collection": {
+      "type": "featured-collection",
+      "blocks": {
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "2fe5312e-e69f-45d1-bac2-bcdf636d2cf0": {
+          "type": "rating",
+          "disabled": true,
+          "settings": {}
+        },
+        "quick_buy": {
+          "type": "quick_buy",
+          "settings": {}
+        },
+        "0732fb3a-f464-4724-9427-62214bde5409": {
+          "type": "local_availability",
+          "disabled": true,
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "price",
+        "title",
+        "2fe5312e-e69f-45d1-bac2-bcdf636d2cf0",
+        "quick_buy",
+        "0732fb3a-f464-4724-9427-62214bde5409"
+      ],
+      "settings": {
+        "heading": "Unsere Empfehlung",
+        "subheading": "",
+        "show_view_all": false,
+        "section_heading_layout": "section-heading--left",
+        "style": "slider",
+        "layout": "grid-4 grid-portable-3 grid-lap-2 grid-tiny-1",
+        "products_number": 8,
+        "collection": "unsere-empfehlung",
+        "section_background_color": "rgba(0,0,0,0)",
+        "section_background_gradient": "",
+        "section_heading_color": "rgba(0,0,0,0)",
+        "remove_margin": false,
+        "seo_h_tag": "h1"
+      }
+    },
+    "16551074833cdf378e": {
+      "type": "media-with-text-overlay",
+      "blocks": {
+        "16551074836af554cd-1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/image_29258.jpg",
+            "caption": "",
+            "title": "",
+            "subtitle": "",
+            "link": "shopify://products/black-opium-eau-de-parfum-30-ml",
+            "open_in_new_window": false,
+            "button_label": "JETZT SHOPPEN",
+            "color_background_main": "rgba(0,0,0,0)",
+            "color_text_main": "#f597b1",
+            "color_hide_borders": true,
+            "color_hide_shadow": false,
+            "seo_h_tag": "h3"
+          }
+        },
+        "image_VQHpd6": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/image_86248.jpg",
+            "caption": "",
+            "title": "",
+            "subtitle": "",
+            "link": "shopify://products/la-vie-est-belle-eau-de-parfum-spray-refillable-100-ml",
+            "open_in_new_window": false,
+            "button_label": "JETZT SHOPPEN",
+            "color_background_main": "rgba(0,0,0,0)",
+            "color_text_main": "#f597b1",
+            "color_hide_borders": true,
+            "color_hide_shadow": false,
+            "seo_h_tag": "h3"
+          }
+        }
+      },
+      "block_order": [
+        "16551074836af554cd-1",
+        "image_VQHpd6"
+      ],
+      "settings": {
+        "heading": "Parfüme Trends",
+        "subheading": "",
+        "section_heading_layout": "section-heading--left",
+        "layout": "grid-2 grid-lap-1",
+        "height": "regular",
+        "alignment": "horizontal-left align-content--vertical-bottom",
+        "width": "60%",
+        "caption_size": "small",
+        "title_size": "h3",
+        "subtitle_size": "regular",
+        "button_size": "regular",
+        "button_style": "solid",
+        "section_background_color": "rgba(0,0,0,0)",
+        "section_background_gradient": "",
+        "section_heading_color": "rgba(0,0,0,0)",
+        "remove_margin": false,
+        "seo_h_tag": "h2"
+      }
+    },
+    "16551212489c663a1e": {
+      "type": "featured-collection",
+      "blocks": {
+        "1655121248aee0f086-0": {
+          "type": "price",
+          "settings": {}
+        },
+        "1655121248aee0f086-1": {
+          "type": "title",
+          "settings": {}
+        },
+        "1655121248aee0f086-2": {
+          "type": "quick_buy",
+          "disabled": true,
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "1655121248aee0f086-0",
+        "1655121248aee0f086-1",
+        "1655121248aee0f086-2"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "Unsere Tipps",
+        "subheading": "",
+        "show_view_all": true,
+        "section_heading_layout": "section-heading--left",
+        "style": "slider",
+        "layout": "grid-4 grid-portable-3 grid-lap-2 grid-tiny-1",
+        "products_number": 10,
+        "collection": "frontpage",
+        "section_background_color": "rgba(0,0,0,0)",
+        "section_background_gradient": "",
+        "section_heading_color": "rgba(0,0,0,0)",
+        "remove_margin": false,
+        "seo_h_tag": "h2"
+      }
+    },
+    "rich_text_eaUBNj": {
+      "type": "rich-text",
+      "blocks": {
+        "title_4KFHYR": {
+          "type": "title",
+          "settings": {
+            "title": "L'Oréal Professionnel Paris",
+            "title_size": "h3",
+            "seo_h_tag": "h2"
+          }
+        },
+        "text_bVwUpD": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Schon probiert? Metal DX gegen Haarbruch & Farbveränderungen</p><p></p>",
+            "text_size": "regular"
+          }
+        },
+        "button_9mW9XX": {
+          "type": "button",
+          "settings": {
+            "button_label": "Jetzt Shoppen",
+            "link": "",
+            "open_in_new_window": false,
+            "button_size": "large",
+            "button_style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "title_4KFHYR",
+        "text_bVwUpD",
+        "button_9mW9XX"
+      ],
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/LP_KW13_Brand___Product_Display.jpg",
+        "image_position": "left",
+        "height": "regular",
+        "image_crop": true,
+        "text_alignment": "horizontal-center",
+        "is_fullwidth": false,
+        "section_background_color": "rgba(0,0,0,0)",
+        "section_background_gradient": "",
+        "remove_margin": false,
+        "color_background_main": "rgba(0,0,0,0)",
+        "color_text_main": "rgba(0,0,0,0)",
+        "color_accent_main": "rgba(0,0,0,0)",
+        "color_borders_main": "rgba(0,0,0,0)",
+        "color_shadow_main": "rgba(0,0,0,0)",
+        "color_hide_borders": false,
+        "color_hide_shadow": false
+      }
+    },
+    "content_toggles_xhDYTD": {
+      "type": "content-toggles",
+      "blocks": {
+        "text_DWaNBx": {
+          "type": "text",
+          "settings": {
+            "title": "Dein Beauty-Onlineshop",
+            "subtitle": "",
+            "icon": "no-icon",
+            "button_label": "",
+            "button_link": "",
+            "body": "<p>Willkommen bei Lamour, deinem ultimativen Beauty Online-Shop! Hier findest du eine sorgfältige Auswahl an Eau de Toilette und Eau de Parfum Düften, die deinen persönlichen Stil unterstreichen. Unser Sortiment umfasst zudem hochwertige Kosmetikprodukte, von Make-up über Körperpflege bis hin zu Haarpflege. Entdecke exklusive Parfums, die dich den ganzen Tag über begleiten, und gönn dir erstklassige Körper- und Haarpflegeprodukte, um deine natürliche Schönheit zu betonen. Bei Lamour bieten wir dir alles, was du für ein perfektes Beauty-Erlebnis benötigst – alles in einem Shop!</p>",
+            "hide_block_if": false
+          }
+        },
+        "text_RmAqG6": {
+          "type": "text",
+          "settings": {
+            "title": "Entdecke Deutschlands schönstes Beauty-Sortiment",
+            "subtitle": "",
+            "icon": "no-icon",
+            "button_label": "",
+            "button_link": "",
+            "body": "<p>Entdecke bei Lamour Deutschlands schönstes Beauty-Sortiment! Wir bieten dir eine exklusive Auswahl an Eau de Toilette und Eau de Parfum Düften, die deinen persönlichen Stil perfekt ergänzen. Unser umfangreiches Angebot umfasst nicht nur erstklassiges Make-up, sondern auch hochwertige Körperpflege- und Haarpflegeprodukte. Von luxuriösen Parfums bis hin zu innovativer Kosmetik – bei Lamour findest du alles, was du für ein strahlendes Aussehen und ein gepflegtes Gefühl brauchst. Tauche ein in die Welt der Schönheit und finde deine neuen Favoriten bei uns!</p>",
+            "hide_block_if": false
+          }
+        },
+        "text_mfeJ6W": {
+          "type": "text",
+          "settings": {
+            "title": "Das perfekte Produkt für deine Bedürfnisse",
+            "subtitle": "",
+            "icon": "no-icon",
+            "button_label": "",
+            "button_link": "",
+            "body": "<p>Finde bei Lamour das perfekte Produkt für deine Bedürfnisse! Unser Beauty Online-Shop bietet eine exklusive Auswahl an Eau de Toilette und Eau de Parfum Düften, die deinem persönlichen Stil entsprechen. Ob du auf der Suche nach hochwertigem Make-up, erstklassiger Körperpflege oder effektiver Haarpflege bist, bei uns wirst du fündig. Entdecke unsere umfangreiche Kollektion an Parfums und Kosmetik, die speziell ausgewählt wurden, um deine Schönheit zu unterstreichen. Bei Lamour erhältst du maßgeschneiderte Produkte für jeden Wunsch und Bedarf.</p>",
+            "hide_block_if": false
+          }
+        },
+        "text_qtmnKA": {
+          "type": "text",
+          "settings": {
+            "title": "Bezaubernde Duft-Momente",
+            "subtitle": "",
+            "icon": "no-icon",
+            "button_label": "",
+            "button_link": "",
+            "body": "<p>Erlebe bei Lamour bezaubernde Duft-Momente mit unserer exklusiven Auswahl an Eau de Toilette und Eau de Parfum Düften. Unser Beauty Online-Shop bietet dir eine Vielfalt an Parfums, die jeden Tag zu etwas Besonderem machen. Ob du einen subtilen Duft für den Alltag oder ein intensives Parfum für besondere Anlässe suchst, bei uns findest du genau das Richtige. Ergänze deine Beauty-Routine mit unserem hochwertigen Make-up, der luxuriösen Körperpflege und der effektiven Haarpflege. Lass dich von der Welt der Düfte verzaubern und finde deinen neuen Lieblingsduft bei Lamour!</p>",
+            "hide_block_if": false
+          }
+        }
+      },
+      "block_order": [
+        "text_DWaNBx",
+        "text_RmAqG6",
+        "text_mfeJ6W",
+        "text_qtmnKA"
+      ],
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "section_heading_layout": "section-heading--left",
+        "open_first": false,
+        "form_enable": false,
+        "form_title": "Contact form",
+        "seo_h_tag": "h2"
+      }
+    },
+    "slideshow_i4Enpa": {
+      "type": "slideshow",
+      "blocks": {
+        "image_zqgMKb": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/grid-img-1_7a6c37ae-c47e-4e4c-9069-d673b9c15427.jpg",
+            "caption": "",
+            "title": "",
+            "link": "",
+            "open_in_new_window": false,
+            "button_label": "JETZT SHOPPEN",
+            "color_background_main": "rgba(0,0,0,0)",
+            "color_text_main": "#f597b1",
+            "seo_h_tag": "h3"
+          }
+        }
+      },
+      "block_order": [
+        "image_zqgMKb"
+      ],
+      "settings": {
+        "desktop_height": "50vh",
+        "mobile_height": "60vh",
+        "is_auto_height": true,
+        "autorotate_enable": false,
+        "autorotate_interval": 5,
+        "alignment": "horizontal-left align-content--vertical-bottom",
+        "text_size": "regular",
+        "title_size": "h3",
+        "button_size": "regular",
+        "button_style": "solid",
+        "is_fullwidth": false,
+        "section_background_color": "rgba(0,0,0,0)",
+        "section_background_gradient": "",
+        "section_heading_color": "rgba(0,0,0,0)",
+        "remove_margin": false,
+        "color_hide_borders": true,
+        "color_hide_shadow": true
+      }
+    },
+    "1655112847aaa4cc50": {
+      "type": "newsletter",
+      "settings": {
+        "show_icon": true,
+        "title": "Newsletter abonnieren und deinen Gutschein sichern",
+        "text": "<h5><strong>Jetzt anmelden und Gutschein sichern!</strong></h5>",
+        "color_background_main": "#f597b1",
+        "color_text_main": "#ffffff",
+        "color_borders_main": "rgba(0,0,0,0)",
+        "color_shadow_main": "rgba(0,0,0,0)",
+        "section_background_color": "rgba(0,0,0,0)",
+        "section_background_gradient": "",
+        "remove_margin": false,
+        "seo_h_tag": "h2"
+      }
+    }
+  },
+  "order": [
+    "1653646142d6a7c886",
+    "1711898839cebab6b2",
+    "featured_collection_EeCaRK",
+    "165406738229739f4d",
+    "featured-collection",
+    "16551074833cdf378e",
+    "16551212489c663a1e",
+    "rich_text_eaUBNj",
+    "content_toggles_xhDYTD",
+    "slideshow_i4Enpa",
+    "1655112847aaa4cc50"
+  ]
+}

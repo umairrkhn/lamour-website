@@ -1,0 +1,75 @@
+<script>
+	var is_admin_interface={{ is_admin_interface }};
+	var template_name='{{ template.name }}';
+	var canonical_url='{{ canonical_url }}';
+	var request_path='{{ request.path }}';
+	var timerStart = Date.now();
+
+	var __engine_loaded=[];
+	var __engine_scriptspreloading=[];	
+	var __engine_scriptsloading=[];
+	var __engine_other=[];
+	var __engine_asyncloading=[];
+	var __engine_event=[];
+	var __engine_objects_queue = [];
+	var __engine_scripts_queue = [];
+	var __exceptions = [];
+
+	console.log('%c Speed Optimization by SpeedUP.GURU ', 'background: #bada55; color: #000000');
+	console.log('build 1.00');
+
+	var engine = {}; engine.settings = {
+		'global': {
+			'debug': true,
+			'fend': {
+				'files': true,
+				'inline': true,
+			},
+			'fend_debug': {
+				'files_queue': false,
+				'inline_queue': false,
+				'steps_loading': false,
+				'files_loaded': false,
+				'inline_loaded': false
+			},
+			'l': 'eG4tLWxtb3VyLXhxYS5kZWd0Z3RjTEEzQA=='
+		},
+		'__opt1': {'p': 1000,'s': 2700,'o': 2200,'a': 7500},
+		'__opt2': {'p': 100,'s': 300,'o': 150,'a': 7500}
+	}
+
+	engine.settings["global"]['time'] = 2025031614;
+
+	__engine_objects_queue['loaded'] = ['loaded'];
+	__engine_objects_queue['scriptspreloading'] = [];
+	__engine_objects_queue['scriptsloading'] = ['recaptcha'];
+	__engine_objects_queue['other'] = ['__fend_trekkie.integrations'];
+	__engine_objects_queue['event'] = [
+		'buyitnow',
+		'video',
+		'video-native'
+	];
+
+	__exceptions['js'] = [];
+	__exceptions['js']['class'] = ['__init'];
+	__exceptions['js']['data-src'] = ['option_selection'];
+	__exceptions['js']['innerHTML'] = [
+		'var Shopify = Shopify',
+		'window.asyncLoad',
+		'window.theme = window.theme',
+		'window.productStrings',
+		'window.ShopifyAnalytics = window.ShopifyAnalytics',
+	];
+
+	window.lazySizesConfig = {
+		init: true,
+		loadMode: 1,
+		loadHidden: false,
+		hFac: 0.5,
+		expFactor: 2,
+		ricTimeout: 150,
+		lazyClass: 'lazyload',
+		loadingClass: 'lazyloading',
+		loadedClass: 'lazyloaded'
+	};
+</script>

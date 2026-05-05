@@ -1,0 +1,119 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "settings": {
+        "show_collection_description": false,
+        "show_collection_image": false,
+        "alignment": "horizontal-left align-content--vertical-bottom",
+        "color_background_main": "rgba(0,0,0,0)",
+        "color_text_main": "rgba(0,0,0,0)"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "blocks": {
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "quick_buy": {
+          "type": "quick_buy",
+          "settings": {}
+        },
+        "vendor_QHgcCX": {
+          "type": "vendor",
+          "disabled": true,
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "price",
+        "title",
+        "quick_buy",
+        "vendor_QHgcCX"
+      ],
+      "settings": {
+        "layout": "grid-4 grid-portable-3 grid-lap-2 grid-tiny-1",
+        "products_number": 24,
+        "enable_filtering": true,
+        "enable_sorting": true,
+        "image_filter_layout": "onecolumn"
+      }
+    },
+    "content_toggles_j9VBWF": {
+      "type": "content-toggles",
+      "blocks": {
+        "text_A7i4aL": {
+          "type": "text",
+          "settings": {
+            "title": "Paco Rabanne – Kreative Eleganz aus Paris",
+            "subtitle": "",
+            "icon": "no-icon",
+            "button_label": "",
+            "button_link": "",
+            "body": "<p>Paco Rabanne, der visionäre Designer aus Spanien, hat sich einen Namen gemacht, indem er die Modewelt mit seinen innovativen und unkonventionellen Designs revolutionierte. Schon früh in seiner Karriere begann Rabanne, mit Materialien wie Metall und Kunststoff zu experimentieren, was ihm den Ruf eines Modepioniers einbrachte. Seine außergewöhnlichen Kreationen, die Eleganz mit futuristischen Elementen verbinden, sind weltweit bekannt und haben die Ästhetik der Haute Couture nachhaltig beeinflusst.</p><p>Paco Rabanne wurde 1934 als Francisco Rabaneda Cuervo in der spanischen Region Baskenland geboren. Nach seiner Flucht nach Frankreich während des Spanischen Bürgerkriegs studierte er Architektur, was seine einzigartigen und strukturellen Ansätze in der Modegestaltung stark beeinflusste. In den 1960er Jahren gründete er sein eigenes Modehaus und wurde schnell für seine avantgardistischen Kollektionen bekannt. Berühmte Persönlichkeiten und Stilikonen bewunderten seine Arbeit und machten ihn zu einem der gefragtesten Designer seiner Zeit.</p><p>Doch nicht nur in der Mode ist Paco Rabanne ein visionärer Schöpfer. Auch in der Parfumwelt hat er mit seinen ikonischen Düften, wie dem legendären 1 Million oder Lady Million, neue Maßstäbe gesetzt.</p>",
+            "hide_block_if": false
+          }
+        },
+        "text_RJd3Wi": {
+          "type": "text",
+          "settings": {
+            "title": "Paco Rabanne Parfums – Der Duft der Zukunft",
+            "subtitle": "",
+            "icon": "no-icon",
+            "button_label": "",
+            "button_link": "",
+            "body": "<p>Der erste Duft von Paco Rabanne, <strong>Calandre</strong>, wurde 1969 lanciert und setzte sofort neue Standards für die Parfumbranche. Mit seinem klaren, modernen Duftbild hat es eine ganze Generation geprägt. In den folgenden Jahrzehnten brachte Rabanne zahlreiche weitere Duftkreationen heraus, die weltweit Anerkennung fanden. Besonders bekannt ist der Duft <strong>1 Million</strong>, der 2008 auf den Markt kam und durch seine einzigartige Mischung aus Zimt, Gewürzen und einer holzigen Basisnote besticht. Dieser Duft steht für Erfolg und Luxus und ist ein Must-have für den modernen Mann.</p><p>Für die Damen schuf Rabanne den Duft <strong>Lady Million</strong>, der durch seine blumig-holzige Komposition besticht. Mit Noten von Himbeere, Neroli und einem Hauch von Jasmin strahlt Lady Million eine unwiderstehliche Weiblichkeit aus, die Selbstbewusstsein und Eleganz verkörpert. Beide Düfte, 1 Million und Lady Million, sind in ihrer Präsentation unverwechselbar und gehören zu den meistverkauften Parfums weltweit.</p>",
+            "hide_block_if": false
+          }
+        },
+        "text_fTMnqG": {
+          "type": "text",
+          "settings": {
+            "title": "Die Zukunft der Parfumkunst mit Paco Rabanne",
+            "subtitle": "",
+            "icon": "no-icon",
+            "button_label": "",
+            "button_link": "",
+            "body": "<p>Neben diesen Klassikern bietet Paco Rabanne eine Reihe weiterer Parfums, die sowohl für Damen als auch für Herren konzipiert sind. Düfte wie <strong>Invictus</strong>, das für Männlichkeit und Stärke steht, und <strong>Olympea</strong>, ein Duft, der Weiblichkeit und Sinnlichkeit zelebriert, sind Teil des beeindruckenden Portfolios der Marke.</p><p>Jedes Parfum von Paco Rabanne spiegelt die kreative Vision des Designers wider und fängt die Essenz der Mode des Hauses ein. Die Duftkreationen sind auch als Deodorants, Showergels und After Shaves erhältlich, um das Dufterlebnis zu vervollständigen. Paco Rabanne bleibt ein Symbol für Innovation und Stil, sowohl in der Mode als auch in der Welt der Düfte. Tauchen Sie ein in die faszinierende Welt von Paco Rabanne und erleben Sie die Verbindung von Mode und Parfum auf höchstem Niveau.</p>",
+            "hide_block_if": false
+          }
+        }
+      },
+      "block_order": [
+        "text_A7i4aL",
+        "text_RJd3Wi",
+        "text_fTMnqG"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "section_heading_layout": "section-heading--left",
+        "open_first": false,
+        "form_enable": false,
+        "form_title": "",
+        "seo_h_tag": "h2"
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid",
+    "content_toggles_j9VBWF"
+  ]
+}

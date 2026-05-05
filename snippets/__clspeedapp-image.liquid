@@ -1,0 +1,131 @@
+{% comment %}
+There are examples of using:
+
+{% render '__clspeedapp-image' with image: block.settings.image %}
+{% render '__clspeedapp-image' with image: block.settings.image, lcp: true %}
+{% render '__clspeedapp-image' with image: block.settings.image, lcp: true, max_image_size: 640 %}
+{% render '__clspeedapp-image' with image: block.settings.image, lcp: true, max_image_size: 640, defaultResoluton: '640x' %}
+{% render '__clspeedapp-image' with image: block.settings.image, lcp: true, max_image_size: 640, defaultResoluton: '640x', preload: true %}
+{% render '__clspeedapp-image' with image: block.settings.image, lcp: true, max_image_size: 640, defaultResoluton: '640x', preload: true, classes: 'classname' %}
+{% render '__clspeedapp-image' with image: block.settings.image, lcp: true, max_image_size: 640, defaultResoluton: '640x', preload: true, classes: 'classname', tag: 'img' %}
+
+{% render '__clspeedapp-image' with image: block.settings.image, mobile_image: block.settings.image %}
+.
+.
+.
+{% endcomment %}
+
+{%- if image -%}
+	{%- unless max_image_size -%}
+		{%- assign max_image_size = 2100 -%}
+	{%- endunless -%}
+
+	{%- unless defaultResoluton -%}
+		{%- if lcp -%}
+			{%- assign defaultResoluton = '540x' -%}
+		{%- else -%}
+			{%- assign defaultResoluton = '320x' -%}
+		{%- endif -%}
+	{%- endunless -%}
+
+	{%- assign defaultWidth = defaultResoluton | plus: 0 -%}
+	{%- assign defaultHeight = defaultWidth | divided_by: image.aspect_ratio | round -%}
+
+	{%- capture image_url -%}{{ image | img_url: '1x' }}{%- endcapture -%}
+	{%- if mobile_image -%}
+		{%- capture mobile_image_url -%}{{ mobile_image | img_url: '1x' }}{%- endcapture -%}
+	{%- endif -%}
+
+	{%- if tag == 'img' -%}
+		<img class="{% if lcp %}lcp {% endif %}{% if classes %}{{classes}}{% endif %}" src="{% if mobile_image %}{{ mobile_image_url | replace: '1x', defaultResoluton }}{% else %}{{ image_url | replace: '1x', defaultResoluton }}{% endif %}" 
+     srcset="
+			{%- unless lcp -%}
+				{%- if mobile_image -%}
+					{{ mobile_image_url | replace: '1x', '540x' }} 320w,
+					{{ mobile_image_url | replace: '1x', '720x' }} 540w,
+					{{ mobile_image_url | replace: '1x', '1000x' }} 720w,
+				{%- else -%}
+					{{ image_url | replace: '1x', '540x' }} 320w,
+					{{ image_url | replace: '1x', '720x' }} 540w,
+					{{ image_url | replace: '1x', '1000x' }} 720w,
+				{%- endif -%}
+			{%- endunless -%}
+			{%- if max_image_size > 900 -%}
+				{{ image_url | replace: '1x', '1100x' }} 900w,
+			{%- endif -%}
+			{%- if max_image_size > 1100 -%}
+				{{ image_url | replace: '1x', '1400x' }} 1100w,
+			{%- endif -%}
+			{%- if max_image_size > 1400 -%}
+				{{ image_url | replace: '1x', '1600x' }} 1400w,
+			{%- endif -%}
+			{%- if max_image_size > 1600 -%}
+				{{ image_url | replace: '1x', '1920x' }} 1600w,
+			{%- endif -%}			
+			{%- if max_image_size > 1920 -%}
+				{{ image_url | replace: '_1x', '' }} 1920w
+			{%- endif -%}
+			"
+		 sizes="
+		 	{%- if max_image_size > 1920 -%}
+		 	(min-width: 1920px) 1920px,
+			{%- endif -%}
+			{%- if max_image_size > 1600 -%}
+			(min-width: 1600px) 1600px,
+			{%- endif -%}
+			{%- if max_image_size > 1400 -%}
+			(min-width: 1400px) 1400px,
+			{%- endif -%}
+			{%- if max_image_size > 1100 -%}
+			(min-width: 1100px) 1100px,
+			{%- endif -%}
+			{%- if max_image_size > 900 -%}
+			(min-width: 900px) 900px
+			{%- endif -%}
+			{%- unless lcp -%}
+			,(min-width: 720px) 720px
+			,(min-width: 540px) 540px
+			,320px
+			{%- endunless -%}
+			"
+		 width="{{ defaultWidth }}" height="{{ defaultHeight }}"
+     alt="{{ image.alt | escape }}">
+	{%- else -%}
+			<picture>
+				{%- if max_image_size > 1920 -%}
+					<source media="(min-width: 1920px)" srcset="{{ image_url | replace: '_1x', '' }}">
+				{%- endif -%}
+				{%- if max_image_size > 1600 -%}
+					<source media="(min-width: 1920px)" srcset="{{ image_url | replace: '1x', '1920x' }}">
+				{%- endif -%}
+				{%- if max_image_size > 1400 -%}
+					<source media="(min-width: 1600px)" srcset="{{ image_url | replace: '1x', '1600x' }}">
+				{%- endif -%}
+				{%- if max_image_size > 1100 -%}
+					<source media="(min-width: 1400px)" srcset="{{ image_url | replace: '1x', '1400x' }}">
+				{%- endif -%}
+				{%- if max_image_size > 900 -%}
+					<source media="(min-width: 1100px)" srcset="{{ image_url | replace: '1x', '1100x' }}">
+				{%- endif -%}
+				{%- unless lcp -%}
+					{%- if mobile_image -%}
+						<source media="(min-width: 720px)" srcset="{{ mobile_image_url | replace: '1x', '1000x' }}">
+						<source media="(min-width: 540px)" srcset="{{ mobile_image_url | replace: '1x', '720x' }}">
+						<source media="(min-width: 320px)" srcset="{{ mobile_image_url | replace: '1x', '540x' }}">
+					{%- else -%}
+						<source media="(min-width: 720px)" srcset="{{ image_url | replace: '1x', '720x' }}">
+						<source media="(min-width: 540px)" srcset="{{ image_url | replace: '1x', '540x' }}">
+						<source media="(min-width: 320px)" srcset="{{ image_url | replace: '1x', '320x' }}">
+					{%- endif -%}
+				{%- endunless -%}
+				<img class="{% if lcp %}lcp {% endif %}{% if classes %}{{classes}}{% endif %}" src="{% if mobile_image %}{{ mobile_image_url | replace: '1x', defaultResoluton }}{% else %}{{ image_url | replace: '1x', defaultResoluton }}{% endif %}" width="{{ defaultWidth }}" height="{{ defaultHeight }}" alt="{{ image.alt | escape }}">
+			</picture>
+		{%- endif -%}
+		{%- if preload -%}
+			{%- if mobile_image -%}
+				<!-- {{ template.name }}_image_lcp [{{ mobile_image_url | replace: '1x', defaultResoluton }}] -->
+			{%- else -%}
+				<!-- {{ template.name }}_image_lcp [{{ image_url | replace: '1x', defaultResoluton }}] -->
+			{%- endif -%}
+		{%- endif -%}
+{%- endif -%}

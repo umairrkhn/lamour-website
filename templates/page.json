@@ -1,0 +1,157 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "center": false
+      }
+    },
+    "content_toggles_Yxp76i": {
+      "type": "content-toggles",
+      "blocks": {
+        "text_BNtDWy": {
+          "type": "text",
+          "settings": {
+            "title": "Welche Produkte bietet Làmour Cosmetics an?",
+            "subtitle": "",
+            "icon": "no-icon",
+            "button_label": "",
+            "button_link": "",
+            "body": "<p>Làmour Cosmetics bietet eine breite Palette von Kosmetik- und Parfümprodukten an, darunter Gesichts- und Körperpflege, Make-up, Düfte und spezielle Pflegeprodukte.</p>",
+            "hide_block_if": false
+          }
+        },
+        "text_fVm8Ln": {
+          "type": "text",
+          "settings": {
+            "title": "Wie kann ich mich für den Newsletter anmelden?",
+            "subtitle": "",
+            "icon": "no-icon",
+            "button_label": "",
+            "button_link": "",
+            "body": "<p>Um unseren Newsletter zu abonnieren, besuche einfach unsere Website und scrolle nach unten bis zum Anmeldeformular. Gib deine E-Mail-Adresse ein und bestätige die Anmeldung. Du erhältst regelmäßig Updates zu neuen Produkten, exklusiven Angeboten und Beauty-Tipps.</p>",
+            "hide_block_if": false
+          }
+        },
+        "text_UVUCFU": {
+          "type": "text",
+          "settings": {
+            "title": "Gibt es besondere Angebote oder Rabatte für Stammkunden?",
+            "subtitle": "",
+            "icon": "no-icon",
+            "button_label": "",
+            "button_link": "",
+            "body": "<p>Ja, wir schätzen unsere treuen Kunden und bieten regelmäßig exklusive Angebote und Rabatte an. Melde dich für unseren Newsletter an, um über unsere aktuellen Aktionen informiert zu bleiben.</p>",
+            "hide_block_if": false
+          }
+        },
+        "text_fejaa4": {
+          "type": "text",
+          "settings": {
+            "title": "Wie lange dauert der Versand meiner Bestellung?",
+            "subtitle": "",
+            "icon": "no-icon",
+            "button_label": "",
+            "button_link": "",
+            "body": "<p>Die Lieferzeit beträgt in der Regel 3-6 Werktage innerhalb Deutschlands. </p>",
+            "hide_block_if": false
+          }
+        },
+        "text_GwgrzL": {
+          "type": "text",
+          "settings": {
+            "title": "Wie kann ich meine Bestellung verfolgen?",
+            "subtitle": "",
+            "icon": "no-icon",
+            "button_label": "",
+            "button_link": "",
+            "body": "<p>Nach dem Versand deiner Bestellung erhältst du eine E-Mail mit einer Sendungsverfolgungsnummer. Mit dieser Nummer kannst du den Status deiner Lieferung jederzeit online verfolgen.</p>",
+            "hide_block_if": false
+          }
+        },
+        "text_UcEH48": {
+          "type": "text",
+          "settings": {
+            "title": "Welche Zahlungsmethoden akzeptiert ihr?",
+            "subtitle": "",
+            "icon": "no-icon",
+            "button_label": "",
+            "button_link": "",
+            "body": "<p>Wir akzeptieren verschiedene Zahlungsmethoden, darunter Kreditkarte (Visa, MasterCard, American Express), Klarna und Sofortüberweisung.</p>",
+            "hide_block_if": false
+          }
+        },
+        "text_JEMmU3": {
+          "type": "text",
+          "settings": {
+            "title": "Kann ich meine Bestellung stornieren oder ändern?",
+            "subtitle": "",
+            "icon": "no-icon",
+            "button_label": "",
+            "button_link": "",
+            "body": "<p>Bestellungen können innerhalb von 24 Stunden nach Auftragsbestätigung storniert oder geändert werden. Bitte kontaktiere unseren Kundenservice so schnell wie möglich, um Änderungen vorzunehmen.</p>",
+            "hide_block_if": false
+          }
+        },
+        "text_eFnNX8": {
+          "type": "text",
+          "settings": {
+            "title": "Was mache ich, wenn ich mit einem Produkt nicht zufrieden bin?",
+            "subtitle": "",
+            "icon": "no-icon",
+            "button_label": "",
+            "button_link": "",
+            "body": "<p>Wenn du mit einem Produkt nicht zufrieden bist, kannst du es innerhalb von 14 Tagen nach Erhalt zurücksenden. Bitte beachte unsere Rückgaberichtlinien auf der Website für weitere Informationen.</p>",
+            "hide_block_if": false
+          }
+        },
+        "text_jdyzXR": {
+          "type": "text",
+          "settings": {
+            "title": "Wie kann ich den Kundenservice von Làmour Cosmetics erreichen?",
+            "subtitle": "",
+            "icon": "no-icon",
+            "button_label": "",
+            "button_link": "",
+            "body": "<p>Unser Kundenservice steht dir per E-Mail oder über unser Kontaktformular auf der Website zur Verfügung. Besuche unsere \"Kontakt\"-Seite für die detaillierten Kontaktinformationen und die Servicezeiten.</p>",
+            "hide_block_if": false
+          }
+        }
+      },
+      "block_order": [
+        "text_BNtDWy",
+        "text_fVm8Ln",
+        "text_UVUCFU",
+        "text_fejaa4",
+        "text_GwgrzL",
+        "text_UcEH48",
+        "text_JEMmU3",
+        "text_eFnNX8",
+        "text_jdyzXR"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "FAQ",
+        "subheading": "",
+        "section_heading_layout": "section-heading--left",
+        "open_first": false,
+        "form_enable": false,
+        "form_title": "Contact form",
+        "seo_h_tag": "h2"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "content_toggles_Yxp76i"
+  ]
+}

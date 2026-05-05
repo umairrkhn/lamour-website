@@ -1,0 +1,10 @@
+{%- assign avada_seo_ovr_collection_ids = "631914168663" -%}
+{%- if avada_seo_meta_title -%}
+{%- assign seo_title = avada_seo_meta_title | strip_html | strip -%}
+{%- assign page_title = seo_title -%}
+{%- assign og_title = seo_title -%}
+{%- endif -%}
+{%- if avada_seo_meta_description -%}
+{%- assign page_description = avada_seo_meta_description | strip_html | strip -%}
+{%- assign og_description = page_description -%}
+{%- endif -%}
