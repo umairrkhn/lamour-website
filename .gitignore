@@ -16,3 +16,7 @@ node_modules/
 release
 *.zip
 .env
+
+# Generated theme images — uploaded to Shopify CDN, not needed in git
+design-system/_generated/
+design-system/assets
