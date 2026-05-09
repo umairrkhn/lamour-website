@@ -1,0 +1,151 @@
+<section class="lm-brand-statement">
+  <div class="lm-brand-statement__inner lm-container">
+    <div class="lm-brand-statement__text reveal">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="lm-brand-statement__eyebrow font-sub">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.heading != blank -%}
+        <h2 class="lm-brand-statement__heading font-display">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+
+      {%- if section.settings.body != blank -%}
+        <div class="lm-brand-statement__body">{{ section.settings.body }}</div>
+      {%- endif -%}
+
+      {%- if section.settings.cta_label != blank -%}
+        <a href="{{ section.settings.cta_url | default: '/collections/all' }}" class="lm-btn">
+          {{ section.settings.cta_label }}
+        </a>
+      {%- endif -%}
+    </div>
+
+    <div class="lm-brand-statement__media reveal reveal-delay-2">
+      {%- if section.settings.image != blank -%}
+        {%- render 'image',
+          image: section.settings.image,
+          sizes: '(max-width: 767px) 100vw, 40vw',
+          class: 'lm-brand-statement__img'
+        -%}
+      {%- else -%}
+        <div class="lm-brand-statement__img-placeholder" aria-hidden="true"></div>
+      {%- endif -%}
+      <div class="lm-brand-statement__img-overlay" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .lm-brand-statement {
+    background: var(--color-bg-soft);
+    padding: var(--space-section) 0;
+  }
+
+  .lm-brand-statement__inner {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: center;
+  }
+
+  @media (max-width: 767px) {
+    .lm-brand-statement__inner {
+      grid-template-columns: 1fr;
+    }
+    .lm-brand-statement__media {
+      order: -1;
+    }
+  }
+
+  .lm-brand-statement__text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .lm-brand-statement__eyebrow {
+    font-size: var(--text-micro);
+    color: var(--color-pink);
+    margin: 0;
+  }
+
+  .lm-brand-statement__heading {
+    font-size: var(--text-display);
+    line-height: 1.05;
+    color: var(--color-text);
+    margin: 0;
+  }
+
+  .lm-brand-statement__body {
+    font-size: var(--text-body);
+    color: var(--color-text-70);
+    line-height: 1.8;
+  }
+
+  .lm-brand-statement__media {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    aspect-ratio: 3/4;
+  }
+  .lm-brand-statement__media .image,
+  .lm-brand-statement__media img,
+  .lm-brand-statement__img-placeholder {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .lm-brand-statement__img-placeholder {
+    background: var(--color-surface);
+  }
+  .lm-brand-statement__img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(244,150,176,0.15), transparent 60%);
+    pointer-events: none;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Brand Statement",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "BRAND STATEMENT"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Schönheit trifft auf Leidenschaft"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body text",
+      "default": "<p>Wir kuratieren die besten Düfte und Beauty-Produkte der Welt. Von ikonischen Parfums bis hin zu exklusiven Schönheitsprodukten.</p>"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA label"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA URL"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    }
+  ],
+  "presets": [
+    { "name": "Brand Statement" }
+  ]
+}
+{% endschema %}

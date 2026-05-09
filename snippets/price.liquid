@@ -1,0 +1,35 @@
+{%- liquid
+  assign target = product | default: variant
+  assign compare = target.compare_at_price
+  assign price   = target.price
+  assign on_sale = false
+  if compare and compare > price
+    assign on_sale = true
+  endif
+-%}
+
+<div class="price{% if on_sale %} price--on-sale{% endif %}">
+  {%- if on_sale -%}
+    <s class="price__compare">{{ compare | money }}</s>
+  {%- endif -%}
+  <span class="price__current{% if on_sale %} price__current--sale{% endif %}">
+    {{ price | money }}
+  </span>
+</div>
+
+{% stylesheet %}
+  .price {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    font-family: var(--font-body);
+    font-size: var(--text-small);
+  }
+  .price__compare {
+    color: var(--color-text-40);
+    text-decoration: line-through;
+  }
+  .price__current--sale {
+    color: var(--color-pink);
+  }
+{% endstylesheet %}

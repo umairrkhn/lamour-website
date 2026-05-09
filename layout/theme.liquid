@@ -1,36 +1,58 @@
 <!doctype html>
-<html lang="{{ request.locale.iso_code }}">
+<html lang="{{ request.locale.iso_code }}" data-theme="light">
   <head>
-    {% # Inlined CSS Variables %}
-    {% render 'css-variables' %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    {% comment %}
-      Font preloading:
-      1. Preconnect to font CDN for faster connection
-      2. Preload only the critical font variant (base weight)
-      3. Additional variants load on-demand via @font-face
-    {% endcomment %}
-    {% unless settings.type_primary_font.system? %}
-      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+    {%- comment -%} Theme init — prevents flash of wrong mode {%- endcomment -%}
+    <script>
+      (function(){
+        var stored = localStorage.getItem('lm-theme');
+        var systemDark = matchMedia('(prefers-color-scheme: dark)').matches;
+        var shopDefault = '{{ settings.default_color_scheme | default: "light" }}';
+        var t = stored || (shopDefault === 'system' ? (systemDark ? 'dark' : 'light') : shopDefault);
+        document.documentElement.setAttribute('data-theme', t);
+      })();
+    </script>
 
-      {% comment %} Preload the base font variant for initial page render {% endcomment %}
-      {{ settings.type_primary_font | font_url | preload_tag: as: 'font', crossorigin: 'anonymous' }}
-    {% endunless %}
+    {%- comment -%} Google Fonts {%- endcomment -%}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-    {% # Load and preload the critical CSS %}
+    {%- comment -%} Lamour main stylesheet {%- endcomment -%}
+    {{ 'theme.css' | asset_url | stylesheet_tag }}
+
+    {%- comment -%} Skeleton critical CSS {%- endcomment -%}
     {{ 'critical.css' | asset_url | stylesheet_tag: preload: true }}
 
-    {% # Social, title, etc. %}
-    {% render 'meta-tags' %}
+    {%- comment -%} CSS variables from customizer {%- endcomment -%}
+    {%- render 'css-variables' -%}
+
+    {%- comment -%} Meta tags {%- endcomment -%}
+    {%- render 'meta-tags' -%}
 
     {{ content_for_header }}
+
+    {%- comment -%} Favicon {%- endcomment -%}
+    <link rel="icon" type="image/png" href="https://cdn.shopify.com/s/files/1/0823/5728/9303/files/output-onlinepngtools_1.png?v=1722154241">
   </head>
 
   <body>
     {% sections 'header-group' %}
 
-    {{ content_for_layout }}
+    <main id="main-content" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
 
     {% sections 'footer-group' %}
+
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
+
+    <lamour-cursor></lamour-cursor>
+    <lamour-reveal></lamour-reveal>
+
+    <script src="{{ 'theme.js' | asset_url }}" defer></script>
   </body>
 </html>
