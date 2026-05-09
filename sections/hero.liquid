@@ -33,12 +33,6 @@
 
   </div>
 
-  <div class="lm-hero__orbs" aria-hidden="true">
-    <div class="lm-hero__orb lm-hero__orb--1"></div>
-    <div class="lm-hero__orb lm-hero__orb--2"></div>
-    <div class="lm-hero__orb lm-hero__orb--3"></div>
-  </div>
-
   <div class="lm-hero__content lm-container" style="text-align: {{ section.settings.text_alignment | default: 'center' }}">
     {%- for block in section.blocks -%}
       {%- case block.type -%}
@@ -125,45 +119,6 @@
   @media (prefers-reduced-motion: reduce) {
     .lm-hero__slide { animation: none; }
     .lm-hero__slide--1 { opacity: 1; }
-  }
-
-  /* ── Orbs ── */
-  .lm-hero__orbs {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-  }
-  .lm-hero__orb {
-    position: absolute;
-    border-radius: 9999px;
-    filter: blur(60px);
-    background: var(--color-pink);
-    opacity: 0.35;
-    animation: float 8s ease-in-out infinite;
-  }
-  .lm-hero__orb--1 {
-    width: 400px;
-    height: 400px;
-    top: 10%;
-    left: -10%;
-    animation-delay: 0s;
-  }
-  .lm-hero__orb--2 {
-    width: 300px;
-    height: 300px;
-    bottom: 15%;
-    right: 5%;
-    animation-delay: -3s;
-    opacity: 0.25;
-  }
-  .lm-hero__orb--3 {
-    width: 200px;
-    height: 200px;
-    top: 40%;
-    right: 25%;
-    animation-delay: -6s;
-    opacity: 0.18;
   }
 
   /* ── Content ── */

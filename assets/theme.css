@@ -192,14 +192,7 @@ button {
 }
 
 /* ── Gradient mesh hero ────────────────────────────────────────────────── */
-.mesh-hero {
-  background:
-    radial-gradient(60% 50% at 20% 25%, rgba(244,150,176,0.35), transparent 60%),
-    radial-gradient(40% 40% at 85% 75%, rgba(244,150,176,0.25), transparent 60%),
-    radial-gradient(35% 45% at 65% 20%, rgba(255,200,214,0.18), transparent 65%),
-    radial-gradient(50% 50% at 50% 110%, rgba(244,150,176,0.22), transparent 65%),
-    linear-gradient(180deg, #030303 0%, #000 60%, #000 100%);
-}
+.mesh-hero {}
 
 /* ── Watermark text ────────────────────────────────────────────────────── */
 .watermark {
