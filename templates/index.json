@@ -31,7 +31,7 @@
       },
       "blocks_order": ["eyebrow", "heading", "body", "cta"],
       "settings": {
-        "overlay_opacity": 60,
+        "overlay_opacity": 55,
         "text_alignment": "center"
       }
     },
@@ -41,43 +41,10 @@
         "speed": 40,
         "background_color": "transparent"
       }
-    },
-    "brand-statement": {
-      "type": "brand-statement",
-      "settings": {
-        "eyebrow": "BRAND STATEMENT",
-        "heading": "Schönheit trifft auf Leidenschaft",
-        "body": "<p>Wir kuratieren die besten Düfte und Beauty-Produkte der Welt. Von ikonischen Parfums bis hin zu exklusiven Schönheitsprodukten — entdecke Luxus für jeden Anlass.</p>",
-        "cta_label": "Unsere Geschichte",
-        "cta_url": "/pages/about"
-      }
-    },
-    "featured-collection-neuheiten": {
-      "type": "featured-collection",
-      "settings": {
-        "eyebrow": "NEU EINGETROFFEN",
-        "heading": "Neuheiten",
-        "collection": "neuheiten",
-        "products_to_show": 8,
-        "columns_desktop": 4
-      }
-    },
-    "featured-collection-empfehlung": {
-      "type": "featured-collection",
-      "settings": {
-        "eyebrow": "KURATIERT FÜR DICH",
-        "heading": "Unsere Empfehlung",
-        "collection": "unsere-empfehlung",
-        "products_to_show": 4,
-        "columns_desktop": 4
-      }
     }
   },
   "order": [
     "hero",
-    "brand-marquee",
-    "brand-statement",
-    "featured-collection-neuheiten",
-    "featured-collection-empfehlung"
+    "brand-marquee"
   ]
 }

@@ -32,10 +32,10 @@
 /* ── Light mode (default) ──────────────────────────────────────────────── */
 [data-theme="light"],
 :root {
-  --color-bg:       #faf9f7;
-  --color-bg-soft:  #f4f2ef;
-  --color-bg-card:  #ffffff;
-  --color-surface:  #eeebe7;
+  --color-bg:       #ebe7de;
+  --color-bg-soft:  #e2dcd2;
+  --color-bg-card:  #f4f2ef;
+  --color-surface:  #d8d0c4;
   --color-border:   rgba(0,0,0,0.10);
 
   --color-text:     #0e0e0e;
@@ -43,12 +43,12 @@
   --color-text-40:  rgba(14,14,14,0.40);
   --color-text-10:  rgba(14,14,14,0.10);
 
-  --color-glass:        rgba(255,255,255,0.60);
-  --color-glass-strong: rgba(255,255,255,0.85);
+  --color-glass:        rgba(244,242,239,0.70);
+  --color-glass-strong: rgba(244,242,239,0.92);
   --blur-glass:        blur(18px) saturate(140%);
   --blur-glass-strong: blur(24px) saturate(160%);
 
-  --color-nav-bg:    rgba(250,249,247,0.72);
+  --color-nav-bg:    rgba(244,242,239,0.78);
   --color-nav-border: rgba(0,0,0,0.08);
 }
 

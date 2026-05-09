@@ -1,0 +1,241 @@
+<section class="lm-cat-tiles">
+  <div class="lm-container">
+    <div class="lm-cat-tiles__header reveal">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="lm-cat-tiles__eyebrow font-sub">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="lm-cat-tiles__heading font-display">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+    </div>
+
+    <div class="lm-cat-tiles__grid">
+      {%- for block in section.blocks -%}
+        <a
+          href="{{ block.settings.link | default: '/collections/all' }}"
+          class="lm-cat-tile reveal"
+          style="animation-delay: {{ forloop.index0 | times: 80 }}ms"
+          {{ block.shopify_attributes }}
+        >
+          <div class="lm-cat-tile__img-wrap">
+            {%- if block.settings.image != blank -%}
+              {%- render 'image',
+                image: block.settings.image,
+                sizes: '(max-width: 767px) 100vw, 33vw',
+                class: 'lm-cat-tile__img'
+              -%}
+            {%- else -%}
+              <img
+                src="{{ block.settings.fallback_url }}"
+                alt="{{ block.settings.label | escape }}"
+                class="lm-cat-tile__img"
+                loading="lazy"
+                width="600"
+                height="800"
+              >
+            {%- endif -%}
+            <div class="lm-cat-tile__overlay" aria-hidden="true"></div>
+          </div>
+          <div class="lm-cat-tile__body">
+            {%- if block.settings.label != blank -%}
+              <span class="lm-cat-tile__label font-display">{{ block.settings.label }}</span>
+            {%- endif -%}
+            {%- if block.settings.sub != blank -%}
+              <span class="lm-cat-tile__sub font-sub">{{ block.settings.sub }}</span>
+            {%- endif -%}
+          </div>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .lm-cat-tiles {
+    padding: var(--space-section) 0;
+    background: var(--color-bg);
+  }
+
+  .lm-cat-tiles__header {
+    text-align: center;
+    margin-bottom: clamp(2rem, 5vw, 4rem);
+  }
+
+  .lm-cat-tiles__eyebrow {
+    font-size: var(--text-micro);
+    color: var(--color-pink);
+    margin: 0 0 0.75rem;
+  }
+
+  .lm-cat-tiles__heading {
+    font-size: var(--text-heading);
+    line-height: 1.05;
+    color: var(--color-text);
+    margin: 0;
+  }
+
+  .lm-cat-tiles__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  @media (max-width: 767px) {
+    .lm-cat-tiles__grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  }
+
+  .lm-cat-tile {
+    display: block;
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+    aspect-ratio: 3/4;
+    text-decoration: none;
+    color: #fff;
+  }
+  .lm-cat-tile:hover .lm-cat-tile__img {
+    transform: scale(1.04);
+  }
+  .lm-cat-tile:hover .lm-cat-tile__overlay {
+    opacity: 0.55;
+  }
+
+  .lm-cat-tile__img-wrap {
+    position: absolute;
+    inset: 0;
+  }
+
+  .lm-cat-tile__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.16,1,0.3,1);
+  }
+
+  .lm-cat-tile__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.10) 55%, transparent 100%);
+    opacity: 0.7;
+    transition: opacity 0.4s ease;
+  }
+
+  .lm-cat-tile__body {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.75rem 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    z-index: 1;
+  }
+
+  .lm-cat-tile__label {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    line-height: 1.1;
+    font-weight: 400;
+    color: #fff;
+  }
+
+  .lm-cat-tile__sub {
+    font-size: var(--text-micro);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Category Tiles",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "ENTDECKE"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Unsere Kategorien"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tile",
+      "name": "Category tile",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "fallback_url",
+          "label": "Fallback image URL"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Kategorie"
+        },
+        {
+          "type": "text",
+          "id": "sub",
+          "label": "Subtext",
+          "default": "Jetzt entdecken"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Category Tiles",
+      "blocks": [
+        {
+          "type": "tile",
+          "settings": {
+            "label": "Floral & Feminin",
+            "sub": "Damen Parfum",
+            "fallback_url": "https://cdn.shopify.com/s/files/1/0823/5728/9303/files/category-tile_CT1_floral.png?v=1778330504",
+            "link": "/collections/damen"
+          }
+        },
+        {
+          "type": "tile",
+          "settings": {
+            "label": "Camellia Edition",
+            "sub": "Signature Collection",
+            "fallback_url": "https://cdn.shopify.com/s/files/1/0823/5728/9303/files/category-tile_CT2_camellia.png?v=1778330520",
+            "link": "/collections/unisex"
+          }
+        },
+        {
+          "type": "tile",
+          "settings": {
+            "label": "Maskulin & Frisch",
+            "sub": "Herren Parfum",
+            "fallback_url": "https://cdn.shopify.com/s/files/1/0823/5728/9303/files/category-tile_CT3_masculine.png?v=1778330548",
+            "link": "/collections/herren"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -14,8 +14,12 @@
     "footer": {
       "type": "footer",
       "settings": {
-        "menu": "",
-        "show_payment_icons": true
+        "menu_info": "footer",
+        "menu_help": "weitere-informationen",
+        "payment_heading": "Zahlungsmethoden",
+        "show_payment_icons": true,
+        "menu_about": "ber-lamour",
+        "show_powered_by": false
       }
     }
   },

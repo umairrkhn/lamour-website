@@ -1,13 +1,37 @@
+{%- assign overlay_pct = section.settings.overlay_opacity | default: 55 -%}
+
 <section class="lm-hero mesh-hero grain full-width" aria-label="Hero">
-  {%- if section.settings.image != blank -%}
-    <div class="lm-hero__bg-img" style="--overlay: {{ section.settings.overlay_opacity | default: 60 }}%">
-      {%- render 'image',
-        image: section.settings.image,
-        sizes: '100vw',
-        class: 'lm-hero__bg'
-      -%}
+
+  <div class="lm-hero__slides" aria-hidden="true" style="--overlay: {{ overlay_pct }}%">
+
+    <div class="lm-hero__slide lm-hero__slide--1">
+      {%- if section.settings.image != blank -%}
+        {%- render 'image', image: section.settings.image, sizes: '100vw', class: 'lm-hero__bg' -%}
+      {%- else -%}
+        <img src="https://cdn.shopify.com/s/files/1/0823/5728/9303/files/hero_H1_primary.png?v=1778330600"
+             alt="" class="lm-hero__bg" loading="eager" fetchpriority="high" width="2000" height="1125">
+      {%- endif -%}
     </div>
-  {%- endif -%}
+
+    <div class="lm-hero__slide lm-hero__slide--2">
+      {%- if section.settings.image_2 != blank -%}
+        {%- render 'image', image: section.settings.image_2, sizes: '100vw', class: 'lm-hero__bg' -%}
+      {%- else -%}
+        <img src="https://cdn.shopify.com/s/files/1/0823/5728/9303/files/hero_H2_atmosphere.png?v=1778331595"
+             alt="" class="lm-hero__bg" loading="lazy" width="2000" height="1125">
+      {%- endif -%}
+    </div>
+
+    <div class="lm-hero__slide lm-hero__slide--3">
+      {%- if section.settings.image_3 != blank -%}
+        {%- render 'image', image: section.settings.image_3, sizes: '100vw', class: 'lm-hero__bg' -%}
+      {%- else -%}
+        <img src="https://cdn.shopify.com/s/files/1/0823/5728/9303/files/hero_H3_lifestyle.png?v=1778330624"
+             alt="" class="lm-hero__bg" loading="lazy" width="2000" height="1125">
+      {%- endif -%}
+    </div>
+
+  </div>
 
   <div class="lm-hero__orbs" aria-hidden="true">
     <div class="lm-hero__orb lm-hero__orb--1"></div>
@@ -42,6 +66,7 @@
       {%- endcase -%}
     {%- endfor -%}
   </div>
+
 </section>
 
 {% stylesheet %}
@@ -53,26 +78,56 @@
     justify-content: center;
     overflow: hidden;
     color: #fff;
+    margin-top: calc(-1 * var(--lm-header-h, 80px));
   }
 
-  .lm-hero__bg-img {
+  /* ── Slideshow ── */
+  .lm-hero__slides {
     position: absolute;
     inset: 0;
     z-index: 0;
   }
-  .lm-hero__bg-img::after {
+
+  .lm-hero__slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    animation: lm-hero-fade 18s ease-in-out infinite;
+  }
+  /* Dark overlay applied per-slide so it fades with the image */
+  .lm-hero__slide::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,calc(var(--overlay) / 100));
+    background: rgba(0, 0, 0, calc(var(--overlay) / 100));
   }
-  .lm-hero__bg-img .image,
-  .lm-hero__bg-img img {
+  .lm-hero__slide .image,
+  .lm-hero__slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
   }
 
+  /* Stagger: slide 1 visible at t=0, crossfades at t=4-5s → 10-11s → 16-17s */
+  .lm-hero__slide--1 { animation-delay: -1s; }
+  .lm-hero__slide--2 { animation-delay: -14s; }
+  .lm-hero__slide--3 { animation-delay: -8s; }
+
+  @keyframes lm-hero-fade {
+    0%       { opacity: 0; }
+    5.55%    { opacity: 1; }  /* ~1s fade in */
+    27.77%   { opacity: 1; }  /* hold ~4s */
+    33.33%   { opacity: 0; }  /* ~1s fade out */
+    100%     { opacity: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .lm-hero__slide { animation: none; }
+    .lm-hero__slide--1 { opacity: 1; }
+  }
+
+  /* ── Orbs ── */
   .lm-hero__orbs {
     position: absolute;
     inset: 0;
@@ -111,6 +166,7 @@
     opacity: 0.18;
   }
 
+  /* ── Content ── */
   .lm-hero__content {
     position: relative;
     z-index: 2;
@@ -141,7 +197,7 @@
 
   .lm-hero__body {
     font-size: clamp(1rem, 1.5vw, 1.25rem);
-    color: rgba(255,255,255,0.70);
+    color: rgba(255, 255, 255, 0.70);
     max-width: 52ch;
     line-height: 1.7;
   }
@@ -149,6 +205,11 @@
   .lm-hero__cta {
     margin-top: 0.5rem;
   }
+
+  [data-theme="light"] .lm-hero { color: #fff; }
+  [data-theme="light"] .lm-hero__eyebrow { color: var(--color-pink); }
+  [data-theme="light"] .lm-hero__title { color: #fff; }
+  [data-theme="light"] .lm-hero__body { color: rgba(255, 255, 255, 0.70); }
 {% endstylesheet %}
 
 {% schema %}
@@ -158,7 +219,17 @@
     {
       "type": "image_picker",
       "id": "image",
-      "label": "Background image"
+      "label": "Background image 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Background image 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Background image 3"
     },
     {
       "type": "range",
@@ -167,7 +238,7 @@
       "min": 0,
       "max": 90,
       "step": 5,
-      "default": 60,
+      "default": 55,
       "unit": "%"
     },
     {
