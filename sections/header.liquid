@@ -1,127 +1,692 @@
-<header class="lm-header full-width" role="banner">
+{%- if section.settings.show_announcement -%}
+<div class="lm-announce" role="status">
+  <span>{{ section.settings.announcement_text | escape }}</span>
+</div>
+{%- endif -%}
+
+<header class="lm-header full-width" id="lm-header" role="banner">
   <lamour-header></lamour-header>
 
-  <div class="lm-header__inner lm-container">
-    {%- comment -%} Logo / Wordmark {%- endcomment -%}
-    <a href="{{ routes.root_url }}" class="lm-header__logo" aria-label="{{ shop.name }}">
-      {%- if section.settings.logo != blank -%}
-        {%- render 'image',
-          image: section.settings.logo,
-          width: section.settings.logo_width | default: 120,
-          class: 'lm-header__logo-img'
-        -%}
-      {%- else -%}
-        <span class="lm-header__wordmark font-display">L&rsquo;Amour</span>
-      {%- endif -%}
-    </a>
+  <div class="lm-header__wrap">
+    <div class="lm-container">
+      <div class="lm-header__pill">
 
-    {%- comment -%} Desktop nav {%- endcomment -%}
-    <nav class="lm-header__nav" aria-label="Hauptnavigation">
-      <ul class="lm-header__nav-list" role="list">
-        {%- for link in linklists[section.settings.menu].links -%}
-          <li class="lm-header__nav-item">
-            <a
-              href="{{ link.url }}"
-              class="lm-header__nav-link{% if link.active %} is-active{% endif %}"
-              {% if link.active %}aria-current="page"{% endif %}
-            >{{ link.title }}</a>
-          </li>
-        {%- endfor -%}
-      </ul>
-    </nav>
+        <div class="lm-header__left">
+          <a href="{{ routes.root_url }}" class="lm-header__logo" aria-label="{{ shop.name | escape }}">
+            {%- if section.settings.logo != blank -%}
+              {%- render 'image',
+                image: section.settings.logo,
+                width: section.settings.logo_width,
+                class: 'lm-header__logo-img'
+              -%}
+            {%- else -%}
+              <span class="lm-header__wordmark font-display"><span class="lm-wordmark-accent">L&rsquo;A</span>MOUR</span>
+            {%- endif -%}
+          </a>
 
-    {%- comment -%} Right icons {%- endcomment -%}
-    <div class="lm-header__icons">
-      <a href="{{ routes.search_url }}" class="lm-header__icon-btn" aria-label="Suche">
-        {%- render 'icon', name: 'search' -%}
-      </a>
+          <nav class="lm-header__nav" aria-label="Hauptnavigation">
+            <ul class="lm-header__cats" role="list">
+              <li class="lm-mega-item">
+                <button class="lm-nav-btn" type="button" aria-expanded="false" aria-controls="lm-mega-parfum">PARFUM {%- render 'icon', name: 'chevron-down' -%}</button>
+              </li>
+              <li class="lm-mega-item">
+                <button class="lm-nav-btn" type="button" aria-expanded="false" aria-controls="lm-mega-gesicht">GESICHT {%- render 'icon', name: 'chevron-down' -%}</button>
+              </li>
+              <li class="lm-mega-item">
+                <button class="lm-nav-btn" type="button" aria-expanded="false" aria-controls="lm-mega-haare">HAARE {%- render 'icon', name: 'chevron-down' -%}</button>
+              </li>
+              <li class="lm-mega-item">
+                <button class="lm-nav-btn" type="button" aria-expanded="false" aria-controls="lm-mega-koerper">K&Ouml;RPER {%- render 'icon', name: 'chevron-down' -%}</button>
+              </li>
+              <li class="lm-mega-item">
+                <button class="lm-nav-btn" type="button" aria-expanded="false" aria-controls="lm-mega-makeup">MAKE-UP {%- render 'icon', name: 'chevron-down' -%}</button>
+              </li>
+              <li class="lm-mega-item">
+                <button class="lm-nav-btn" type="button" aria-expanded="false" aria-controls="lm-mega-gesundheit">GESUNDHEIT {%- render 'icon', name: 'chevron-down' -%}</button>
+              </li>
+              <li class="lm-mega-item">
+                <button class="lm-nav-btn" type="button" aria-expanded="false" aria-controls="lm-mega-baby">BABY &amp; KINDER {%- render 'icon', name: 'chevron-down' -%}</button>
+              </li>
+              <li class="lm-mega-item">
+                <button class="lm-nav-btn" type="button" aria-expanded="false" aria-controls="lm-mega-tools">TOOLS {%- render 'icon', name: 'chevron-down' -%}</button>
+              </li>
+            </ul>
+          </nav>
+        </div>
 
-      {%- if shop.customer_accounts_enabled -%}
-        <a href="{{ routes.account_url }}" class="lm-header__icon-btn" aria-label="Kundenkonto">
-          {{ 'icon-account.svg' | inline_asset_content }}
-        </a>
-      {%- endif -%}
+        <div class="lm-header__right">
+          <a href="{{ routes.search_url }}" class="lm-header__icon-btn" aria-label="Suche">{%- render 'icon', name: 'search' -%}</a>
+          {%- if shop.customer_accounts_enabled -%}
+            <a href="{{ routes.account_url }}" class="lm-header__icon-btn" aria-label="Konto">{%- render 'icon', name: 'user' -%}</a>
+          {%- endif -%}
+          {%- render 'theme-toggle' -%}
+          <a href="{{ routes.cart_url }}" class="lm-header__icon-btn lm-header__cart" aria-label="Warenkorb ({{ cart.item_count }} Artikel)">
+            {%- render 'icon', name: 'bag' -%}
+            {%- if cart.item_count > 0 -%}
+              <span class="lm-header__cart-count" aria-hidden="true">{{ cart.item_count }}</span>
+            {%- endif -%}
+          </a>
+          <lamour-mobile-menu class="lm-header__mob-toggle">
+            <button class="lm-header__icon-btn" type="button" data-menu-toggle aria-label="Men&uuml; &ouml;ffnen" aria-expanded="false" aria-controls="lm-nav-overlay">
+              {%- render 'icon', name: 'menu' -%}
+            </button>
+          </lamour-mobile-menu>
+        </div>
 
-      {%- render 'theme-toggle' -%}
-
-      <a href="{{ routes.cart_url }}" class="lm-header__icon-btn lm-header__cart" aria-label="Warenkorb ({{ cart.item_count }} Artikel)">
-        {{ 'icon-cart.svg' | inline_asset_content }}
-        {%- if cart.item_count > 0 -%}
-          <span class="lm-header__cart-count" aria-hidden="true">{{ cart.item_count }}</span>
-        {%- endif -%}
-      </a>
-
-      {%- comment -%} Mobile hamburger {%- endcomment -%}
-      <lamour-mobile-menu class="lm-header__mobile-menu">
-        <button
-          class="lm-header__icon-btn lm-header__hamburger"
-          data-menu-toggle
-          aria-label="Menü öffnen"
-          aria-expanded="false"
-          aria-controls="lm-nav-overlay"
-        >
-          {%- render 'icon', name: 'menu' -%}
-        </button>
-      </lamour-mobile-menu>
+      </div>
     </div>
+  </div>
+
+  <div class="lm-mega-panels" id="lm-mega-panels">
+
+    <div class="lm-mega-panel" id="lm-mega-parfum" role="region" aria-label="Parfum Kategorien" hidden>
+      <div class="lm-container">
+        <div class="lm-mega-glass">
+          <div class="lm-mega-grid">
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/herren" class="lm-mega-head">Herren</a>
+            </div>
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/damen" class="lm-mega-head">Damen</a>
+            </div>
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/unisex" class="lm-mega-head">Unisex</a>
+            </div>
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/geschenksets" class="lm-mega-head">Geschenksets</a>
+            </div>
+          </div>
+          <div class="lm-mega-foot">
+            <span class="lm-mega-label">&sect; PARFUM &middot; ALLE KATEGORIEN</span>
+            <a href="{{ routes.collections_url }}/parfum" class="lm-mega-all">Alles entdecken {%- render 'icon', name: 'arrow-right' -%}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lm-mega-panel" id="lm-mega-gesicht" role="region" aria-label="Gesicht Kategorien" hidden>
+      <div class="lm-container">
+        <div class="lm-mega-glass">
+          <div class="lm-mega-grid">
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/gesichtspflege" class="lm-mega-head">Gesichtspflege</a>
+              <ul class="lm-mega-list">
+                <li><a href="{{ routes.collections_url }}/gesichtscreme">Gesichtscreme</a></li>
+                <li><a href="{{ routes.collections_url }}/gesichtsserum">Gesichtsserum</a></li>
+                <li><a href="{{ routes.collections_url }}/{{ 'Gesichtsöl' | handleize }}">Gesichts&ouml;l</a></li>
+              </ul>
+            </div>
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/gesichtsreinigung" class="lm-mega-head">Gesichtsreinigung</a>
+              <ul class="lm-mega-list">
+                <li><a href="{{ routes.collections_url }}/reinigungsschaum">Reinigungsschaum</a></li>
+                <li><a href="{{ routes.collections_url }}/reinigungsgel">Reinigungsgel</a></li>
+                <li><a href="{{ routes.collections_url }}/{{ 'Reinigungsöl' | handleize }}">Reinigungsgel</a></li>
+                <li><a href="{{ routes.collections_url }}/reinigungscreme">Reinigungscreme</a></li>
+                <li><a href="{{ routes.collections_url }}/reinigungsmilch">Reinigungsmilch</a></li>
+              </ul>
+            </div>
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/gesichtsmasken" class="lm-mega-head">Gesichtsmasken</a>
+              <ul class="lm-mega-list">
+                <li><a href="{{ routes.collections_url }}/feuchtigkeitsmasken">Feuchtigkeitsmasken</a></li>
+                <li><a href="{{ routes.collections_url }}/reinigungsmasken">Reinigungsmasken</a></li>
+                <li><a href="{{ routes.collections_url }}/{{ 'Anti-Aging Masken' | handleize }}">Anti-Aging Masken</a></li>
+                <li><a href="{{ routes.collections_url }}/{{ 'Aktivkohle Masken' | handleize }}">Aktivkohle Masken</a></li>
+                <li><a href="{{ routes.collections_url }}/tuchmasken">Tuchmasken</a></li>
+              </ul>
+            </div>
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/augenpflege" class="lm-mega-head">Augenpflege</a>
+              <ul class="lm-mega-list">
+                <li><a href="{{ routes.collections_url }}/augencreme">Augencreme</a></li>
+                <li><a href="{{ routes.collections_url }}/augenserum">Augenserum</a></li>
+                <li><a href="{{ routes.collections_url }}/augengel">Augengel</a></li>
+                <li><a href="{{ routes.collections_url }}/{{ 'Augenmasken & Pads' | handleize }}">Augenmasken &amp; Pads</a></li>
+                <li><a href="{{ routes.collections_url }}/wimpernserum">Wimpernserum</a></li>
+              </ul>
+            </div>
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/lippenpflege" class="lm-mega-head">Lippenpflege</a>
+              <ul class="lm-mega-list">
+                <li><a href="{{ routes.collections_url }}/lippenbalsam">Lippenbalsam</a></li>
+                <li><a href="{{ routes.collections_url }}/lippenpeeling">Lippenpeeling</a></li>
+                <li><a href="{{ routes.collections_url }}/lippenserum">Lippenserum</a></li>
+                <li><a href="{{ routes.collections_url }}/lippenmasken">Lippenmasken</a></li>
+                <li><a href="{{ routes.collections_url }}/{{ 'Lippenöl' | handleize }}">Lippen&ouml;l</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="lm-mega-foot">
+            <span class="lm-mega-label">&sect; GESICHT &middot; ALLE KATEGORIEN</span>
+            <a href="{{ routes.collections_url }}/gesicht" class="lm-mega-all">Alles entdecken {%- render 'icon', name: 'arrow-right' -%}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lm-mega-panel" id="lm-mega-haare" role="region" aria-label="Haare Kategorien" hidden>
+      <div class="lm-container">
+        <div class="lm-mega-glass">
+          <div class="lm-mega-grid">
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/haarpflege" class="lm-mega-head">Haarpflege</a>
+              <ul class="lm-mega-list">
+                <li><a href="{{ routes.collections_url }}/shampoo">Shampoo</a></li>
+                <li><a href="{{ routes.collections_url }}/conditioner">Conditioner</a></li>
+                <li><a href="{{ routes.collections_url }}/{{ 'Leave-In Conditioner' | handleize }}">Leave-In Conditioner</a></li>
+                <li><a href="{{ routes.collections_url }}/{{ 'Haarkur & Haarmaske' | handleize }}">Haarkur &amp; Haarmaske</a></li>
+                <li><a href="{{ routes.collections_url }}/{{ 'Haaröl' | handleize }}">Haar&ouml;l</a></li>
+                <li><a href="{{ routes.collections_url }}/haarserum">Haarserum</a></li>
+                <li><a href="{{ routes.collections_url }}/kopfhautpflege">Kopfhautpflege</a></li>
+              </ul>
+            </div>
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/haarstyling" class="lm-mega-head">Haarstyling</a>
+              <ul class="lm-mega-list">
+                <li><a href="{{ routes.collections_url }}/schaumfestiger">Schaumfestiger</a></li>
+                <li><a href="{{ routes.collections_url }}/haargel">Haargel</a></li>
+                <li><a href="{{ routes.collections_url }}/haarwachs">Haarwachs</a></li>
+                <li><a href="{{ routes.collections_url }}/stylingsprays">Stylingsprays</a></li>
+                <li><a href="{{ routes.collections_url }}/hitzeschutz">Hitzeschutz</a></li>
+                <li><a href="{{ routes.collections_url }}/trockenshampoo">Trockenshampoo</a></li>
+              </ul>
+            </div>
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/haarfarbe" class="lm-mega-head">Haarfarbe</a>
+              <ul class="lm-mega-list">
+                <li><a href="{{ routes.collections_url }}/coloration">Coloration</a></li>
+                <li><a href="{{ routes.collections_url }}/{{ 'Aufhellung & Blondierung' | handleize }}">Aufhellung &amp; Blondierung</a></li>
+                <li><a href="{{ routes.collections_url }}/{{ 'Professionelle Haarfarbe' | handleize }}">Professionelle Haarfarbe</a></li>
+                <li><a href="{{ routes.collections_url }}/{{ 'Haartönung' | handleize }}">Haartonung</a></li>
+              </ul>
+            </div>
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/{{ 'Bürsten & Kämme' | handleize }}" class="lm-mega-head">B&uuml;rsten &amp; K&auml;mme</a>
+              <ul class="lm-mega-list">
+                <li><a href="{{ routes.collections_url }}/{{ 'Kämme' | handleize }}">K&auml;mme</a></li>
+                <li><a href="{{ routes.collections_url }}/{{ 'Holzbürsten' | handleize }}">Holzb&uuml;rsten</a></li>
+                <li><a href="{{ routes.collections_url }}/{{ 'Flach- & Paddelbürsten' | handleize }}">Flach- &amp; Paddelb&uuml;rsten</a></li>
+                <li><a href="{{ routes.collections_url }}/detangler">Detangler</a></li>
+                <li><a href="{{ routes.collections_url }}/{{ 'Rundbürsten' | handleize }}">Rundb&uuml;rsten</a></li>
+              </ul>
+            </div>
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/styling-tools" class="lm-mega-head">Styling-Tools</a>
+              <ul class="lm-mega-list">
+                <li><a href="{{ routes.collections_url }}/lockenwickler">Lockenwickler</a></li>
+                <li><a href="{{ routes.collections_url }}/{{ 'Warmluftbürsten' | handleize }}">Warmluftb&uuml;rsten</a></li>
+                <li><a href="{{ routes.collections_url }}/{{ 'Lockenstäbe' | handleize }}">Lockenstäbe</a></li>
+                <li><a href="{{ routes.collections_url }}/{{ 'Glätteisen' | handleize }}">Gl&auml;tteisen</a></li>
+                <li><a href="{{ routes.collections_url }}/{{ 'Haarschneider & Haarscheren' | handleize }}">Haarschneider &amp; Haarscheren</a></li>
+              </ul>
+            </div>
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/haar-accessoires" class="lm-mega-head">Haar-Accessoires</a>
+              <ul class="lm-mega-list">
+                <li><a href="{{ routes.collections_url }}/haarschmuck">Haarschmuck</a></li>
+                <li><a href="{{ routes.collections_url }}/haargummis">Haargummis</a></li>
+                <li><a href="{{ routes.collections_url }}/{{ 'Haarspangen & Haarclips' | handleize }}">Haarspangen &amp; Haarclips</a></li>
+                <li><a href="{{ routes.collections_url }}/{{ 'Haarreifen & Haarbänder' | handleize }}">Haarreifen &amp; Haarb&auml;nder</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="lm-mega-foot">
+            <span class="lm-mega-label">&sect; HAARE &middot; ALLE KATEGORIEN</span>
+            <a href="{{ routes.collections_url }}/haare" class="lm-mega-all">Alles entdecken {%- render 'icon', name: 'arrow-right' -%}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lm-mega-panel" id="lm-mega-koerper" role="region" aria-label="Körper Kategorien" hidden>
+      <div class="lm-container">
+        <div class="lm-mega-glass">
+          <div class="lm-mega-grid">
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/{{ 'Körperpflege' | handleize }}" class="lm-mega-head">K&ouml;rperpflege</a>
+              <ul class="lm-mega-list">
+                <li><a href="{{ routes.collections_url }}/bodylotion">Bodylotion</a></li>
+                <li><a href="{{ routes.collections_url }}/{{ 'Körperöl' | handleize }}">K&ouml;rper&ouml;l</a></li>
+                <li><a href="{{ routes.collections_url }}/{{ 'Körperbutter' | handleize }}">K&ouml;rperbutter</a></li>
+                <li><a href="{{ routes.collections_url }}/deodorants">Deodorants</a></li>
+                <li><a href="{{ routes.collections_url }}/bodyspray">Bodyspray</a></li>
+              </ul>
+            </div>
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/{{ 'Körperreinigung' | handleize }}" class="lm-mega-head">K&ouml;perreinigung</a>
+              <ul class="lm-mega-list">
+                <li><a href="{{ routes.collections_url }}/duschgel">Duschgel</a></li>
+                <li><a href="{{ routes.collections_url }}/duschschaum">Duschschaum</a></li>
+                <li><a href="{{ routes.collections_url }}/{{ 'Duschöl' | handleize }}">Dusch&ouml;l</a></li>
+                <li><a href="{{ routes.collections_url }}/badeschaum">Badeschaum</a></li>
+                <li><a href="{{ routes.collections_url }}/{{ 'Körperseife' | handleize }}">K&ouml;rperseife</a></li>
+              </ul>
+            </div>
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/{{ 'Sonne & Schutz' | handleize }}" class="lm-mega-head">Sonne &amp; Schutz</a>
+              <ul class="lm-mega-list">
+                <li><a href="{{ routes.collections_url }}/sonnenschutz">Sonnenschutz</a></li>
+                <li><a href="{{ routes.collections_url }}/after-sun">After Sun</a></li>
+                <li><a href="{{ routes.collections_url }}/{{ 'Selbstbräuner' | handleize }}">Selbstbr&auml;uner</a></li>
+              </ul>
+            </div>
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/handpflege" class="lm-mega-head">Handpflege</a>
+              <ul class="lm-mega-list">
+                <li><a href="{{ routes.collections_url }}/handcreme">Handcreme</a></li>
+                <li><a href="{{ routes.collections_url }}/handpeeling">Handpeeling</a></li>
+                <li><a href="{{ routes.collections_url }}/handmaske">Handmaske</a></li>
+                <li><a href="{{ routes.collections_url }}/handdesinfektion">Handdesinfektion</a></li>
+                <li><a href="{{ routes.collections_url }}/handseife">Handseife</a></li>
+              </ul>
+            </div>
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/{{ 'Fußpflege' | handleize }}" class="lm-mega-head">Fu&szlig;pflege</a>
+              <ul class="lm-mega-list">
+                <li><a href="{{ routes.collections_url }}/{{ 'Fußcreme' | handleize }}">Fu&szlig;creme</a></li>
+                <li><a href="{{ routes.collections_url }}/{{ 'Fußbad' | handleize }}">Fu&szlig;bad</a></li>
+                <li><a href="{{ routes.collections_url }}/{{ 'Fußpeeling' | handleize }}">Fu&szlig;peeling</a></li>
+                <li><a href="{{ routes.collections_url }}/{{ 'Fußspray' | handleize }}">Fu&szlig;spray</a></li>
+                <li><a href="{{ routes.collections_url }}/{{ 'Fußmaske' | handleize }}">Fu&szlig;maske</a></li>
+              </ul>
+            </div>
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/{{ 'Körperpflege-Sets' | handleize }}" class="lm-mega-head">K&ouml;rperpflege-Sets</a>
+              <ul class="lm-mega-list">
+                <li><a href="{{ routes.collections_url }}/{{ 'Körperpflegesets' | handleize }}">K&ouml;rperpflegesets</a></li>
+                <li><a href="{{ routes.collections_url }}/{{ 'Hand- & Nagelpflegesets' | handleize }}">Hand- &amp; Nagelpflegesets</a></li>
+                <li><a href="{{ routes.collections_url }}/{{ 'Fußpflegeset' | handleize }}">Fu&szlig;pflegeset</a></li>
+                <li><a href="{{ routes.collections_url }}/sonnenschutzsets">Sonnenschutzsets</a></li>
+                <li><a href="{{ routes.collections_url }}/{{ 'Körperpflege-Geschenkset' | handleize }}">K&ouml;rperpflege-Geschenkset</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="lm-mega-foot">
+            <span class="lm-mega-label">&sect; K&Ouml;RPER &middot; ALLE KATEGORIEN</span>
+            <a href="{{ routes.collections_url }}/{{ 'KÖRPER' | handleize }}" class="lm-mega-all">Alles entdecken {%- render 'icon', name: 'arrow-right' -%}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lm-mega-panel" id="lm-mega-makeup" role="region" aria-label="Make-up Kategorien" hidden>
+      <div class="lm-container">
+        <div class="lm-mega-glass">
+          <div class="lm-mega-grid">
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/teint" class="lm-mega-head">Teint</a>
+              <ul class="lm-mega-list">
+                <li><a href="{{ routes.collections_url }}/foundation">Foundation</a></li>
+                <li><a href="{{ routes.collections_url }}/concealer">Concealer</a></li>
+                <li><a href="{{ routes.collections_url }}/puder">Puder</a></li>
+                <li><a href="{{ routes.collections_url }}/blush">Blush</a></li>
+                <li><a href="{{ routes.collections_url }}/highlighter">Highlighter</a></li>
+              </ul>
+            </div>
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/augen" class="lm-mega-head">Augen</a>
+              <ul class="lm-mega-list">
+                <li><a href="{{ routes.collections_url }}/lidschatten">Lidschatten</a></li>
+                <li><a href="{{ routes.collections_url }}/mascara">Mascara</a></li>
+                <li><a href="{{ routes.collections_url }}/eyeliner">Eyeliner</a></li>
+                <li><a href="{{ routes.collections_url }}/kajal">Kajal</a></li>
+                <li><a href="{{ routes.collections_url }}/{{ 'Lidschattenpaletten & Sets' | handleize }}">Lidschattenpaletten &amp; Sets</a></li>
+              </ul>
+            </div>
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/augenbrauen" class="lm-mega-head">Augenbrauen</a>
+              <ul class="lm-mega-list">
+                <li><a href="{{ routes.collections_url }}/augenbrauenstift">Augenbrauenstift</a></li>
+                <li><a href="{{ routes.collections_url }}/augenbrauenpuder">Augenbrauenpuder</a></li>
+                <li><a href="{{ routes.collections_url }}/augenbrauengel">Augenbrauengel</a></li>
+                <li><a href="{{ routes.collections_url }}/augenbrauenfarbe">Augenbrauenfarbe</a></li>
+              </ul>
+            </div>
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/lippen" class="lm-mega-head">Lippen</a>
+              <ul class="lm-mega-list">
+                <li><a href="{{ routes.collections_url }}/lippenstift">Lippenstift</a></li>
+                <li><a href="{{ routes.collections_url }}/lipgloss">Lipgloss</a></li>
+                <li><a href="{{ routes.collections_url }}/lippenbalsam">Lippenbalsam</a></li>
+                <li><a href="{{ routes.collections_url }}/lip-plumper">Lip Plumper</a></li>
+                <li><a href="{{ routes.collections_url }}/lipliner">Lipliner</a></li>
+              </ul>
+            </div>
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/{{ 'Nägel' | handleize }}" class="lm-mega-head">N&auml;gel</a>
+              <ul class="lm-mega-list">
+                <li><a href="{{ routes.collections_url }}/nagellack">Nagellack</a></li>
+                <li><a href="{{ routes.collections_url }}/nagelpflege">Nagelpflege</a></li>
+                <li><a href="{{ routes.collections_url }}/{{ 'Kunstnägel & Nageldesign' | handleize }}">Kunstn&auml;gel &amp; Nageldesign</a></li>
+                <li><a href="{{ routes.collections_url }}/nagellackentferner">Nagellackentferner</a></li>
+              </ul>
+            </div>
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/{{ 'Make-up-Zubehör' | handleize }}" class="lm-mega-head">Make-up-Zubeh&ouml;r</a>
+              <ul class="lm-mega-list">
+                <li><a href="{{ routes.collections_url }}/wimpernzange">Wimpernzange</a></li>
+                <li><a href="{{ routes.collections_url }}/pinzetten">Pinzetten</a></li>
+                <li><a href="{{ routes.collections_url }}/{{ 'Wimpernbürste' | handleize }}">Wimpernb&uuml;rste</a></li>
+                <li><a href="{{ routes.collections_url }}/anspitzer">Anspitzer</a></li>
+                <li><a href="{{ routes.collections_url }}/kosmetikspiegel">Kosmetikspiegel</a></li>
+              </ul>
+            </div>
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/make-up-sets" class="lm-mega-head">Make-up Sets</a>
+              <ul class="lm-mega-list">
+                <li><a href="{{ routes.collections_url }}/make-up-sets">Make-up Sets</a></li>
+                <li><a href="{{ routes.collections_url }}/{{ 'Paletten & Sets' | handleize }}">Paletten &amp; Sets</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="lm-mega-foot">
+            <span class="lm-mega-label">&sect; MAKE-UP &middot; ALLE KATEGORIEN</span>
+            <a href="{{ routes.collections_url }}/make-up" class="lm-mega-all">Alles entdecken {%- render 'icon', name: 'arrow-right' -%}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lm-mega-panel" id="lm-mega-gesundheit" role="region" aria-label="Gesundheit Kategorien" hidden>
+      <div class="lm-container">
+        <div class="lm-mega-glass">
+          <div class="lm-mega-grid">
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/vitamine" class="lm-mega-head">Vitamine</a>
+            </div>
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/{{ 'Nahrungsergänzung' | handleize }}" class="lm-mega-head">Nahrungserg&auml;nzung</a>
+            </div>
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/immunsystem" class="lm-mega-head">Immunsystem</a>
+            </div>
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/{{ 'Schlaf & Entspannung' | handleize }}" class="lm-mega-head">Schlaf &amp; Entspannung</a>
+            </div>
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/{{ 'Gelenke & Muskeln' | handleize }}" class="lm-mega-head">Gelenke &amp; Muskeln</a>
+            </div>
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/{{ 'Frauen Gesundheit' | handleize }}" class="lm-mega-head">Frauen Gesundheit</a>
+            </div>
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/{{ 'Männer Gesundheit' | handleize }}" class="lm-mega-head">M&auml;nner Gesundheit</a>
+            </div>
+          </div>
+          <div class="lm-mega-foot">
+            <span class="lm-mega-label">&sect; GESUNDHEIT &middot; ALLE KATEGORIEN</span>
+            <a href="{{ routes.collections_url }}/gesundheit" class="lm-mega-all">Alles entdecken {%- render 'icon', name: 'arrow-right' -%}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lm-mega-panel" id="lm-mega-baby" role="region" aria-label="Baby und Kinder Kategorien" hidden>
+      <div class="lm-container">
+        <div class="lm-mega-glass">
+          <div class="lm-mega-grid">
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/babypflege" class="lm-mega-head">Babypflege</a>
+            </div>
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/babybad" class="lm-mega-head">Babybad</a>
+            </div>
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/babylotion" class="lm-mega-head">Babylotion</a>
+            </div>
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/babyshampoo" class="lm-mega-head">Babyshampoo</a>
+            </div>
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/wundschutz" class="lm-mega-head">Wundschutz</a>
+            </div>
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/kinderzahnpflege" class="lm-mega-head">Kinderzahnpflege</a>
+            </div>
+          </div>
+          <div class="lm-mega-foot">
+            <span class="lm-mega-label">&sect; BABY &amp; KINDER &middot; ALLE KATEGORIEN</span>
+            <a href="{{ routes.collections_url }}/{{ 'BABY & KINDER' | handleize }}" class="lm-mega-all">Alles entdecken {%- render 'icon', name: 'arrow-right' -%}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lm-mega-panel" id="lm-mega-tools" role="region" aria-label="Tools Kategorien" hidden>
+      <div class="lm-container">
+        <div class="lm-mega-glass">
+          <div class="lm-mega-grid">
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/make-up-pinsel" class="lm-mega-head">Make-up-Pinsel</a>
+            </div>
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/beauty-blender" class="lm-mega-head">Beauty-Blender</a>
+            </div>
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/{{ 'Haarbürsten' | handleize }}" class="lm-mega-head">Haarb&uuml;rsten</a>
+            </div>
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/{{ 'Elektrische Beautygeräte' | handleize }}" class="lm-mega-head">Elektrische Beautger&auml;te</a>
+            </div>
+            <div class="lm-mega-col">
+              <a href="{{ routes.collections_url }}/kosmetiktaschen" class="lm-mega-head">Kosmetiktaschen</a>
+            </div>
+          </div>
+          <div class="lm-mega-foot">
+            <span class="lm-mega-label">&sect; TOOLS &middot; ALLE KATEGORIEN</span>
+            <a href="{{ routes.collections_url }}/tools" class="lm-mega-all">Alles entdecken {%- render 'icon', name: 'arrow-right' -%}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </header>
 
-{%- comment -%} Mobile nav overlay {%- endcomment -%}
-<div class="lm-nav-overlay" id="lm-nav-overlay" aria-hidden="true" role="dialog" aria-label="Navigation">
+<div class="lm-nav-overlay" id="lm-nav-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Navigation">
   <div class="lm-nav-overlay__inner">
-    <button class="lm-nav-overlay__close" data-menu-close aria-label="Menü schließen">
-      {%- render 'icon', name: 'close' -%}
-    </button>
-
-    <a href="{{ routes.root_url }}" class="lm-nav-overlay__logo font-display">L&rsquo;Amour</a>
-
+    <div class="lm-nav-overlay__top">
+      <a href="{{ routes.root_url }}" class="lm-nav-overlay__logo font-display">L&rsquo;Amour</a>
+      <button class="lm-header__icon-btn" type="button" data-menu-close aria-label="Men&uuml; schlie&szlig;en">
+        {%- render 'icon', name: 'close' -%}
+      </button>
+    </div>
     <nav aria-label="Mobile Navigation">
-      <ul class="lm-nav-overlay__list" role="list">
-        {%- for link in linklists[section.settings.menu].links -%}
-          <li>
-            <a
-              href="{{ link.url }}"
-              class="lm-nav-overlay__link{% if link.active %} is-active{% endif %}"
-            >{{ link.title }}</a>
-          </li>
-        {%- endfor -%}
+      <ul class="lm-mob-nav" role="list">
+
+        <li class="lm-mob-item">
+          <button class="lm-mob-cat" type="button" aria-expanded="false" aria-controls="lm-mob-parfum">
+            PARFUM <span class="lm-mob-chevron" aria-hidden="true">{%- render 'icon', name: 'chevron-down' -%}</span>
+          </button>
+          <div class="lm-mob-panel" id="lm-mob-parfum" hidden>
+            <ul class="lm-mob-links">
+              <li><a href="{{ routes.collections_url }}/herren">Herren</a></li>
+              <li><a href="{{ routes.collections_url }}/damen">Damen</a></li>
+              <li><a href="{{ routes.collections_url }}/unisex">Unisex</a></li>
+              <li><a href="{{ routes.collections_url }}/geschenksets">Geschenksets</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="lm-mob-item">
+          <button class="lm-mob-cat" type="button" aria-expanded="false" aria-controls="lm-mob-gesicht">
+            GESICHT <span class="lm-mob-chevron" aria-hidden="true">{%- render 'icon', name: 'chevron-down' -%}</span>
+          </button>
+          <div class="lm-mob-panel" id="lm-mob-gesicht" hidden>
+            <ul class="lm-mob-links">
+              <li><a href="{{ routes.collections_url }}/gesichtspflege">Gesichtspflege</a></li>
+              <li><a href="{{ routes.collections_url }}/gesichtsreinigung">Gesichtsreinigung</a></li>
+              <li><a href="{{ routes.collections_url }}/gesichtsmasken">Gesichtsmasken</a></li>
+              <li><a href="{{ routes.collections_url }}/augenpflege">Augenpflege</a></li>
+              <li><a href="{{ routes.collections_url }}/lippenpflege">Lippenpflege</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="lm-mob-item">
+          <button class="lm-mob-cat" type="button" aria-expanded="false" aria-controls="lm-mob-haare">
+            HAARE <span class="lm-mob-chevron" aria-hidden="true">{%- render 'icon', name: 'chevron-down' -%}</span>
+          </button>
+          <div class="lm-mob-panel" id="lm-mob-haare" hidden>
+            <ul class="lm-mob-links">
+              <li><a href="{{ routes.collections_url }}/haarpflege">Haarpflege</a></li>
+              <li><a href="{{ routes.collections_url }}/haarstyling">Haarstyling</a></li>
+              <li><a href="{{ routes.collections_url }}/haarfarbe">Haarfarbe</a></li>
+              <li><a href="{{ routes.collections_url }}/{{ 'Bürsten & Kämme' | handleize }}">B&uuml;rsten &amp; K&auml;mme</a></li>
+              <li><a href="{{ routes.collections_url }}/styling-tools">Styling-Tools</a></li>
+              <li><a href="{{ routes.collections_url }}/haar-accessoires">Haar-Accessoires</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="lm-mob-item">
+          <button class="lm-mob-cat" type="button" aria-expanded="false" aria-controls="lm-mob-koerper">
+            K&Ouml;RPER <span class="lm-mob-chevron" aria-hidden="true">{%- render 'icon', name: 'chevron-down' -%}</span>
+          </button>
+          <div class="lm-mob-panel" id="lm-mob-koerper" hidden>
+            <ul class="lm-mob-links">
+              <li><a href="{{ routes.collections_url }}/{{ 'Körperpflege' | handleize }}">K&ouml;rperpflege</a></li>
+              <li><a href="{{ routes.collections_url }}/{{ 'Körperreinigung' | handleize }}">K&ouml;perreinigung</a></li>
+              <li><a href="{{ routes.collections_url }}/{{ 'Sonne & Schutz' | handleize }}">Sonne &amp; Schutz</a></li>
+              <li><a href="{{ routes.collections_url }}/handpflege">Handpflege</a></li>
+              <li><a href="{{ routes.collections_url }}/{{ 'Fußpflege' | handleize }}">Fu&szlig;pflege</a></li>
+              <li><a href="{{ routes.collections_url }}/{{ 'Körperpflege-Sets' | handleize }}">K&ouml;rperpflege-Sets</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="lm-mob-item">
+          <button class="lm-mob-cat" type="button" aria-expanded="false" aria-controls="lm-mob-makeup">
+            MAKE-UP <span class="lm-mob-chevron" aria-hidden="true">{%- render 'icon', name: 'chevron-down' -%}</span>
+          </button>
+          <div class="lm-mob-panel" id="lm-mob-makeup" hidden>
+            <ul class="lm-mob-links">
+              <li><a href="{{ routes.collections_url }}/teint">Teint</a></li>
+              <li><a href="{{ routes.collections_url }}/augen">Augen</a></li>
+              <li><a href="{{ routes.collections_url }}/augenbrauen">Augenbrauen</a></li>
+              <li><a href="{{ routes.collections_url }}/lippen">Lippen</a></li>
+              <li><a href="{{ routes.collections_url }}/{{ 'Nägel' | handleize }}">N&auml;gel</a></li>
+              <li><a href="{{ routes.collections_url }}/{{ 'Make-up-Zubehör' | handleize }}">Make-up-Zubeh&ouml;r</a></li>
+              <li><a href="{{ routes.collections_url }}/make-up-sets">Make-up Sets</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="lm-mob-item">
+          <button class="lm-mob-cat" type="button" aria-expanded="false" aria-controls="lm-mob-gesundheit">
+            GESUNDHEIT <span class="lm-mob-chevron" aria-hidden="true">{%- render 'icon', name: 'chevron-down' -%}</span>
+          </button>
+          <div class="lm-mob-panel" id="lm-mob-gesundheit" hidden>
+            <ul class="lm-mob-links">
+              <li><a href="{{ routes.collections_url }}/vitamine">Vitamine</a></li>
+              <li><a href="{{ routes.collections_url }}/{{ 'Nahrungsergänzung' | handleize }}">Nahrungserg&auml;nzung</a></li>
+              <li><a href="{{ routes.collections_url }}/immunsystem">Immunsystem</a></li>
+              <li><a href="{{ routes.collections_url }}/{{ 'Schlaf & Entspannung' | handleize }}">Schlaf &amp; Entspannung</a></li>
+              <li><a href="{{ routes.collections_url }}/{{ 'Gelenke & Muskeln' | handleize }}">Gelenke &amp; Muskeln</a></li>
+              <li><a href="{{ routes.collections_url }}/{{ 'Frauen Gesundheit' | handleize }}">Frauen Gesundheit</a></li>
+              <li><a href="{{ routes.collections_url }}/{{ 'Männer Gesundheit' | handleize }}">M&auml;nner Gesundheit</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="lm-mob-item">
+          <button class="lm-mob-cat" type="button" aria-expanded="false" aria-controls="lm-mob-baby">
+            BABY &amp; KINDER <span class="lm-mob-chevron" aria-hidden="true">{%- render 'icon', name: 'chevron-down' -%}</span>
+          </button>
+          <div class="lm-mob-panel" id="lm-mob-baby" hidden>
+            <ul class="lm-mob-links">
+              <li><a href="{{ routes.collections_url }}/babypflege">Babypflege</a></li>
+              <li><a href="{{ routes.collections_url }}/babybad">Babybad</a></li>
+              <li><a href="{{ routes.collections_url }}/babylotion">Babylotion</a></li>
+              <li><a href="{{ routes.collections_url }}/babyshampoo">Babyshampoo</a></li>
+              <li><a href="{{ routes.collections_url }}/wundschutz">Wundschutz</a></li>
+              <li><a href="{{ routes.collections_url }}/kinderzahnpflege">Kinderzahnpflege</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="lm-mob-item">
+          <button class="lm-mob-cat" type="button" aria-expanded="false" aria-controls="lm-mob-tools">
+            TOOLS <span class="lm-mob-chevron" aria-hidden="true">{%- render 'icon', name: 'chevron-down' -%}</span>
+          </button>
+          <div class="lm-mob-panel" id="lm-mob-tools" hidden>
+            <ul class="lm-mob-links">
+              <li><a href="{{ routes.collections_url }}/make-up-pinsel">Make-up-Pinsel</a></li>
+              <li><a href="{{ routes.collections_url }}/beauty-blender">Beauty-Blender</a></li>
+              <li><a href="{{ routes.collections_url }}/{{ 'Haarbürsten' | handleize }}">Haarb&uuml;rsten</a></li>
+              <li><a href="{{ routes.collections_url }}/{{ 'Elektrische Beautygeräte' | handleize }}">Elektrische Beautger&auml;te</a></li>
+              <li><a href="{{ routes.collections_url }}/kosmetiktaschen">Kosmetiktaschen</a></li>
+            </ul>
+          </div>
+        </li>
+
       </ul>
     </nav>
   </div>
 </div>
 
 {% stylesheet %}
+  .lm-announce {
+    background: var(--color-pink);
+    color: #000;
+    text-align: center;
+    padding: 7px 20px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   .lm-header {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 100;
-    height: 72px;
-    display: flex;
-    align-items: center;
-    transition: background var(--dur-base) ease, border-color var(--dur-base) ease,
-                backdrop-filter var(--dur-base) ease;
-    border-bottom: 1px solid transparent;
-  }
-  .lm-header.scrolled {
-    background: rgba(10,10,10,0.80);
-    backdrop-filter: blur(24px) saturate(160%);
-    -webkit-backdrop-filter: blur(24px) saturate(160%);
-    border-bottom-color: rgba(255,255,255,0.06);
-  }
-  [data-theme="light"] .lm-header.scrolled {
-    background: rgba(250,249,247,0.88);
-    border-bottom-color: rgba(0,0,0,0.08);
+    height: auto;
   }
 
-  .lm-header__inner {
+  .lm-header__wrap {
+    padding: 10px 0;
+  }
+
+  .lm-header__pill {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 2rem;
-    height: 100%;
+    gap: 1rem;
+    border-radius: 9999px;
+    padding: 10px 20px;
+    background: rgba(12,12,12,0.55);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: background 0.5s ease, border-color 0.5s ease, backdrop-filter 0.5s ease;
+  }
+  .lm-header.scrolled .lm-header__pill {
+    background: rgba(20,20,20,0.82);
+    backdrop-filter: blur(24px) saturate(160%);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    border-color: rgba(255,255,255,0.10);
+  }
+  [data-theme="light"] .lm-header__pill {
+    background: rgba(250,249,247,0.72);
+    border-color: rgba(0,0,0,0.08);
+  }
+  [data-theme="light"] .lm-header.scrolled .lm-header__pill {
+    background: rgba(250,249,247,0.94);
+    border-color: rgba(0,0,0,0.10);
+  }
+
+  .lm-header__left {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    min-width: 0;
   }
 
   .lm-header__logo {
@@ -129,103 +694,287 @@
     text-decoration: none;
   }
   .lm-header__wordmark {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
+    letter-spacing: -0.025em;
+    color: var(--color-text);
+  }
+  .lm-wordmark-accent {
     color: var(--color-pink);
-    letter-spacing: -0.02em;
   }
   .lm-header__logo-img {
-    max-height: 40px;
+    max-height: 36px;
     width: auto;
   }
 
   .lm-header__nav {
-    flex: 1;
     display: flex;
-    justify-content: center;
   }
-  .lm-header__nav-list {
+  .lm-header__cats {
     display: flex;
     align-items: center;
-    gap: 2.5rem;
+    gap: 2px;
     list-style: none;
     margin: 0;
     padding: 0;
   }
-  .lm-header__nav-link {
-    font-family: var(--font-body);
-    font-size: var(--text-micro);
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--color-text-70);
-    text-decoration: none;
-    transition: color var(--dur-fast) ease;
+
+  .lm-nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 7px 10px;
+    border-radius: 9999px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    color: rgba(255,255,255,0.72);
+    transition: background 0.2s ease, color 0.2s ease;
     white-space: nowrap;
   }
-  .lm-header__nav-link:hover,
-  .lm-header__nav-link.is-active {
-    color: var(--color-text);
+  .lm-nav-btn:hover,
+  .lm-mega-item.is-open .lm-nav-btn {
+    background: rgba(255,255,255,0.06);
+    color: #fff;
+  }
+  .lm-nav-btn svg {
+    width: 11px;
+    height: 11px;
+    color: var(--color-pink);
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+  }
+  .lm-mega-item.is-open .lm-nav-btn svg {
+    transform: rotate(180deg);
+  }
+  [data-theme="light"] .lm-nav-btn {
+    color: rgba(0,0,0,0.6);
+  }
+  [data-theme="light"] .lm-nav-btn:hover,
+  [data-theme="light"] .lm-mega-item.is-open .lm-nav-btn {
+    background: rgba(0,0,0,0.06);
+    color: rgba(0,0,0,0.9);
   }
 
-  .lm-header__icons {
+  .lm-header__right {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 2px;
     flex-shrink: 0;
   }
+
   .lm-header__icon-btn {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     width: 36px;
     height: 36px;
-    color: var(--color-text-70);
-    transition: color var(--dur-fast) ease;
+    border-radius: 9999px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: rgba(255,255,255,0.72);
     text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease;
     position: relative;
+    flex-shrink: 0;
   }
   .lm-header__icon-btn:hover {
-    color: var(--color-text);
+    background: rgba(255,255,255,0.06);
+    color: #fff;
   }
   .lm-header__icon-btn svg {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
   }
+  [data-theme="light"] .lm-header__icon-btn {
+    color: rgba(0,0,0,0.6);
+  }
+  [data-theme="light"] .lm-header__icon-btn:hover {
+    background: rgba(0,0,0,0.06);
+    color: rgba(0,0,0,0.9);
+  }
+
   .lm-header__cart-count {
     position: absolute;
     top: 2px;
     right: 2px;
-    min-width: 16px;
-    height: 16px;
+    min-width: 15px;
+    height: 15px;
     border-radius: 9999px;
     background: var(--color-pink);
     color: #000;
-    font-size: 10px;
-    font-weight: 600;
+    font-size: 9px;
+    font-weight: 700;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0 3px;
+    line-height: 1;
   }
 
-  .lm-header__hamburger {
+  .lm-header__mob-toggle {
     display: none;
   }
 
-  @media (max-width: 900px) {
-    .lm-header__nav { display: none; }
-    .lm-header__hamburger { display: flex; }
+  .lm-mega-panels {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding-top: 8px;
+    pointer-events: none;
+  }
+  .lm-mega-panel {
+    pointer-events: auto;
+  }
+  .lm-mega-panel[hidden] {
+    display: none;
   }
 
-  /* Mobile overlay */
+  .lm-mega-glass {
+    background: rgba(18,18,18,0.92);
+    backdrop-filter: blur(28px) saturate(160%);
+    -webkit-backdrop-filter: blur(28px) saturate(160%);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 20px;
+    padding: 28px 32px;
+    box-shadow: 0 24px 64px -12px rgba(0,0,0,0.7);
+    animation: megaIn 0.25s cubic-bezier(0.2,0.7,0.2,1) both;
+  }
+  [data-theme="light"] .lm-mega-glass {
+    background: rgba(255,255,255,0.97);
+    border-color: rgba(0,0,0,0.08);
+    box-shadow: 0 16px 48px -8px rgba(0,0,0,0.15);
+  }
+
+  @keyframes megaIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .lm-mega-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+  }
+
+  .lm-mega-col {
+    min-width: 0;
+  }
+
+  .lm-mega-head {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--color-pink);
+    border-bottom: 1px solid rgba(255,255,255,0.10);
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .lm-mega-head:hover {
+    opacity: 0.75;
+  }
+  [data-theme="light"] .lm-mega-head {
+    border-bottom-color: rgba(0,0,0,0.10);
+  }
+
+  .lm-mega-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .lm-mega-list a {
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.18s ease;
+    line-height: 1.3;
+  }
+  .lm-mega-list a:hover {
+    color: #fff;
+  }
+  [data-theme="light"] .lm-mega-list a {
+    color: rgba(0,0,0,0.58);
+  }
+  [data-theme="light"] .lm-mega-list a:hover {
+    color: rgba(0,0,0,0.9);
+  }
+
+  .lm-mega-foot {
+    margin-top: 24px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  [data-theme="light"] .lm-mega-foot {
+    border-top-color: rgba(0,0,0,0.08);
+  }
+
+  .lm-mega-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+  }
+  [data-theme="light"] .lm-mega-label {
+    color: rgba(0,0,0,0.35);
+  }
+
+  .lm-mega-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    flex-shrink: 0;
+  }
+  .lm-mega-all svg {
+    width: 14px;
+    height: 14px;
+  }
+  .lm-mega-all:hover {
+    color: #fff;
+  }
+  [data-theme="light"] .lm-mega-all {
+    color: rgba(0,0,0,0.6);
+  }
+  [data-theme="light"] .lm-mega-all:hover {
+    color: rgba(0,0,0,0.9);
+  }
+
   .lm-nav-overlay {
     position: fixed;
     inset: 0;
     z-index: 200;
     background: var(--color-bg);
     transform: translateX(100%);
-    transition: transform var(--dur-slow) var(--ease-out);
+    transition: transform var(--dur-slow, 0.45s) var(--ease-out, cubic-bezier(0.2,0.7,0.2,1));
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
   .lm-nav-overlay.open {
     transform: translateX(0);
@@ -233,61 +982,186 @@
   .lm-nav-overlay__inner {
     display: flex;
     flex-direction: column;
-    padding: 2rem clamp(1rem, 6vw, 3rem);
+    padding: 1.5rem clamp(1rem, 6vw, 3rem) 3rem;
     min-height: 100%;
-    gap: 3rem;
+    gap: 2rem;
   }
-  .lm-nav-overlay__close {
-    align-self: flex-end;
+  .lm-nav-overlay__top {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    color: var(--color-text);
+    justify-content: space-between;
+  }
+  .lm-nav-overlay__logo {
+    font-size: 1.75rem;
+    color: var(--color-pink);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+
+  .lm-mob-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .lm-mob-item {
+    border-bottom: 1px solid var(--color-border, rgba(255,255,255,0.08));
+  }
+  .lm-mob-cat {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 16px 0;
     background: none;
     border: none;
     cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    color: var(--color-text);
+    text-align: left;
+    transition: color 0.2s ease;
   }
-  .lm-nav-overlay__close svg {
-    width: 24px;
-    height: 24px;
-  }
-  .lm-nav-overlay__logo {
-    font-size: 2rem;
+  .lm-mob-cat:hover {
     color: var(--color-pink);
-    text-decoration: none;
   }
-  .lm-nav-overlay__list {
+  .lm-mob-chevron {
+    flex-shrink: 0;
+    color: var(--color-pink);
+    transition: transform 0.25s ease;
+    display: inline-flex;
+  }
+  .lm-mob-chevron svg {
+    width: 16px;
+    height: 16px;
+  }
+  .lm-mob-cat[aria-expanded="true"] .lm-mob-chevron {
+    transform: rotate(180deg);
+  }
+  .lm-mob-panel[hidden] {
+    display: none;
+  }
+  .lm-mob-panel {
+    padding-bottom: 12px;
+  }
+  .lm-mob-links {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    gap: 2px;
   }
-  .lm-nav-overlay__link {
+  .lm-mob-links a {
     display: block;
-    font-family: var(--font-display);
-    font-size: clamp(2rem, 6vw, 3rem);
-    font-weight: 700;
-    color: var(--color-text);
+    font-size: 0.9rem;
+    color: var(--color-text-70, rgba(255,255,255,0.7));
     text-decoration: none;
-    padding: 0.5rem 0;
-    transition: color var(--dur-fast) ease;
+    padding: 6px 0;
+    transition: color 0.18s ease;
   }
-  .lm-nav-overlay__link:hover,
-  .lm-nav-overlay__link.is-active {
+  .lm-mob-links a:hover {
     color: var(--color-pink);
   }
 
-  /* Push content below fixed header */
-  .shopify-section-group-header-group + main,
-  .shopify-section-group-header-group ~ main,
   body > main {
-    padding-top: 72px;
+    padding-top: var(--lm-header-h, 80px);
+  }
+
+  @media (max-width: 1060px) {
+    .lm-header__nav {
+      display: none;
+    }
+    .lm-header__mob-toggle {
+      display: inline-flex;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .lm-header__wrap {
+      padding: 8px 0;
+    }
+    .lm-header__pill {
+      padding: 8px 14px;
+    }
   }
 {% endstylesheet %}
+
+{% javascript %}
+  (function () {
+    function init() {
+      var header = document.getElementById('lm-header');
+      if (!header) return;
+
+      var items = header.querySelectorAll('.lm-mega-item');
+
+      function closeAll() {
+        items.forEach(function (item) {
+          item.classList.remove('is-open');
+          var btn = item.querySelector('.lm-nav-btn');
+          if (btn) btn.setAttribute('aria-expanded', 'false');
+        });
+        var panels = header.querySelectorAll('.lm-mega-panel');
+        panels.forEach(function (p) { p.setAttribute('hidden', ''); });
+      }
+
+      items.forEach(function (item) {
+        var btn = item.querySelector('.lm-nav-btn');
+        if (!btn) return;
+        var panelId = btn.getAttribute('aria-controls');
+        btn.addEventListener('mouseenter', function () {
+          closeAll();
+          item.classList.add('is-open');
+          btn.setAttribute('aria-expanded', 'true');
+          if (panelId) {
+            var p = document.getElementById(panelId);
+            if (p) p.removeAttribute('hidden');
+          }
+        });
+      });
+
+      header.addEventListener('mouseleave', closeAll);
+
+      document.addEventListener('click', function (e) {
+        if (!e.target.closest('#lm-header')) closeAll();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeAll();
+      });
+
+      function updateHeaderHeight() {
+        document.documentElement.style.setProperty('--lm-header-h', header.offsetHeight + 'px');
+      }
+      updateHeaderHeight();
+      window.addEventListener('resize', updateHeaderHeight);
+
+      var mobCats = document.querySelectorAll('.lm-mob-cat');
+      mobCats.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var expanded = btn.getAttribute('aria-expanded') === 'true';
+          mobCats.forEach(function (b) {
+            b.setAttribute('aria-expanded', 'false');
+            var p = document.getElementById(b.getAttribute('aria-controls'));
+            if (p) p.setAttribute('hidden', '');
+          });
+          if (!expanded) {
+            btn.setAttribute('aria-expanded', 'true');
+            var panel = document.getElementById(btn.getAttribute('aria-controls'));
+            if (panel) panel.removeAttribute('hidden');
+          }
+        });
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+{% endjavascript %}
 
 {% schema %}
 {
@@ -301,23 +1175,24 @@
     {
       "type": "range",
       "id": "logo_width",
-      "label": "Logo width (px)",
+      "label": "Logo width",
       "min": 60,
       "max": 300,
       "step": 10,
-      "default": 120
-    },
-    {
-      "type": "link_list",
-      "id": "menu",
-      "label": "Navigation menu",
-      "default": "main-menu"
+      "default": 120,
+      "unit": "px"
     },
     {
       "type": "checkbox",
-      "id": "show_announcement_bar",
+      "id": "show_announcement",
       "label": "Show announcement bar",
-      "default": false
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "announcement_text",
+      "label": "Announcement text",
+      "default": "Kostenloser Versand ab 0 € · Versandzeit 3–6 Werktage · Rückgabe innerhalb 30 Tagen"
     }
   ]
 }
