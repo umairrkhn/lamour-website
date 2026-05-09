@@ -1,12 +1,23 @@
-<footer class="lm-footer">
-  <div class="lm-footer__main">
+<footer class="lm-footer grain" role="contentinfo">
+
+  <div class="lm-footer__top">
     <div class="lm-container">
+
+      <div class="lm-footer__brand">
+        <a href="{{ routes.root_url }}" class="lm-footer__wordmark font-display" aria-label="{{ shop.name }}">
+          <span class="lm-footer__wordmark-accent">L&rsquo;A</span>MOUR
+        </a>
+        <p class="lm-footer__tagline font-sub">Premium Parfums &amp; Beauty</p>
+      </div>
+
+      <div class="hair lm-footer__rule"></div>
+
       <div class="lm-footer__grid">
 
         {%- if section.settings.menu_info != blank -%}
           {%- assign info_list = linklists[section.settings.menu_info] -%}
           <div class="lm-footer__col">
-            <p class="lm-footer__col-heading">{{ info_list.title | default: 'Informationen' }}</p>
+            <p class="lm-footer__col-label font-sub">{{ info_list.title | default: 'Informationen' }}</p>
             <ul class="lm-footer__links" role="list">
               {%- for link in info_list.links -%}
                 <li><a href="{{ link.url }}" class="lm-footer__link">{{ link.title }}</a></li>
@@ -18,7 +29,7 @@
         {%- if section.settings.menu_help != blank -%}
           {%- assign help_list = linklists[section.settings.menu_help] -%}
           <div class="lm-footer__col">
-            <p class="lm-footer__col-heading">{{ help_list.title | default: 'Weitere Fragen?' }}</p>
+            <p class="lm-footer__col-label font-sub">{{ help_list.title | default: 'Weitere Fragen?' }}</p>
             <ul class="lm-footer__links" role="list">
               {%- for link in help_list.links -%}
                 <li><a href="{{ link.url }}" class="lm-footer__link">{{ link.title }}</a></li>
@@ -27,23 +38,23 @@
           </div>
         {%- endif -%}
 
-        <div class="lm-footer__col">
-          <p class="lm-footer__col-heading">{{ section.settings.payment_heading | default: 'Zahlungsmethoden' }}</p>
-          {%- if section.settings.show_payment_icons -%}
+        {%- if section.settings.show_payment_icons -%}
+          <div class="lm-footer__col">
+            <p class="lm-footer__col-label font-sub">{{ section.settings.payment_heading | default: 'Zahlungsmethoden' }}</p>
             <div class="lm-footer__payments" role="list" aria-label="Akzeptierte Zahlungsmethoden">
               {%- for type in shop.enabled_payment_types -%}
-                <span class="lm-footer__payment-icon" role="listitem" title="{{ type | replace: '_', ' ' | capitalize }}">
+                <span class="lm-footer__payment-icon" role="listitem">
                   {{ type | payment_type_svg_tag: class: 'lm-footer__payment-svg' }}
                 </span>
               {%- endfor -%}
             </div>
-          {%- endif -%}
-        </div>
+          </div>
+        {%- endif -%}
 
         {%- if section.settings.menu_about != blank -%}
           {%- assign about_list = linklists[section.settings.menu_about] -%}
           <div class="lm-footer__col">
-            <p class="lm-footer__col-heading">{{ about_list.title | default: 'Über Lamour' }}</p>
+            <p class="lm-footer__col-label font-sub">{{ about_list.title | default: 'Über Lamour' }}</p>
             <ul class="lm-footer__links" role="list">
               {%- for link in about_list.links -%}
                 <li><a href="{{ link.url }}" class="lm-footer__link">{{ link.title }}</a></li>
@@ -53,6 +64,7 @@
         {%- endif -%}
 
       </div>
+
     </div>
   </div>
 
@@ -61,32 +73,71 @@
       <p class="lm-footer__copyright">
         &copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. Alle Rechte vorbehalten.
       </p>
-      {%- if section.settings.show_powered_by -%}
-        <span class="lm-footer__powered">{{ powered_by_link }}</span>
-      {%- endif -%}
+      <div class="lm-footer__bottom-links">
+        {%- if section.settings.menu_legal != blank -%}
+          {%- for link in linklists[section.settings.menu_legal].links -%}
+            <a href="{{ link.url }}" class="lm-footer__bottom-link">{{ link.title }}</a>
+          {%- endfor -%}
+        {%- endif -%}
+      </div>
     </div>
   </div>
+
 </footer>
 
 {% stylesheet %}
   .lm-footer {
-    background: var(--color-pink);
-    color: #fff;
+    position: relative;
+    background: #0e0e0e;
+    color: rgba(255, 255, 255, 0.75);
+    overflow: hidden;
   }
 
-  .lm-footer__main {
-    padding: clamp(3rem, 6vw, 5rem) 0 clamp(2rem, 4vw, 3.5rem);
+  .lm-footer__top {
+    padding: clamp(3.5rem, 7vw, 6rem) 0 clamp(3rem, 5vw, 4.5rem);
+  }
+
+  .lm-footer__brand {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+  }
+
+  .lm-footer__wordmark {
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: #fff;
+    letter-spacing: -0.04em;
+    text-decoration: none;
+    line-height: 1;
+  }
+
+  .lm-footer__wordmark-accent {
+    color: var(--color-pink);
+  }
+
+  .lm-footer__tagline {
+    font-size: var(--text-micro);
+    color: rgba(255, 255, 255, 0.35);
+    margin: 0;
+  }
+
+  .lm-footer__rule {
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+    background: linear-gradient(90deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04), transparent);
   }
 
   .lm-footer__grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: clamp(2rem, 4vw, 3.5rem);
+    gap: clamp(1.5rem, 3vw, 3rem);
+    align-items: start;
   }
 
   @media (max-width: 1023px) {
     .lm-footer__grid {
       grid-template-columns: repeat(2, 1fr);
+      gap: clamp(2rem, 4vw, 3rem);
     }
   }
 
@@ -94,21 +145,25 @@
     .lm-footer__grid {
       grid-template-columns: 1fr;
     }
+    .lm-footer__brand {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
   }
 
   .lm-footer__col {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.25rem;
   }
 
-  .lm-footer__col-heading {
-    font-family: var(--font-body);
-    font-weight: 600;
-    font-size: var(--text-small);
-    letter-spacing: 0.04em;
-    color: #fff;
-    margin: 0 0 0.25rem;
+  .lm-footer__col-label {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0;
+    text-transform: uppercase;
   }
 
   .lm-footer__links {
@@ -117,27 +172,25 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
+    gap: 0.7rem;
   }
 
   .lm-footer__link {
+    font-family: var(--font-body);
     font-size: var(--text-small);
-    color: rgba(255, 255, 255, 0.85);
-    text-decoration: underline;
-    text-decoration-color: rgba(255, 255, 255, 0.35);
-    text-underline-offset: 3px;
-    transition: color var(--dur-fast) ease, text-decoration-color var(--dur-fast) ease;
+    color: rgba(255, 255, 255, 0.65);
+    text-decoration: none;
+    transition: color var(--dur-fast) ease;
   }
 
   .lm-footer__link:hover {
-    color: #fff;
-    text-decoration-color: rgba(255, 255, 255, 0.8);
+    color: var(--color-pink);
   }
 
   .lm-footer__payments {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.4rem;
     align-items: center;
   }
 
@@ -145,21 +198,29 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: #fff;
-    border-radius: 4px;
-    padding: 3px 5px;
-    height: 28px;
-    min-width: 42px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    padding: 4px 6px;
+    height: 30px;
+    min-width: 44px;
+    transition: background var(--dur-fast) ease;
+  }
+
+  .lm-footer__payment-icon:hover {
+    background: rgba(255, 255, 255, 0.14);
   }
 
   .lm-footer__payment-svg {
     display: block;
-    height: 20px;
+    height: 18px;
     width: auto;
+    filter: brightness(0) invert(1);
+    opacity: 0.8;
   }
 
   .lm-footer__bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
     padding: 1.25rem 0;
   }
 
@@ -173,17 +234,25 @@
 
   .lm-footer__copyright {
     font-size: var(--text-micro);
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.3);
     margin: 0;
   }
 
-  .lm-footer__powered {
-    font-size: var(--text-micro);
-    color: rgba(255, 255, 255, 0.5);
+  .lm-footer__bottom-links {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
   }
 
-  .lm-footer__powered a {
-    color: inherit;
+  .lm-footer__bottom-link {
+    font-size: var(--text-micro);
+    color: rgba(255, 255, 255, 0.3);
+    text-decoration: none;
+    transition: color var(--dur-fast) ease;
+  }
+
+  .lm-footer__bottom-link:hover {
+    color: rgba(255, 255, 255, 0.65);
   }
 {% endstylesheet %}
 
@@ -219,10 +288,9 @@
       "label": "Über Lamour menu"
     },
     {
-      "type": "checkbox",
-      "id": "show_powered_by",
-      "label": "Show Powered by Shopify",
-      "default": false
+      "type": "link_list",
+      "id": "menu_legal",
+      "label": "Legal / bottom links menu"
     }
   ]
 }
