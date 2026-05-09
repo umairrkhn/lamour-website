@@ -1,7 +1,4 @@
-{%- liquid
-  assign speed = section.settings.speed | default: 40
-  assign brands = 'CHANEL · DIOR · HUGO BOSS · LANCOME · YVES SAINT LAURENT · GUCCI · PRADA · VERSACE · ARMANI · BURBERRY'
--%}
+{%- assign speed = section.settings.speed | default: 50 -%}
 
 <section
   class="lm-marquee{% if section.settings.background_color == 'soft' %} lm-marquee--soft{% endif %}"
@@ -10,9 +7,35 @@
   <div class="hair full-width"></div>
 
   <div class="lm-marquee__track-wrap full-width" aria-hidden="true">
-    <div class="lm-marquee__track marquee-track" style="animation-duration: {{ speed }}s">
-      <span class="lm-marquee__inner">{{ brands }}</span>
-      <span class="lm-marquee__inner" aria-hidden="true">{{ brands }}</span>
+    <div class="lm-marquee__track" style="animation-duration: {{ speed }}s">
+      <div class="lm-marquee__inner">
+        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/c/chanel-logo.svg" alt="Chanel" class="lm-marquee__logo" loading="lazy"></div>
+        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/d/dior-2.svg" alt="Dior" class="lm-marquee__logo" loading="lazy"></div>
+        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/g/gucci-logo-1.svg" alt="Gucci" class="lm-marquee__logo" loading="lazy"></div>
+        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/b/burberry-wordmark.svg" alt="Burberry" class="lm-marquee__logo" loading="lazy"></div>
+        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/c/calvin-klein-logo.svg" alt="Calvin Klein" class="lm-marquee__logo" loading="lazy"></div>
+        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/h/hugo-boss.svg" alt="Hugo Boss" class="lm-marquee__logo" loading="lazy"></div>
+        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/l/lancome-logo.svg" alt="Lancôme" class="lm-marquee__logo" loading="lazy"></div>
+        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/l/loreal-logo.svg" alt="L'Oréal" class="lm-marquee__logo" loading="lazy"></div>
+        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/b/balenciaga-logo.svg" alt="Balenciaga" class="lm-marquee__logo" loading="lazy"></div>
+        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/g/givenchy-1.svg" alt="Givenchy" class="lm-marquee__logo" loading="lazy"></div>
+        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/b/balmain-paris-logo.svg" alt="Balmain" class="lm-marquee__logo" loading="lazy"></div>
+        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/v/valentino-logo.svg" alt="Valentino" class="lm-marquee__logo" loading="lazy"></div>
+      </div>
+      <div class="lm-marquee__inner" aria-hidden="true">
+        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/c/chanel-logo.svg" alt="" class="lm-marquee__logo" loading="lazy"></div>
+        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/d/dior-2.svg" alt="" class="lm-marquee__logo" loading="lazy"></div>
+        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/g/gucci-logo-1.svg" alt="" class="lm-marquee__logo" loading="lazy"></div>
+        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/b/burberry-wordmark.svg" alt="" class="lm-marquee__logo" loading="lazy"></div>
+        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/c/calvin-klein-logo.svg" alt="" class="lm-marquee__logo" loading="lazy"></div>
+        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/h/hugo-boss.svg" alt="" class="lm-marquee__logo" loading="lazy"></div>
+        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/l/lancome-logo.svg" alt="" class="lm-marquee__logo" loading="lazy"></div>
+        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/l/loreal-logo.svg" alt="" class="lm-marquee__logo" loading="lazy"></div>
+        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/b/balenciaga-logo.svg" alt="" class="lm-marquee__logo" loading="lazy"></div>
+        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/g/givenchy-1.svg" alt="" class="lm-marquee__logo" loading="lazy"></div>
+        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/b/balmain-paris-logo.svg" alt="" class="lm-marquee__logo" loading="lazy"></div>
+        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/v/valentino-logo.svg" alt="" class="lm-marquee__logo" loading="lazy"></div>
+      </div>
     </div>
   </div>
 
@@ -22,7 +45,7 @@
 {% stylesheet %}
   .lm-marquee {
     background: transparent;
-    padding: 1rem 0;
+    padding: 1.5rem 0;
     overflow: hidden;
   }
   .lm-marquee--soft {
@@ -31,27 +54,45 @@
 
   .lm-marquee__track-wrap {
     overflow: hidden;
-    padding: 1.25rem 0;
+    padding: 1.5rem 0;
   }
   .lm-marquee__track {
     display: flex;
-    white-space: nowrap;
     width: max-content;
-  }
-  .lm-marquee__track:hover {
-    animation-play-state: paused;
+    animation: marquee-scroll linear infinite;
   }
   .lm-marquee__inner {
     display: inline-flex;
     align-items: center;
-    font-family: var(--font-sub);
-    font-size: var(--text-micro);
-    letter-spacing: 0.28em;
-    font-weight: 300;
-    text-transform: uppercase;
-    color: var(--color-text-70);
-    padding-right: 4rem;
-    gap: 4rem;
+    gap: 64px;
+    padding-right: 64px;
+  }
+
+  .lm-marquee__logo-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 130px;
+    height: 36px;
+    flex-shrink: 0;
+  }
+  .lm-marquee__logo {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    filter: brightness(0) opacity(0.5);
+    transition: filter 0.3s ease, opacity 0.3s ease;
+  }
+  [data-theme="dark"] .lm-marquee__logo {
+    filter: brightness(0) invert(1) opacity(0.65);
+  }
+
+  @keyframes marquee-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
   }
 {% endstylesheet %}
 
@@ -64,9 +105,9 @@
       "id": "speed",
       "label": "Scroll speed (seconds)",
       "min": 20,
-      "max": 80,
+      "max": 100,
       "step": 5,
-      "default": 40
+      "default": 50
     },
     {
       "type": "select",

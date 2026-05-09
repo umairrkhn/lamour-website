@@ -1,11 +1,17 @@
 <section class="lm-hero mesh-hero grain full-width" aria-label="Hero">
+  {%- assign overlay_pct = section.settings.overlay_opacity | default: 60 -%}
   {%- if section.settings.image != blank -%}
-    <div class="lm-hero__bg-img" style="--overlay: {{ section.settings.overlay_opacity | default: 60 }}%">
+    <div class="lm-hero__bg-img" style="--overlay: {{ overlay_pct }}%">
       {%- render 'image',
         image: section.settings.image,
         sizes: '100vw',
         class: 'lm-hero__bg'
       -%}
+    </div>
+  {%- else -%}
+    <div class="lm-hero__bg-img" style="--overlay: {{ overlay_pct }}%">
+      <img src="https://cdn.shopify.com/s/files/1/0823/5728/9303/files/hero_H1_primary.png?v=1778330600"
+           alt="" class="lm-hero__bg" loading="eager" fetchpriority="high" width="2000" height="1125">
     </div>
   {%- endif -%}
 
@@ -53,6 +59,7 @@
     justify-content: center;
     overflow: hidden;
     color: #fff;
+    margin-top: calc(-1 * var(--lm-header-h, 80px));
   }
 
   .lm-hero__bg-img {
@@ -148,6 +155,19 @@
 
   .lm-hero__cta {
     margin-top: 0.5rem;
+  }
+
+  [data-theme="light"] .lm-hero {
+    color: #fff;
+  }
+  [data-theme="light"] .lm-hero__eyebrow {
+    color: var(--color-pink);
+  }
+  [data-theme="light"] .lm-hero__title {
+    color: #fff;
+  }
+  [data-theme="light"] .lm-hero__body {
+    color: rgba(255,255,255,0.70);
   }
 {% endstylesheet %}
 

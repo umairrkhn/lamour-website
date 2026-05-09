@@ -1,39 +1,189 @@
-<footer>
-  <div class="footer__copyright">
-    &copy;
-    {{ 'now' | date: '%Y' }}
-    {{ shop.name | link_to: routes.root_url }}, {{ powered_by_link }}
+<footer class="lm-footer">
+  <div class="lm-footer__main">
+    <div class="lm-container">
+      <div class="lm-footer__grid">
+
+        {%- if section.settings.menu_info != blank -%}
+          {%- assign info_list = linklists[section.settings.menu_info] -%}
+          <div class="lm-footer__col">
+            <p class="lm-footer__col-heading">{{ info_list.title | default: 'Informationen' }}</p>
+            <ul class="lm-footer__links" role="list">
+              {%- for link in info_list.links -%}
+                <li><a href="{{ link.url }}" class="lm-footer__link">{{ link.title }}</a></li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.menu_help != blank -%}
+          {%- assign help_list = linklists[section.settings.menu_help] -%}
+          <div class="lm-footer__col">
+            <p class="lm-footer__col-heading">{{ help_list.title | default: 'Weitere Fragen?' }}</p>
+            <ul class="lm-footer__links" role="list">
+              {%- for link in help_list.links -%}
+                <li><a href="{{ link.url }}" class="lm-footer__link">{{ link.title }}</a></li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+
+        <div class="lm-footer__col">
+          <p class="lm-footer__col-heading">{{ section.settings.payment_heading | default: 'Zahlungsmethoden' }}</p>
+          {%- if section.settings.show_payment_icons -%}
+            <div class="lm-footer__payments" role="list" aria-label="Akzeptierte Zahlungsmethoden">
+              {%- for type in shop.enabled_payment_types -%}
+                <span class="lm-footer__payment-icon" role="listitem" title="{{ type | replace: '_', ' ' | capitalize }}">
+                  {{ type | payment_type_svg_tag: class: 'lm-footer__payment-svg' }}
+                </span>
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+        </div>
+
+        {%- if section.settings.menu_about != blank -%}
+          {%- assign about_list = linklists[section.settings.menu_about] -%}
+          <div class="lm-footer__col">
+            <p class="lm-footer__col-heading">{{ about_list.title | default: 'Über Lamour' }}</p>
+            <ul class="lm-footer__links" role="list">
+              {%- for link in about_list.links -%}
+                <li><a href="{{ link.url }}" class="lm-footer__link">{{ link.title }}</a></li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+
+      </div>
+    </div>
   </div>
 
-  <div class="footer__links">
-    {% for link in section.settings.menu.links %}
-      {{ link.title | link_to: link.url }}
-    {% endfor %}
-  </div>
-
-  <div class="footer__payment">
-    {% if section.settings.show_payment_icons %}
-      {% for type in shop.enabled_payment_types %}
-        {{ type | payment_type_svg_tag }}
-      {% endfor %}
-    {% endif %}
+  <div class="lm-footer__bottom">
+    <div class="lm-container lm-footer__bottom-inner">
+      <p class="lm-footer__copyright">
+        &copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. Alle Rechte vorbehalten.
+      </p>
+      {%- if section.settings.show_powered_by -%}
+        <span class="lm-footer__powered">{{ powered_by_link }}</span>
+      {%- endif -%}
+    </div>
   </div>
 </footer>
 
 {% stylesheet %}
-  footer {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 2rem;
+  .lm-footer {
+    background: var(--color-pink);
+    color: #fff;
   }
-  footer a {
-    text-decoration: none;
-    color: var(--color-foreground);
+
+  .lm-footer__main {
+    padding: clamp(3rem, 6vw, 5rem) 0 clamp(2rem, 4vw, 3.5rem);
   }
-  footer .footer__links,
-  footer .footer__payment {
+
+  .lm-footer__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(2rem, 4vw, 3.5rem);
+  }
+
+  @media (max-width: 1023px) {
+    .lm-footer__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 599px) {
+    .lm-footer__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .lm-footer__col {
     display: flex;
+    flex-direction: column;
     gap: 1rem;
+  }
+
+  .lm-footer__col-heading {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: var(--text-small);
+    letter-spacing: 0.04em;
+    color: #fff;
+    margin: 0 0 0.25rem;
+  }
+
+  .lm-footer__links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .lm-footer__link {
+    font-size: var(--text-small);
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.35);
+    text-underline-offset: 3px;
+    transition: color var(--dur-fast) ease, text-decoration-color var(--dur-fast) ease;
+  }
+
+  .lm-footer__link:hover {
+    color: #fff;
+    text-decoration-color: rgba(255, 255, 255, 0.8);
+  }
+
+  .lm-footer__payments {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .lm-footer__payment-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-radius: 4px;
+    padding: 3px 5px;
+    height: 28px;
+    min-width: 42px;
+  }
+
+  .lm-footer__payment-svg {
+    display: block;
+    height: 20px;
+    width: auto;
+  }
+
+  .lm-footer__bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 1.25rem 0;
+  }
+
+  .lm-footer__bottom-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .lm-footer__copyright {
+    font-size: var(--text-micro);
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+  }
+
+  .lm-footer__powered {
+    font-size: var(--text-micro);
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .lm-footer__powered a {
+    color: inherit;
   }
 {% endstylesheet %}
 
@@ -43,14 +193,39 @@
   "settings": [
     {
       "type": "link_list",
-      "id": "menu",
-      "label": "t:labels.menu"
+      "id": "menu_info",
+      "label": "Informationen menu",
+      "default": "footer"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_help",
+      "label": "Weitere Fragen? menu",
+      "default": "weitere-informationen"
+    },
+    {
+      "type": "text",
+      "id": "payment_heading",
+      "label": "Payment column heading",
+      "default": "Zahlungsmethoden"
     },
     {
       "type": "checkbox",
       "id": "show_payment_icons",
       "label": "t:labels.show_payment_icons",
       "default": true
+    },
+    {
+      "type": "link_list",
+      "id": "menu_about",
+      "label": "Über Lamour menu",
+      "default": "ber-lamour"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_powered_by",
+      "label": "Show Powered by Shopify",
+      "default": false
     }
   ]
 }

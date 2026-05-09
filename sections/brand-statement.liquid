@@ -28,7 +28,8 @@
           class: 'lm-brand-statement__img'
         -%}
       {%- else -%}
-        <div class="lm-brand-statement__img-placeholder" aria-hidden="true"></div>
+        <img src="https://cdn.shopify.com/s/files/1/0823/5728/9303/files/brand-statement_BS1_rose.png?v=1778330492"
+             alt="" class="lm-brand-statement__img" loading="lazy" width="800" height="1067">
       {%- endif -%}
       <div class="lm-brand-statement__img-overlay" aria-hidden="true"></div>
     </div>
@@ -43,8 +44,8 @@
 
   .lm-brand-statement__inner {
     display: grid;
-    grid-template-columns: 3fr 2fr;
-    gap: clamp(2rem, 6vw, 5rem);
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(3rem, 7vw, 6rem);
     align-items: center;
   }
 
@@ -86,7 +87,7 @@
     position: relative;
     border-radius: 4px;
     overflow: hidden;
-    aspect-ratio: 3/4;
+    aspect-ratio: 4/5;
   }
   .lm-brand-statement__media .image,
   .lm-brand-statement__media img,

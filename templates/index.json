@@ -62,6 +62,53 @@
         "columns_desktop": 4
       }
     },
+    "category-tiles": {
+      "type": "category-tiles",
+      "blocks": {
+        "tile-floral": {
+          "type": "tile",
+          "settings": {
+            "label": "Floral & Feminin",
+            "sub": "Damen Parfum",
+            "fallback_url": "https://cdn.shopify.com/s/files/1/0823/5728/9303/files/category-tile_CT1_floral.png?v=1778330504",
+            "link": "/collections/damen"
+          }
+        },
+        "tile-camellia": {
+          "type": "tile",
+          "settings": {
+            "label": "Camellia Edition",
+            "sub": "Signature Collection",
+            "fallback_url": "https://cdn.shopify.com/s/files/1/0823/5728/9303/files/category-tile_CT2_camellia.png?v=1778330520",
+            "link": "/collections/unisex"
+          }
+        },
+        "tile-masculine": {
+          "type": "tile",
+          "settings": {
+            "label": "Maskulin & Frisch",
+            "sub": "Herren Parfum",
+            "fallback_url": "https://cdn.shopify.com/s/files/1/0823/5728/9303/files/category-tile_CT3_masculine.png?v=1778330548",
+            "link": "/collections/herren"
+          }
+        }
+      },
+      "blocks_order": ["tile-floral", "tile-camellia", "tile-masculine"],
+      "settings": {
+        "eyebrow": "ENTDECKE",
+        "heading": "Unsere Kategorien"
+      }
+    },
+    "editorial-split": {
+      "type": "editorial-split",
+      "settings": {
+        "eyebrow": "EDITORIAL",
+        "heading": "Die Kunst der Schönheit",
+        "body": "<p>Erlebe Beauty-Rituale, die aus Alltäglichem etwas Besonderes machen. Jedes Produkt erzählt eine Geschichte von Eleganz und Leidenschaft.</p>",
+        "cta_label": "KOLLEKTION ENTDECKEN",
+        "cta_url": "/collections/all"
+      }
+    },
     "featured-collection-empfehlung": {
       "type": "featured-collection",
       "settings": {
@@ -78,6 +125,8 @@
     "brand-marquee",
     "brand-statement",
     "featured-collection-neuheiten",
+    "category-tiles",
+    "editorial-split",
     "featured-collection-empfehlung"
   ]
 }

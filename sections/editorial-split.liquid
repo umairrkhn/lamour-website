@@ -1,0 +1,236 @@
+<section class="lm-editorial">
+  <div class="lm-container">
+    <div class="lm-editorial__header reveal">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="lm-editorial__eyebrow font-sub">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="lm-editorial__heading font-display">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+    </div>
+
+    <div class="lm-editorial__grid">
+      <div class="lm-editorial__frame lm-editorial__frame--primary reveal">
+        {%- if section.settings.image_primary != blank -%}
+          {%- render 'image',
+            image: section.settings.image_primary,
+            sizes: '(max-width: 767px) 100vw, 55vw',
+            class: 'lm-editorial__img'
+          -%}
+        {%- else -%}
+          <img
+            src="https://cdn.shopify.com/s/files/1/0823/5728/9303/files/editorial_EF1_primary.png?v=1778330566"
+            alt="" class="lm-editorial__img" loading="lazy" width="1200" height="1500"
+          >
+        {%- endif -%}
+        {%- if section.settings.caption_primary != blank -%}
+          <span class="lm-editorial__caption">{{ section.settings.caption_primary }}</span>
+        {%- endif -%}
+      </div>
+
+      <div class="lm-editorial__aside">
+        <div class="lm-editorial__frame lm-editorial__frame--alt reveal reveal-delay-2">
+          {%- if section.settings.image_alt != blank -%}
+            {%- render 'image',
+              image: section.settings.image_alt,
+              sizes: '(max-width: 767px) 100vw, 40vw',
+              class: 'lm-editorial__img'
+            -%}
+          {%- else -%}
+            <img
+              src="https://cdn.shopify.com/s/files/1/0823/5728/9303/files/editorial_EF2_alternate.png?v=1778330579"
+              alt="" class="lm-editorial__img" loading="lazy" width="800" height="1000"
+            >
+          {%- endif -%}
+          {%- if section.settings.caption_alt != blank -%}
+            <span class="lm-editorial__caption">{{ section.settings.caption_alt }}</span>
+          {%- endif -%}
+        </div>
+
+        <div class="lm-editorial__text reveal reveal-delay-3">
+          {%- if section.settings.body != blank -%}
+            <div class="lm-editorial__body">{{ section.settings.body }}</div>
+          {%- endif -%}
+          {%- if section.settings.cta_label != blank -%}
+            <a href="{{ section.settings.cta_url | default: '/collections/all' }}" class="lm-btn lm-btn--ghost">
+              {{ section.settings.cta_label }}
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .lm-editorial {
+    padding: var(--space-section) 0;
+    background: var(--color-bg-soft);
+  }
+
+  .lm-editorial__header {
+    text-align: center;
+    margin-bottom: clamp(2rem, 5vw, 4rem);
+  }
+
+  .lm-editorial__eyebrow {
+    font-size: var(--text-micro);
+    color: var(--color-pink);
+    margin: 0 0 0.75rem;
+  }
+
+  .lm-editorial__heading {
+    font-size: var(--text-heading);
+    line-height: 1.05;
+    color: var(--color-text);
+    margin: 0;
+  }
+
+  .lm-editorial__grid {
+    display: grid;
+    grid-template-columns: 11fr 9fr;
+    gap: 1.25rem;
+    align-items: start;
+  }
+
+  @media (max-width: 767px) {
+    .lm-editorial__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .lm-editorial__frame {
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .lm-editorial__frame--primary {
+    aspect-ratio: 4/5;
+  }
+  .lm-editorial__frame--alt {
+    aspect-ratio: 4/5;
+  }
+
+  .lm-editorial__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.7s cubic-bezier(0.16,1,0.3,1);
+  }
+  .lm-editorial__frame:hover .lm-editorial__img {
+    transform: scale(1.03);
+  }
+
+  .lm-editorial__caption {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    background: rgba(0,0,0,0.28);
+    backdrop-filter: blur(8px);
+    padding: 4px 8px;
+    border-radius: 9999px;
+  }
+
+  .lm-editorial__aside {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding-top: clamp(2rem, 5vw, 4rem);
+  }
+
+  @media (max-width: 767px) {
+    .lm-editorial__aside {
+      padding-top: 0;
+    }
+  }
+
+  .lm-editorial__text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 0 0.5rem;
+  }
+
+  .lm-editorial__body {
+    font-size: var(--text-body);
+    color: var(--color-text-70);
+    line-height: 1.8;
+  }
+
+  .lm-btn--ghost {
+    background: transparent;
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+  }
+  .lm-btn--ghost:hover {
+    background: var(--color-text);
+    color: var(--color-bg);
+    border-color: var(--color-text);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Editorial Split",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "EDITORIAL"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Die Kunst der Schönheit"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_primary",
+      "label": "Primary image"
+    },
+    {
+      "type": "text",
+      "id": "caption_primary",
+      "label": "Primary image caption"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_alt",
+      "label": "Secondary image"
+    },
+    {
+      "type": "text",
+      "id": "caption_alt",
+      "label": "Secondary image caption"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body text",
+      "default": "<p>Erlebe Beauty-Rituale, die aus Alltäglichem etwas Besonderes machen. Jedes Produkt erzählt eine Geschichte.</p>"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA label",
+      "default": "KOLLEKTION ENTDECKEN"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA URL"
+    }
+  ],
+  "presets": [
+    { "name": "Editorial Split" }
+  ]
+}
+{% endschema %}
