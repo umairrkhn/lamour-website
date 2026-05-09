@@ -14,30 +14,50 @@
 
       <div class="lm-footer__grid">
 
-        {%- if section.settings.menu_info != blank -%}
-          {%- assign info_list = linklists[section.settings.menu_info] -%}
-          <div class="lm-footer__col">
-            <p class="lm-footer__col-label font-sub">{{ info_list.title | default: 'Informationen' }}</p>
+        <!-- Informationen -->
+        <div class="lm-footer__col">
+          {%- if section.settings.menu_info != blank and linklists[section.settings.menu_info].links.size > 0 -%}
+            {%- assign info_list = linklists[section.settings.menu_info] -%}
+            <p class="lm-footer__col-label font-sub">{{ info_list.title }}</p>
             <ul class="lm-footer__links" role="list">
               {%- for link in info_list.links -%}
                 <li><a href="{{ link.url }}" class="lm-footer__link">{{ link.title }}</a></li>
               {%- endfor -%}
             </ul>
-          </div>
-        {%- endif -%}
+          {%- else -%}
+            <p class="lm-footer__col-label font-sub">Informationen</p>
+            <ul class="lm-footer__links" role="list">
+              <li><a href="/policies/terms-of-service" class="lm-footer__link">AGB &amp; Widerrufsrecht</a></li>
+              <li><a href="/policies/privacy-policy" class="lm-footer__link">Datenschutz</a></li>
+              <li><a href="/pages/impressum" class="lm-footer__link">Impressum</a></li>
+              <li><a href="/policies/refund-policy" class="lm-footer__link">Widerrufsrecht</a></li>
+              <li><a href="/policies/shipping-policy" class="lm-footer__link">Versandbedingung</a></li>
+            </ul>
+          {%- endif -%}
+        </div>
 
-        {%- if section.settings.menu_help != blank -%}
-          {%- assign help_list = linklists[section.settings.menu_help] -%}
-          <div class="lm-footer__col">
-            <p class="lm-footer__col-label font-sub">{{ help_list.title | default: 'Weitere Fragen?' }}</p>
+        <!-- Weitere Fragen? -->
+        <div class="lm-footer__col">
+          {%- if section.settings.menu_help != blank and linklists[section.settings.menu_help].links.size > 0 -%}
+            {%- assign help_list = linklists[section.settings.menu_help] -%}
+            <p class="lm-footer__col-label font-sub">{{ help_list.title }}</p>
             <ul class="lm-footer__links" role="list">
               {%- for link in help_list.links -%}
                 <li><a href="{{ link.url }}" class="lm-footer__link">{{ link.title }}</a></li>
               {%- endfor -%}
             </ul>
-          </div>
-        {%- endif -%}
+          {%- else -%}
+            <p class="lm-footer__col-label font-sub">Weitere Fragen?</p>
+            <ul class="lm-footer__links" role="list">
+              <li><a href="/pages/faq" class="lm-footer__link">FAQ</a></li>
+              <li><a href="/policies/refund-policy" class="lm-footer__link">R&uuml;ckgaberegelung</a></li>
+              <li><a href="/pages/zahlungsarten" class="lm-footer__link">Zahlungsarten</a></li>
+              <li><a href="/policies/shipping-policy" class="lm-footer__link">Versand &amp; Lieferung</a></li>
+            </ul>
+          {%- endif -%}
+        </div>
 
+        <!-- Zahlungsmethoden -->
         {%- if section.settings.show_payment_icons -%}
           <div class="lm-footer__col">
             <p class="lm-footer__col-label font-sub">{{ section.settings.payment_heading | default: 'Zahlungsmethoden' }}</p>
@@ -51,17 +71,23 @@
           </div>
         {%- endif -%}
 
-        {%- if section.settings.menu_about != blank -%}
-          {%- assign about_list = linklists[section.settings.menu_about] -%}
-          <div class="lm-footer__col">
-            <p class="lm-footer__col-label font-sub">{{ about_list.title | default: 'Über Lamour' }}</p>
+        <!-- Über Lamour -->
+        <div class="lm-footer__col">
+          {%- if section.settings.menu_about != blank and linklists[section.settings.menu_about].links.size > 0 -%}
+            {%- assign about_list = linklists[section.settings.menu_about] -%}
+            <p class="lm-footer__col-label font-sub">{{ about_list.title }}</p>
             <ul class="lm-footer__links" role="list">
               {%- for link in about_list.links -%}
                 <li><a href="{{ link.url }}" class="lm-footer__link">{{ link.title }}</a></li>
               {%- endfor -%}
             </ul>
-          </div>
-        {%- endif -%}
+          {%- else -%}
+            <p class="lm-footer__col-label font-sub">&Uuml;ber Lamour</p>
+            <ul class="lm-footer__links" role="list">
+              <li><a href="/pages/kontakt" class="lm-footer__link">Kontakt</a></li>
+            </ul>
+          {%- endif -%}
+        </div>
 
       </div>
 
@@ -187,6 +213,7 @@
     color: var(--color-pink);
   }
 
+  /* Payment icons — light pill bg so brand colors show correctly on dark footer */
   .lm-footer__payments {
     display: flex;
     flex-wrap: wrap;
@@ -198,25 +225,18 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 5px;
-    padding: 4px 6px;
+    padding: 4px 7px;
     height: 30px;
     min-width: 44px;
-    transition: background var(--dur-fast) ease;
-  }
-
-  .lm-footer__payment-icon:hover {
-    background: rgba(255, 255, 255, 0.14);
   }
 
   .lm-footer__payment-svg {
     display: block;
     height: 18px;
     width: auto;
-    filter: brightness(0) invert(1);
-    opacity: 0.8;
   }
 
   .lm-footer__bottom {
