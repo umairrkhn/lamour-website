@@ -1,76 +1,323 @@
-<header>
-  <h2 class="header__title">
-    {{ shop.name | link_to: routes.root_url }}
-  </h2>
+<header class="lm-header full-width" role="banner">
+  <lamour-header></lamour-header>
 
-  <div class="header__menu">
-    {% for link in section.settings.menu.links %}
-      {{ link.title | link_to: link.url }}
-    {% endfor %}
-  </div>
-
-  <div class="header__icons">
-    {% if shop.customer_accounts_enabled %}
-      <shopify-account menu="{{ section.settings.customer_account_menu }}">
-        {{ 'icon-account.svg' | inline_asset_content }}
-      </shopify-account>
-    {% endif %}
-
-    <a href="{{ routes.cart_url }}">
-      {% if cart.item_count > 0 %}
-        <sup>{{ cart.item_count }}</sup>
-      {% endif %}
-
-      {{ 'icon-cart.svg' | inline_asset_content }}
+  <div class="lm-header__inner lm-container">
+    {%- comment -%} Logo / Wordmark {%- endcomment -%}
+    <a href="{{ routes.root_url }}" class="lm-header__logo" aria-label="{{ shop.name }}">
+      {%- if section.settings.logo != blank -%}
+        {%- render 'image',
+          image: section.settings.logo,
+          width: section.settings.logo_width | default: 120,
+          class: 'lm-header__logo-img'
+        -%}
+      {%- else -%}
+        <span class="lm-header__wordmark font-display">L&rsquo;Amour</span>
+      {%- endif -%}
     </a>
+
+    {%- comment -%} Desktop nav {%- endcomment -%}
+    <nav class="lm-header__nav" aria-label="Hauptnavigation">
+      <ul class="lm-header__nav-list" role="list">
+        {%- for link in linklists[section.settings.menu].links -%}
+          <li class="lm-header__nav-item">
+            <a
+              href="{{ link.url }}"
+              class="lm-header__nav-link{% if link.active %} is-active{% endif %}"
+              {% if link.active %}aria-current="page"{% endif %}
+            >{{ link.title }}</a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+
+    {%- comment -%} Right icons {%- endcomment -%}
+    <div class="lm-header__icons">
+      <a href="{{ routes.search_url }}" class="lm-header__icon-btn" aria-label="Suche">
+        {%- render 'icon', name: 'search' -%}
+      </a>
+
+      {%- if shop.customer_accounts_enabled -%}
+        <a href="{{ routes.account_url }}" class="lm-header__icon-btn" aria-label="Kundenkonto">
+          {{ 'icon-account.svg' | inline_asset_content }}
+        </a>
+      {%- endif -%}
+
+      {%- render 'theme-toggle' -%}
+
+      <a href="{{ routes.cart_url }}" class="lm-header__icon-btn lm-header__cart" aria-label="Warenkorb ({{ cart.item_count }} Artikel)">
+        {{ 'icon-cart.svg' | inline_asset_content }}
+        {%- if cart.item_count > 0 -%}
+          <span class="lm-header__cart-count" aria-hidden="true">{{ cart.item_count }}</span>
+        {%- endif -%}
+      </a>
+
+      {%- comment -%} Mobile hamburger {%- endcomment -%}
+      <lamour-mobile-menu class="lm-header__mobile-menu">
+        <button
+          class="lm-header__icon-btn lm-header__hamburger"
+          data-menu-toggle
+          aria-label="Menü öffnen"
+          aria-expanded="false"
+          aria-controls="lm-nav-overlay"
+        >
+          {%- render 'icon', name: 'menu' -%}
+        </button>
+      </lamour-mobile-menu>
+    </div>
   </div>
 </header>
 
+{%- comment -%} Mobile nav overlay {%- endcomment -%}
+<div class="lm-nav-overlay" id="lm-nav-overlay" aria-hidden="true" role="dialog" aria-label="Navigation">
+  <div class="lm-nav-overlay__inner">
+    <button class="lm-nav-overlay__close" data-menu-close aria-label="Menü schließen">
+      {%- render 'icon', name: 'close' -%}
+    </button>
+
+    <a href="{{ routes.root_url }}" class="lm-nav-overlay__logo font-display">L&rsquo;Amour</a>
+
+    <nav aria-label="Mobile Navigation">
+      <ul class="lm-nav-overlay__list" role="list">
+        {%- for link in linklists[section.settings.menu].links -%}
+          <li>
+            <a
+              href="{{ link.url }}"
+              class="lm-nav-overlay__link{% if link.active %} is-active{% endif %}"
+            >{{ link.title }}</a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+  </div>
+</div>
+
 {% stylesheet %}
-  header {
-    height: 5rem;
+  .lm-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    transition: background var(--dur-base) ease, border-color var(--dur-base) ease,
+                backdrop-filter var(--dur-base) ease;
+    border-bottom: 1px solid transparent;
+  }
+  .lm-header.scrolled {
+    background: rgba(10,10,10,0.80);
+    backdrop-filter: blur(24px) saturate(160%);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    border-bottom-color: rgba(255,255,255,0.06);
+  }
+  [data-theme="light"] .lm-header.scrolled {
+    background: rgba(250,249,247,0.88);
+    border-bottom-color: rgba(0,0,0,0.08);
+  }
+
+  .lm-header__inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 2rem;
+    height: 100%;
   }
-  header a {
-    position: relative;
+
+  .lm-header__logo {
+    flex-shrink: 0;
     text-decoration: none;
-    color: var(--color-foreground);
+  }
+  .lm-header__wordmark {
+    font-size: 1.5rem;
+    color: var(--color-pink);
+    letter-spacing: -0.02em;
+  }
+  .lm-header__logo-img {
+    max-height: 40px;
+    width: auto;
+  }
+
+  .lm-header__nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  .lm-header__nav-list {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .lm-header__nav-link {
+    font-family: var(--font-body);
+    font-size: var(--text-micro);
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-70);
+    text-decoration: none;
+    transition: color var(--dur-fast) ease;
+    white-space: nowrap;
+  }
+  .lm-header__nav-link:hover,
+  .lm-header__nav-link.is-active {
+    color: var(--color-text);
+  }
+
+  .lm-header__icons {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+  .lm-header__icon-btn {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 36px;
+    height: 36px;
+    color: var(--color-text-70);
+    transition: color var(--dur-fast) ease;
+    text-decoration: none;
+    position: relative;
   }
-  header a sup {
+  .lm-header__icon-btn:hover {
+    color: var(--color-text);
+  }
+  .lm-header__icon-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+  .lm-header__cart-count {
     position: absolute;
-    left: 100%;
-    overflow: hidden;
-    max-width: var(--page-margin);
-  }
-  header svg {
-    width: 2rem;
-  }
-  header .header__menu,
-  header .header__icons {
+    top: 2px;
+    right: 2px;
+    min-width: 16px;
+    height: 16px;
+    border-radius: 9999px;
+    background: var(--color-pink);
+    color: #000;
+    font-size: 10px;
+    font-weight: 600;
     display: flex;
-    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    padding: 0 3px;
+  }
+
+  .lm-header__hamburger {
+    display: none;
+  }
+
+  @media (max-width: 900px) {
+    .lm-header__nav { display: none; }
+    .lm-header__hamburger { display: flex; }
+  }
+
+  /* Mobile overlay */
+  .lm-nav-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: var(--color-bg);
+    transform: translateX(100%);
+    transition: transform var(--dur-slow) var(--ease-out);
+    overflow-y: auto;
+  }
+  .lm-nav-overlay.open {
+    transform: translateX(0);
+  }
+  .lm-nav-overlay__inner {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem clamp(1rem, 6vw, 3rem);
+    min-height: 100%;
+    gap: 3rem;
+  }
+  .lm-nav-overlay__close {
+    align-self: flex-end;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: var(--color-text);
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  .lm-nav-overlay__close svg {
+    width: 24px;
+    height: 24px;
+  }
+  .lm-nav-overlay__logo {
+    font-size: 2rem;
+    color: var(--color-pink);
+    text-decoration: none;
+  }
+  .lm-nav-overlay__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .lm-nav-overlay__link {
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 6vw, 3rem);
+    font-weight: 700;
+    color: var(--color-text);
+    text-decoration: none;
+    padding: 0.5rem 0;
+    transition: color var(--dur-fast) ease;
+  }
+  .lm-nav-overlay__link:hover,
+  .lm-nav-overlay__link.is-active {
+    color: var(--color-pink);
+  }
+
+  /* Push content below fixed header */
+  .shopify-section-group-header-group + main,
+  .shopify-section-group-header-group ~ main,
+  body > main {
+    padding-top: 72px;
   }
 {% endstylesheet %}
 
 {% schema %}
 {
-  "name": "t:general.header",
+  "name": "Header",
   "settings": [
     {
-      "type": "link_list",
-      "id": "menu",
-      "label": "t:labels.menu"
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "Logo width (px)",
+      "min": 60,
+      "max": 300,
+      "step": 10,
+      "default": 120
     },
     {
       "type": "link_list",
-      "id": "customer_account_menu",
-      "label": "t:labels.customer_account_menu",
-      "default": "customer-account-main-menu"
+      "id": "menu",
+      "label": "Navigation menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_announcement_bar",
+      "label": "Show announcement bar",
+      "default": false
     }
   ]
 }

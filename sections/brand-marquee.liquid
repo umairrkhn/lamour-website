@@ -1,0 +1,86 @@
+{%- liquid
+  assign speed = section.settings.speed | default: 40
+  assign brands = 'CHANEL · DIOR · HUGO BOSS · LANCOME · YVES SAINT LAURENT · GUCCI · PRADA · VERSACE · ARMANI · BURBERRY'
+-%}
+
+<section
+  class="lm-marquee{% if section.settings.background_color == 'soft' %} lm-marquee--soft{% endif %}"
+  aria-label="Unsere Top-Marken"
+>
+  <div class="hair full-width"></div>
+
+  <div class="lm-marquee__track-wrap full-width" aria-hidden="true">
+    <div class="lm-marquee__track marquee-track" style="animation-duration: {{ speed }}s">
+      <span class="lm-marquee__inner">{{ brands }}</span>
+      <span class="lm-marquee__inner" aria-hidden="true">{{ brands }}</span>
+    </div>
+  </div>
+
+  <div class="hair full-width"></div>
+</section>
+
+{% stylesheet %}
+  .lm-marquee {
+    background: transparent;
+    padding: 1rem 0;
+    overflow: hidden;
+  }
+  .lm-marquee--soft {
+    background: var(--color-bg-soft);
+  }
+
+  .lm-marquee__track-wrap {
+    overflow: hidden;
+    padding: 1.25rem 0;
+  }
+  .lm-marquee__track {
+    display: flex;
+    white-space: nowrap;
+    width: max-content;
+  }
+  .lm-marquee__track:hover {
+    animation-play-state: paused;
+  }
+  .lm-marquee__inner {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-sub);
+    font-size: var(--text-micro);
+    letter-spacing: 0.28em;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: var(--color-text-70);
+    padding-right: 4rem;
+    gap: 4rem;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Brand Marquee",
+  "settings": [
+    {
+      "type": "range",
+      "id": "speed",
+      "label": "Scroll speed (seconds)",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "default": 40
+    },
+    {
+      "type": "select",
+      "id": "background_color",
+      "label": "Background",
+      "options": [
+        { "value": "transparent", "label": "Transparent" },
+        { "value": "soft",        "label": "Soft" }
+      ],
+      "default": "transparent"
+    }
+  ],
+  "presets": [
+    { "name": "Brand Marquee" }
+  ]
+}
+{% endschema %}

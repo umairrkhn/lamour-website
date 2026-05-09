@@ -1,0 +1,252 @@
+<section class="lm-hero mesh-hero grain full-width" aria-label="Hero">
+  {%- if section.settings.image != blank -%}
+    <div class="lm-hero__bg-img" style="--overlay: {{ section.settings.overlay_opacity | default: 60 }}%">
+      {%- render 'image',
+        image: section.settings.image,
+        sizes: '100vw',
+        class: 'lm-hero__bg'
+      -%}
+    </div>
+  {%- endif -%}
+
+  <div class="lm-hero__orbs" aria-hidden="true">
+    <div class="lm-hero__orb lm-hero__orb--1"></div>
+    <div class="lm-hero__orb lm-hero__orb--2"></div>
+    <div class="lm-hero__orb lm-hero__orb--3"></div>
+  </div>
+
+  <div class="lm-hero__content lm-container" style="text-align: {{ section.settings.text_alignment | default: 'center' }}">
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'eyebrow' -%}
+          <p class="lm-hero__eyebrow font-sub reveal reveal-delay-1" {{ block.shopify_attributes }}>
+            {{ block.settings.text }}
+          </p>
+
+        {%- when 'heading' -%}
+          <h1 class="lm-hero__title font-display hero-title" {{ block.shopify_attributes }}>
+            {{ block.settings.heading }}
+          </h1>
+
+        {%- when 'rich_text' -%}
+          <div class="lm-hero__body hero-sub reveal reveal-delay-2" {{ block.shopify_attributes }}>
+            {{ block.settings.text }}
+          </div>
+
+        {%- when 'button' -%}
+          <div class="lm-hero__cta reveal reveal-delay-3" {{ block.shopify_attributes }}>
+            <a href="{{ block.settings.button_url | default: '/collections/all' }}" class="lm-btn">
+              {{ block.settings.button_label | default: 'JETZT SHOPPEN' }}
+            </a>
+          </div>
+      {%- endcase -%}
+    {%- endfor -%}
+  </div>
+</section>
+
+{% stylesheet %}
+  .lm-hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: #fff;
+  }
+
+  .lm-hero__bg-img {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .lm-hero__bg-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,calc(var(--overlay) / 100));
+  }
+  .lm-hero__bg-img .image,
+  .lm-hero__bg-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .lm-hero__orbs {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .lm-hero__orb {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(60px);
+    background: var(--color-pink);
+    opacity: 0.35;
+    animation: float 8s ease-in-out infinite;
+  }
+  .lm-hero__orb--1 {
+    width: 400px;
+    height: 400px;
+    top: 10%;
+    left: -10%;
+    animation-delay: 0s;
+  }
+  .lm-hero__orb--2 {
+    width: 300px;
+    height: 300px;
+    bottom: 15%;
+    right: 5%;
+    animation-delay: -3s;
+    opacity: 0.25;
+  }
+  .lm-hero__orb--3 {
+    width: 200px;
+    height: 200px;
+    top: 40%;
+    right: 25%;
+    animation-delay: -6s;
+    opacity: 0.18;
+  }
+
+  .lm-hero__content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding-top: 80px;
+    padding-bottom: 4rem;
+  }
+  [style*="text-align: left"] .lm-hero__content {
+    align-items: flex-start;
+  }
+
+  .lm-hero__eyebrow {
+    font-size: var(--text-micro);
+    color: var(--color-pink);
+    margin: 0;
+  }
+
+  .lm-hero__title {
+    font-size: var(--text-hero);
+    line-height: 1;
+    color: #fff;
+    margin: 0;
+    max-width: 14ch;
+  }
+
+  .lm-hero__body {
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    color: rgba(255,255,255,0.70);
+    max-width: 52ch;
+    line-height: 1.7;
+  }
+
+  .lm-hero__cta {
+    margin-top: 0.5rem;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background image"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay opacity",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "default": 60,
+      "unit": "%"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        { "value": "left",   "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "center"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "eyebrow",
+      "name": "Eyebrow label",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "PREMIUM PARFUMS & BEAUTY"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Entdecke Luxus"
+        }
+      ]
+    },
+    {
+      "type": "rich_text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Erlebe die Welt der Düfte und Beauty mit ausgewählten Produkten der bekanntesten Marken.</p>"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "default": "JETZT SHOPPEN"
+        },
+        {
+          "type": "url",
+          "id": "button_url",
+          "label": "Button URL",
+          "default": "/collections/all"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero",
+      "blocks": [
+        { "type": "eyebrow", "settings": { "text": "PREMIUM PARFUMS & BEAUTY" } },
+        { "type": "heading", "settings": { "heading": "Entdecke Luxus" } },
+        { "type": "rich_text", "settings": { "text": "<p>Erlebe die Welt der Düfte und Beauty mit ausgewählten Produkten der bekanntesten Marken.</p>" } },
+        { "type": "button", "settings": { "button_label": "JETZT SHOPPEN", "button_url": "/collections/all" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
