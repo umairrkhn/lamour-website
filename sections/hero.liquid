@@ -4,14 +4,14 @@
 
   <div class="lm-hero__background" aria-hidden="true" style="--overlay: {{ overlay_pct }}%">
     {%- if section.settings.image_dark != blank -%}
-      {%- render 'image', image: section.settings.image_dark, sizes: '100vw', class: 'lm-hero__bg lm-hero__bg--dark' -%}
+      {%- render 'image', image: section.settings.image_dark, class: 'lm-hero__bg lm-hero__bg--dark' -%}
     {%- else -%}
       <img src="https://cdn.shopify.com/s/files/1/0823/5728/9303/files/hero_H2_atmosphere.png?v=1778331595"
            alt="" class="lm-hero__bg lm-hero__bg--dark" loading="eager" fetchpriority="high" width="2000" height="1125">
     {%- endif -%}
 
     {%- if section.settings.image_light != blank -%}
-      {%- render 'image', image: section.settings.image_light, sizes: '100vw', class: 'lm-hero__bg lm-hero__bg--light' -%}
+      {%- render 'image', image: section.settings.image_light, class: 'lm-hero__bg lm-hero__bg--light' -%}
     {%- else -%}
       <img src="https://cdn.shopify.com/s/files/1/0823/5728/9303/files/hero_H3_lifestyle.png?v=1778330624"
            alt="" class="lm-hero__bg lm-hero__bg--light" loading="eager" fetchpriority="high" width="2000" height="1125">
@@ -30,7 +30,7 @@
     </div>
 
     <h1 class="lm-hero__title lm-hero__text-light">
-      {{ section.settings.headline | default: 'Duft, <em style="color:var(--color-pink); font-style:italic; font-weight:400;">neu</em> erzählt.' }}
+      {{ section.settings.headline | default: 'Beauty, <em style="color:var(--color-pink); font-style:italic; font-weight:400;">neu</em> entdeckt.' }}
     </h1>
 
     <div class="lm-hero__bottom-row">
@@ -331,7 +331,7 @@
       "type": "html",
       "id": "headline",
       "label": "Headline (HTML)",
-      "default": "Duft, <em style=\"color:var(--color-pink); font-style:italic; font-weight:400;\">neu</em> erzählt."
+      "default": "Beauty, <em style=\"color:var(--color-pink); font-style:italic; font-weight:400;\">neu</em> entdeckt."
     },
     {
       "type": "textarea",
