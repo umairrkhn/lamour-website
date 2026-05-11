@@ -12,10 +12,20 @@
         "speed": 40,
         "background_color": "transparent"
       }
+    },
+    "category-grid": {
+      "type": "category-grid",
+      "settings": {}
+    },
+    "uber-lamour-faq": {
+      "type": "uber-lamour-faq",
+      "settings": {}
     }
   },
   "order": [
     "hero",
-    "brand-marquee"
+    "brand-marquee",
+    "category-grid",
+    "uber-lamour-faq"
   ]
 }

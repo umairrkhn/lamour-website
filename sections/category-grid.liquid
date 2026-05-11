@@ -1,0 +1,249 @@
+{%- comment -%}
+  § ALLE KATEGORIEN Beauty, sortiert.
+  4-column × 2-row grid matching the 8 main nav categories.
+{%- endcomment -%}
+
+{%- liquid
+  assign cats = "Parfum,Gesicht,Haare,Körper,Make-up,Gesundheit,Baby & Kinder,Tools" | split: ","
+  assign cat_subtitles = "Damen · Herren · Unisex,Pflege · Reinigung · Masken,Pflege · Styling · Coloration,Lotion · Dusche · Deo,Teint · Augen · Lippen,Vitamine · Supplements,Babypflege · Babybad,Pinsel · Blender · Geräte" | split: ","
+  assign cat_slugs = "parfum,gesicht,haare,koerper,makeup,gesundheit,baby-kinder,tools" | split: ","
+  assign cat_imgs = "https://cdn.shopify.com/s/files/1/0823/5728/9303/files/cat_parfum_61715bc5-ce4e-42b7-9352-ff469d865503.png?v=1778509848,https://cdn.shopify.com/s/files/1/0823/5728/9303/files/cat_gesicht.png?v=1778509900,https://cdn.shopify.com/s/files/1/0823/5728/9303/files/cat_haare.png?v=1778509955,https://cdn.shopify.com/s/files/1/0823/5728/9303/files/cat_koerper.png?v=1778510030,https://cdn.shopify.com/s/files/1/0823/5728/9303/files/cat_makeup.png?v=1778510077,https://cdn.shopify.com/s/files/1/0823/5728/9303/files/cat_gesundheit.png?v=1778510133,https://cdn.shopify.com/s/files/1/0823/5728/9303/files/cat_baby.png?v=1778510181,https://cdn.shopify.com/s/files/1/0823/5728/9303/files/cat_tools.png?v=1778510303" | split: ","
+-%}
+
+<section class="lm-catgrid" aria-labelledby="lm-catgrid-heading">
+  <div class="lm-catgrid__inner">
+
+    <div class="lm-catgrid__hd">
+      <div class="lm-catgrid__hd-left">
+        <p class="lm-catgrid__eyebrow font-mono">&sect; Alle Kategorien</p>
+        <h2 class="lm-catgrid__title font-display" id="lm-catgrid-heading">
+          Beauty,&nbsp;<em class="lm-catgrid__accent">sortiert</em>.
+        </h2>
+      </div>
+      <a href="{{ routes.collections_url }}" class="lm-catgrid__all font-mono lm-catgrid__all--desk">
+        Alle anzeigen
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="lm-catgrid__grid">
+      {%- for cat in cats -%}
+        {%- assign idx = forloop.index0 -%}
+        {%- assign img_url = cat_imgs[idx] -%}
+        {%- assign subtitle = cat_subtitles[idx] -%}
+        {%- assign slug = cat_slugs[idx] -%}
+        {%- assign num = forloop.index | prepend: '0' | slice: -2, 2 -%}
+        <a href="{{ routes.root_url }}collections/{{ slug }}" class="lm-catcard" aria-label="{{ cat }}">
+          <div class="lm-catcard__media">
+            <img
+              src="{{ img_url }}"
+              alt="{{ cat }}"
+              class="lm-catcard__img{% if slug == 'parfum' %} lm-catcard__img--zoom{% endif %}"
+              loading="lazy"
+              width="600"
+              height="600"
+            >
+            <div class="lm-catcard__vignette"></div>
+          </div>
+          <div class="lm-catcard__body">
+            <span class="lm-catcard__num font-mono">{{ num }}</span>
+            <div class="lm-catcard__info">
+              <span class="lm-catcard__name font-display">{{ cat }}</span>
+              <span class="lm-catcard__sub font-mono">{{ subtitle }}</span>
+            </div>
+            <span class="lm-catcard__arrow" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </span>
+          </div>
+        </a>
+      {%- endfor -%}
+    </div>
+
+
+
+  </div>
+</section>
+
+{% stylesheet %}
+.lm-catgrid {
+  background: var(--color-bg, #0a0a0a);
+  padding: 6rem 0 4rem;
+  color: var(--color-fg, #fff);
+}
+[data-theme="light"] .lm-catgrid {
+  background: #EBE7DE;
+  color: #0a0a0a;
+}
+
+.lm-catgrid__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.lm-catgrid__hd {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 2.25rem;
+  gap: 1rem;
+}
+.lm-catgrid__eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-pink, #f496b0);
+  margin: 0 0 0.6rem;
+}
+.lm-catgrid__title {
+  font-size: clamp(40px, 5.5vw, 82px);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+.lm-catgrid__accent {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-pink, #f496b0);
+}
+.lm-catgrid__all {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgba(255,255,255,0.55);
+  transition: color 0.25s;
+  white-space: nowrap;
+}
+.lm-catgrid__all:hover { color: #fff; }
+[data-theme="light"] .lm-catgrid__all { color: rgba(0,0,0,0.5); }
+[data-theme="light"] .lm-catgrid__all:hover { color: #0a0a0a; }
+
+.lm-catgrid__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.875rem;
+}
+@media (max-width: 1023px) {
+  .lm-catgrid__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.lm-catcard {
+  display: block;
+  position: relative;
+  border-radius: 1.125rem;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+  text-decoration: none;
+  background: #111;
+  transition: border-color 0.3s, transform 0.35s cubic-bezier(0.2,0.7,0.2,1);
+}
+.lm-catcard:hover {
+  border-color: rgba(255,255,255,0.22);
+  transform: translateY(-3px);
+}
+[data-theme="light"] .lm-catcard {
+  border-color: #E6E4E0;
+  background: #EBE7DE;
+}
+[data-theme="light"] .lm-catcard:hover {
+  border-color: #D6D3D1;
+}
+
+.lm-catcard__media {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+.lm-catcard__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.2,0.7,0.2,1);
+}
+.lm-catcard:hover .lm-catcard__img { transform: scale(1.05); }
+.lm-catcard:hover .lm-catcard__img--zoom { transform: scale(1.3); }
+.lm-catcard__img--zoom { transform: scale(1.25); }
+.lm-catcard__vignette {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.1) 40%, transparent 100%);
+  pointer-events: none;
+}
+
+.lm-catcard__body {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1rem;
+  background: rgba(10,10,10,0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255,255,255,0.07);
+  color: #fff;
+}
+[data-theme="light"] .lm-catcard__body {
+  background: #EBE7DE;
+  border-top: 1px solid #E6E4E0;
+  color: #0a0a0a;
+}
+
+.lm-catcard__num {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: var(--color-pink, #f496b0);
+  flex-shrink: 0;
+}
+.lm-catcard__info {
+  flex: 1;
+  min-width: 0;
+}
+.lm-catcard__name {
+  display: block;
+  font-size: 15px;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.lm-catcard__sub {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  color: rgba(255,255,255,0.45);
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+[data-theme="light"] .lm-catcard__sub { color: rgba(0,0,0,0.45); }
+.lm-catcard__arrow {
+  flex-shrink: 0;
+  color: rgba(255,255,255,0.35);
+  display: flex;
+}
+[data-theme="light"] .lm-catcard__arrow { color: rgba(0,0,0,0.3); }
+.lm-catcard:hover .lm-catcard__arrow { color: var(--color-pink, #f496b0); transform: translateX(3px); }
+
+@media (max-width: 639px) {
+  .lm-catgrid__all--desk { display: none; }
+}
+@media (max-width: 479px) {
+  .lm-catcard__body { padding: 0.6rem 0.75rem; }
+  .lm-catcard__sub { display: none; }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Category Grid",
+  "settings": [],
+  "presets": [
+    { "name": "Category Grid" }
+  ]
+}
+{% endschema %}
