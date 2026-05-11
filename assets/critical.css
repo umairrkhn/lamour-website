@@ -12,7 +12,7 @@ body {
   min-height: 100svh;
   font-family: var(--font-body, 'Inter', system-ui, sans-serif);
   background-color: var(--color-bg, #000);
-  color: var(--color-text, #fff);
+  color: var(--color-text, #EBE7DE);
 }
 
 html:has(dialog[scroll-lock][open], details[scroll-lock][open]) {
@@ -38,12 +38,12 @@ select {
 
 select {
   background-color: var(--color-bg-card, var(--color-bg, #111));
-  color: var(--color-text, #fff);
+  color: var(--color-text, #EBE7DE);
 }
 
 dialog {
   background-color: var(--color-bg-card, var(--color-bg, #111));
-  color: var(--color-text, #fff);
+  color: var(--color-text, #EBE7DE);
 }
 
 p {
