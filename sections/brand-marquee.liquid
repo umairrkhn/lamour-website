@@ -6,36 +6,29 @@
 >
   <div class="hair full-width"></div>
 
+  
   <div class="lm-marquee__track-wrap full-width" aria-hidden="true">
     <div class="lm-marquee__track" style="animation-duration: {{ speed }}s">
-      <div class="lm-marquee__inner">
-        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/c/chanel-logo.svg" alt="Chanel" class="lm-marquee__logo" loading="lazy"></div>
-        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/d/dior-2.svg" alt="Dior" class="lm-marquee__logo" loading="lazy"></div>
-        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/g/gucci-logo-1.svg" alt="Gucci" class="lm-marquee__logo" loading="lazy"></div>
-        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/b/burberry-wordmark.svg" alt="Burberry" class="lm-marquee__logo" loading="lazy"></div>
-        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/c/calvin-klein-logo.svg" alt="Calvin Klein" class="lm-marquee__logo" loading="lazy"></div>
-        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/h/hugo-boss.svg" alt="Hugo Boss" class="lm-marquee__logo" loading="lazy"></div>
-        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/l/lancome-logo.svg" alt="Lancôme" class="lm-marquee__logo" loading="lazy"></div>
-        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/l/loreal-logo.svg" alt="L'Oréal" class="lm-marquee__logo" loading="lazy"></div>
-        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/b/balenciaga-logo.svg" alt="Balenciaga" class="lm-marquee__logo" loading="lazy"></div>
-        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/g/givenchy-1.svg" alt="Givenchy" class="lm-marquee__logo" loading="lazy"></div>
-        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/b/balmain-paris-logo.svg" alt="Balmain" class="lm-marquee__logo" loading="lazy"></div>
-        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/v/valentino-logo.svg" alt="Valentino" class="lm-marquee__logo" loading="lazy"></div>
+      {%- for i in (1..2) -%}
+      <div class="lm-marquee__inner" {% if i == 2 %}aria-hidden="true"{% endif %}>
+        {%- for block in section.blocks -%}
+          <div class="lm-marquee__logo-wrap" {{ block.shopify_attributes }}>
+            {%- assign handleized = block.settings.title | handleize -%}
+            {%- capture svg_snippet -%}
+              {%- render 'brand-logo', brand: handleized -%}
+            {%- endcapture -%}
+            
+            {%- if svg_snippet != blank -%}
+              {{ svg_snippet }}
+            {%- elsif block.settings.svg_url != blank -%}
+              <img src="{{ block.settings.svg_url }}" alt="{{ block.settings.title | escape }}" class="lm-marquee__logo" loading="lazy" width="140" height="36">
+            {%- else -%}
+              <span class="lm-marken__text-fallback" style="font-family: var(--font-heading-family); font-size: 1.5rem;">{{ block.settings.title }}</span>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
       </div>
-      <div class="lm-marquee__inner" aria-hidden="true">
-        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/c/chanel-logo.svg" alt="" class="lm-marquee__logo" loading="lazy"></div>
-        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/d/dior-2.svg" alt="" class="lm-marquee__logo" loading="lazy"></div>
-        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/g/gucci-logo-1.svg" alt="" class="lm-marquee__logo" loading="lazy"></div>
-        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/b/burberry-wordmark.svg" alt="" class="lm-marquee__logo" loading="lazy"></div>
-        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/c/calvin-klein-logo.svg" alt="" class="lm-marquee__logo" loading="lazy"></div>
-        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/h/hugo-boss.svg" alt="" class="lm-marquee__logo" loading="lazy"></div>
-        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/l/lancome-logo.svg" alt="" class="lm-marquee__logo" loading="lazy"></div>
-        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/l/loreal-logo.svg" alt="" class="lm-marquee__logo" loading="lazy"></div>
-        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/b/balenciaga-logo.svg" alt="" class="lm-marquee__logo" loading="lazy"></div>
-        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/g/givenchy-1.svg" alt="" class="lm-marquee__logo" loading="lazy"></div>
-        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/b/balmain-paris-logo.svg" alt="" class="lm-marquee__logo" loading="lazy"></div>
-        <div class="lm-marquee__logo-wrap"><img src="https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/v/valentino-logo.svg" alt="" class="lm-marquee__logo" loading="lazy"></div>
-      </div>
+      {%- endfor -%}
     </div>
   </div>
 
@@ -72,22 +65,46 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 130px;
-    height: 36px;
+    width: 180px;
+    height: 40px;
     flex-shrink: 0;
   }
-  .lm-marquee__logo {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
+  .lm-marquee__logo,
+  .lm-marquee__logo-wrap svg,
+  .lm-marquee__logo-wrap img {
+    width: 100%;
+    height: 100%;
+    max-width: 140px;
+    max-height: 36px;
     object-fit: contain;
     display: block;
     filter: brightness(0) opacity(0.5);
     transition: filter 0.3s ease, opacity 0.3s ease;
   }
-  [data-theme="dark"] .lm-marquee__logo {
+  .lm-marquee__logo-wrap:hover .lm-marquee__logo,
+  .lm-marquee__logo-wrap:hover svg,
+  .lm-marquee__logo-wrap:hover img {
+    filter: brightness(0) opacity(0.8);
+  }
+  [data-theme="light"] .lm-marquee__logo,
+  [data-theme="light"] .lm-marquee__logo-wrap svg,
+  [data-theme="light"] .lm-marquee__logo-wrap img {
+    filter: brightness(0) opacity(0.5);
+  }
+  [data-theme="light"] .lm-marquee__logo-wrap:hover .lm-marquee__logo,
+  [data-theme="light"] .lm-marquee__logo-wrap:hover svg,
+  [data-theme="light"] .lm-marquee__logo-wrap:hover img {
+    filter: brightness(0) opacity(0.8);
+  }
+  [data-theme="dark"] .lm-marquee__logo,
+  [data-theme="dark"] .lm-marquee__logo-wrap svg,
+  [data-theme="dark"] .lm-marquee__logo-wrap img {
     filter: brightness(0) invert(1) opacity(0.65);
+  }
+  [data-theme="dark"] .lm-marquee__logo-wrap:hover .lm-marquee__logo,
+  [data-theme="dark"] .lm-marquee__logo-wrap:hover svg,
+  [data-theme="dark"] .lm-marquee__logo-wrap:hover img {
+    filter: brightness(0) invert(1) opacity(1);
   }
 
   @keyframes marquee-scroll {
@@ -118,6 +135,30 @@
         { "value": "soft",        "label": "Soft" }
       ],
       "default": "transparent"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "brand",
+      "name": "Brand",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Brand Name",
+          "default": "Brand Name"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Brand Link"
+        },
+        {
+          "type": "url",
+          "id": "svg_url",
+          "label": "SVG URL (Fallback)"
+        }
+      ]
     }
   ],
   "presets": [

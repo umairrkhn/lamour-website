@@ -34,7 +34,7 @@
 :root {
   --color-bg:       #ebe7de;
   --color-bg-soft:  #e2dcd2;
-  --color-bg-card:  #f4f2ef;
+  --color-bg-card:  #EBE7DE;
   --color-surface:  #d8d0c4;
   --color-border:   rgba(0,0,0,0.10);
 
@@ -60,10 +60,10 @@
   --color-surface:  #1a1a1a;
   --color-border:   rgba(255,255,255,0.10);
 
-  --color-text:     #ffffff;
-  --color-text-70:  rgba(255,255,255,0.70);
-  --color-text-40:  rgba(255,255,255,0.40);
-  --color-text-10:  rgba(255,255,255,0.10);
+  --color-text:     #EBE7DE;
+  --color-text-70:  rgba(235, 231, 222, 0.70);
+  --color-text-40:  rgba(235, 231, 222, 0.40);
+  --color-text-10:  rgba(235, 231, 222, 0.10);
 
   --color-glass:        rgba(255,255,255,0.05);
   --color-glass-strong: rgba(255,255,255,0.10);
@@ -82,10 +82,10 @@
     --color-bg-card:  #111111;
     --color-surface:  #1a1a1a;
     --color-border:   rgba(255,255,255,0.10);
-    --color-text:     #ffffff;
-    --color-text-70:  rgba(255,255,255,0.70);
-    --color-text-40:  rgba(255,255,255,0.40);
-    --color-text-10:  rgba(255,255,255,0.10);
+    --color-text:     #EBE7DE;
+    --color-text-70:  rgba(235, 231, 222, 0.70);
+    --color-text-40:  rgba(235, 231, 222, 0.40);
+    --color-text-10:  rgba(235, 231, 222, 0.10);
     --color-glass:        rgba(255,255,255,0.05);
     --color-glass-strong: rgba(255,255,255,0.10);
     --color-nav-bg:    rgba(12,12,12,0.72);

@@ -11,11 +11,225 @@
       "settings": {
         "speed": 40,
         "background_color": "transparent"
-      }
+      },
+      "blocks": {
+        "brand_1": {
+          "type": "brand",
+          "settings": {
+            "title": "Chanel",
+            "url": "shopify://collections/all"
+          }
+        },
+        "brand_2": {
+          "type": "brand",
+          "settings": {
+            "title": "Christian Dior",
+            "url": "shopify://collections/all"
+          }
+        },
+        "brand_3": {
+          "type": "brand",
+          "settings": {
+            "title": "YSL",
+            "url": "shopify://collections/all"
+          }
+        },
+        "brand_4": {
+          "type": "brand",
+          "settings": {
+            "title": "Armani",
+            "url": "shopify://collections/all"
+          }
+        },
+        "brand_5": {
+          "type": "brand",
+          "settings": {
+            "title": "Hugo Boss",
+            "url": "shopify://collections/all"
+          }
+        },
+        "brand_6": {
+          "type": "brand",
+          "settings": {
+            "title": "Calvin Klein",
+            "url": "shopify://collections/all"
+          }
+        },
+        "brand_7": {
+          "type": "brand",
+          "settings": {
+            "title": "Est\u00e9e Lauder",
+            "url": "shopify://collections/all"
+          }
+        },
+        "brand_8": {
+          "type": "brand",
+          "settings": {
+            "title": "Clinique",
+            "url": "shopify://collections/all"
+          }
+        },
+        "brand_9": {
+          "type": "brand",
+          "settings": {
+            "title": "Gucci",
+            "url": "shopify://collections/all",
+            "svg_url": "https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/g/gucci-logo-1.svg"
+          }
+        },
+        "brand_10": {
+          "type": "brand",
+          "settings": {
+            "title": "Burberry",
+            "url": "shopify://collections/all",
+            "svg_url": "https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/b/burberry-wordmark.svg"
+          }
+        },
+        "brand_11": {
+          "type": "brand",
+          "settings": {
+            "title": "Lanc\u00f4me",
+            "url": "shopify://collections/all",
+            "svg_url": "https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/l/lancome-logo.svg"
+          }
+        },
+        "brand_12": {
+          "type": "brand",
+          "settings": {
+            "title": "L'Or\u00e9al",
+            "url": "shopify://collections/all",
+            "svg_url": "https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/l/loreal-logo.svg"
+          }
+        },
+        "brand_13": {
+          "type": "brand",
+          "settings": {
+            "title": "Balenciaga",
+            "url": "shopify://collections/all",
+            "svg_url": "https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/b/balenciaga-logo.svg"
+          }
+        },
+        "brand_14": {
+          "type": "brand",
+          "settings": {
+            "title": "Givenchy",
+            "url": "shopify://collections/all",
+            "svg_url": "https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/g/givenchy-1.svg"
+          }
+        },
+        "brand_15": {
+          "type": "brand",
+          "settings": {
+            "title": "Balmain",
+            "url": "shopify://collections/all",
+            "svg_url": "https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/b/balmain-paris-logo.svg"
+          }
+        },
+        "brand_16": {
+          "type": "brand",
+          "settings": {
+            "title": "Valentino",
+            "url": "shopify://collections/all",
+            "svg_url": "https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/v/valentino-logo.svg"
+          }
+        }
+      },
+      "block_order": [
+        "brand_1",
+        "brand_2",
+        "brand_3",
+        "brand_4",
+        "brand_5",
+        "brand_6",
+        "brand_7",
+        "brand_8",
+        "brand_9",
+        "brand_10",
+        "brand_11",
+        "brand_12",
+        "brand_13",
+        "brand_14",
+        "brand_15",
+        "brand_16"
+      ]
     },
     "category-grid": {
       "type": "category-grid",
       "settings": {}
+    },
+    "top-marken": {
+      "type": "top-marken",
+      "settings": {
+        "title": "Top <em>Marken</em>."
+      },
+      "blocks": {
+        "brand_1": {
+          "type": "brand",
+          "settings": {
+            "title": "Chanel",
+            "url": "shopify://collections/all"
+          }
+        },
+        "brand_2": {
+          "type": "brand",
+          "settings": {
+            "title": "Dior",
+            "url": "shopify://collections/all"
+          }
+        },
+        "brand_3": {
+          "type": "brand",
+          "settings": {
+            "title": "YSL",
+            "url": "shopify://collections/all"
+          }
+        },
+        "brand_4": {
+          "type": "brand",
+          "settings": {
+            "title": "Armani",
+            "url": "shopify://collections/all"
+          }
+        },
+        "brand_5": {
+          "type": "brand",
+          "settings": {
+            "title": "Hugo Boss",
+            "url": "shopify://collections/all"
+          }
+        },
+        "brand_6": {
+          "type": "brand",
+          "settings": {
+            "title": "Calvin Klein",
+            "url": "shopify://collections/all"
+          }
+        },
+        "brand_7": {
+          "type": "brand",
+          "settings": {
+            "title": "Est\u00e9e Lauder",
+            "url": "shopify://collections/all"
+          }
+        },
+        "brand_8": {
+          "type": "brand",
+          "settings": {
+            "title": "Clinique",
+            "url": "shopify://collections/all"
+          }
+        }
+      },
+      "block_order": [
+        "brand_1",
+        "brand_2",
+        "brand_3",
+        "brand_4",
+        "brand_5",
+        "brand_6",
+        "brand_7",
+        "brand_8"
+      ]
     },
     "uber-lamour-faq": {
       "type": "uber-lamour-faq",
@@ -25,6 +239,7 @@
   "order": [
     "hero",
     "brand-marquee",
+    "top-marken",
     "category-grid",
     "uber-lamour-faq"
   ]

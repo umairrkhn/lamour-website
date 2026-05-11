@@ -66,13 +66,9 @@
 
 {% stylesheet %}
 .lm-catgrid {
-  background: var(--color-bg, #0a0a0a);
-  padding: 6rem 0 4rem;
-  color: var(--color-fg, #fff);
-}
-[data-theme="light"] .lm-catgrid {
-  background: #EBE7DE;
-  color: #0a0a0a;
+  background: var(--color-bg);
+  padding: 3rem 0 4rem;
+  color: var(--color-text);
 }
 
 .lm-catgrid__inner {
@@ -119,7 +115,7 @@
   transition: color 0.25s;
   white-space: nowrap;
 }
-.lm-catgrid__all:hover { color: #fff; }
+.lm-catgrid__all:hover { color: var(--color-text); }
 [data-theme="light"] .lm-catgrid__all { color: rgba(0,0,0,0.5); }
 [data-theme="light"] .lm-catgrid__all:hover { color: #0a0a0a; }
 
@@ -137,21 +133,14 @@
   position: relative;
   border-radius: 1.125rem;
   overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid var(--color-border, rgba(255,255,255,0.08));
   text-decoration: none;
-  background: #111;
+  background: var(--color-bg-card, #111);
   transition: border-color 0.3s, transform 0.35s cubic-bezier(0.2,0.7,0.2,1);
 }
 .lm-catcard:hover {
   border-color: rgba(255,255,255,0.22);
   transform: translateY(-3px);
-}
-[data-theme="light"] .lm-catcard {
-  border-color: #E6E4E0;
-  background: #EBE7DE;
-}
-[data-theme="light"] .lm-catcard:hover {
-  border-color: #D6D3D1;
 }
 
 .lm-catcard__media {
@@ -185,12 +174,12 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-top: 1px solid rgba(255,255,255,0.07);
-  color: #fff;
+  color: #EBE7DE;
 }
 [data-theme="light"] .lm-catcard__body {
-  background: #EBE7DE;
+  background: var(--color-bg-card);
   border-top: 1px solid #E6E4E0;
-  color: #0a0a0a;
+  color: var(--color-text);
 }
 
 .lm-catcard__num {

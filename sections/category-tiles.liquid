@@ -21,7 +21,7 @@
             {%- if block.settings.image != blank -%}
               {%- render 'image',
                 image: block.settings.image,
-                sizes: '(max-width: 767px) 100vw, 33vw',
+
                 class: 'lm-cat-tile__img'
               -%}
             {%- else -%}
@@ -94,7 +94,7 @@
     overflow: hidden;
     aspect-ratio: 3/4;
     text-decoration: none;
-    color: #fff;
+    color: var(--color-text);
   }
   .lm-cat-tile:hover .lm-cat-tile__img {
     transform: scale(1.04);
@@ -140,7 +140,7 @@
     font-size: clamp(1.5rem, 3vw, 2.25rem);
     line-height: 1.1;
     font-weight: 400;
-    color: #fff;
+    color: var(--color-text);
   }
 
   .lm-cat-tile__sub {

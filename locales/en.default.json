@@ -17,7 +17,10 @@
     "checkout": "Checkout",
     "title": "Cart",
     "update": "Update",
-    "remove": "Remove"
+    "remove": "Remove",
+    "general": {
+      "title": "Warenkorb"
+    }
   },
   "customers": {
     "login": {
@@ -48,5 +51,22 @@
     "submit": "Search",
     "no_results_html": "No results found for {{ terms }}",
     "results_for_html": "{{ count }} results found for {{ terms }}"
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "In den Warenkorb",
+      "sold_out": "Ausverkauft",
+      "unavailable": "Nicht verf\u00fcgbar"
+    }
+  },
+  "general": {
+    "search": "Suche",
+    "close": "Schlie\u00dfen",
+    "menu": "Men\u00fc"
+  },
+  "sections": {
+    "hero": {
+      "cta": "JETZT SHOPPEN"
+    }
   }
 }
