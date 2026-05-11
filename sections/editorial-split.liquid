@@ -14,7 +14,7 @@
         {%- if section.settings.image_primary != blank -%}
           {%- render 'image',
             image: section.settings.image_primary,
-            sizes: '(max-width: 767px) 100vw, 55vw',
+
             class: 'lm-editorial__img'
           -%}
         {%- else -%}
@@ -33,7 +33,7 @@
           {%- if section.settings.image_alt != blank -%}
             {%- render 'image',
               image: section.settings.image_alt,
-              sizes: '(max-width: 767px) 100vw, 40vw',
+
               class: 'lm-editorial__img'
             -%}
           {%- else -%}
