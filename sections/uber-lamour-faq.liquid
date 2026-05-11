@@ -1,0 +1,286 @@
+<section class="lm-faq" aria-labelledby="lm-faq-heading">
+  <div class="lm-faq__inner">
+    <div class="lm-faq__hd">
+      <div class="lm-faq__hd-left">
+        <p class="lm-faq__eyebrow font-mono">&sect; &Uuml;ber Lamour</p>
+        <h2 class="lm-faq__title font-display" id="lm-faq-heading">
+          Fragen &amp; <em class="lm-faq__accent">Antworten</em>.
+        </h2>
+      </div>
+    </div>
+
+    <div class="lm-faq__card">
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          <div class="lm-faq__item{% if forloop.last %} lm-faq__item--last{% endif %}" {{ block.shopify_attributes }}>
+            <button
+              class="lm-faq__btn"
+              type="button"
+              aria-expanded="false"
+              aria-controls="lm-faq-panel-{{ block.id }}"
+            >
+              <div class="lm-faq__btn-left">
+                <span class="lm-faq__circle" aria-hidden="true">
+                  <svg class="lm-faq__icon-plus" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                  <svg class="lm-faq__icon-minus" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/></svg>
+                </span>
+                <span class="lm-faq__q font-display">{{ block.settings.question }}</span>
+              </div>
+            </button>
+            <div class="lm-faq__panel" id="lm-faq-panel-{{ block.id }}" role="region" hidden>
+              <div class="lm-faq__answer">{{ block.settings.answer }}</div>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- else -%}
+        {%- comment -%} Fallback items matching prototype EXACTLY {%- endcomment -%}
+        {%- assign fallback_q = "Dein Beauty-Onlineshop,Entdecke Deutschlands schönstes Beauty-Sortiment,Das perfekte Produkt für deine Bedürfnisse,Bezaubernde Duft-Momente" | split: "," -%}
+        {%- assign fallback_a1 = "L’Amour ist dein Online-Destination für Parfum, Pflege und Make-up. Wir kuratieren über 10.000 Produkte von mehr als 200 Marken — von Luxus bis Nische — und liefern sie schnell und sicher direkt zu dir nach Hause. Versand in 3–6 Werktagen, 30 Tage Rückgaberecht." -%}
+        {%- assign fallback_a2 = "Ob Chanel, Dior, Yves Saint Laurent oder Nischenmarken wie Ajmal und Byredo — bei uns findest du das komplette Beauty-Universum. Parfüme für Damen, Herren und Unisex. Gesichtspflege, Haarstyling, Körperpflege und Make-up der führenden Häuser — alles an einem Ort." -%}
+        {%- assign fallback_a3 = "Unser Duft-Finder hilft dir, dein Signature-Parfum zu finden. In unter 90 Sekunden gleichen wir deine Vorlieben mit über 14.000 Duftprofilen ab und empfehlen dir das passende Produkt — egal ob blumig, holzig, frisch oder orientalisch." -%}
+        {%- assign fallback_a4 = "Ein Duft ist mehr als ein Accessoire — er ist eine Erinnerung, eine Visitenkarte, ein Ritual. Bei L’Amour findest du Parfüme, die deine Persönlichkeit unterstreichen und dich täglich begleiten. Mit originalverpackten Markenprodukten und bester Qualität." -%}
+        
+        {%- for q in fallback_q -%}
+          {%- liquid
+            assign current_a = ""
+            if forloop.index == 1
+              assign current_a = fallback_a1
+            elsif forloop.index == 2
+              assign current_a = fallback_a2
+            elsif forloop.index == 3
+              assign current_a = fallback_a3
+            else
+              assign current_a = fallback_a4
+            endif
+          -%}
+          <div class="lm-faq__item{% if forloop.last %} lm-faq__item--last{% endif %}">
+            <button
+              class="lm-faq__btn"
+              type="button"
+              aria-expanded="false"
+              aria-controls="lm-faq-panel-fallback-{{ forloop.index }}"
+            >
+              <div class="lm-faq__btn-left">
+                <span class="lm-faq__circle" aria-hidden="true">
+                  <svg class="lm-faq__icon-plus" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                  <svg class="lm-faq__icon-minus" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/></svg>
+                </span>
+                <span class="lm-faq__q font-display">{{ q }}</span>
+              </div>
+            </button>
+            <div class="lm-faq__panel" id="lm-faq-panel-fallback-{{ forloop.index }}" role="region" hidden>
+              <div class="lm-faq__answer"><p>{{ current_a }}</p></div>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+.lm-faq {
+  background: var(--color-bg, #0a0a0a);
+  color: var(--color-fg, #fff);
+  padding: 4rem 0 8rem;
+}
+[data-theme="light"] .lm-faq {
+  background: #EBE7DE;
+  color: #0a0a0a;
+}
+
+.lm-faq__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.lm-faq__hd {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 2.25rem;
+}
+.lm-faq__eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-pink, #f496b0);
+  margin: 0 0 0.6rem;
+}
+.lm-faq__title {
+  font-size: clamp(40px, 5.5vw, 82px);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+.lm-faq__accent {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-pink, #f496b0);
+}
+
+.lm-faq__card {
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  background: transparent;
+}
+[data-theme="light"] .lm-faq__card {
+  border-color: #E6E4E0;
+  background: #EBE7DE; /* Ensure seamless background */
+}
+
+.lm-faq__item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+[data-theme="light"] .lm-faq__item {
+  border-bottom-color: #E6E4E0;
+}
+.lm-faq__item--last {
+  border-bottom: none;
+}
+
+.lm-faq__btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  text-align: left;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  transition: background 0.2s;
+}
+.lm-faq__btn:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+[data-theme="light"] .lm-faq__btn:hover {
+  background: rgba(0, 0, 0, 0.015);
+}
+.lm-faq__btn[aria-expanded="true"] {
+  background: rgba(255, 255, 255, 0.02);
+}
+[data-theme="light"] .lm-faq__btn[aria-expanded="true"] {
+  background: rgba(0, 0, 0, 0.01);
+}
+
+.lm-faq__btn-left {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.lm-faq__circle {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.25s ease;
+}
+[data-theme="light"] .lm-faq__circle {
+  border-color: #D6D3D1;
+}
+.lm-faq__btn[aria-expanded="true"] .lm-faq__circle {
+  background: var(--color-pink, #f496b0);
+  border-color: var(--color-pink, #f496b0);
+  color: #000;
+}
+
+.lm-faq__icon-minus {
+  display: none;
+}
+.lm-faq__btn[aria-expanded="true"] .lm-faq__icon-plus {
+  display: none;
+}
+.lm-faq__btn[aria-expanded="true"] .lm-faq__icon-minus {
+  display: block;
+}
+
+.lm-faq__q {
+  font-size: clamp(17px, 2vw, 22px);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.lm-faq__panel {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.45s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 0.35s ease;
+  opacity: 0;
+}
+.lm-faq__panel:not([hidden]) {
+  max-height: 400px;
+  opacity: 1;
+}
+
+.lm-faq__answer {
+  padding: 0 1.5rem 1.75rem 4.75rem;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 760px;
+}
+[data-theme="light"] .lm-faq__answer {
+  color: rgba(0, 0, 0, 0.65);
+}
+.lm-faq__answer p {
+  margin: 0;
+}
+{% endstylesheet %}
+
+{% javascript %}
+document.querySelectorAll('.lm-faq__btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var expanded = btn.getAttribute('aria-expanded') === 'true';
+    var panelId = btn.getAttribute('aria-controls');
+    var panel = document.getElementById(panelId);
+    if (expanded) {
+      btn.setAttribute('aria-expanded', 'false');
+      panel.setAttribute('hidden', '');
+    } else {
+      btn.setAttribute('aria-expanded', 'true');
+      panel.removeAttribute('hidden');
+    }
+  });
+});
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "FAQ — Über L'Amour",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Dein Beauty-Onlineshop"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>L\u2019Amour ist dein Online-Destination f\u00fcr Parfum, Pflege und Make-up.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ — Über L'Amour"
+    }
+  ]
+}
+{% endschema %}

@@ -2,37 +2,8 @@
   "sections": {
     "hero": {
       "type": "hero",
-      "blocks": {
-        "eyebrow": {
-          "type": "eyebrow",
-          "settings": {
-            "text": "PREMIUM PARFUMS & BEAUTY"
-          }
-        },
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Entdecke Luxus"
-          }
-        },
-        "body": {
-          "type": "rich_text",
-          "settings": {
-            "text": "<p>Erlebe die Welt der Düfte und Beauty mit ausgewählten Produkten der bekanntesten Marken.</p>"
-          }
-        },
-        "cta": {
-          "type": "button",
-          "settings": {
-            "button_label": "JETZT SHOPPEN",
-            "button_url": "/collections/all"
-          }
-        }
-      },
-      "blocks_order": ["eyebrow", "heading", "body", "cta"],
       "settings": {
-        "overlay_opacity": 55,
-        "text_alignment": "center"
+        "overlay_opacity": 0
       }
     },
     "brand-marquee": {
@@ -41,10 +12,20 @@
         "speed": 40,
         "background_color": "transparent"
       }
+    },
+    "category-grid": {
+      "type": "category-grid",
+      "settings": {}
+    },
+    "uber-lamour-faq": {
+      "type": "uber-lamour-faq",
+      "settings": {}
     }
   },
   "order": [
     "hero",
-    "brand-marquee"
+    "brand-marquee",
+    "category-grid",
+    "uber-lamour-faq"
   ]
 }
