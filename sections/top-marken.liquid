@@ -1,0 +1,355 @@
+{%- comment -%}
+  Top Marken Section - A luxury logo grid with a "View All" button.
+{%- endcomment -%}
+
+<section class="lm-marken" aria-labelledby="lm-marken-heading">
+  <div class="lm-marken__inner">
+    <div class="lm-marken__hd">
+      <div class="lm-marken__hd-left">
+        {% if section.settings.eyebrow != blank %}
+          <p class="lm-marken__eyebrow font-mono">{{ section.settings.eyebrow }}</p>
+        {% endif %}
+        <h2 class="lm-marken__title font-display" id="lm-marken-heading">
+          {{ section.settings.title }}
+        </h2>
+      </div>
+      {% if section.settings.button_label != blank %}
+        <a href="{{ section.settings.button_link | default: '#' }}" class="lm-marken__all font-mono lm-marken__all--desk">
+          {{ section.settings.button_label }}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      {% endif %}
+    </div>
+
+    <div class="lm-marken__grid">
+      {%- for block in section.blocks -%}
+        <a href="{{ block.settings.url | default: '#' }}" class="lm-marken__card" aria-label="{{ block.settings.title }}" {{ block.shopify_attributes }}>
+          {%- liquid
+            assign brand_key = block.settings.title | downcase | replace: ' ', '-' | replace: 'yves-saint-laurent', 'ysl' | replace: 'estée-lauder', 'estee-lauder'
+          -%}
+          {%- capture svg_snippet -%}
+            {%- render 'brand-logo', brand: brand_key -%}
+          {%- endcapture -%}
+          
+          {%- if block.settings.image != blank -%}
+            {{ block.settings.image | image_url: width: 300 | image_tag: class: 'lm-marken__logo', loading: 'lazy' }}
+          {%- elsif svg_snippet != blank -%}
+            <div class="lm-marken__logo-wrapper">{{ svg_snippet }}</div>
+          {%- elsif block.settings.svg_url != blank -%}
+            <img src="{{ block.settings.svg_url }}" alt="{{ block.settings.title }}" class="lm-marken__logo" loading="lazy" width="130" height="40">
+          {%- else -%}
+            <span class="lm-marken__logo-text font-display">{{ block.settings.title }}</span>
+          {%- endif -%}
+        </a>
+      {%- endfor -%}
+    </div>
+
+    {% if section.settings.button_label != blank %}
+      <a href="{{ section.settings.button_link | default: '#' }}" class="lm-marken__all font-mono lm-marken__all--mobile">
+        {{ section.settings.button_label }}
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    {% endif %}
+  </div>
+</section>
+
+{% stylesheet %}
+.lm-marken {
+  background: var(--color-bg);
+  padding: 3rem 0;
+  color: var(--color-text);
+}
+
+.lm-marken__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.lm-marken__hd {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 2.25rem;
+  gap: 1rem;
+}
+.lm-marken__eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-pink, #f496b0);
+  margin: 0 0 0.6rem;
+}
+.lm-marken__title {
+  font-size: clamp(40px, 5.5vw, 82px);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+.lm-marken__title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-pink, #f496b0);
+}
+.lm-marken__all {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgba(255,255,255,0.55);
+  transition: color 0.25s;
+  white-space: nowrap;
+}
+.lm-marken__all:hover { color: var(--color-text); }
+[data-theme="light"] .lm-marken__all { color: rgba(0,0,0,0.5); }
+[data-theme="light"] .lm-marken__all:hover { color: #0a0a0a; }
+
+.lm-marken__all--mobile {
+  display: none;
+  margin-top: 2rem;
+  justify-content: center;
+  width: 100%;
+}
+
+.lm-marken__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 1.125rem;
+  overflow: hidden;
+}
+[data-theme="light"] .lm-marken__grid {
+  background: rgba(0,0,0,0.06);
+  border-color: rgba(0,0,0,0.06);
+}
+
+.lm-marken__card {
+  background: var(--color-bg-card, #111);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1rem;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  height: 100px;
+}
+[data-theme="light"] .lm-marken__card {
+  background: var(--color-bg, #EBE7DE);
+}
+.lm-marken__card:hover {
+  background: rgba(255,255,255,0.03);
+}
+[data-theme="light"] .lm-marken__card:hover {
+  background: rgba(0,0,0,0.02);
+}
+
+.lm-marken__logo-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.lm-marken__logo,
+.lm-marken__logo-wrapper svg,
+.lm-marken__logo-wrapper img {
+  width: 100%;
+  height: 100%;
+  max-width: 130px;
+  max-height: 40px;
+  object-fit: contain;
+  filter: brightness(0) invert(1) opacity(0.65);
+  transition: opacity 0.3s ease, filter 0.3s ease, transform 0.3s cubic-bezier(0.2,0.7,0.2,1);
+}
+[data-theme="light"] .lm-marken__logo,
+[data-theme="light"] .lm-marken__logo-wrapper svg,
+[data-theme="light"] .lm-marken__logo-wrapper img {
+  filter: brightness(0) opacity(0.6);
+}
+.lm-marken__card:hover .lm-marken__logo,
+.lm-marken__card:hover .lm-marken__logo-wrapper svg,
+.lm-marken__card:hover .lm-marken__logo-wrapper img {
+  opacity: 1;
+  filter: brightness(0) invert(1) opacity(1);
+  transform: scale(1.05);
+}
+[data-theme="light"] .lm-marken__card:hover .lm-marken__logo,
+[data-theme="light"] .lm-marken__card:hover .lm-marken__logo-wrapper svg,
+[data-theme="light"] .lm-marken__card:hover .lm-marken__logo-wrapper img {
+  filter: brightness(0) opacity(0.9);
+}
+
+.lm-marken__logo-text {
+  font-size: 1.5rem;
+  color: rgba(255,255,255,0.7);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+[data-theme="light"] .lm-marken__logo-text {
+  color: rgba(0,0,0,0.7);
+}
+.lm-marken__card:hover .lm-marken__logo-text {
+  color: #fff;
+  transform: scale(1.05);
+}
+[data-theme="light"] .lm-marken__card:hover .lm-marken__logo-text {
+  color: #000;
+}
+
+@media (max-width: 1023px) {
+  .lm-marken__grid { grid-template-columns: repeat(3, 1fr); }
+  .lm-marken__card { height: 90px; }
+}
+@media (max-width: 767px) {
+  .lm-marken__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 639px) {
+  .lm-marken__all--desk { display: none; }
+  .lm-marken__all--mobile { display: inline-flex; }
+  .lm-marken__card { height: 80px; }
+  .lm-marken__logo, .lm-marken__logo-wrapper svg, .lm-marken__logo-wrapper img { max-width: 100px; max-height: 28px; }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Top Marken",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "§ Unsere Favoriten"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Heading",
+      "default": "Top-<em>Marken</em>."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Alle Marken"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "brand",
+      "name": "Brand",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Brand Name",
+          "default": "Brand Name"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Logo Image"
+        },
+        {
+          "type": "text",
+          "id": "svg_url",
+          "label": "Logo SVG URL (Fallback)",
+          "info": "Use this if you don't have an image uploaded."
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Brand URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Top Marken",
+      "settings": {
+        "eyebrow": "§ Unsere Favoriten",
+        "title": "Top-<em>Marken</em>.",
+        "button_label": "Alle Marken",
+        "button_link": "shopify:\/\/collections\/all"
+      },
+      "blocks": [
+        {
+          "type": "brand",
+          "settings": {
+            "title": "Chanel",
+            "svg_url": "https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/c/chanel-logo.svg",
+            "url": "shopify:\/\/collections\/chanel"
+          }
+        },
+        {
+          "type": "brand",
+          "settings": {
+            "title": "Dior",
+            "svg_url": "https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/d/dior-2.svg",
+            "url": "shopify:\/\/collections\/dior"
+          }
+        },
+        {
+          "type": "brand",
+          "settings": {
+            "title": "Yves Saint Laurent",
+            "svg_url": "https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/y/yves-saint-laurent.svg",
+            "url": "shopify:\/\/collections\/ysl"
+          }
+        },
+        {
+          "type": "brand",
+          "settings": {
+            "title": "Armani",
+            "svg_url": "https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/g/giorgio-armani.svg",
+            "url": "shopify:\/\/collections\/armani"
+          }
+        },
+        {
+          "type": "brand",
+          "settings": {
+            "title": "Hugo Boss",
+            "svg_url": "https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/h/hugo-boss.svg",
+            "url": "shopify:\/\/collections\/hugo-boss"
+          }
+        },
+        {
+          "type": "brand",
+          "settings": {
+            "title": "Calvin Klein",
+            "svg_url": "https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/c/calvin-klein-logo.svg",
+            "url": "shopify:\/\/collections\/calvin-klein"
+          }
+        },
+        {
+          "type": "brand",
+          "settings": {
+            "title": "Estée Lauder",
+            "svg_url": "https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/e/estee-lauder.svg",
+            "url": "shopify:\/\/collections\/estee-lauder"
+          }
+        },
+        {
+          "type": "brand",
+          "settings": {
+            "title": "Clinique",
+            "svg_url": "https://cdn.jsdelivr.net/gh/detain/svg-logos@master/svg/c/clinique.svg",
+            "url": "shopify:\/\/collections\/clinique"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
